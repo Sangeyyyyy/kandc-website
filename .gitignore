@@ -30,3 +30,6 @@ public/*.jpeg
 *.njsproj
 *.sln
 *.sw?
+
+# Cloudflare Wrangler
+.wrangler
