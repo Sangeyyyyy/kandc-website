@@ -7,7 +7,7 @@ export default function Hero3D() {
   const mesh = useRef<THREE.Mesh>(null);
 
   // Gentle rotation on the Y axis over time
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (mesh.current) {
       mesh.current.rotation.y += delta * 0.15;
       mesh.current.rotation.x += delta * 0.05;
