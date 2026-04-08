@@ -1,17 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Reveal, TopNav, CalendlyModal, FooterCTA, UtilityFooter } from './SharedComponents';
+import { getAssetUrl } from './utils/assets';
 
 // ─── SERVICES DATA ────────────────────────────────────────────────────────────
 const servicesData = [
-  { id: '01', title: 'Experiential, Integrated Activations & Premieres', description: 'Immersive brand moments, cinematic premieres, and elite staffing management.', image: '/service_activation.png' },
-  { id: '02', title: 'Executive Brand Partnership', description: 'Senior-level strategic alliances and brand management.', image: '/service_strategy.png' },
-  { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment.', image: '/service_cultural.png' },
-  { id: '04', title: 'Digital Marketing', description: 'Data-driven strategies that command attention.', image: '/service_digital.png' },
-  { id: '05', title: 'Creative Production', description: 'High-end content designed for the cinematic brand narrative.', image: '/service_production.png' },
-  { id: '06', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: '/service_event_proc.png' },
-  { id: '07', title: 'Vendor Management', description: 'Sourcing the best. Managing excellence.', image: '/service_vendor.png' },
-  { id: '08', title: 'Media Management', description: 'Capturing the conversation. Commanding the spotlight.', image: '/service_media.png' }
+  { id: '01', title: 'Experiential, Integrated Activations & Premieres', description: 'Immersive brand moments, cinematic premieres, and elite staffing management.', image: getAssetUrl('/service_activation.png') },
+  { id: '02', title: 'Executive Brand Partnership', description: 'Senior-level strategic alliances and brand management.', image: getAssetUrl('/service_strategy.png') },
+  { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment.', image: getAssetUrl('/service_cultural.png') },
+  { id: '04', title: 'Digital Marketing', description: 'Data-driven strategies that command attention.', image: getAssetUrl('/service_digital.png') },
+  { id: '05', title: 'Creative Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('/service_production.png') },
+  { id: '06', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('/service_event_proc.png') },
+  { id: '07', title: 'Vendor Management', description: 'Sourcing the best. Managing excellence.', image: getAssetUrl('/service_vendor.png') },
+  { id: '08', title: 'Media Management', description: 'Capturing the conversation. Commanding the spotlight.', image: getAssetUrl('/service_media.png') }
 ];
 
 // ─── HELPER: SECTION HEADER ───────────────────────────────────────────────────

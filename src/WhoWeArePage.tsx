@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Reveal, TopNav, UtilityFooter, useModal, FooterCTA, WhyKelseyCompany, SectionBlender } from './SharedComponents';
+import { getAssetUrl } from './utils/assets';
 
 const WhoWeArePage = () => {
     const [loaded, setLoaded] = useState(false);
@@ -128,7 +129,7 @@ const WhoWeArePage = () => {
                         <div className="relative aspect-[3/4] overflow-hidden w-full max-w-[400px] mx-auto lg:mx-0">
                             <Reveal className="w-full h-full">
                                 <img
-                                    src="/founder.png"
+                                    src={getAssetUrl('/founder.png')}
                                     alt="Kelsey Matthews"
                                     className="w-full h-full object-cover grayscale-[0.15] brightness-80"
                                 />

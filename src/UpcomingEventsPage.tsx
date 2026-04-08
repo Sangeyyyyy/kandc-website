@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TopNav, UtilityFooter, FooterCTA, useModal, Reveal, SectionBlender } from './SharedComponents';
+import { getAssetUrl } from './utils/assets';
 
 
 const ALL_EVENTS = [
@@ -11,7 +12,7 @@ const ALL_EVENTS = [
         location: 'Atlanta, GA',
         type: 'Industry Panel',
         description: 'An exclusive round-table featuring top brand architects discussing the fusion of long-term strategy and cultural relevance.',
-        image: '/assets/thought leadership brunch/thought leadership brunch 1.png', 
+        image: getAssetUrl('/assets/thought leadership brunch/thought leadership brunch 1.png'), 
         targetDate: '2026-10-24T19:00:00' // Target date for countdown
     },
     {
@@ -22,7 +23,7 @@ const ALL_EVENTS = [
         location: 'New York, NY',
         type: 'Private Mixer',
         description: 'An invitation-only gathering for our closest brand partners and creative collaborators to celebrate the year\'s milestones.',
-        image: '/assets/spike lee dinner/spike lee dinner 1.png',
+        image: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'),
     },
     {
         id: 'ev-03',
@@ -32,7 +33,7 @@ const ALL_EVENTS = [
         location: 'Miami, FL — Art Basel',
         type: 'Immersive Experience',
         description: 'A multi-sensory brand activation popup during Miami Art Week. Redefining how physical spaces convey digital narratives.',
-        image: '/assets/sinners/sinners 1.png',
+        image: getAssetUrl('/assets/sinners/sinners 1.png'),
     }
 ];
 
