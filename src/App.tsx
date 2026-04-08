@@ -1,0 +1,706 @@
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Reveal,
+  LoadingScreen,
+  TopNav,
+  FooterCTA,
+  UtilityFooter,
+  useMagnetic,
+  WhyKelseyCompany,
+  SectionBlender,
+  useModal,
+  ScrollIndicator
+} from './SharedComponents';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { SparkleParticles } from './SparkleParticles';
+import { DiamondEdgeSparkles } from './DiamondEdgeSparkles';
+import { getAssetUrl } from './utils/assets';
+import './index.css';
+
+
+// ─── HERO ─────────────────────────────────────────────────────────────────────
+const ImpactHero = ({ active, onBookClick }: { active: boolean, onBookClick: () => void }) => {
+  const containerRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const magneticRef = useMagnetic(30);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const portalClipPath = useTransform(
+    smoothProgress,
+    [0.1, 0.8],
+    [
+      "polygon(50% calc(50% - 0vw), calc(50% + 0vw) 50%, 50% calc(50% + 0vw), calc(50% - 0vw) 50%)",
+      "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
+    ]
+  );
+
+
+  const portalTextOpacity = useTransform(smoothProgress, [0.3, 0.6], [0, 1]);
+  const portalTextScale = useTransform(smoothProgress, [0.3, 0.6], [0.8, 1]);
+  
+  // Make sparkles appear as soon as the portal starts expanding
+  const portalSparkleOpacity = useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
+
+  useEffect(() => {
+    // Force scroll to top on mount so the user never starts mid-page
+    window.scrollTo(0, 0);
+
+    // Force video to play in case browser autoplay blocks it
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log('Autoplay prevented:', e));
+    }
+  }, []);
+
+  return (
+    <section ref={containerRef} className="h-[250vh] relative w-full bg-ink">
+      <div className="sticky top-0 w-full h-screen overflow-hidden bg-burgundy">
+      {/* ── BACKGROUND: Video Layer ── */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-30 animate-ken-burns scale-105"
+          poster={getAssetUrl('/hero_image.png')}
+        >
+          <source src={getAssetUrl('/hero.mp4')} type="video/mp4" />
+        </video>
+        {/* Cinematic Overlay */}
+        <div className="absolute inset-[0px] bg-ink/75 mix-blend-multiply"></div>
+      </div>
+
+      {/* ── TOP NAV ── */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute top-0 w-full z-50 mix-blend-difference"
+      >
+        <TopNav active={true} />
+      </motion.div>
+
+      {/* ── CENTRAL TYPOGRAPHY ── */}
+      <div className="absolute inset-0 z-10 flex border flex-col items-center justify-center pointer-events-none">
+        
+        <div className="flex flex-col items-center -mt-16 md:-mt-24 w-full">
+          {/* First Line (offset to the left) */}
+          <motion.h1 
+            initial={{ opacity: 0, x: -80 }}
+            animate={active ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[14vw] md:text-[11vw] font-serif text-cream leading-none tracking-tighter uppercase drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:-ml-[20vw] -ml-[10vw]"
+          >
+            A Creative
+          </motion.h1>
+
+          {/* Second Line (offset to the right) */}
+          <motion.h1 
+            initial={{ opacity: 0, x: 80 }}
+            animate={active ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[14vw] md:text-[11vw] font-serif text-cream leading-none tracking-tighter uppercase italic drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:ml-[20vw] ml-[10vw] -mt-2 md:-mt-6"
+          >
+            Collective.
+          </motion.h1>
+        </div>
+
+      </div>
+
+
+      {/* ── NEW: PORTAL LAYER (Z-20) ── */}
+      <motion.div 
+        className="absolute inset-0 z-20 pointer-events-auto overflow-hidden"
+        style={{ clipPath: portalClipPath }}
+      >
+        {/* Inner Solid Background */}
+        <div className="absolute inset-0 bg-ink" />
+
+        {/* Cinematic Rim Glow for Portal edges — achieved via a layered gradient */}
+        <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(238,192,191,0.2)] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-90" />
+        
+        {/* Diamond Portal Sparkles! */}
+        <SparkleParticles opacity={portalSparkleOpacity} />
+        
+        {/* Inside Portal Typography & CTA */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 md:gap-10">
+          <motion.h2 
+             style={{ opacity: portalTextOpacity, scale: portalTextScale }}
+             className="text-[7.5vw] md:text-[3.5vw] text-center font-serif text-cream uppercase tracking-tight italic drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] max-w-5xl px-6 md:px-12 leading-[1.1]">
+             Is your brand ready to redefine the standard?
+          </motion.h2>
+
+          <motion.div 
+            style={{ opacity: portalTextOpacity, scale: portalTextScale }}
+            className="pointer-events-auto"
+          >
+            <div ref={magneticRef} className="magnetic-button">
+              <motion.button
+                layoutId="book-consultation"
+                onClick={onBookClick}
+                className="flex items-center gap-3 border border-rose/40 text-rose/80 text-[0.65rem] tracking-[0.3em] uppercase font-sans px-10 py-4 hover:bg-rose/10 hover:border-rose/70 transition-all duration-500 bg-ink/40 backdrop-blur-sm"
+              >
+                <span className="text-rose/40 font-semibold">◆</span>
+                Book Consultation
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* ── NEW: DIAMOND EXTERIOR SPARKLE EDGE (Z-25) ── */}
+      <DiamondEdgeSparkles progress={smoothProgress} />
+
+      <SectionBlender position="bottom" intensity="h-[40vh]" />
+      </div>
+    </section>
+  );
+};
+// ─── SELECTED WORK ────────────────────────────────────────────────────────────
+const SelectedWork = () => {
+  const projects = [
+    {
+      num: '01',
+      title: 'Sinners',
+      category: 'Experiential, Integrated Activations & Premieres',
+      img: getAssetUrl('/assets/posters/sinners.jpg'),
+      objectPosition: 'top center',
+    },
+    {
+      num: '02',
+      title: 'Tron: Ares',
+      category: 'Experiential, Integrated Activations & Premieres',
+      img: getAssetUrl('/assets/posters/tron.jpeg'),
+      objectPosition: 'top center',
+    },
+    {
+      num: '03',
+      title: 'Zootopia 2',
+      category: 'Brand Partnerships',
+      img: getAssetUrl('/assets/posters/zootopia.jpg'),
+      objectPosition: 'top center',
+    },
+  ];
+
+  return (
+    <section id="work" className="w-full bg-ink relative">
+      <SectionBlender position="top" intensity="h-48" />
+      {/* Heading row */}
+      <div className="py-24 px-8 md:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <Reveal>
+          <h2 className="text-[4rem] lg:text-[7rem] font-serif leading-none tracking-tighter text-cream uppercase">
+            OUR <br /><i className="font-light italic text-rose/60">Work.</i>
+          </h2>
+        </Reveal>
+      </div>
+
+      {/* Poster Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-cream/10">
+        {projects.map((project, i) => (
+          <div
+            key={i}
+            className="relative overflow-hidden cursor-pointer group border-r border-cream/10 last:border-r-0 lg:last:border-r"
+            style={{ aspectRatio: '2/3' }}
+          >
+            {/* Number badge */}
+            <span className="absolute top-5 right-5 z-20 font-sans text-[0.55rem] tracking-[0.35em] text-white/40 select-none">
+              {project.num}
+            </span>
+
+            {/* Image */}
+            <img
+              src={project.img}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+              style={{ objectPosition: project.objectPosition }}
+            />
+
+            {/* Gradient overlay — always present, deepens on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity duration-700" />
+            <div className="absolute inset-0 bg-burgundy/0 group-hover:bg-burgundy/40 transition-colors duration-700" />
+
+            {/* Label */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
+              <p className="font-sans text-[0.5rem] tracking-[0.4em] uppercase text-rose mb-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
+                {project.category}
+              </p>
+              <h3 className="font-serif text-3xl md:text-4xl text-cream leading-none tracking-tight translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                {project.title}
+              </h3>
+            </div>
+          </div>
+        ))}
+
+        {/* Option B: Integrated View All Card */}
+        <Link
+          to="/our-work"
+          className="relative overflow-hidden cursor-pointer group bg-ink flex flex-col justify-center p-8 md:p-12 border-r border-cream/10 last:border-r-0 shadow-ember hover:shadow-ember-intense transition-shadow duration-700"
+          style={{ aspectRatio: '2/3' }}
+        >
+          <div className="absolute inset-0 bg-burgundy/0 group-hover:bg-burgundy/20 transition-colors duration-700" />
+          
+          <div className="relative z-10">
+            <p className="font-sans text-[0.55rem] tracking-[0.4em] uppercase text-rose/60 mb-6 group-hover:text-rose transition-colors duration-500">
+              Collection Overview
+            </p>
+            <h3 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1] tracking-tight mb-12">
+              View All<br /><i className="font-light italic">Work.</i>
+            </h3>
+            
+            <div className="flex items-center gap-4 text-cream/40 group-hover:text-cream transition-colors duration-500">
+              <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans">10 Productions</span>
+              <div className="h-px w-8 bg-current transform origin-left scale-x-100 group-hover:scale-x-150 transition-transform duration-500" />
+              <span className="text-xl">⟶</span>
+            </div>
+          </div>
+
+          {/* Decorative Background Element */}
+          <div className="absolute -bottom-10 -right-10 text-[15rem] font-serif italic text-cream/[0.03] pointer-events-none select-none group-hover:text-cream/[0.05] transition-colors duration-700">
+            &
+          </div>
+        </Link>
+      </div>
+
+      {/* Bottom tagline */}
+      <div className="py-12 px-8 md:px-16 border-t border-cream/10">
+        <Reveal>
+          <p className="text-cream/35 font-serif italic text-lg">10 productions. One collective.</p>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+// ─── ABOUT / FOUNDER ──────────────────────────────────────────────────────────
+const AboutFounder = () => (
+  <section id="who-we-are" className="relative min-h-screen bg-[#0c0508] overflow-hidden flex items-center justify-center border-y border-rose/5">
+    <SectionBlender position="top" intensity="h-32" />
+    <SectionBlender position="bottom" intensity="h-32" />
+    
+    {/* Giant Background Monogram */}
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <p className="font-serif text-[40vw] leading-none text-cream/[0.025] tracking-tighter watermark-drift" style={{ fontStyle: 'italic', whiteSpace: 'nowrap' }}>KM</p>
+    </div>
+
+    {/* Ambient Rose Glow */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-rose/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
+
+    {/* Center Content */}
+    <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 px-8 lg:px-0 max-w-6xl w-full mx-auto py-20 lg:py-24">
+
+      {/* Floating Portrait */}
+      <Reveal className="flex-shrink-0 z-10">
+        <div className="float-slow relative">
+          <div className="w-[240px] md:w-[280px] lg:w-[340px] aspect-[3/4] rounded-sm overflow-hidden border-2 border-rose/20 shadow-ember-intense relative">
+            <img src={getAssetUrl('/founder.png')} alt="Kelsey Matthews" className="w-full h-full object-cover object-top brightness-90 contrast-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          </div>
+          {/* Orbit ring */}
+          <div className="absolute inset-[-20px] rounded-sm border border-rose/10 pointer-events-none" style={{ borderStyle: 'dashed' }}></div>
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-ink border border-rose/20 px-6 py-2 whitespace-nowrap">
+            <p className="text-[0.58rem] uppercase tracking-[0.35em] text-rose/70">Kelsey Matthews</p>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Text Block */}
+      <div className="flex-1 text-center lg:text-left z-10">
+        <Reveal delay={200}>
+          <p className="text-rose/50 text-[0.62rem] tracking-[0.5em] uppercase mb-8">The Founder</p>
+
+          <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-cream leading-[0.88] tracking-tighter mb-8 md:mb-10">
+            Where<br /><span className="italic text-rose/85">Culture</span><br />Becomes<br />Brand.
+          </h2>
+
+          <p className="text-lg text-cream/50 font-light leading-relaxed mb-10 max-w-md mx-auto lg:mx-0">
+            An architect of cultural moments. Kelsey Matthews leads a senior collective that transforms brands into cultural institutions.
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
+            <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">Webby Winner</span>
+            <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">Clio Shortlist</span>
+            <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">UWG Alumni</span>
+          </div>
+
+          <Link
+            to="/who-we-are"
+            className="inline-block bg-rose/10 border border-rose/40 px-10 py-4 text-[0.65rem] tracking-[0.4em] uppercase text-rose hover:bg-rose hover:text-ink transition-all duration-500"
+          >
+            Learn More ⟶
+          </Link>
+        </Reveal>
+      </div>
+    </div>
+  </section>
+);
+
+// ─── SERVICES CAROUSEL ────────────────────────────────────────────────────────
+const ServicesCarousel = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"]
+  });
+
+  // Mobile cards are proportionally wider (88vw vs 45vw), so the strip
+  // needs a smaller % shift to reach the last card without overshooting.
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", isMobile ? "-78%" : "-85%"]
+  );
+
+  const servicesData = [
+    { id: '01', title: 'Experiential, Integrated Activations & Premieres', description: 'Immersive brand moments, cinematic premieres, and elite staffing management engineered for consistency across all touchpoints.', image: getAssetUrl('/service_activation.png') },
+    { id: '02', title: 'Executive Brand Partnership', description: 'Senior-level strategic alliances and brand management for elite talent and executives.', image: getAssetUrl('/service_strategy.png') },
+    { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment and mutual growth.', image: getAssetUrl('/service_cultural.png') },
+    { id: '04', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('/service_digital.png') },
+    { id: '05', title: 'Creative Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('/service_production.png') },
+    { id: '06', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('/service_event_proc.png') },
+    { id: '07', title: 'Vendor Management', description: 'Sourcing the best. Managing excellence. Delivering value.', image: getAssetUrl('/service_vendor.png') },
+    { id: '08', title: 'Media Management', description: 'Capturing the conversation. Commanding the spotlight.', image: getAssetUrl('/service_media.png') }
+  ];
+
+  return (
+    <section id="services" ref={targetRef} className="h-[400vh] bg-ink relative">
+      <SectionBlender position="top" intensity="h-48" />
+      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+        
+        {/* Background ambient noise */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(96,33,58,0.1)_0%,_transparent_70%)] pointer-events-none" />
+
+        {/* No outer padding — title card itself carries px-8 on mobile so it fills the full viewport */}
+        <motion.div style={{ x }} className="flex gap-6 md:gap-12 md:px-32 w-max">
+          
+          {/* Title Card — w-screen on mobile so it's perfectly centered in the viewport */}
+          <div className="w-screen md:w-[40vw] shrink-0 h-[65vh] flex flex-col justify-center px-8 md:px-0 md:pr-12">
+            <Reveal>
+              <p className="text-rose/50 text-[0.6rem] md:text-xs tracking-[0.3em] uppercase mb-6 md:mb-8 flex items-center gap-4">
+                <span className="w-8 h-px bg-rose/30"></span> Expertise
+              </p>
+              <h2 className="text-[3.5rem] md:text-[4rem] lg:text-[7rem] font-serif leading-none tracking-tighter text-cream uppercase mb-6">
+                Our <br /><i className="font-light italic text-rose/60">Services.</i>
+              </h2>
+              <p className="text-cream/50 font-serif italic text-lg md:text-xl max-w-sm md:ml-12">
+                From creative inception to flawless execution. Scroll to explore our holistic approach.
+              </p>
+              <ScrollIndicator text="Scroll horizontally" className="mt-12 md:mt-16 md:ml-12 !justify-start" />
+            </Reveal>
+          </div>
+
+          {/* Service Cards — 88vw on mobile gives an immersive feel with a slight peek of the next card */}
+          {servicesData.map((s) => (
+            <div key={s.id} className="w-[88vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-[70vh] relative group overflow-hidden border border-cream/10">
+              <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-60 group-hover:opacity-80" />
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent transition-opacity duration-700" />
+              
+              <div className="absolute inset-0 p-6 md:p-16 flex flex-col justify-end">
+                <div className="flex items-center gap-4 md:gap-6 mb-4 md:mb-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
+                   <span className="text-4xl md:text-6xl font-serif text-rose/40 italic leading-none">{s.id}</span>
+                   <div className="h-px bg-rose/30 flex-grow" />
+                </div>
+                
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 tracking-tight leading-[1.1] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
+                  {s.title}
+                </h3>
+                
+                <p className="text-cream/60 font-sans text-sm md:text-base max-w-md transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150">
+                  {s.description}
+                </p>
+              </div>
+            </div>
+          ))}
+          
+          {/* Trailing spacer so the last card doesn't get clipped on mobile */}
+          <div className="w-[6vw] md:hidden shrink-0" />
+        </motion.div>
+      </div>
+
+      <div className="absolute bottom-0 w-full z-50">
+        <SectionBlender position="bottom" intensity="h-48" />
+      </div>
+    </section>
+  );
+};
+
+// ─── PARTNERSHIPS SHOWCASE ────────────────────────────────────────────────────
+type Partner = {
+  name: string;
+  category: string;
+  description: string;
+  image: string;
+  logoFile: string;
+  role: string;
+};
+
+const PARTNERS: Partner[] = [
+  {
+    name: 'Warner Bros.',
+    category: 'Major Client',
+    description: 'Kelsey & Company partnered with Warner Bros. to produce the premiere activation for Sinners — a full-scale, immersive launch experience that blurred the line between film and lived reality, curating every touchpoint from spatial architecture to talent coordination.',
+    image: getAssetUrl('/assets/sinners/sinners 1.png'),
+    logoFile: 'warner-bros-.svg',
+    role: 'Activation Strategy & Creative Production',
+  },
+  {
+    name: 'Jordan Brand',
+    category: 'Major Client',
+    description: 'K&C produced an exclusive Spike Lee-powered Jordan Brand dinner at Cannes Lions — a luxurious 5-course experience for 50 top creatives, culminating in a private Jordan drop, signing, and personalized merch. Culture and commerce at their highest intersection.',
+    image: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'),
+    logoFile: '-air-jordan.svg',
+    role: 'Luxury Event Production & Brand Activation',
+  },
+  {
+    name: 'ONE Musicfest',
+    category: 'Major Client',
+    description: 'A flagship partnership with ONE Musicfest, one of the largest hip-hop and R&B music festivals in the country. K&C brought strategic brand architecture and experiential production to amplify the festival\'s cultural footprint across key demographics.',
+    image: getAssetUrl('/assets/sneaker ball/sneakerball.png'),
+    logoFile: 'ONE_Musicfest_Logo.png',
+    role: 'Strategic Brand Architecture & Event Production',
+  },
+  {
+    name: 'News UK',
+    category: 'Major Client',
+    description: 'Kelsey & Company aligned with News UK to extend their cultural reach through a series of high-impact brand activations and media partnerships. Our work bridged the gap between legacy media and modern cultural conversation.',
+    image: getAssetUrl('/assets/thought leadership brunch/thought leadership brunch 1.png'),
+    logoFile: 'News_UK_logo.svg',
+    role: 'Brand Activation & Media Partnership',
+  },
+  {
+    name: 'Paramount',
+    category: 'Major Client',
+    description: 'From screenings to immersive fan activations, K&C brought Paramount\'s storytelling off the screen and into lived cultural moments. Strategic production and talent curation at the intersection of entertainment and experience.',
+    image: getAssetUrl('/assets/creatives at sea/creatives at sea.png'),
+    logoFile: 'paramount-plus-64.png',
+    role: 'Experiential Production & Talent Curation',
+  },
+];
+
+const ALL_LOGOS = [
+  { name: 'Warner Bros.', fileName: 'warner-bros-.svg' },
+  { name: 'Jordan Brand', fileName: '-air-jordan.svg' },
+  { name: 'ONE Musicfest', fileName: 'ONE_Musicfest_Logo.png' },
+  { name: 'News UK', fileName: 'News_UK_logo.svg' },
+  { name: 'Paramount', fileName: 'paramount-plus-64.png' },
+  { name: 'Dove', fileName: 'dove-logo-svg-vector.svg' },
+  { name: 'Disney', fileName: 'icons8-disney-50.png' },
+];
+
+const TrustedBrands = () => {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const go = (dir: 'next' | 'prev') => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent(prev =>
+        dir === 'next'
+          ? (prev + 1) % PARTNERS.length
+          : (prev - 1 + PARTNERS.length) % PARTNERS.length
+      );
+      setAnimating(false);
+    }, 500);
+  };
+
+  const partner = PARTNERS[current];
+
+  return (
+    <section id="partnerships" className="bg-ink overflow-hidden relative">
+      <SectionBlender position="bottom" intensity="h-48" />
+      {/* Subtle noise texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(96,33,58,0.15)_0%,_transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(238,192,191,0.04)_0%,_transparent_60%)] pointer-events-none" />
+
+      {/* Main Split Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[65vh]">
+
+        {/* ─── LEFT: Text Panel ─── */}
+        <div className="flex flex-col justify-between p-6 md:p-12 lg:p-16 relative z-10">
+          <div>
+            {/* Label */}
+            <div className="flex items-center gap-3 mb-6 md:mb-8">
+              <span className="text-rose/60" style={{ fontSize: '8px' }}>◆</span>
+              <span className="text-[0.6rem] tracking-[0.4em] uppercase font-sans text-rose/60">
+                {partner.category}
+              </span>
+            </div>
+
+            {/* Partner Name */}
+            <div
+              key={`name-${current}`}
+              className={`transition-all duration-500 ${animating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}
+            >
+              <h2
+                className="text-3xl md:text-6xl lg:text-7xl font-serif text-cream leading-none tracking-tighter uppercase mb-4 md:mb-6"
+              >
+                {partner.name}
+              </h2>
+              <p className="text-[0.6rem] tracking-[0.3em] uppercase font-sans text-rose/50 mb-6 flex items-center gap-3">
+                <span className="w-6 h-px bg-rose/30 inline-block" />
+                {partner.role}
+              </p>
+              <p className="text-rose/50 font-serif italic text-lg md:text-xl leading-relaxed max-w-md">
+                {partner.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center gap-6 md:gap-8 mt-6 md:mt-10">
+            <button
+              onClick={() => go('prev')}
+              className="w-10 h-10 md:w-12 md:h-12 border border-cream/10 flex items-center justify-center text-cream/40 hover:bg-rose/10 hover:border-rose/40 hover:text-rose transition-all duration-500 group"
+              aria-label="Previous partner"
+            >
+              <span className="text-lg group-hover:-translate-x-0.5 transition-transform duration-300">←</span>
+            </button>
+            <button
+              onClick={() => go('next')}
+              className="w-10 h-10 md:w-12 md:h-12 border border-cream/10 flex items-center justify-center text-cream/40 hover:bg-rose/10 hover:border-rose/40 hover:text-rose transition-all duration-500 group"
+              aria-label="Next partner"
+            >
+              <span className="text-lg group-hover:translate-x-0.5 transition-transform duration-300">→</span>
+            </button>
+            <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans text-cream/20 ml-2 md:ml-2">
+              {String(current + 1).padStart(2, '0')} / {String(PARTNERS.length).padStart(2, '0')}
+            </span>
+          </div>
+        </div>
+
+        {/* ─── RIGHT: Image Panel ─── */}
+        <div className="relative overflow-hidden min-h-[40vh] md:min-h-[50vh] lg:min-h-0">
+          {PARTNERS.map((p, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+              style={{ opacity: i === current ? 1 : 0 }}
+            >
+              <img
+                src={p.image}
+                alt={p.name}
+                className="w-full h-full object-cover"
+                style={{
+                  transform: i === current ? 'scale(1.03)' : 'scale(1)',
+                  transition: 'transform 8s ease-out',
+                }}
+              />
+              {/* Gradient overlays */}
+              <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+            </div>
+          ))}
+
+          {/* Progress dots */}
+          <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 flex gap-2 z-20">
+            {PARTNERS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { if (!animating) { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 500); } }}
+                className={`transition-all duration-500 h-px ${i === current ? 'w-8 md:w-10 bg-rose' : 'w-3 md:w-4 bg-cream/20 hover:bg-cream/40'}`}
+                aria-label={`Go to partner ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ─── BOTTOM LOGO STRIP ─── */}
+      <div className="border-t border-cream/5 px-4 md:px-16">
+        <div className="flex items-center gap-6 md:gap-20 overflow-x-auto hide-scrollbar py-6 md:py-10">
+          <span className="text-[0.65rem] tracking-[0.4em] uppercase font-sans text-cream/50 whitespace-nowrap shrink-0">
+            All Partners
+          </span>
+          <div className="w-px h-8 bg-cream/20 shrink-0" />
+          {ALL_LOGOS.map((logo, i) => {
+            const isActive = logo.name === PARTNERS[current]?.name;
+            return (
+              <div 
+                key={i} 
+                className={`shrink-0 group cursor-pointer pt-8 pb-4 px-4 ${PARTNERS.some(p => p.name === logo.name) ? 'cursor-pointer' : 'cursor-default'}`}
+                onClick={() => {
+                  const partnerIndex = PARTNERS.findIndex(p => p.name === logo.name);
+                  if (partnerIndex !== -1 && !animating && partnerIndex !== current) {
+                    setAnimating(true);
+                    setTimeout(() => {
+                      setCurrent(partnerIndex);
+                      setAnimating(false);
+                    }, 500);
+                  }
+                }}
+              >
+                <img
+                  src={getAssetUrl(`/assets/brands/${logo.fileName}`)}
+                  alt={logo.name}
+                  className={`h-10 md:h-14 w-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    isActive 
+                      ? 'opacity-100 scale-[1.25] -translate-y-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]' 
+                      : 'opacity-40 hover:opacity-80'
+                  }`}
+                  style={{
+                    filter: 'brightness(0) invert(1)',
+                    transformOrigin: 'bottom center',
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+// ─── APP ROOT ─────────────────────────────────────────────────────────────────
+function App() {
+  const [loaded, setLoaded] = useState(false);
+  const { openModal } = useModal();
+
+  return (
+    <>
+      {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
+      <div
+        className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'
+          }`}
+      >
+        <TopNav active={loaded} />
+        <ImpactHero active={loaded} onBookClick={openModal} />
+        <AboutFounder />
+        <WhyKelseyCompany />
+        <ServicesCarousel />
+        <SelectedWork />
+        <TrustedBrands />
+        <FooterCTA onBookClick={openModal} />
+        <UtilityFooter />
+      </div>
+    </>
+  );
+}
+
+export default App;

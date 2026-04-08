@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>K&C — Who We Are · 5 Layout Proposals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink:      #1a0a0d;
+      --cream:    #ffffff;
+      --rose:     #eec0bf;
+      --burgundy: #60213a;
+      --bronze:   #b27409;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Outfit', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0a0608; }
+    ::-webkit-scrollbar-thumb { background: #3a1522; border-radius: 4px; }
+
+    /* ── Serif ── */
+    .f-serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── Shared layout label ── */
+    .layout-badge {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 40px;
+      background: rgba(26,10,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(238,192,191,0.1);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .layout-badge strong { color: var(--rose); }
+
+    /* ── Entry nav ── */
+    .entry-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(26,10,13,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(238,192,191,0.08);
+    }
+    .entry-nav .logo { font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.05em; }
+    .entry-nav nav { display:flex; gap:28px; align-items:center; }
+    .entry-nav nav a {
+      font-size:10px; letter-spacing:0.25em; text-transform:uppercase;
+      color:rgba(255,255,255,0.45); text-decoration:none;
+      transition:color 0.3s;
+    }
+    .entry-nav nav a:hover { color:var(--rose); }
+    .entry-nav nav a.active { color:var(--rose); }
+
+    /* ── Reveal on scroll ── */
+    .reveal { opacity:0; transform:translateY(30px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.15s; }
+    .reveal-delay-2 { transition-delay:.3s; }
+    .reveal-delay-3 { transition-delay:.45s; }
+
+    /* ── Caps detail ── */
+    .caps { font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:rgba(238,192,191,0.5); display:block; margin-bottom:20px; }
+
+    /* ── Section separator ── */
+    .section-sep { width:100%; height:1px; background:linear-gradient(90deg, transparent, rgba(238,192,191,0.15), transparent); }
+
+    /* ─────────────────────────────────────────────────
+       LAYOUT 1 · Fullscreen Manifesto Stack
+    ───────────────────────────────────────────────── */
+    #layout1 { background:var(--ink); }
+
+    .manifesto-hero {
+      position:relative;
+      height:100vh;
+      min-height:600px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding: 0 8vw 10vh;
+      overflow:hidden;
+    }
+    .manifesto-hero-bg {
+      position:absolute; inset:0;
+      background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop');
+      background-size:cover; background-position:center top;
+      filter:grayscale(0.4);
+      transform:scale(1.05);
+      transition: transform 20s ease-out;
+    }
+    .manifesto-hero-bg.zoomed { transform:scale(1); }
+    .manifesto-hero-overlay {
+      position:absolute; inset:0;
+      background: linear-gradient(to top, #1a0a0d 0%, rgba(26,10,13,0.6) 50%, rgba(26,10,13,0.2) 100%);
+    }
+    .manifesto-heading {
+      position:relative; z-index:2;
+      font-family:'Cormorant Garamond',serif;
+      font-size: clamp(4rem, 11vw, 11rem);
+      line-height:0.9;
+      font-weight:300;
+      letter-spacing:-0.02em;
+    }
+    .manifesto-heading em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .manifesto-scroll-hint {
+      position:absolute; bottom:40px; right:8vw; z-index:2;
+      writing-mode:vertical-rl; font-size:9px; letter-spacing:0.3em;
+      text-transform:uppercase; color:rgba(255,255,255,0.25);
+      display:flex; align-items:center; gap:12px;
+    }
+    .manifesto-scroll-hint::before {
+      content:''; width:1px; height:60px;
+      background:linear-gradient(to bottom, transparent, rgba(238,192,191,0.4));
+    }
+
+    .manifesto-values {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      border-top: 1px solid rgba(238,192,191,0.1);
+    }
+    .manifesto-value {
+      padding: 60px 48px;
+      border-right: 1px solid rgba(238,192,191,0.08);
+      transition: background 0.6s;
+    }
+    .manifesto-value:last-child { border-right:none; }
+    .manifesto-value:hover { background:rgba(238,192,191,0.03); }
+    .manifesto-value-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:60px; line-height:1;
+      color:rgba(238,192,191,0.1);
+      display:block; margin-bottom:16px;
+    }
+    .manifesto-value h3 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:28px; font-weight:400;
+      margin-bottom:14px; color:var(--cream);
+    }
+    .manifesto-value p { font-size:14px; line-height:1.8; color:rgba(255,255,255,0.5); }
+
+    /* ─────────────────────────────────────────────────
+       LAYOUT 2 · Split‑Screen Parallax Dossier
+    ───────────────────────────────────────────────── */
+    #layout2 { background:var(--ink); }
+
+    .dossier-wrap {
+      display:grid; grid-template-columns:1fr 1fr;
+      min-height:100vh;
+    }
+    .dossier-left {
+      position:sticky; top:0;
+      height:100vh;
+      overflow:hidden;
+    }
+    .dossier-left img { width:100%; height:100%; object-fit:cover; filter:grayscale(0.15) brightness(0.75); }
+    .dossier-left-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(26,10,13,0.5) 0%, transparent 70%);
+    }
+    .dossier-left-label {
+      position:absolute; bottom:48px; left:40px; right:40px;
+    }
+    .dossier-right { padding: 140px 80px 100px 60px; }
+    .dossier-entry { padding-bottom:100px; border-bottom:1px solid rgba(238,192,191,0.08); margin-bottom:100px; }
+    .dossier-entry:last-child { border-bottom:none; margin-bottom:0; }
+    .dossier-entry h2 {
+      font-family:'Cormorant Garamond',serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight:300; line-height:1.1;
+      letter-spacing:-0.02em; margin-bottom:32px;
+    }
+    .dossier-entry h2 em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .dossier-entry p { font-size:16px; line-height:1.9; color:rgba(255,255,255,0.6); max-width:480px; }
+    .dossier-entry p + p { margin-top:20px; }
+    .dossier-divider {
+      width:40px; height:1px;
+      background:var(--rose); opacity:0.4;
+      margin:36px 0;
+    }
+    .dossier-stat-row { display:flex; gap:48px; margin-top:48px; }
+    .dossier-stat strong {
+      display:block;
+      font-family:'Cormorant Garamond',serif;
+      font-size:48px; line-height:1;
+      color:rgba(238,192,191,0.7);
+    }
+    .dossier-stat span { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+
+    /* ─────────────────────────────────────────────────
+       LAYOUT 3 · Immersive Timeline Scroll
+    ───────────────────────────────────────────────── */
+    #layout3 { background: linear-gradient(180deg, #0e0508 0%, #1a0a0d 30%, #0a0308 100%); }
+
+    .timeline-hero-text {
+      text-align:center; padding:160px 8vw 80px;
+    }
+    .timeline-hero-text h1 {
+      font-family:'Cormorant Garamond',serif;
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight:300; line-height:0.95;
+      letter-spacing:-0.03em;
+    }
+    .timeline-hero-text h1 em { font-style:italic; color:var(--rose); }
+
+    .timeline-track {
+      position:relative;
+      padding: 80px 8vw 120px;
+    }
+    /* vertical spine */
+    .timeline-track::before {
+      content:'';
+      position:absolute;
+      left:50%; top:0; bottom:0;
+      width:1px;
+      background:linear-gradient(to bottom, transparent, rgba(238,192,191,0.2), transparent);
+      transform:translateX(-50%);
+    }
+
+    .timeline-node {
+      display:grid;
+      grid-template-columns:1fr 80px 1fr;
+      align-items:start;
+      margin-bottom:120px;
+      gap:0;
+    }
+    .timeline-node.even .node-content { grid-column:3; text-align:left; }
+    .timeline-node.even .node-image  { grid-column:1; grid-row:1; }
+    .timeline-node.odd  .node-content { grid-column:1; grid-row:1; text-align:right; }
+    .timeline-node.odd  .node-image  { grid-column:3; }
+
+    .node-dot {
+      grid-column:2; align-self:start; padding-top:12px;
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+    }
+    .node-dot-circle {
+      width:14px; height:14px; border-radius:50%;
+      border:1px solid rgba(238,192,191,0.5);
+      background:transparent;
+      position:relative;
+      transition: all 0.4s;
+    }
+    .node-dot-circle::after {
+      content:''; position:absolute;
+      inset:3px; border-radius:50%;
+      background:var(--rose); opacity:0;
+      transition:opacity 0.4s;
+    }
+    .timeline-node:hover .node-dot-circle::after { opacity:0.8; }
+    .timeline-node:hover .node-dot-circle { border-color:var(--rose); }
+
+    .node-content { padding:0 24px 0 0; }
+    .timeline-node.even .node-content { padding:0 0 0 24px; }
+
+    .node-year {
+      font-size:9px; letter-spacing:0.4em; text-transform:uppercase;
+      color:rgba(238,192,191,0.4); margin-bottom:16px; display:block;
+    }
+    .node-content h2 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,3.5vw,3.2rem); font-weight:300;
+      line-height:1.1; letter-spacing:-0.01em;
+      margin-bottom:20px;
+    }
+    .node-content h2 em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .node-content p { font-size:15px; line-height:1.85; color:rgba(255,255,255,0.55); }
+
+    .node-image {
+      aspect-ratio:4/5; overflow:hidden; position:relative;
+    }
+    .node-image img {
+      width:100%; height:100%; object-fit:cover;
+      filter:grayscale(0.2) brightness(0.8);
+      transition: transform 6s ease, filter 0.8s;
+    }
+    .timeline-node:hover .node-image img { transform:scale(1.04); filter:grayscale(0) brightness(0.9); }
+    .node-image-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(26,10,13,0.6) 0%, transparent 60%);
+    }
+
+    /* ─────────────────────────────────────────────────
+       LAYOUT 4 · Full‑Bleed Text + Micro‑Panels
+    ───────────────────────────────────────────────── */
+    #layout4 { background:var(--ink); }
+
+    .bleed-hero {
+      position:relative; height:100vh; min-height:600px;
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .bleed-hero-img {
+      position:absolute; inset:0;
+      background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2670&auto=format&fit=crop') center/cover;
+      filter:grayscale(0.5) brightness(0.45);
+    }
+    .bleed-hero-content {
+      position:relative; z-index:2;
+      text-align:center; padding:0 6vw;
+    }
+    .bleed-hero-tagline {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(1.2rem,2.5vw,2.2rem);
+      font-weight:300; font-style:italic;
+      color:rgba(238,192,191,0.7);
+      letter-spacing:0.04em;
+      margin-bottom:40px;
+    }
+    .bleed-hero-title {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(4.5rem,13vw,13rem);
+      font-weight:300; line-height:0.85;
+      letter-spacing:-0.03em;
+    }
+    .bleed-hero-title em { color:var(--rose); font-style:italic; opacity:0.9; }
+
+    .micro-panels {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border-top:1px solid rgba(238,192,191,0.08);
+    }
+    .micro-panel {
+      padding:60px 40px;
+      border-right:1px solid rgba(238,192,191,0.06);
+      transition: background 0.5s;
+    }
+    .micro-panel:last-child { border-right:none; }
+    .micro-panel:hover { background:rgba(238,192,191,0.03); }
+    .micro-panel-icon {
+      font-family:'Cormorant Garamond',serif;
+      font-size:80px; line-height:1;
+      color:rgba(238,192,191,0.06);
+      display:block; margin-bottom:20px;
+    }
+    .micro-panel h3 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:22px; font-weight:400; margin-bottom:12px;
+    }
+    .micro-panel p { font-size:13px; line-height:1.85; color:rgba(255,255,255,0.45); }
+
+    .bleed-story {
+      display:grid; grid-template-columns:1fr 1fr;
+      min-height:80vh;
+    }
+    .bleed-story-text {
+      padding:120px 80px 120px 8vw;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .bleed-story-text h2 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(3rem,5vw,5rem); font-weight:300; line-height:1.1;
+      letter-spacing:-0.02em; margin-bottom:36px;
+    }
+    .bleed-story-text h2 em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .bleed-story-text p { font-size:16px; line-height:1.9; color:rgba(255,255,255,0.6); max-width:440px; }
+    .bleed-story-text blockquote {
+      margin-top:48px; padding-left:24px;
+      border-left:2px solid rgba(238,192,191,0.3);
+      font-family:'Cormorant Garamond',serif;
+      font-size:22px; font-style:italic; line-height:1.6;
+      color:rgba(238,192,191,0.7);
+    }
+    .bleed-story-image {
+      position:relative; overflow:hidden;
+    }
+    .bleed-story-image img {
+      width:100%; height:100%; object-fit:cover;
+      filter:brightness(0.7);
+      transition: transform 8s ease, filter 0.8s;
+    }
+    .bleed-story-image:hover img { transform:scale(1.04); filter:brightness(0.85); }
+    .bleed-story-image-caption {
+      position:absolute; bottom:40px; left:40px;
+    }
+
+    /* ─────────────────────────────────────────────────
+       LAYOUT 5 · Dark Magazine Centrefold
+    ───────────────────────────────────────────────── */
+    #layout5 { background:#0d060a; }
+
+    .magazine-opener {
+      position:relative; overflow:hidden;
+      height: 100vh; min-height:600px;
+      display:grid; grid-template-columns:1fr 1fr;
+    }
+    .magazine-opener-left {
+      padding:120px 60px 80px 8vw;
+      display:flex; flex-direction:column; justify-content:space-between;
+      background:#0d060a;
+      position:relative; z-index:1;
+    }
+    .magazine-opener-right {
+      position:relative; overflow:hidden;
+    }
+    .magazine-opener-right img {
+      width:100%; height:100%; object-fit:cover;
+      filter:brightness(0.75) grayscale(0.1);
+      transition:transform 12s ease;
+    }
+    .magazine-opener-right::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(270deg, transparent 60%, #0d060a 100%);
+    }
+    .magazine-opener-right:hover img { transform:scale(1.04); }
+    .magazine-kicker { font-size:9px; letter-spacing:0.4em; text-transform:uppercase; color:rgba(238,192,191,0.4); }
+    .magazine-title {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(4rem,9vw,8.5rem); font-weight:300; line-height:0.9;
+      letter-spacing:-0.03em;
+    }
+    .magazine-title em { font-style:italic; color:var(--rose); }
+    .magazine-title-sub {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(1.2rem,2.5vw,2.2rem); font-weight:300; font-style:italic;
+      color:rgba(255,255,255,0.4); margin-top:16px;
+    }
+    .magazine-estab { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.2); }
+
+    .magazine-body {
+      padding:120px 8vw 100px;
+    }
+    .magazine-lead-grid {
+      display:grid; grid-template-columns:1fr 1fr 1fr;
+      gap:80px; margin-bottom:100px;
+    }
+    .magazine-lead-col:first-child h3 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,3.5vw,3.5rem); font-weight:300; line-height:1.1;
+      letter-spacing:-0.02em; margin-bottom:24px;
+    }
+    .magazine-lead-col:first-child h3 em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .magazine-lead-col:not(:first-child) { padding-top:8px; }
+    .magazine-lead-col p { font-size:15px; line-height:1.9; color:rgba(255,255,255,0.55); }
+    .magazine-lead-col p + p { margin-top:16px; }
+
+    .magazine-pull-quote {
+      text-align:center; padding:80px 12vw;
+      border-top:1px solid rgba(238,192,191,0.08);
+      border-bottom:1px solid rgba(238,192,191,0.08);
+      margin-bottom:100px;
+    }
+    .magazine-pull-quote blockquote {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2rem,4vw,4rem); font-weight:300; font-style:italic;
+      line-height:1.25; color:rgba(255,255,255,0.85); letter-spacing:-0.01em;
+    }
+    .magazine-pull-quote cite {
+      display:block; margin-top:32px;
+      font-size:10px; letter-spacing:0.3em; text-transform:uppercase;
+      color:rgba(238,192,191,0.4); font-style:normal;
+    }
+
+    .magazine-founder-strip {
+      display:grid; grid-template-columns:340px 1fr;
+      gap:80px; align-items:start;
+    }
+    .magazine-founder-img { position:relative; aspect-ratio:3/4; overflow:hidden; }
+    .magazine-founder-img img { width:100%; height:100%; object-fit:cover; filter:grayscale(0.15) brightness(0.8); }
+    .magazine-founder-img-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:60px 24px 24px;
+      background:linear-gradient(to top, rgba(13,6,10,0.9) 0%, transparent 100%);
+    }
+    .magazine-founder-content { padding-top:20px; }
+    .magazine-founder-content h3 {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.5rem,4vw,3.8rem); font-weight:300; line-height:1.1; margin-bottom:28px;
+    }
+    .magazine-founder-content h3 em { font-style:italic; color:var(--rose); opacity:0.85; }
+    .magazine-founder-meta {
+      display:flex; gap:40px; margin-bottom:40px;
+      padding-bottom:40px; border-bottom:1px solid rgba(238,192,191,0.1);
+    }
+    .magazine-founder-meta-item strong {
+      display:block; font-family:'Cormorant Garamond',serif;
+      font-size:36px; color:rgba(238,192,191,0.6);
+    }
+    .magazine-founder-meta-item span { font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+    .magazine-founder-content p { font-size:16px; line-height:1.9; color:rgba(255,255,255,0.6); }
+    .magazine-founder-content p + p { margin-top:18px; }
+
+    /* ── Shared placeholder for founder image ── */
+    .founder-placeholder {
+      width:100%; height:100%;
+      background: linear-gradient(135deg, #2a1020 0%, #1a0a0d 50%, #2a1020 100%);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .founder-placeholder-initials {
+      font-family:'Cormorant Garamond',serif;
+      font-size:120px; font-weight:300;
+      color:rgba(238,192,191,0.1);
+      letter-spacing:-0.04em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Fixed top nav ── -->
+<nav class="entry-nav">
+  <span class="logo">K&C</span>
+  <nav>
+    <a href="#layout1" id="nav1">1. Manifesto Stack</a>
+    <a href="#layout2" id="nav2">2. Split Dossier</a>
+    <a href="#layout3" id="nav3">3. Timeline Scroll</a>
+    <a href="#layout4" id="nav4">4. Bleed + Panels</a>
+    <a href="#layout5" id="nav5">5. Magazine Centre</a>
+  </nav>
+</nav>
+
+<div style="height:57px"></div><!-- nav spacer -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LAYOUT 1 · FULLSCREEN MANIFESTO STACK
+═══════════════════════════════════════════════════════ -->
+<div id="layout1">
+  <div class="layout-badge">
+    <span><strong>Layout 1</strong> — Fullscreen Manifesto Stack</span>
+    <span>Hero splits into value pillars on scroll</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="manifesto-hero" id="mhero">
+    <div class="manifesto-hero-bg" id="mheroBg"></div>
+    <div class="manifesto-hero-overlay"></div>
+
+    <div style="position:relative;z-index:2;margin-bottom:24px">
+      <span class="caps reveal">Who We Are</span>
+    </div>
+    <h1 class="manifesto-heading reveal reveal-delay-1">
+      The <em>Collective</em><br>for Iconic<br>Brands.
+    </h1>
+    <p class="reveal reveal-delay-2" style="position:relative;z-index:2;margin-top:32px;font-size:17px;line-height:1.8;color:rgba(255,255,255,0.55);max-width:500px;">
+      A senior-led creative force operating where culture, entertainment, and global brand ambition intersect.
+    </p>
+
+    <div class="manifesto-scroll-hint">Scroll</div>
+  </div>
+
+  <!-- VALUE PILLARS -->
+  <div class="manifesto-values">
+    <div class="manifesto-value reveal">
+      <span class="manifesto-value-num">01</span>
+      <h3>Strategic Curation</h3>
+      <p>We don't hire in bulk. We assemble exact specialists for each engagement — the right minds for the right moment.</p>
+    </div>
+    <div class="manifesto-value reveal reveal-delay-1">
+      <span class="manifesto-value-num">02</span>
+      <h3>Cultural Resonance</h3>
+      <p>Our activations live at the center of the conversation. Your brand won't just be seen — it will be felt.</p>
+    </div>
+    <div class="manifesto-value reveal reveal-delay-2">
+      <span class="manifesto-value-num">03</span>
+      <h3>Seamless Execution</h3>
+      <p>From concept to last guest out the door, we own the ecosystem with uncompromising intentionality.</p>
+    </div>
+  </div>
+
+  <!-- STORY BELOW -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; min-height:70vh; margin-top:2px;">
+    <div style="padding:100px 60px 100px 8vw; display:flex; flex-direction:column; justify-content:center;">
+      <span class="caps reveal">The Origin</span>
+      <h2 class="f-serif reveal reveal-delay-1" style="font-size:clamp(2.5rem,4.5vw,4.5rem); font-weight:300; line-height:1.1; letter-spacing:-0.02em; margin-bottom:32px;">
+        Born from the desire to <em style="font-style:italic; color:var(--rose); opacity:0.85;">disrupt</em> the mundane.
+      </h2>
+      <p class="reveal reveal-delay-2" style="font-size:16px; line-height:1.9; color:rgba(255,255,255,0.6); max-width:440px;">
+        What began as a hypothesis — that digital precision and haute couture could share a room — became K&C. We exist to prove that luxury and strategy are not opposites.
+      </p>
+      <blockquote class="reveal reveal-delay-3" style="margin-top:48px; padding-left:24px; border-left:2px solid rgba(238,192,191,0.3); font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; line-height:1.6; color:rgba(238,192,191,0.7);">
+        "At the heart of our work is connection — meaningful relationships and stories that leave a lasting impression."
+      </blockquote>
+    </div>
+    <div style="position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0; background:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop') center/cover; filter:grayscale(0.1) brightness(0.7); transition:transform 8s ease;" class="reveal" id="mFounderImg"></div>
+      <div style="position:absolute;inset:0; background:linear-gradient(270deg, transparent, rgba(26,10,13,0.6));"></div>
+    </div>
+  </div>
+  <div class="section-sep"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LAYOUT 2 · SPLIT-SCREEN PARALLAX DOSSIER
+═══════════════════════════════════════════════════════ -->
+<div id="layout2">
+  <div class="layout-badge">
+    <span><strong>Layout 2</strong> — Split‑Screen Parallax Dossier</span>
+    <span>Image locked left · story scrolls right</span>
+  </div>
+
+  <div class="dossier-wrap">
+    <!-- sticky photo panel -->
+    <div class="dossier-left">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop" alt="Kelsey Matthews">
+      <div class="dossier-left-overlay"></div>
+      <div class="dossier-left-label">
+        <p class="f-serif" style="font-size:32px; font-weight:300; margin-bottom:8px;">Kelsey Matthews</p>
+        <p style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(238,192,191,0.6);">Founder & Senior Brand Director</p>
+      </div>
+    </div>
+
+    <!-- scrollable dossier -->
+    <div class="dossier-right">
+      <span class="caps reveal">Who We Are</span>
+
+      <div class="dossier-entry">
+        <h2 class="reveal">The <em>Origin</em></h2>
+        <div class="dossier-divider reveal reveal-delay-1"></div>
+        <p class="reveal reveal-delay-1">Kelsey & Company was born from a simple but radical hypothesis: that precision strategy and haute couture aesthetic aren't opposites — they're partners.</p>
+        <p class="reveal reveal-delay-2">What started as one founder's refusal to accept mediocrity became a collective of senior specialists, each chosen for one project at a time.</p>
+        <div class="dossier-stat-row">
+          <div class="dossier-stat reveal reveal-delay-1">
+            <strong>2018</strong>
+            <span>Est. Atlanta, GA</span>
+          </div>
+          <div class="dossier-stat reveal reveal-delay-2">
+            <strong>40+</strong>
+            <span>Senior Specialists</span>
+          </div>
+          <div class="dossier-stat reveal reveal-delay-3">
+            <strong>3</strong>
+            <span>Continents Active</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dossier-entry">
+        <h2 class="reveal">The <em>Ethos</em></h2>
+        <div class="dossier-divider reveal reveal-delay-1"></div>
+        <p class="reveal reveal-delay-1">We strip away excess. We refine until only the brand's pure essence remains — uncompromising, deliberate, luminous.</p>
+        <p class="reveal reveal-delay-2">Every pixel, every motion, every word is crafted to elicit a specific emotional response. Nothing is accidental.</p>
+      </div>
+
+      <div class="dossier-entry">
+        <h2 class="reveal">The <em>Collective</em></h2>
+        <div class="dossier-divider reveal reveal-delay-1"></div>
+        <p class="reveal reveal-delay-1">We are not a traditional agency. We are a curated network of the world's best creative strategists, activated precisely when your project demands them.</p>
+        <p class="reveal reveal-delay-2" style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:rgba(238,192,191,0.7); line-height:1.6; margin-top:28px;">
+          "At the heart of our work is connection. We believe strong brands are built through meaningful relationships and experiences that leave a lasting impression."
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="section-sep"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LAYOUT 3 · IMMERSIVE TIMELINE SCROLL
+═══════════════════════════════════════════════════════ -->
+<div id="layout3">
+  <div class="layout-badge">
+    <span><strong>Layout 3</strong> — Immersive Timeline Scroll</span>
+    <span>Central spine · alternating content nodes</span>
+  </div>
+
+  <div class="timeline-hero-text">
+    <span class="caps reveal" style="display:block;text-align:center;">Who We Are</span>
+    <h1 class="f-serif reveal reveal-delay-1">The <em>Story</em><br>of K&C.</h1>
+    <p class="reveal reveal-delay-2" style="text-align:center; margin-top:32px; font-size:17px; line-height:1.8; color:rgba(255,255,255,0.5); max-width:560px; margin-left:auto; margin-right:auto;">
+      A senior-led collective at the intersection of culture, brand, and entertainment.
+    </p>
+  </div>
+
+  <div class="timeline-track">
+
+    <!-- node 1 -->
+    <div class="timeline-node odd reveal">
+      <div class="node-content" style="padding-right:48px;">
+        <span class="node-year">Origin</span>
+        <h2>Born from<br>refusing<br><em>mediocrity.</em></h2>
+        <p>In 2018, Kelsey Matthews asked a simple question: what if an agency operated at the same standard of intent as a luxury house? K&C was the answer.</p>
+      </div>
+      <div class="node-dot">
+        <div class="node-dot-circle"></div>
+      </div>
+      <div class="node-image">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Origin">
+        <div class="node-image-overlay"></div>
+      </div>
+    </div>
+
+    <!-- node 2 -->
+    <div class="timeline-node even reveal">
+      <div class="node-image">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop" alt="Culture">
+        <div class="node-image-overlay"></div>
+      </div>
+      <div class="node-dot">
+        <div class="node-dot-circle"></div>
+      </div>
+      <div class="node-content" style="padding-left:48px;">
+        <span class="node-year">Ethos</span>
+        <h2>Obsessive<br>attention<br>to <em>detail.</em></h2>
+        <p>We strip away the excess. We refine until only this pure essence remains — uncompromising, deliberate, luminous. Every choice is intentional.</p>
+      </div>
+    </div>
+
+    <!-- node 3 -->
+    <div class="timeline-node odd reveal">
+      <div class="node-content" style="padding-right:48px;">
+        <span class="node-year">The Collective</span>
+        <h2>Strategy-led.<br><em>Human-driven.</em></h2>
+        <p>We operate as a curated collective — assembling the precise team each unique project demands. Senior specialists, selected for the moment, activated for the brand.</p>
+        <p style="margin-top:18px; font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:rgba(238,192,191,0.7);">"Connection is at the heart of everything we build."</p>
+      </div>
+      <div class="node-dot">
+        <div class="node-dot-circle"></div>
+      </div>
+      <div class="node-image">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop" alt="Kelsey">
+        <div class="node-image-overlay"></div>
+        <div style="position:absolute;bottom:24px;left:24px;z-index:2;">
+          <p class="f-serif" style="font-size:22px; font-weight:300; margin-bottom:4px;">Kelsey Matthews</p>
+          <p style="font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(238,192,191,0.7);">Founder & Sr. Brand Director</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="section-sep"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LAYOUT 4 · FULL-BLEED TEXT + MICRO-PANELS
+═══════════════════════════════════════════════════════ -->
+<div id="layout4">
+  <div class="layout-badge">
+    <span><strong>Layout 4</strong> — Full‑Bleed Cinematic + Micro Panels</span>
+    <span>Impact opening · compact details beneath</span>
+  </div>
+
+  <div class="bleed-hero">
+    <div class="bleed-hero-img"></div>
+    <div class="bleed-hero-content">
+      <p class="bleed-hero-tagline reveal">Est. 2018 · Atlanta, GA · Global</p>
+      <h1 class="bleed-hero-title reveal reveal-delay-1">Who<br>We <em>Are.</em></h1>
+    </div>
+  </div>
+
+  <!-- 4 micro-panels -->
+  <div class="micro-panels">
+    <div class="micro-panel reveal">
+      <span class="micro-panel-icon">I</span>
+      <h3 class="f-serif">The Agency</h3>
+      <p>A senior-led collective at the crossroads of culture, entertainment, and brand ambition.</p>
+    </div>
+    <div class="micro-panel reveal reveal-delay-1">
+      <span class="micro-panel-icon">II</span>
+      <h3 class="f-serif">The Ethos</h3>
+      <p>We strip away excess. We refine until only the pure, luminous essence of your brand remains.</p>
+    </div>
+    <div class="micro-panel reveal reveal-delay-2">
+      <span class="micro-panel-icon">III</span>
+      <h3 class="f-serif">The Method</h3>
+      <p>We don't run on retainers. We curate the exact team each project demands. Specialist-led, every time.</p>
+    </div>
+    <div class="micro-panel reveal reveal-delay-3">
+      <span class="micro-panel-icon">IV</span>
+      <h3 class="f-serif">The Standard</h3>
+      <p>Every pixel. Every motion. Every word. Intentionally crafted to leave a lasting impression.</p>
+    </div>
+  </div>
+
+  <!-- story split -->
+  <div class="bleed-story">
+    <div class="bleed-story-text">
+      <span class="caps reveal">The Collective</span>
+      <h2 class="f-serif reveal reveal-delay-1">Strategy-led.<br><em>Human-driven.</em></h2>
+      <p class="reveal reveal-delay-2">Kelsey & Company operates at the intersection of culture, entertainment, and global brand growth. We don't run as a traditional agency — we work as a collective, curating the right team for each brand's unique DNA and moment.</p>
+      <blockquote class="reveal reveal-delay-3">
+        "At the heart of our work is connection. We believe strong brands are built through meaningful relationships and thoughtful storytelling."
+      </blockquote>
+    </div>
+    <div class="bleed-story-image">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop" alt="Kelsey Matthews">
+      <div class="bleed-story-image-caption">
+        <p class="f-serif" style="font-size:28px; font-weight:300; margin-bottom:6px;">Kelsey Matthews</p>
+        <p style="font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(238,192,191,0.7);">Founder & Senior Brand Director</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-sep"></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     LAYOUT 5 · DARK MAGAZINE CENTREFOLD
+═══════════════════════════════════════════════════════ -->
+<div id="layout5">
+  <div class="layout-badge">
+    <span><strong>Layout 5</strong> — Dark Magazine Centrefold</span>
+    <span>Editorial opener → lead text → pull-quote → founder dossier</span>
+  </div>
+
+  <!-- opener -->
+  <div class="magazine-opener">
+    <div class="magazine-opener-left">
+      <div>
+        <span class="magazine-kicker reveal">Who We Are</span>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <h1 class="f-serif magazine-title">Not<br>just an<br><em>Agency.</em></h1>
+        <p class="f-serif magazine-title-sub">A global creative collective.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <span class="magazine-estab">Est. 2018 · Atlanta, GA</span>
+      </div>
+    </div>
+    <div class="magazine-opener-right">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="K&C">
+    </div>
+  </div>
+
+  <!-- 3-col lead text -->
+  <div class="magazine-body">
+    <div class="magazine-lead-grid">
+      <div class="magazine-lead-col">
+        <h3 class="f-serif reveal">The<br><em>Origin</em><br>Story.</h3>
+        <p class="reveal reveal-delay-1" style="margin-top:36px;">What started with a single radical hypothesis — that haute couture and digital strategy could occupy the same space — became Kelsey & Company.</p>
+      </div>
+      <div class="magazine-lead-col">
+        <p class="reveal">We operate as a curated collective, not a traditional agency. That means no account managers, no bloated teams, no diluted creativity. Just senior specialists assembled specifically for your project's DNA.</p>
+        <p class="reveal reveal-delay-1">Every engagement is built from scratch. Every team is chosen for the moment. Every deliverable is held to an uncompromising standard of intent.</p>
+      </div>
+      <div class="magazine-lead-col">
+        <p class="reveal">Our work lives at the intersection of culture, entertainment, and brand ambition — three forces that, when orchestrated properly, create something the world cannot ignore.</p>
+        <div style="margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+          <div class="reveal reveal-delay-1">
+            <strong class="f-serif" style="font-size:40px; display:block; color:rgba(238,192,191,0.6);">40+</strong>
+            <span style="font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.3);">Specialists</span>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <strong class="f-serif" style="font-size:40px; display:block; color:rgba(238,192,191,0.6);">3</strong>
+            <span style="font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.3);">Continents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- pull quote -->
+    <div class="magazine-pull-quote reveal">
+      <blockquote class="f-serif">
+        "At the heart of our work is connection. Strong brands are built through meaningful relationships and stories that leave a lasting impression."
+      </blockquote>
+      <cite>— Kelsey Matthews, Founder & Senior Brand Director</cite>
+    </div>
+
+    <!-- founder strip -->
+    <div class="magazine-founder-strip">
+      <div class="magazine-founder-img reveal">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop" alt="Kelsey Matthews">
+        <div class="magazine-founder-img-caption">
+          <p class="f-serif" style="font-size:24px; font-weight:300; margin-bottom:6px;">Kelsey Matthews</p>
+          <p style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(238,192,191,0.7);">Founder & Senior Brand Director</p>
+        </div>
+      </div>
+      <div class="magazine-founder-content">
+        <span class="caps reveal">The Founder</span>
+        <h3 class="f-serif reveal reveal-delay-1">Strategy-led.<br><em>Human-driven.</em></h3>
+        <div class="magazine-founder-meta">
+          <div class="magazine-founder-meta-item reveal reveal-delay-1">
+            <strong class="f-serif">2018</strong>
+            <span>Established</span>
+          </div>
+          <div class="magazine-founder-meta-item reveal reveal-delay-2">
+            <strong class="f-serif">NY · LDN · ATL</strong>
+            <span>Base of Operations</span>
+          </div>
+        </div>
+        <p class="reveal reveal-delay-1">Kelsey Matthews founded K&C on the belief that the world's most ambitious brands deserved an agency that operated at their level — not an agency that would simply take their brief and execute it.</p>
+        <p class="reveal reveal-delay-2">She built a collective instead. A network of senior specialists — strategists, directors, producers, designers — each selected for their relevance to a specific brand, a specific moment, a specific opportunity.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- padding at bottom -->
+<div style="height:120px;"></div>
+
+<script>
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Ken-burns on hero bg ──
+  const heroBg = document.getElementById('mheroBg');
+  if(heroBg) setTimeout(() => heroBg.classList.add('zoomed'), 100);
+
+  // ── Active nav link on scroll ──
+  const sections = ['layout1','layout2','layout3','layout4','layout5'];
+  const navLinks = { layout1:'nav1', layout2:'nav2', layout3:'nav3', layout4:'nav4', layout5:'nav5' };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const id = e.target.id;
+      const link = document.getElementById(navLinks[id]);
+      if(link) {
+        if(e.isIntersecting) link.classList.add('active');
+        else link.classList.remove('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) sectionObserver.observe(el);
+  });
+</script>
+</body>
+</html>

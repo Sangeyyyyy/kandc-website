@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K&C - Who We Are Layouts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        kc: {
+                            black: '#0a0a0a',
+                            white: '#fcfcfc',
+                            gold: '#d4af37',
+                            gray: '#888888'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Layout specific styles */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .editorial-img-1 { background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2670&auto=format&fit=crop'); }
+        
+        .cinematic-bg { background-image: radial-gradient(circle at 50% 100%, #1a1a1a 0%, #000 100%); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-kc-black text-kc-white font-sans antialiased overflow-x-hidden selection:bg-kc-gold selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 p-6 px-10 flex flex-col md:flex-row justify-between items-center bg-kc-black/90 backdrop-blur-md border-b border-white/10 uppercase tracking-widest text-[10px] md:text-xs">
+        <a href="#" class="font-bold text-lg tracking-widest mb-4 md:mb-0">K&C</a>
+        <div class="flex gap-6 md:gap-10 font-medium">
+            <a href="#editorial" class="hover:text-kc-gold transition-colors duration-300">1. Editorial</a>
+            <a href="#cinematic" class="hover:text-kc-gold transition-colors duration-300">2. Cinematic</a>
+            <a href="#bento" class="hover:text-kc-gold transition-colors duration-300">3. Bento Manifesto</a>
+        </div>
+    </nav>
+
+    <!-- 1. The Editorial Magazine Spread -->
+    <section id="editorial" class="min-h-screen bg-[#F0F0F0] text-[#111] pt-40 pb-32 border-b border-[#ddd] relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-24 text-center">
+                <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gray-500 mb-6 block font-medium">Concept 1: Editorial Spread</span>
+                <h1 class="font-serif text-5xl md:text-8xl leading-[1.05] font-normal max-w-5xl mx-auto text-[#1a1a1a]">We Don't Just Build Brands. <br><span class="italic text-gray-500">We Define Them.</span></h1>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 items-start mt-20">
+                <div class="md:col-span-5 relative h-[500px] md:h-[700px] w-full editorial-img-1 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-[1.5s] ease-in-out cursor-pointer shadow-2xl"></div>
+                
+                <div class="md:col-span-7 pt-0 md:pt-16">
+                    <p class="text-3xl md:text-4xl font-serif italic mb-12 leading-normal text-[#333]">"The intersection of high fashion, strategy, and uncompromised digital luxury."</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 text-[13px] md:text-sm leading-relaxed text-gray-600 font-medium">
+                        <div>
+                            <p class="mb-8"><span class="float-left text-7xl font-serif leading-[0.7] mr-3 mt-1 text-black">K</span>elsey & Company is more than an agency. We are a collective of visionaries, strategists, and artists dedicated to elevating brands out of the ordinary and into the iconic. Our approach is deeply rooted in editorial sensibilities.</p>
+                            <p>We believe that every brand has a soul, and our job is to bring that soul to the forefront with elegance and power.</p>
+                        </div>
+                        <div>
+                            <p class="mb-8">Our methodology is untraditional. We don't follow trends; we observe human behavior, art, and culture to craft timeless digital experiences.</p>
+                            <div class="mt-12 border-t border-[#ccc] pt-8 flex items-end gap-6">
+                                <div>
+                                    <span class="block text-[10px] uppercase tracking-widest mb-1 text-gray-400">Established</span>
+                                    <span class="font-serif text-3xl text-black">2020</span>
+                                </div>
+                                <div class="w-full h-[1px] bg-[#ccc] mb-2 flex-grow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. The Cinematic Narrative Journey -->
+    <section id="cinematic" class="min-h-screen cinematic-bg text-white pt-40 pb-48 border-b border-white/5 flex flex-col justify-center items-center relative overflow-hidden">
+        <!-- Abstract gradient orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[100px] -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-kc-gold/10 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+            <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gray-500 mb-20 block text-center font-medium">Concept 2: Cinematic Narrative</span>
+            
+            <div class="space-y-40 md:space-y-64">
+                <!-- Chapter 1 -->
+                <div class="flex flex-col items-center text-center opacity-80 hover:opacity-100 transition duration-700 max-w-3xl mx-auto cursor-default">
+                    <span class="text-white/40 text-[10px] tracking-[0.3em] font-medium mb-6">CHAPTER I: THE ORIGIN</span>
+                    <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-8 leading-[1.1]">Born from the desire to <br>disrupt the mundane.</h2>
+                    <p class="max-w-xl text-gray-400 font-light leading-relaxed text-sm md:text-base">It started with a simple hypothesis: what if digital precision met haute couture aesthetic? The result was a new standard of agency.</p>
+                </div>
+
+                <!-- Chapter 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24 opacity-80 hover:opacity-100 transition duration-700 cursor-default">
+                    <div class="flex-1">
+                        <span class="text-white/40 text-[10px] tracking-[0.3em] font-medium mb-6 block">CHAPTER II: THE ETHOS</span>
+                        <h2 class="text-4xl md:text-6xl font-light tracking-tight mb-8 leading-[1.1]">Obsessive attention <br>to detail.</h2>
+                        <div class="space-y-6 text-gray-400 font-light text-sm md:text-base">
+                            <p>We strip away the excess. We refine until only the pure essence of the brand remains. We are uncompromising in our standards.</p>
+                            <p>Every pixel, every motion, every word is intentionally crafted to elicit an emotional response.</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 h-[300px] md:h-[450px] w-full bg-[#111] border border-white/10 flex items-center justify-center relative overflow-hidden group">
+                         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition duration-[2s] group-hover:scale-110"></div>
+                         <div class="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center z-10 backdrop-blur-sm group-hover:bg-white/10 transition-colors">
+                             <div class="w-2 h-2 bg-white rounded-full"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Interactive Bento Manifesto -->
+    <section id="bento" class="min-h-screen bg-[#050505] text-white pt-40 pb-40 relative">
+        <!-- Subtle Grid Background -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <span class="uppercase tracking-[0.3em] text-[10px] md:text-xs text-gray-500 mb-8 block font-medium">Concept 3: Bento Manifesto</span>
+            
+            <h2 class="text-5xl md:text-7xl font-normal mb-16 max-w-4xl tracking-tight leading-[1.1]">Not just an agency.<br><span class="text-gray-600">A global creative force.</span></h2>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-auto md:h-[750px] font-light">
+                
+                <!-- Main Mission (Large spanning) -->
+                <div class="glass-panel rounded-3xl p-10 col-span-1 md:col-span-2 md:row-span-2 flex flex-col justify-between group hover:border-white/20 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer">
+                    <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mb-8 text-xl text-white/50 group-hover:text-white transition-colors">✦</div>
+                    <div>
+                        <h3 class="text-3xl font-normal mb-6">Our Mission</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm md:text-base max-w-md">To architect digital empires for the world's most ambitious luxury brands. We blend high-end design, flawless engineering, and strategic brilliance to create unignorable experiences.</p>
+                    </div>
+                </div>
+
+                <!-- Location/Global Placeholder -->
+                <div class="glass-panel rounded-3xl p-0 col-span-1 md:col-span-2 md:row-span-1 overflow-hidden relative group cursor-pointer">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat opacity-40 group-hover:opacity-70 transition duration-1000 group-hover:scale-105"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 flex flex-col">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                            <span class="text-[10px] tracking-[0.2em] font-medium uppercase text-white/70">Global Operations</span>
+                        </div>
+                        <span class="text-2xl font-normal">NY / LDN / DXB</span>
+                    </div>
+                </div>
+
+                <!-- Stat/Number -->
+                <div class="glass-panel rounded-3xl p-8 col-span-1 md:col-span-1 md:row-span-1 flex flex-col justify-center items-center text-center group hover:bg-white/[0.06] transition-all duration-500 cursor-pointer hover:-translate-y-1">
+                    <span class="text-6xl font-light mb-3 tracking-tighter group-hover:text-kc-gold transition-colors duration-500">5+</span>
+                    <span class="text-[10px] text-gray-500 font-medium uppercase tracking-[0.2em]">Years of Excellence</span>
+                </div>
+
+                <!-- Culture -->
+                <div class="glass-panel rounded-3xl p-8 col-span-1 md:col-span-1 md:row-span-1 flex flex-col justify-center items-center text-center group hover:bg-white/[0.06] transition-all duration-500 cursor-pointer hover:-translate-y-1">
+                    <span class="text-6xl font-light mb-3 tracking-tighter group-hover:text-kc-gold transition-colors duration-500">40+</span>
+                    <span class="text-[10px] text-gray-500 font-medium uppercase tracking-[0.2em]">Master Craftsmen</span>
+                </div>
+
+                <!-- Quote -->
+                <div class="glass-panel rounded-3xl p-10 col-span-1 md:col-span-4 md:row-span-1 flex items-center justify-center text-center group bg-gradient-to-br from-white/[0.02] to-transparent hover:border-white/20 transition-all duration-500 cursor-pointer relative overflow-hidden">
+                    <div class="absolute inset-0 bg-kc-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                    <p class="text-3xl md:text-5xl font-serif italic text-white/80 group-hover:text-white transition-colors duration-500 relative z-10">"Design is not just what it looks like and feels like. Design is how it works."</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
