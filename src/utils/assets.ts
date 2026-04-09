@@ -38,5 +38,5 @@ export const getAssetUrl = (path: string): string => {
   // q_auto: automatic quality compression
   const transformation = resourceType === 'raw' ? '' : 'f_auto,q_auto/';
   
-  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}${cleanPath}`;
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}public/${cleanPath}`;
 };
