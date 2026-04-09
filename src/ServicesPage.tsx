@@ -13,7 +13,7 @@ const SERVICES_DATA = [
             {
                 name: 'Sinners',
                 type: 'production',
-                portrait: getAssetUrl('/assets/sinners/sinners poster.png'),
+                portrait: getAssetUrl('/assets/sinners/sinners.jpg'),
                 year: '2025',
                 eventDetail: {
                     title: 'Sinners',
@@ -23,7 +23,7 @@ const SERVICES_DATA = [
                     capacity: 'Full-Scale Production',
                     heroOrientation: 'landscape',
                     videoSrc: getAssetUrl('/assets/sinners/sinners video.mp4'),
-                    videoPoster: getAssetUrl('/assets/sinners/sinners poster.png'),
+                    videoPoster: getAssetUrl('/assets/sinners/sinners.jpg'),
                     brochure: getAssetUrl('/assets/sinners/sinners brochure.png'),
                     galleryImages: [
                         { src: getAssetUrl('/assets/sinners/sinners 1.png'), orientation: 'landscape' },
