@@ -29,20 +29,22 @@ export const getAssetUrl = (path: string): string => {
   // If it's already a full URL, don't change it
   if (path.startsWith('http')) return path;
   
-  // Remove leading slash if it exists
-  let cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  // 1. Clean the path
+  const normalizedPath = path.startsWith('/') ? path.substring(1) : path;
   
-  // Strip 'assets/' prefix if it exists, as the user uploaded contents directly to root
-  if (cleanPath.startsWith('assets/')) {
-    cleanPath = cleanPath.substring(7);
-  }
+  // 2. Identify the resource type
+  const resourceType = getResourceType(normalizedPath);
   
-  const resourceType = getResourceType(cleanPath);
+  // 3. Extract the final filename to use as the Public ID (fallback strategy for root uploads)
+  // This handles cases where assets are uploaded to the root regardless of their local folder
+  const pathSegments = normalizedPath.split('/');
+  const filename = pathSegments[pathSegments.length - 1];
   
-  // Add optimization flags for images and videos
-  // f_auto: automatic format (WebP/AVIF etc)
-  // q_auto: automatic quality compression
+  // 4. Encode special characters (spaces, +, etc.)
+  const encodedFilename = encodeURIComponent(filename).replace(/%20/g, '%20');
+  
+  // 5. Build the final URL with automatic optimization
   const transformation = resourceType === 'raw' ? '' : 'f_auto,q_auto/';
   
-  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}${cleanPath}`;
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}${encodedFilename}`;
 };
