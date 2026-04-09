@@ -30,7 +30,13 @@ export const getAssetUrl = (path: string): string => {
   if (path.startsWith('http')) return path;
   
   // Remove leading slash if it exists
-  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  let cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  
+  // Strip 'assets/' prefix if it exists, as the user uploaded contents directly to root
+  if (cleanPath.startsWith('assets/')) {
+    cleanPath = cleanPath.substring(7);
+  }
+  
   const resourceType = getResourceType(cleanPath);
   
   // Add optimization flags for images and videos
