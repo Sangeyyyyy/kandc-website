@@ -33,3 +33,6 @@ public/*.jpeg
 
 # Cloudflare Wrangler
 .wrangler
+
+# Local Scratch Scripts
+scratch/

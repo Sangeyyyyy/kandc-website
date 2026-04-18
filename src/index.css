@@ -120,7 +120,7 @@
 
   /* Dark surface nav link (hero overlay) */
   .nav-link {
-    @apply relative text-cream/65 no-underline text-[0.7rem] tracking-[0.25em] uppercase font-serif font-semibold;
+    @apply relative text-cream no-underline text-[0.7rem] tracking-[0.25em] uppercase font-serif font-semibold;
     padding: 5px 12px;
     border-radius: 100px;
     overflow: hidden;
@@ -142,10 +142,12 @@
 
   .nav-link:hover { @apply text-cream; }
   .nav-link:hover::before { transform: scaleX(1); }
+  .nav-link.active { @apply text-cream; }
+  .nav-link.active::before { transform: scaleX(1); background: rgba(238, 192, 191, 0.3); }
 
   /* Light surface nav link (scrolled white pill) */
   .nav-link-dark {
-    @apply relative text-ink/50 no-underline text-[0.7rem] tracking-[0.25em] uppercase font-serif font-semibold;
+    @apply relative text-cream no-underline text-[0.7rem] tracking-[0.25em] uppercase font-serif font-semibold;
     padding: 5px 12px;
     border-radius: 100px;
     overflow: hidden;
@@ -167,6 +169,8 @@
 
   .nav-link-dark:hover { @apply text-cream; }
   .nav-link-dark:hover::before { transform: scaleX(1); }
+  .nav-link-dark.active { @apply text-cream; }
+  .nav-link-dark.active::before { transform: scaleX(1); @apply bg-burgundy; }
 
   /* Text sits above the ::before fill */
   .nav-label-inner {
@@ -455,4 +459,279 @@
     border-radius: 50%;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
+
+  /* 3D POSTER EFFECT */
+  .threed-card {
+    --card-height: 100%;
+    --card-width: 100%;
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    perspective: 2500px;
+    transition: all 0.5s;
+    overflow: visible !important; /* Extremely important for pop-out */
+  }
+
+  .threed-wrapper {
+    transition: all 0.5s;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-style: preserve-3d;
+    overflow: visible !important;
+  }
+
+  .threed-card:hover .threed-wrapper {
+    transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+  }
+
+  .threed-wrapper::before,
+  .threed-wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  /* Top Glare */
+  .threed-wrapper::before {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 40%
+    );
+  }
+
+  /* Bottom Shadow */
+  .threed-wrapper::after {
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.2) 0%,
+      transparent 40%
+    );
+  }
+
+  .threed-card:hover .threed-wrapper::before,
+  .threed-card:hover .threed-wrapper::after {
+    opacity: 1;
+  }
+
+  .threed-layer-base {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    transition: opacity 0.5s;
+  }
+
+  .threed-layer-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.5s;
+    transform: translateZ(20px);
+    filter: brightness(0.8) contrast(1.1);
+  }
+
+  .threed-layer-hover {
+    width: 100%;
+    height: 115%; 
+    object-fit: contain;
+    object-position: bottom;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.5s;
+    transform: translateZ(120px); /* Pushed forward */
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
+  .threed-layer-logo {
+    width: 80%;
+    height: auto;
+    position: absolute;
+    z-index: 4;
+    top: 82%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateZ(200px) scale(0.8); /* Pushed even further forward */
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    pointer-events: none;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.9));
+  }
+
+  .threed-card:hover .threed-layer-bg {
+    opacity: 1;
+    animation: bgPulse 8s infinite alternate ease-in-out;
+  }
+
+  /* Text Overlay Layer (Inserted behind subject on hover) */
+  .threed-layer-text {
+    transform: translateZ(0px); /* Flat originally */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+  .threed-card:hover .threed-layer-text {
+    transform: translateZ(50px); /* Positioned cleanly between BG (20px) and Hover (80px) */
+  }
+
+  .threed-card:hover .threed-layer-hover {
+    opacity: 1;
+    transform: translateY(-8%) translateZ(80px) scale(1.1); 
+  }
+
+  .threed-card:hover .threed-layer-logo {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateZ(140px) scale(1.1); 
+  }
+
+  .threed-card:hover .threed-layer-base {
+    opacity: 0; 
+  }
+
+  /* Specific overrides for BET+ Cookout card */
+  .threed-card.bet-cookout-card .threed-layer-hover {
+    mask-image: none;
+    -webkit-mask-image: none;
+    bottom: 8%;
+  }
+  .threed-card.bet-cookout-card:hover .threed-layer-hover {
+    transform: translateY(-32%) translateZ(100px) scale(1.5);
+  }
+
+  /* Specific overrides for Sneaker Ball card */
+  .threed-card.sneaker-ball-card .threed-layer-hover {
+    bottom: 4%; /* Lift from the absolute bottom */
+  }
+  .threed-card.sneaker-ball-card:hover .threed-layer-hover {
+    transform: translateY(-18%) translateZ(80px) scale(1.1);
+  }
+
+  /* Specific overrides for Creatives at Sea card */
+  .threed-card.creatives-at-sea-card .threed-layer-base {
+    object-fit: contain; /* Prevent over-zooming the poster */
+    background: #000;
+  }
+  .threed-card.creatives-at-sea-card .threed-layer-logo {
+    width: 45%; /* Significantly smaller logo */
+    top: 86%; /* Position at the bottom */
+  }
+  .threed-card.creatives-at-sea-card .threed-layer-hover {
+    height: 130%; /* Slightly smaller height */
+    bottom: 6%; /* Lift from baseline */
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .threed-card.creatives-at-sea-card:hover .threed-layer-hover {
+    transform: translateY(-20%) translateZ(110px) scale(1.35); /* Slightly smaller scale and lift */
+  }
+
+  /* Specific overrides for CMO Brunch card */
+  .threed-card.cmo-brunch-card .threed-layer-base {
+    object-fit: contain; /* Prevent cropping of the full poster */
+    background: #000;
+  }
+  .threed-card.cmo-brunch-card .threed-layer-hover {
+    mask-image: none;
+    -webkit-mask-image: none;
+    bottom: 0%;
+    transform-origin: bottom center;
+  }
+  .threed-card.cmo-brunch-card:hover .threed-layer-hover {
+    transform: translateY(-4%) translateZ(80px) scale(1.15);
+  }
+  .threed-card.cmo-brunch-card .threed-layer-logo {
+    filter: brightness(0); /* "Use the black for the logo" */
+    width: 50%;
+  }
+
+  /* Specific overrides for Spike Lee Dinner card */
+  .threed-card.spike-lee-dinner-card .threed-layer-logo {
+    width: 30%; /* Much smaller Jordan logo */
+    top: 88%; /* Position it lower at the bottom */
+  }
+  .threed-card.spike-lee-dinner-card .threed-layer-hover {
+    height: 110%; /* Reduced from 125% */
+    bottom: 4%; /* Lift baseline slightly */
+  }
+  .threed-card.spike-lee-dinner-card:hover .threed-layer-hover {
+    transform: translateY(-15%) translateZ(100px) scale(1.25); /* Reduced scale and lift */
+  }
+
+  /* Overlay Service Type Styling */
+  .service-type-label {
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.25em;
+  }
+
+
+  /* ── ROADMAP SECTION ───────────────────────────────────────────────────── */
+  .roadmap-step-number {
+    font-family: var(--font-serif);
+    font-size: clamp(10rem, 22vw, 28rem);
+    line-height: 1;
+    color: var(--color-burgundy);
+    opacity: 0.06;
+    position: absolute;
+    left: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
+    font-style: italic;
+  }
+
+  .roadmap-timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(238, 192, 191, 0.12) 20%,
+      rgba(238, 192, 191, 0.12) 80%,
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .roadmap-tag {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(238, 192, 191, 0.2);
+    padding: 4px 14px;
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(238, 192, 191, 0.55);
+    border-radius: 100px;
+  }
+
+}
+
+@keyframes bgPulse {
+  0% { filter: brightness(0.8) contrast(1.1) saturate(1); }
+  100% { filter: brightness(1) contrast(1.2) saturate(1.2); }
 }

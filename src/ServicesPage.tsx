@@ -6,15 +6,16 @@ import { getAssetUrl } from './utils/assets';
 const SERVICES_DATA = [
     {
         id: '01',
-        title: 'Experiential, Integrated Activations & Premieres',
+        title: 'Experiential Integrated Activations and Premieres',
         description: 'We create immersive brand moments and seamless experiences that live at the intersection of culture and community. High-impact storytelling, cinematic premieres, and elite staffing management engineered for consistency across all touchpoints.',
-        image: getAssetUrl('/service_activation.png'),
+        image: getAssetUrl('sinners_1'),
         clients: [
             {
                 name: 'Sinners',
                 type: 'production',
-                portrait: getAssetUrl('/assets/sinners/sinners.jpg'),
+                portrait: getAssetUrl('sinners_poster'),
                 year: '2025',
+                role: 'Movie Premieres',
                 eventDetail: {
                     title: 'Sinners',
                     subtitle: 'Film Creative Production',
@@ -22,16 +23,139 @@ const SERVICES_DATA = [
                     description: 'A cinematic production project that pushed the boundaries of cultural storytelling. K&C delivered end-to-end creative production from print collateral to digital assets — capturing the raw, soulful spirit of the film.',
                     capacity: 'Full-Scale Production',
                     heroOrientation: 'landscape',
-                    videoSrc: getAssetUrl('/assets/sinners/sinners video.mp4'),
-                    videoPoster: getAssetUrl('/assets/sinners/sinners.jpg'),
-                    brochure: getAssetUrl('/assets/sinners/sinners brochure.png'),
+                    videoSrc: getAssetUrl('Sinners_video'),
+                    videoPoster: getAssetUrl('sinners_poster'),
+                    brochure: getAssetUrl('sinners_brochure'),
                     galleryImages: [
-                        { src: getAssetUrl('/assets/sinners/sinners 1.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/sinners/sinners 2.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/sinners/sinners 3.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/sinners/sinners 4.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/sinners/sinners 5.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/sinners/sinners 6.png'), orientation: 'portrait' },
+                        { src: getAssetUrl('sinners_1'), orientation: 'landscape' },
+                        { src: getAssetUrl('sinners_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('sinners_3'), orientation: 'portrait' },
+                        { src: getAssetUrl('sinners_4'), orientation: 'landscape' },
+                        { src: getAssetUrl('sinners_5'), orientation: 'portrait' },
+                        { src: getAssetUrl('sinners_6'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'Tron: Ares',
+                type: 'production',
+                portrait: getAssetUrl('tron'),
+                year: '2025',
+                role: 'Integrated Marketing & Brand Activation',
+                eventDetail: {
+                    title: 'Tron: Ares',
+                    subtitle: 'Walt Disney Studios Campaign',
+                    theme: 'INTEGRATED MARKETING STRATEGY',
+                    description: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
+                    capacity: 'Multi-Market Integration',
+                    heroImage: getAssetUrl('tron'),
+                    galleryImages: [
+                        { src: getAssetUrl('Tron_1'), orientation: 'landscape' },
+                        { src: getAssetUrl('Tron_2'), orientation: 'landscape' },
+                        { src: getAssetUrl('Tron_3'), orientation: 'landscape' },
+                        { src: getAssetUrl('Tron_4'), orientation: 'landscape' },
+                        { src: getAssetUrl('Tron_5'), orientation: 'landscape' },
+                        { src: getAssetUrl('Tron_6'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'Zootopia 2',
+                type: 'partnership',
+                portrait: getAssetUrl('zootopia'),
+                year: '2023',
+                role: 'Brand Partnership Management',
+                eventDetail: {
+                    title: 'Zootopia 2',
+                    subtitle: 'Disney Animation Franchise',
+                    theme: 'PARTNERSHIP MANAGEMENT',
+                    description: 'K&C curated and managed a suite of co-branded partnerships for the Zootopia franchise, connecting the animated world with premium lifestyle brands. Our curation drove unprecedented cultural penetration and brand affinity across key demographics.',
+                    capacity: '360° Partner Integration',
+                    heroImage: getAssetUrl('zootopia'),
+                    videoSrc: getAssetUrl('Zootopia_video'),
+                    galleryImages: [
+                        { src: getAssetUrl('zootopia'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'Avatar: Fire and Ash',
+                type: 'production',
+                portrait: getAssetUrl('avatar'),
+                year: '2023',
+                role: 'Experiential Production Lead',
+                eventDetail: {
+                    title: 'Avatar: Fire and Ash',
+                    subtitle: '20th Century Studios Experience',
+                    theme: 'EXPERIENTIAL PRODUCTION',
+                    description: 'For Avatar: The Way of Water, Kelsey & Company designed and produced an immersive theatrical world-preview event. Guests were transported through the film\'s oceanic environments via multi-sensory staging, setting a new benchmark for blockbuster experiential marketing.',
+                    capacity: 'Multi-Sensory World Building',
+                    heroOrientation: 'portrait',
+                    heroImage: getAssetUrl('avatar_2'),
+                    videoSrc: getAssetUrl('avatar_video'),
+                    galleryImages: [
+                        { src: getAssetUrl('avatar_1'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_2'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_3'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_4'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_5'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_6'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_7'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_8'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_9'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_10'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_11'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_12'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'Hoppers',
+                type: 'production',
+                portrait: getAssetUrl('hoppers_1'),
+                year: '2024',
+                role: 'Live Experience Production',
+                eventDetail: {
+                    title: 'Hoppers',
+                    subtitle: 'Netflix Event Series',
+                    theme: 'LIVE EXPERIENCE STRATEGY',
+                    description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
+                    capacity: 'Nationwide Activation',
+                    heroOrientation: 'portrait',
+                    heroImage: getAssetUrl('hoppers_1'),
+                    videoSrc: getAssetUrl('hoppers_video'),
+                    galleryImages: [
+                        { src: getAssetUrl('hoppers_1'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_3'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_4'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_5'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_6'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_7'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_8'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_9'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_10'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_11'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_12'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_13'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'The Devil Wears Prada 2',
+                type: 'partnership',
+                portrait: getAssetUrl('devil_wears_prada'),
+                year: '2025',
+                role: 'Strategic Brand & Fashion Partnerships',
+                eventDetail: {
+                    title: 'The Devil Wears Prada 2',
+                    subtitle: 'Fox Entertainment Strategic Tie-ins',
+                    theme: 'LUXURY BRAND STRATEGY',
+                    description: 'For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.',
+                    capacity: 'Global Luxury Strategy',
+                    heroImage: getAssetUrl('devil_wears_prada'),
+                    galleryImages: [
+                        { src: getAssetUrl('devil_wears_prada'), orientation: 'portrait' },
                     ]
                 }
             }
@@ -39,57 +163,118 @@ const SERVICES_DATA = [
     },
     {
         id: '02',
-        title: 'Executive Brand Partnership',
-        description: 'Senior-level strategic alliances and brand management for elite talent and executives. We curate high-stakes partnerships that elevate authority and drive mutual growth at the highest levels of industry.',
-        image: getAssetUrl('/service_strategy.png'),
+        title: 'Event Producing and Programming',
+        description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
+        image: getAssetUrl('sneakerball'),
         clients: [
+            { 
+                name: 'CANNES LIONS', 
+                type: 'event', 
+                portrait: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
+                objectPosition: 'center 10%',
+                year: '2023',
+                role: 'Featured Programming',
+                subPartnerships: [
+                    { 
+                        name: 'Spike Lee Fireside Chat',
+                        eventDetail: {
+                            title: 'Spike Lee',
+                            subtitle: 'Fireside Chat · Cannes Lions 2023',
+                            theme: 'OWNERSHIP ON OUR OWN TERMS: Reclaiming Our Cultural Significance',
+                            description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. Our curated lineup included a captivating Palais presentation, an exclusive Keynote/fireside chat with Spike Lee, a press junket, & a lavish 5-course celebratory meal powered by the prestigious Jordan Brand.",
+                            capacity: '80 Guests (18+)',
+                            heroImage: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
+                            galleryImages: [
+                                { src: getAssetUrl('097092A5-2DFA-42E8-908A-D246FFF2C967_4_5005_c'), orientation: 'landscape' },
+                                { src: getAssetUrl('0A47E56A-4AC9-44A3-86AE-25F5B2EFBDEF_4_5005_c'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('0B9BC777-27AB-47EC-9770-89E54E5EE775'), orientation: 'landscape' },
+                                { src: getAssetUrl('0BBD07DF-229D-45C9-B339-ED6078A47A7D'), orientation: 'landscape' },
+                                { src: getAssetUrl('1FFB132C-3D82-40F5-9A90-83904B4F8580'), orientation: 'landscape' },
+                                { src: getAssetUrl('41D6B12A-636A-49AC-B951-9A1AB7234CC9_4_5005_c'), orientation: 'landscape' },
+                                { src: getAssetUrl('925DF716-D0DC-4157-83F3-172E9AA6335B_4_5005_c'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/93397C95-4601-4D48-9660-0B6D7E1389EA_4_5005_c.jpeg'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC_4_5005_c.jpeg'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster (1).JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('D441AE26-BD60-4A00-8833-5FFEC1DE2D84_4_5005_c'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/D9CD118B-69B1-4DBA-A564-1BA8CABD52BC_4_5005_c.jpeg'), orientation: 'landscape' }
+                            ]
+                        }
+                    },
+                    { 
+                        name: 'Sneaker Ball',
+                        eventDetail: {
+                            title: 'Renaissance Noir',
+                            subtitle: 'Sneaker Ball · Cannes Lions',
+                            theme: 'WHERE STYLE MEETS SUBSTANCE',
+                            description: 'An upscale affair where guests showcased their flyest kicks. Against the backdrop of an orchestra, attendees enjoyed light bites, a champagne toast, and a captivating performance by Grammy Award-winning poet J. Ivy. The night concluded with international DJ beats as guests danced away in style.',
+                            capacity: 'Capacity | 200 people',
+                            heroImage: getAssetUrl('sneakerball'),
+                            galleryImages: [
+                                { src: getAssetUrl('sneakerball'), orientation: 'landscape' },
+                                { src: getAssetUrl('sneaker_ball_2'), orientation: 'landscape' },
+                                { src: getAssetUrl('sneaker_ball_3'), orientation: 'landscape' },
+                            ]
+                        }
+                    },
+                    { 
+                        name: 'Spike Lee Dinner',
+                        eventDetail: {
+                            title: 'Spike Lee Dinner',
+                            subtitle: 'Powered by Jordan Brand',
+                            theme: 'LUXURY DINNER EXPERIENCE',
+                            description: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
+                            capacity: 'Capacity | 50 guests',
+                            heroImage: getAssetUrl('spike_lee_dinner_1'),
+                            galleryImages: [
+                                { src: getAssetUrl('spike_lee_dinner_1'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_dinner_2'), orientation: 'portrait' },
+                                { src: getAssetUrl('03A1307A-9BDE-4511-AE75-CAD027D829FA_1_105_c'), orientation: 'portrait' },
+                                { src: getAssetUrl('/assets/spike lee dinner/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'portrait' },
+                                { src: getAssetUrl('/assets/spike lee dinner/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/spike lee dinner/55C9A9D2-6B78-41F4-B07F-8CE97C902828.JPG'), orientation: 'portrait' },
+                                { src: getAssetUrl('/assets/spike lee dinner/84733DF7-1A5E-4167-B4EC-829F6CA34504.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('/assets/spike lee dinner/E870BD89-51F3-489F-8AC6-544AED22DF90.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('spike_lee_dinner'), orientation: 'landscape' },
+                            ]
+                        }
+                    },
+                    { name: 'CEO/CMO Brunch' },
+                    { name: 'Logitech x Vice' }
+                ]
+            },
             {
-                name: 'JASON HARVEY',
-                type: 'partnership',
-                portrait: getAssetUrl('/assets/jason harvey/JasonHarveyLogo_Bug.png'),
+                name: 'GOLF TOURNAMENT',
+                type: 'event',
+                portrait: null,
+                year: '2025',
+                role: 'Coming in June',
+            },
+            {
+                name: 'CREATIVES AT SEA',
+                type: 'event',
+                portrait: getAssetUrl('creatives_at_sea'),
                 year: '2024',
+                role: 'Juneteenth Celebration',
                 eventDetail: {
-                    title: 'Jason Harvey',
-                    subtitle: 'EVP, Head of Paramount\'s BET+',
-                    theme: 'Senior Director Level · Brand Management',
-                    description: 'Kelsey & Company supports Jason Harvey as his primary brand manager. Our engagement functions at a senior director level across strategy, planning, and execution — including complex brand high-stakes bookings, coordination, and overarching multi-platform development.',
-                    capacity: 'Proven Engaging Speaker',
-                    heroImage: getAssetUrl('/assets/jason harvey/jason harvey.png'),
+                    title: 'Creatives at Sea',
+                    subtitle: 'Juneteenth Celebration · Networking on the Water',
+                    theme: 'DIVERSITY IN MEDIA PANEL',
+                    description: 'A Juneteenth celebration promoting diversity in media, featuring an insightful panel w/ NAACP president, CBS & Roc Nation executives. The exclusive event offered networking on the water, lite bites, signature cocktails, and an unforgettable mix of conversation and music.',
+                    capacity: 'Capacity | 120 people',
                     heroOrientation: 'portrait',
-                    videoSrc: getAssetUrl('/assets/jason harvey/jason harvey video.mp4'),
-                    videoPoster: getAssetUrl('/assets/jason harvey/jason harvey 1.png'),
-                    bookPdf: getAssetUrl('/assets/jason harvey/LeavingMoney-JasonEHarvey (1) (1).pdf'),
-                    pressKitPdf: getAssetUrl('/assets/jason harvey/Jason-Harvey-Visionary-Tech-and-Media-Executive_Aug_2025.key.pdf'),
+                    heroImage: getAssetUrl('creatives_at_sea'),
+                    videoSrc: getAssetUrl('creatives_at_sea_video'),
                     galleryImages: [
-                        { src: getAssetUrl('/assets/jason harvey/jason harvey 1.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/jason harvey 2.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/jason harvey.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/Copy of Jason H Speaks Adweek house.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/jason harvey/ChinaPanelnuggets1.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/jason harvey/IMG_0343.jpeg'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/IMG_2125.jpeg'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/IMG_2543.jpeg'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/jason harvey/gettyimages-2264115507-612x612.jpg'), orientation: 'portrait' },
+                        { src: getAssetUrl('creatives_at_sea_1'), orientation: 'portrait' },
+                        { src: getAssetUrl('creatives_at_sea_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('creatives_at_sea_3'), orientation: 'portrait' },
+                        { src: getAssetUrl('creatives_at_sea'), orientation: 'landscape' },
                     ]
                 }
-            },
-            {
-                name: 'KIMBERLY WILSON',
-                type: 'partnership',
-                portrait: null,
-                year: '2025',
-            },
-            {
-                name: 'BERNARD BRONNER',
-                type: 'partnership',
-                portrait: null,
-                year: '2025',
-            },
-            {
-                name: 'PENDING CLIENT',
-                type: 'partnership',
-                portrait: null,
-                year: '2025',
             }
         ]
     },
@@ -97,18 +282,17 @@ const SERVICES_DATA = [
         id: '03',
         title: 'Brand Partnerships',
         description: 'Strategic alliances built on cultural alignment and mutual growth. We curate partners that enhance your brand’s authority and reach.',
-        image: getAssetUrl('/service_cultural.png'),
+        image: getAssetUrl('creatives_at_sea'),
         clients: [
             {
                 name: 'EVENTNOIRE',
                 type: 'partnership',
-                portrait: getAssetUrl('/assets/eventnoire/eventnoire logo.webp'),
+                portrait: getAssetUrl('eventnoire_logo'),
                 objectFit: 'contain',
                 year: '2024–25',
                 role: 'Cultural Event Partnerships',
                 subPartnerships: [
-                    { name: '404 Fund' },
-                    { name: 'Onemusicfest' },
+                    { name: 'One Musicfest' },
                     { 
                         name: 'Atlanta Black Expo',
                         eventDetail: {
@@ -118,13 +302,13 @@ const SERVICES_DATA = [
                             description: 'A dedicated activation celebrating Black culture and excellence, providing a platform for executives and creatives to network, share insights, and forge strategic partnerships.',
                             capacity: 'Capacity | 200+ People',
                             heroOrientation: 'portrait',
-                            videoSrc: getAssetUrl('/assets/Black At Cannes ATLANTA/ABE.mp4'),
-                            videoPoster: getAssetUrl('/assets/Black At Cannes ATLANTA/0B43F544-3EC9-4416-BF85-04CA828EFA9A.JPG'),
-                            heroImage: getAssetUrl('/assets/Black At Cannes ATLANTA/0B43F544-3EC9-4416-BF85-04CA828EFA9A.JPG'),
+                            videoSrc: getAssetUrl('ABE'),
+                            videoPoster: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'),
+                            heroImage: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'),
                             galleryImages: [
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/0B43F544-3EC9-4416-BF85-04CA828EFA9A.JPG'), orientation: 'portrait' },
+                                { src: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'), orientation: 'portrait' },
                                 { src: getAssetUrl('/assets/Black At Cannes ATLANTA/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/34017AB7-4935-4D27-AE74-F4C010F74EE1.JPG'), orientation: 'landscape' },
+                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' },
                                 { src: getAssetUrl('/assets/Black At Cannes ATLANTA/4B256DB9-23F5-44B2-93F9-E699D5A0E847.JPG'), orientation: 'portrait' },
                                 { src: getAssetUrl('/assets/Black At Cannes ATLANTA/65D00D1E-3C5A-4687-A767-1B80B3D8C00E.JPG'), orientation: 'landscape' },
                                 { src: getAssetUrl('/assets/Black At Cannes ATLANTA/8F4E3EEB-2503-444C-AED6-E3DAD6672246.JPG'), orientation: 'portrait' },
@@ -133,69 +317,83 @@ const SERVICES_DATA = [
                             ]
                         }
                     },
-                    { name: 'Sigmas of Greater Atlanta Conference' },
-                    { name: 'Serge Group' },
+                    { name: '404 Day (404 Fund)' }
                 ],
             },
             {
-                name: 'BET+ x CONVERGE',
-                type: 'partnership',
-                portrait: getAssetUrl('/assets/BET+/BET+.png'),
-                year: '2026',
-                role: 'CES 2026 · SXSW 2026',
-            },
-            {
-                name: 'BET+ x BRAZE',
+                name: 'BRAZE X BET+',
                 type: 'partnership',
                 portrait: null,
                 year: '2025',
                 role: 'Tech for an Equitable Future',
             },
             {
-                name: 'BET+ x INKWELL BEACH',
+                name: 'CONVERGE X BET+',
                 type: 'partnership',
-                portrait: null,
-                year: '2025',
-                role: 'Davos',
+                portrait: getAssetUrl('BET_is_the_cookout'),
+                year: '2026',
+                role: 'SXSW · CES',
             }
         ]
     },
     {
         id: '04',
-        title: 'Digital Marketing',
-        description: 'Data-driven strategies that command attention in a crowded landscape. Presence that translates into measurable engagement and lasting loyalty.',
-        image: getAssetUrl('/service_digital.png'),
+        title: 'Executive Brand Management',
+        description: 'Senior-level strategic alliances and brand management for elite talent and executives. We curate high-stakes partnerships that elevate authority and drive mutual growth at the highest levels of industry.',
+        image: getAssetUrl('jason_harvey_background'),
         clients: [
             {
-                name: 'COPYWRITING',
-                type: 'digital',
-                portrait: null,
+                name: 'JASON HARVEY',
+                type: 'partnership',
+                portrait: getAssetUrl('JasonHarveyLogo_Bug'),
                 year: '2024',
-                subLabel: 'Clients',
-                subPartnerships: [
-                    { name: 'Footlocker' },
-                    { name: 'Sprite' },
-                    { name: 'BET+ (Google Ads & Billboards)' },
-                    { name: 'Philadelphia Cream Cheese' },
-                    { name: 'Popeyes' },
-                    { name: 'American Heart Association (Live To The Beat)' },
-                    { name: 'Instagram Shop' }
-                ]
+                role: 'Primary Brand Manager',
+                eventDetail: {
+                    title: 'Jason Harvey',
+                    subtitle: 'EVP, Head of Paramount\'s BET+',
+                    theme: 'Senior Director Level · Brand Management',
+                    description: 'Kelsey & Company supports Jason Harvey as his primary brand manager. Our engagement functions at a senior director level across strategy, planning, and execution — including complex brand high-stakes bookings, coordination, and overarching multi-platform development.',
+                    capacity: 'Proven Engaging Speaker',
+                    heroImage: getAssetUrl('jason_harvey_2'),
+                    heroOrientation: 'portrait',
+                    videoSrc: getAssetUrl('jason_harvey_video'),
+                    videoPoster: getAssetUrl('jason_harvey_1'),
+                    bookPdf: getAssetUrl('/assets/jason harvey/LeavingMoney-JasonEHarvey (1) (1).pdf'),
+                    pressKitPdf: getAssetUrl('/assets/jason harvey/Jason-Harvey-Visionary-Tech-and-Media-Executive_Aug_2025.key.pdf'),
+                    galleryImages: [
+                        { src: getAssetUrl('jason_harvey_1'), orientation: 'portrait' },
+                        { src: getAssetUrl('jason_harvey_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('jason_harvey_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('Copy_of_Jason_H_Speaks_Adweek_house'), orientation: 'landscape' },
+                        { src: getAssetUrl('ChinaPanelnuggets1'), orientation: 'landscape' },
+                        { src: getAssetUrl('IMG_0343'), orientation: 'portrait' },
+                        { src: getAssetUrl('IMG_2125'), orientation: 'portrait' },
+                        { src: getAssetUrl('IMG_2543'), orientation: 'portrait' },
+                        { src: getAssetUrl('gettyimages-2264115507-612x612'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'KIMBERLY WILSON',
+                type: 'partnership',
+                portrait: null,
+                year: '2025',
+                role: 'Strategy & Alliances',
             }
         ]
     },
     {
         id: '05',
-        title: 'Creative Production',
-        description: 'High-end content designed for the cinematic brand narrative. We produce visual assets that resonate with sophistication and purpose.',
-        image: getAssetUrl('/service_production.png'),
+        title: 'Digital Marketing',
+        description: 'Data-driven strategies that command attention in a crowded landscape. Presence that translates into measurable engagement and lasting loyalty.',
+        image: getAssetUrl('BET_is_the_cookout'),
         clients: [
             {
                 name: 'BET+ IS THE COOKOUT',
                 type: 'production',
-                portrait: getAssetUrl('/assets/BET+/BET+.png'),
+                portrait: getAssetUrl('BET_is_the_cookout'),
                 year: '2024',
-                role: 'Creative Director · Producer',
+                role: 'Summer Stream Campaign',
                 eventDetail: {
                     title: 'BET+',
                     subtitle: 'BET+ is the Cookout. No Invitation needed.',
@@ -203,20 +401,49 @@ const SERVICES_DATA = [
                     description: "BET+ Is the Cookout summer collection — a play on nostalgic cultural titles that speak to the diaspora to amplify celebration, community, and summer streaming. The campaign generated one of the platform's highest trailer engagement periods of the season, yielding 150K streams and 17k new subscriptions.",
                     capacity: '150K Streams · 17K New Subs',
                     heroOrientation: 'landscape',
-                    videoSrc: getAssetUrl('/assets/BET+/BET+ Is the Cookout .mp4'),
-                    videoPoster: getAssetUrl('/assets/BET+/BET+ 1.png'),
+                    videoSrc: getAssetUrl('BET_is_the_cookout_poster'),
+                    videoPoster: getAssetUrl('BET_1'),
                     galleryImages: [
-                        { src: getAssetUrl('/assets/BET+/BET+ 1.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/BET+/BET+.png'), orientation: 'landscape' },
+                        { src: getAssetUrl('BET_1'), orientation: 'landscape' },
+                        { src: getAssetUrl('BET_is_the_cookout'), orientation: 'landscape' },
                     ]
                 }
+            }
+        ]
+    },
+    {
+        id: '06',
+        title: 'Film Production',
+        description: 'High-end content designed for the cinematic brand narrative. We produce visual assets that resonate with sophistication and purpose.',
+        image: getAssetUrl('hoppers_4'),
+        clients: [
+            {
+                name: 'THE DRONE THAT SAVED CHRISTMAS',
+                type: 'production',
+                portrait: null,
+                year: '2024',
+                role: 'Amazon Prime',
+            },
+            {
+                name: 'SOLICITED VENDORS',
+                type: 'production',
+                portrait: null,
+                year: 'Ongoing',
+                role: 'Global Network Management',
+                subLabel: 'Scope of Excellence',
+                subPartnerships: [
+                    { name: 'Catering & Hospitality' },
+                    { name: 'Hair & Makeup Artistry' },
+                    { name: 'PA Staffing & Field Support' },
+                    { name: 'Daily Budget Management' }
+                ]
             },
             {
                 name: 'TALE ON AN AMERICAN SUNSET',
                 type: 'production',
                 portrait: null,
                 year: '2025',
-                role: 'Film',
+                role: 'Short Film · Awards',
             },
             {
                 name: "A FATHER'S LOVE",
@@ -231,168 +458,8 @@ const SERVICES_DATA = [
                 portrait: null,
                 year: '2025',
                 role: 'Music Video',
-            },
-            {
-                name: 'THE DRONE THAT SAVED CHRISTMAS',
-                type: 'production',
-                portrait: null,
-                year: '2024',
-                role: 'Amazon Prime',
             }
         ]
-    },
-    {
-        id: '06',
-        title: 'Event Producing and Programming',
-        description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
-        image: getAssetUrl('/service_event_proc.png'),
-        clients: [
-            { 
-                name: 'FIRESIDE CHAT: SPIKE LEE', 
-                type: 'person', 
-                portrait: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
-                objectPosition: 'center 10%',
-                year: '2023',
-                eventDetail: {
-                    title: 'Spike Lee',
-                    subtitle: 'Fireside Chat · Cannes Lions 2023',
-                    theme: 'OWNERSHIP ON OUR OWN TERMS: Reclaiming Our Cultural Significance',
-                    description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. Our curated lineup included a captivating Palais presentation, an exclusive Keynote/fireside chat with Spike Lee, a press junket, & a lavish 5-course celebratory meal powered by the prestigious Jordan Brand.",
-                    capacity: '80 Guests (18+)',
-                    heroImage: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/097092A5-2DFA-42E8-908A-D246FFF2C967_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0A47E56A-4AC9-44A3-86AE-25F5B2EFBDEF_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0B9BC777-27AB-47EC-9770-89E54E5EE775.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0BBD07DF-229D-45C9-B339-ED6078A47A7D.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/1FFB132C-3D82-40F5-9A90-83904B4F8580.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/41D6B12A-636A-49AC-B951-9A1AB7234CC9_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/925DF716-D0DC-4157-83F3-172E9AA6335B_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/93397C95-4601-4D48-9660-0B6D7E1389EA_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster (1).JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/D441AE26-BD60-4A00-8833-5FFEC1DE2D84_4_5005_c.jpeg'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/D9CD118B-69B1-4DBA-A564-1BA8CABD52BC_4_5005_c.jpeg'), orientation: 'landscape' }
-                    ]
-                }
-            },
-            {
-                name: 'RENAISSANCE NOIR SNEAKER BALL',
-                type: 'event',
-                portrait: getAssetUrl('/assets/sneaker ball/sneakerball.png'),
-                year: '2023',
-                eventDetail: {
-                    title: 'Renaissance Noir',
-                    subtitle: 'Sneaker Ball · Cannes Lions',
-                    theme: 'WHERE STYLE MEETS SUBSTANCE',
-                    description: 'An upscale affair where guests showcased their flyest kicks. Against the backdrop of an orchestra, attendees enjoyed light bites, a champagne toast, and a captivating performance by Grammy Award-winning poet J. Ivy. The night concluded with international DJ beats as guests danced away in style.',
-                    capacity: 'Capacity | 200 people',
-                    heroImage: getAssetUrl('/assets/sneaker ball/sneakerball.png'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/sneaker ball/sneakerball.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/sneaker ball/sneaker ball 2.png'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/sneaker ball/sneaker ball 3.png'), orientation: 'landscape' },
-                    ]
-                }
-            },
-            {
-                name: 'CREATIVES AT SEA',
-                type: 'event',
-                portrait: getAssetUrl('/assets/creatives at sea/creatives at sea.png'),
-                year: '2024',
-                eventDetail: {
-                    title: 'Creatives at Sea',
-                    subtitle: 'Juneteenth Celebration · Networking on the Water',
-                    theme: 'DIVERSITY IN MEDIA PANEL',
-                    description: 'A Juneteenth celebration promoting diversity in media, featuring an insightful panel w/ NAACP president, CBS & Roc Nation executives. The exclusive event offered networking on the water, lite bites, signature cocktails, and an unforgettable mix of conversation and music.',
-                    capacity: 'Capacity | 120 people',
-                    heroImage: getAssetUrl('/assets/creatives at sea/creatives at sea.png'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/creatives at sea/creatives at sea 1.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/creatives at sea/creatives at sea 2.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/creatives at sea/creatives at sea 3.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/creatives at sea/creatives at sea.png'), orientation: 'landscape' },
-                    ]
-                }
-            },
-            {
-                name: 'SPIKE LEE DINNER',
-                type: 'event',
-                portrait: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'),
-                year: '2023',
-                eventDetail: {
-                    title: 'Spike Lee Dinner',
-                    subtitle: 'Powered by Jordan Brand',
-                    theme: 'LUXURY DINNER EXPERIENCE',
-                    description: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
-                    capacity: 'Capacity | 50 guests',
-                    heroImage: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/spike lee dinner/spike lee dinner 2.png'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/spike lee dinner/03A1307A-9BDE-4511-AE75-CAD027D829FA_1_105_c.jpeg'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/spike lee dinner/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/spike lee dinner/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/spike lee dinner/34017AB7-4935-4D27-AE74-F4C010F74EE1.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/spike lee dinner/55C9A9D2-6B78-41F4-B07F-8CE97C902828.JPG'), orientation: 'portrait' },
-                        { src: getAssetUrl('/assets/spike lee dinner/84733DF7-1A5E-4167-B4EC-829F6CA34504.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/spike lee dinner/E870BD89-51F3-489F-8AC6-544AED22DF90.JPG'), orientation: 'landscape' },
-                        { src: getAssetUrl('/assets/spike lee dinner/spike lee dinner.png'), orientation: 'landscape' },
-                    ]
-                }
-            },
-            {
-                name: 'CEO/CMO BRUNCH',
-                type: 'event',
-                portrait: getAssetUrl('/assets/CMO brunch/CEOCMO BRUNCH.png'),
-                year: '2024',
-                eventDetail: {
-                    title: 'CEO/CMO Brunch',
-                    subtitle: 'Poetic Accompaniment by J.Ivy',
-                    theme: 'EXECUTIVE NETWORKING',
-                    description: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
-                    capacity: 'Capacity | 50 People',
-                    heroImage: getAssetUrl('/assets/CMO brunch/CEOCMO BRUNCH.png'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/CMO brunch/CEOCMO BRUNCH.png'), orientation: 'landscape' },
-                    ]
-                }
-            },
-            {
-                name: 'LOGITECH X VICE LUNCHEON',
-                type: 'event',
-                portrait: getAssetUrl('/assets/logitech x vice luncheon/logitech x vice luncheon.png'),
-                year: '2023',
-                eventDetail: {
-                    title: 'Logitech x Vice Luncheon',
-                    subtitle: 'Powered by Logitech and Vice',
-                    theme: 'STRATEGIC PARTNERSHIP LUNCHEON',
-                    description: 'A private, seated Luncheon and fireside chat for industry executives powered by Logitech and Vice.',
-                    capacity: 'Capacity | 50 People',
-                    heroImage: getAssetUrl('/assets/logitech x vice luncheon/logitech x vice luncheon.png'),
-                    galleryImages: [
-                        { src: getAssetUrl('/assets/logitech x vice luncheon/logitech x vice luncheon.png'), orientation: 'landscape' },
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        id: '07',
-        title: 'Vendor Management',
-        description: 'Sourcing the best in class. We manage a global network of excellence, ensuring every collaborator delivers at our uncompromising standards.',
-        image: getAssetUrl('/service_vendor.png'),
-        clients: []
-    },
-    {
-        id: '08',
-        title: 'Media Solicitation',
-        description: 'Capturing the conversation. We command the spotlight through strategic media relations and press coordination for maximum impact.',
-        image: getAssetUrl('/service_media.png'),
-        clients: []
     }
 ];
 
@@ -485,7 +552,7 @@ const ServicesPage = () => {
                                 <div className="absolute inset-x-8 bottom-8 z-10 group-hover:opacity-100 opacity-100 transition-all duration-700">
                                     <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-out">
                                         <span className="text-rose font-sans text-[0.6rem] tracking-[0.3em] uppercase mb-4 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                                            {service.id} / 08
+                                            {service.id} / 06
                                         </span>
                                         <h3 className="text-2xl md:text-3xl font-serif text-cream uppercase mb-4 tracking-tighter leading-none group-hover:text-cream transition-colors duration-500 opacity-0 group-hover:opacity-100">
                                             {service.title.split(' ').map((word, i) => (

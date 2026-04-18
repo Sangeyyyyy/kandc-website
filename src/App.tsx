@@ -20,9 +20,8 @@ import './index.css';
 
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
-const ImpactHero = ({ active, onBookClick }: { active: boolean, onBookClick: () => void }) => {
+const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
   const containerRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const magneticRef = useMagnetic(30);
 
   const { scrollYProgress } = useScroll({
@@ -55,32 +54,12 @@ const ImpactHero = ({ active, onBookClick }: { active: boolean, onBookClick: () 
   useEffect(() => {
     // Force scroll to top on mount so the user never starts mid-page
     window.scrollTo(0, 0);
-
-    // Force video to play in case browser autoplay blocks it
-    if (videoRef.current) {
-      videoRef.current.play().catch(e => console.log('Autoplay prevented:', e));
-    }
   }, []);
 
   return (
     <section ref={containerRef} className="h-[250vh] relative w-full bg-ink">
-      <div className="sticky top-0 w-full h-screen overflow-hidden bg-burgundy">
-      {/* ── BACKGROUND: Video Layer ── */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-30 animate-ken-burns scale-105"
-          poster={getAssetUrl('/hero_image.png')}
-        >
-          <source src={getAssetUrl('/hero.mp4')} type="video/mp4" />
-        </video>
-        {/* Cinematic Overlay */}
-        <div className="absolute inset-[0px] bg-ink/75 mix-blend-multiply"></div>
-      </div>
+      <div className="sticky top-0 w-full h-screen overflow-hidden bg-ink">
+
 
       {/* ── TOP NAV ── */}
       <motion.div
@@ -92,32 +71,7 @@ const ImpactHero = ({ active, onBookClick }: { active: boolean, onBookClick: () 
         <TopNav active={true} />
       </motion.div>
 
-      {/* ── CENTRAL TYPOGRAPHY ── */}
-      <div className="absolute inset-0 z-10 flex border flex-col items-center justify-center pointer-events-none">
-        
-        <div className="flex flex-col items-center -mt-16 md:-mt-24 w-full">
-          {/* First Line (offset to the left) */}
-          <motion.h1 
-            initial={{ opacity: 0, x: -80 }}
-            animate={active ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[14vw] md:text-[11vw] font-serif text-cream leading-none tracking-tighter uppercase drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:-ml-[20vw] -ml-[10vw]"
-          >
-            A Creative
-          </motion.h1>
 
-          {/* Second Line (offset to the right) */}
-          <motion.h1 
-            initial={{ opacity: 0, x: 80 }}
-            animate={active ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[14vw] md:text-[11vw] font-serif text-cream leading-none tracking-tighter uppercase italic drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:ml-[20vw] ml-[10vw] -mt-2 md:-mt-6"
-          >
-            Collective.
-          </motion.h1>
-        </div>
-
-      </div>
 
 
       {/* ── NEW: PORTAL LAYER (Z-20) ── */}
@@ -172,25 +126,25 @@ const ImpactHero = ({ active, onBookClick }: { active: boolean, onBookClick: () 
 // ─── SELECTED WORK ────────────────────────────────────────────────────────────
 const SelectedWork = () => {
   const projects = [
-    {
-      num: '01',
-      title: 'Sinners',
-      category: 'Experiential, Integrated Activations & Premieres',
-      img: getAssetUrl('/assets/posters/sinners.jpg'),
-      objectPosition: 'top center',
-    },
+      {
+        num: '01',
+        title: 'Sinners',
+        category: 'Experiential Integrated Activations and Premieres',
+        img: getAssetUrl('sinners_poster'),
+        objectPosition: 'top center',
+      },
     {
       num: '02',
       title: 'Tron: Ares',
-      category: 'Experiential, Integrated Activations & Premieres',
-      img: getAssetUrl('/assets/posters/tron.jpeg'),
+      category: 'Experiential Integrated Activations and Premieres',
+      img: getAssetUrl('tron'),
       objectPosition: 'top center',
     },
     {
       num: '03',
       title: 'Zootopia 2',
-      category: 'Brand Partnerships',
-      img: getAssetUrl('/assets/posters/zootopia.jpg'),
+      category: 'Experiential Integrated Activations and Premieres',
+      img: getAssetUrl('zootopia'),
       objectPosition: 'top center',
     },
   ];
@@ -261,7 +215,7 @@ const SelectedWork = () => {
             </h3>
             
             <div className="flex items-center gap-4 text-cream/40 group-hover:text-cream transition-colors duration-500">
-              <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans">10 Productions</span>
+              <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans">15 Productions</span>
               <div className="h-px w-8 bg-current transform origin-left scale-x-100 group-hover:scale-x-150 transition-transform duration-500" />
               <span className="text-xl">⟶</span>
             </div>
@@ -277,7 +231,7 @@ const SelectedWork = () => {
       {/* Bottom tagline */}
       <div className="py-12 px-8 md:px-16 border-t border-cream/10">
         <Reveal>
-          <p className="text-cream/35 font-serif italic text-lg">10 productions. One collective.</p>
+          <p className="text-cream/35 font-serif italic text-lg">15 productions. One collective.</p>
         </Reveal>
       </div>
     </section>
@@ -366,21 +320,21 @@ const ServicesCarousel = () => {
 
   // Mobile cards are proportionally wider (88vw vs 45vw), so the strip
   // needs a smaller % shift to reach the last card without overshooting.
+  // Mobile cards are proportionally wider (88vw vs 45vw), so the strip
+  // needs a smaller % shift to reach the last card without overshooting.
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", isMobile ? "-78%" : "-85%"]
+    ["0%", isMobile ? "-70%" : "-74%"]
   );
 
   const servicesData = [
-    { id: '01', title: 'Experiential, Integrated Activations & Premieres', description: 'Immersive brand moments, cinematic premieres, and elite staffing management engineered for consistency across all touchpoints.', image: getAssetUrl('/service_activation.png') },
-    { id: '02', title: 'Executive Brand Partnership', description: 'Senior-level strategic alliances and brand management for elite talent and executives.', image: getAssetUrl('/service_strategy.png') },
-    { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment and mutual growth.', image: getAssetUrl('/service_cultural.png') },
-    { id: '04', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('/service_digital.png') },
-    { id: '05', title: 'Creative Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('/service_production.png') },
-    { id: '06', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('/service_event_proc.png') },
-    { id: '07', title: 'Vendor Management', description: 'Sourcing the best. Managing excellence. Delivering value.', image: getAssetUrl('/service_vendor.png') },
-    { id: '08', title: 'Media Management', description: 'Capturing the conversation. Commanding the spotlight.', image: getAssetUrl('/service_media.png') }
+    { id: '01', title: 'Experiential Integrated Activations and Premieres', description: 'Immersive brand moments and seamless experiences that live at the intersection of culture and community.', image: getAssetUrl('sinners_1') },
+    { id: '02', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('sneakerball') },
+    { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment and mutual growth.', image: getAssetUrl('creatives_at_sea') },
+    { id: '04', title: 'Executive Brand Management', description: 'Senior-level strategic alliances and brand management for elite talent and executives.', image: getAssetUrl('jason_harvey_background') },
+    { id: '05', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('BET_is_the_cookout') },
+    { id: '06', title: 'Film Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('hoppers_4') }
   ];
 
   return (
@@ -461,7 +415,7 @@ const PARTNERS: Partner[] = [
     name: 'Warner Bros.',
     category: 'Major Client',
     description: 'Kelsey & Company partnered with Warner Bros. to produce the premiere activation for Sinners — a full-scale, immersive launch experience that blurred the line between film and lived reality, curating every touchpoint from spatial architecture to talent coordination.',
-    image: getAssetUrl('/assets/sinners/sinners 1.png'),
+    image: getAssetUrl('sinners_1'),
     logoFile: 'warner-bros-.svg',
     role: 'Activation Strategy & Creative Production',
   },
@@ -469,7 +423,7 @@ const PARTNERS: Partner[] = [
     name: 'Jordan Brand',
     category: 'Major Client',
     description: 'K&C produced an exclusive Spike Lee-powered Jordan Brand dinner at Cannes Lions — a luxurious 5-course experience for 50 top creatives, culminating in a private Jordan drop, signing, and personalized merch. Culture and commerce at their highest intersection.',
-    image: getAssetUrl('/assets/spike lee dinner/spike lee dinner 1.png'),
+    image: getAssetUrl('spike_lee_dinner_1'),
     logoFile: '-air-jordan.svg',
     role: 'Luxury Event Production & Brand Activation',
   },
@@ -477,7 +431,7 @@ const PARTNERS: Partner[] = [
     name: 'ONE Musicfest',
     category: 'Major Client',
     description: 'A flagship partnership with ONE Musicfest, one of the largest hip-hop and R&B music festivals in the country. K&C brought strategic brand architecture and experiential production to amplify the festival\'s cultural footprint across key demographics.',
-    image: getAssetUrl('/assets/sneaker ball/sneakerball.png'),
+    image: getAssetUrl('sneakerball'),
     logoFile: 'ONE_Musicfest_Logo.png',
     role: 'Strategic Brand Architecture & Event Production',
   },
@@ -485,7 +439,7 @@ const PARTNERS: Partner[] = [
     name: 'News UK',
     category: 'Major Client',
     description: 'Kelsey & Company aligned with News UK to extend their cultural reach through a series of high-impact brand activations and media partnerships. Our work bridged the gap between legacy media and modern cultural conversation.',
-    image: getAssetUrl('/assets/thought leadership brunch/thought leadership brunch 1.png'),
+    image: getAssetUrl('thought_leadership_brunch_1'),
     logoFile: 'News_UK_logo.svg',
     role: 'Brand Activation & Media Partnership',
   },
@@ -493,7 +447,7 @@ const PARTNERS: Partner[] = [
     name: 'Paramount',
     category: 'Major Client',
     description: 'From screenings to immersive fan activations, K&C brought Paramount\'s storytelling off the screen and into lived cultural moments. Strategic production and talent curation at the intersection of entertainment and experience.',
-    image: getAssetUrl('/assets/creatives at sea/creatives at sea.png'),
+    image: getAssetUrl('creatives_at_sea'),
     logoFile: 'paramount-plus-64.png',
     role: 'Experiential Production & Talent Curation',
   },
@@ -690,7 +644,7 @@ function App() {
           }`}
       >
         <TopNav active={loaded} />
-        <ImpactHero active={loaded} onBookClick={openModal} />
+        <ImpactHero onBookClick={openModal} />
         <AboutFounder />
         <WhyKelseyCompany />
         <ServicesCarousel />

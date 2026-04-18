@@ -230,6 +230,7 @@ const NavLabel = ({ label }: { label: string }) => (
 export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDark?: boolean }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 80);
@@ -266,14 +267,19 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
         : 'top-0 left-0 w-full py-6 md:py-10 px-6 md:px-10 bg-transparent';
 
     const wordmarkClass = isDark ? 'text-cream hover:text-rose' : 'text-cream hover:text-rose';
-    const linkClass = isDark ? 'nav-link' : 'nav-link';
+    
+    const getNavLinkClass = (href: string) => {
+        const isActive = location.pathname === href;
+        const baseClass = isDark ? 'nav-link-dark' : 'nav-link';
+        return `${baseClass} ${isActive ? 'active' : ''}`;
+    };
 
     return (
         <>
             <nav className={`fixed z-[100] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] flex justify-between items-center ${scrolledClasses}`}>
                 <div className="hidden md:flex gap-10 items-center w-1/3">
                     {navLinks.slice(0, 2).map(link => (
-                        <Link key={link.href} to={link.href} className={linkClass} style={revealStyle(link.delay)}>
+                        <Link key={link.href} to={link.href} className={getNavLinkClass(link.href)} style={revealStyle(link.delay)}>
                             <NavLabel label={link.label} />
                         </Link>
                     ))}
@@ -293,11 +299,11 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
                 <div className="hidden md:flex gap-10 items-center ml-auto w-1/3 justify-end">
                     {navLinks.slice(2).map(link => (
                         link.href.startsWith('#') ? (
-                            <a key={link.href} href={link.href} className={linkClass} style={revealStyle(link.delay)}>
+                            <a key={link.href} href={link.href} className={getNavLinkClass(link.href)} style={revealStyle(link.delay)}>
                                 <NavLabel label={link.label} />
                             </a>
                         ) : (
-                            <Link key={link.href} to={link.href} className={linkClass} style={revealStyle(link.delay)}>
+                            <Link key={link.href} to={link.href} className={getNavLinkClass(link.href)} style={revealStyle(link.delay)}>
                                 <NavLabel label={link.label} />
                             </Link>
                         )
@@ -345,7 +351,7 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
                                         <a 
                                             href={link.href} 
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="font-serif text-4xl text-cream hover:text-rose tracking-widest uppercase italic transition-colors"
+                                            className={`font-serif text-4xl hover:text-rose tracking-widest uppercase italic transition-colors ${location.pathname === link.href ? 'text-rose' : 'text-cream'}`}
                                         >
                                             {link.label}
                                         </a>
@@ -353,7 +359,7 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
                                         <Link 
                                             to={link.href} 
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="font-serif text-4xl text-cream hover:text-rose tracking-widest uppercase italic transition-colors"
+                                            className={`font-serif text-4xl hover:text-rose tracking-widest uppercase italic transition-colors ${location.pathname === link.href ? 'text-rose' : 'text-cream'}`}
                                         >
                                             {link.label}
                                         </Link>

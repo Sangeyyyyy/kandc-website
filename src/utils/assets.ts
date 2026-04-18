@@ -1,9 +1,32 @@
 export const CLOUDINARY_CLOUD_NAME = 'dnocvgvnc';
 
+// List of public IDs that should be treated as videos
+const VIDEO_ASSETS = [
+  'Bet_Is_The_Cookout',
+  'hoppers_video',
+  'avatar_video',
+  'jason_harvey_video',
+  'Sinners_video',
+  'ABE',
+  'Zootopia_video',
+  'creatives_at_sea_video'
+];
+
+// List of public IDs that should be treated as raw (e.g. PDFs)
+const RAW_ASSETS = [
+  'nedbank_cannes_lion_dinner_-_run_of_show',
+  'LeavingMoney-JasonEHarvey_1_1',
+  'Jason-Harvey-Visionary-Tech-and-Media-Executive_Aug_2025_key'
+];
+
 /**
- * Detects the Cloudinary resource type based on file extension.
+ * Detects the Cloudinary resource type.
  */
 const getResourceType = (path: string): string => {
+  // Check if it's a known video ID
+  if (VIDEO_ASSETS.includes(path)) return 'video';
+  if (RAW_ASSETS.includes(path)) return 'raw';
+
   const ext = path.split('.').pop()?.toLowerCase();
   
   const videoExtensions = ['mp4', 'mov', 'webm', 'ogv'];
@@ -16,35 +39,54 @@ const getResourceType = (path: string): string => {
     return 'image';
   }
   
-  return 'raw';
+  // Default to image if no extension (assuming it's a Public ID from our mapping)
+  return 'image';
 };
 
-/**
- * Returns the full URL for an asset hosted on Cloudinary.
- * @param path The local path (e.g., '/assets/hero.mp4' or 'founder.png')
- */
 export const getAssetUrl = (path: string): string => {
   if (!path) return '';
   
-  // If it's already a full URL, don't change it
   if (path.startsWith('http')) return path;
+
+  // Use Vite's built-in environment detection
+  const isDev = import.meta.env.DEV;
+
+  if (isDev) {
+    // If it's a Public ID without a slash/extension, it's not a local path
+    // Local paths usually start with /assets/
+    if (!path.startsWith('/') && !path.includes('.')) {
+      // It's a Cloudinary ID, but we are in Dev. 
+      // Ideally we should still point to Cloudinary in Dev for these IDs.
+    } else {
+      const localPath = path.startsWith('/') ? path : `/${path}`;
+      return encodeURI(localPath);
+    }
+  }
   
-  // 1. Clean the path
-  const normalizedPath = path.startsWith('/') ? path.substring(1) : path;
+  // Normalize path: remove leading slash and extension if present
+  let normalizedPath = path.startsWith('/') ? path.substring(1) : path;
   
-  // 2. Identify the resource type
+  // Get resource type before potentially stripping extension
   const resourceType = getResourceType(normalizedPath);
   
-  // 3. Extract the final filename to use as the Public ID (fallback strategy for root uploads)
-  // This handles cases where assets are uploaded to the root regardless of their local folder
-  const pathSegments = normalizedPath.split('/');
-  const filename = pathSegments[pathSegments.length - 1];
+  // For Cloudinary URLs, we often want just the Public ID (no extension)
+  // unless it's a 'raw' file which needs the extension in the URL often.
+  let publicId = normalizedPath;
+  if (resourceType !== 'raw' && publicId.includes('.')) {
+    publicId = publicId.split('.').slice(0, -1).join('.');
+  }
   
-  // 4. Encode special characters (spaces, +, etc.)
-  const encodedFilename = encodeURIComponent(filename).replace(/%20/g, '%20');
+  // Extract just the filename (Public ID) in case a path was passed
+  const pathSegments = publicId.split('/');
+  const finalPublicId = pathSegments[pathSegments.length - 1];
   
-  // 5. Build the final URL with automatic optimization
+  const encodedPublicId = encodeURIComponent(finalPublicId);
   const transformation = resourceType === 'raw' ? '' : 'f_auto,q_auto/';
   
-  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}${encodedFilename}`;
+  // Videos should usually have an extension for delivery, or they can use f_auto
+  const extension = (resourceType === 'video' && !finalPublicId.includes('.')) ? '.mp4' : '';
+  
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload/${transformation}${encodedPublicId}${extension}`;
 };
+
+
