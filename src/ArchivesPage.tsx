@@ -4,14 +4,12 @@ import {
     TopNav,
     useModal,
     FooterCTA,
-    UtilityFooter,
-    TiltCard
+    UtilityFooter
 } from './SharedComponents';
 import { getAssetUrl } from './utils/assets';
 import { ThreeDPosterCard } from './ThreeDPosterCard';
 import { RoadmapSection } from './RoadmapSection';
-import type { RoadmapStep } from './RoadmapSection';
-import { Volume2, VolumeX, X, Trophy, Medal, Award as AwardIcon, Star, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 
@@ -49,6 +47,8 @@ export type Project = {
     orientation?: string;
     highlightLabel?: string;
     theme?: string;
+    bookPdf?: string;
+    pressKitPdf?: string;
 };
 
 // ─── PROJECT DATA ─────────────────────────────────────────────────────────────

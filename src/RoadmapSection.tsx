@@ -14,7 +14,7 @@ export type RoadmapStep = {
 
 interface RoadmapSectionProps {
     steps: RoadmapStep[];
-    scrollRef: React.RefObject<HTMLDivElement>;
+    scrollRef: React.RefObject<HTMLDivElement | null>;
 }
 
 // How much of scrollYProgress is reserved for the intro blast-off
