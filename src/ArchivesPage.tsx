@@ -1265,106 +1265,106 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
             <div className="aspect-[4/5] relative overflow-visible">
                 {project.id === 2 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/sinners/sinners poster.png'}
-                        backgroundImage={'/assets/sinners/Sinners background.png'}
-                        hoverImage={'/assets/sinners/MPJ solo.png'}
-                        logoImage={'/assets/sinners/Sinners logo.png'}
+                        baseImage={getAssetUrl('sinners_poster')}
+                        backgroundImage={getAssetUrl('Sinners_background')}
+                        hoverImage={getAssetUrl('MPJ_solo')}
+                        logoImage={getAssetUrl('Sinners_logo')}
                         className="w-full h-full"
                     />
                 ) : project.id === 3 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/posters/tron.jpeg'}
-                        backgroundImage={'/assets/tron/Tron background.png'}
-                        hoverImage={'/assets/tron/Tron solo.png'}
-                        logoImage={'/assets/tron/Tron logo.png'}
+                        baseImage={getAssetUrl('tron')}
+                        backgroundImage={getAssetUrl('Tron_background')}
+                        hoverImage={getAssetUrl('Tron_solo')}
+                        logoImage={getAssetUrl('Tron_logo')}
                         className="w-full h-full"
                     />
                 ) : project.id === 4 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/posters/zootopia.jpg'}
-                        backgroundImage={'/assets/zootopia 2/Zootopia background.png'}
-                        hoverImage={'/assets/zootopia 2/Zootopia solo.png'}
-                        logoImage={'/assets/zootopia 2/Zootopia logo.png'}
+                        baseImage={getAssetUrl('zootopia')}
+                        backgroundImage={getAssetUrl('Zootopia_background')}
+                        hoverImage={getAssetUrl('Zootopia_solo')}
+                        logoImage={getAssetUrl('Zootopia_logo')}
                         className="w-full h-full"
                     />
                 ) : project.id === 5 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/posters/avatar.jpeg'}
-                        backgroundImage={'/assets/avatar/Avatar background.png'}
-                        hoverImage={'/assets/avatar/Avatar solo.png'}
-                        logoImage={'/assets/avatar/Avatar logo.png'}
+                        baseImage={getAssetUrl('avatar')}
+                        backgroundImage={getAssetUrl('Avatar_background')}
+                        hoverImage={getAssetUrl('Avatar_solo')}
+                        logoImage={getAssetUrl('Avatar_logo')}
                         className="avatar-card w-full h-full"
                     />
                 ) : project.id === 6 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/posters/hoppers.jpeg'}
-                        backgroundImage={'/assets/hoppers/Hoppers background.png'}
-                        hoverImage={'/assets/hoppers/Hoppers solo.png'}
-                        logoImage={'/assets/hoppers/Hoppers logo.png'}
+                        baseImage={getAssetUrl('hoppers')}
+                        backgroundImage={getAssetUrl('Hoppers_background')}
+                        hoverImage={getAssetUrl('Hoppers_solo')}
+                        logoImage={getAssetUrl('Hoppers_logo')}
                         className="w-full h-full"
                     />
                 ) : project.id === 1 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/posters/devil wears prada.jpeg'}
-                        backgroundImage={'/assets/devil wears prada/Devil wears prada background.png'}
-                        hoverImage={'/assets/devil wears prada/Devil wears prada solo.png'}
-                        logoImage={'/assets/devil wears prada/Devil wears prada logo.png'}
+                        baseImage={getAssetUrl('devil_wears_prada')}
+                        backgroundImage={getAssetUrl('Devil_wears_prada_background')}
+                        hoverImage={getAssetUrl('Devil_wears_prada_solo')}
+                        logoImage={getAssetUrl('Devil_wears_prada_logo')}
                         className="w-full h-full"
                     />
                 ) : project.id === 7 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/BET+ is the cookout/BET+ is the cookout poster.jpg'}
-                        backgroundImage={'/assets/BET+ is the cookout/BET+ is the cookout background.png'}
-                        hoverImage={'/assets/BET+ is the cookout/BET+ is the cookout solo.png'}
-                        logoImage={'/assets/BET+ is the cookout/BET+ logo.png'}
+                        baseImage={getAssetUrl('BET_is_the_cookout_poster')}
+                        backgroundImage={getAssetUrl('BET_is_the_cookout_background')}
+                        hoverImage={getAssetUrl('BET_is_the_cookout_solo')}
+                        logoImage={getAssetUrl('BET_logo')}
                         className="bet-cookout-card w-full h-full"
                     />
                 ) : project.id === 8 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/jason harvey/jason harvey poster.png'}
-                        backgroundImage={'/assets/jason harvey/jason harvey background.png'}
-                        hoverImage={'/assets/jason harvey/jason harvey solo.png'}
-                        logoImage={'/assets/jason harvey/jason harvey logo.png'}
+                        baseImage={getAssetUrl('jason_harvey_poster')}
+                        backgroundImage={getAssetUrl('jason_harvey_background')}
+                        hoverImage={getAssetUrl('jason_harvey_solo')}
+                        logoImage={getAssetUrl('jason_harvey_logo')}
                         className="jason-harvey-card w-full h-full"
                     />
                 ) : project.id === 9 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/sneaker ball/sneaker ball poster.jpg'}
-                        backgroundImage={'/assets/sneaker ball/sneaker ball background.png'}
-                        hoverImage={'/assets/sneaker ball/sneaker ball solo.png'}
-                        logoImage={'/assets/sneaker ball/sneaker ball logo.png'}
+                        baseImage={getAssetUrl('sneaker_ball_poster')}
+                        backgroundImage={getAssetUrl('sneaker_ball_background')}
+                        hoverImage={getAssetUrl('sneaker_ball_solo')}
+                        logoImage={getAssetUrl('sneaker_ball_logo')}
                         className="sneaker-ball-card w-full h-full"
                     />
                 ) : project.id === 10 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/Spike Lee Fireside Chat (BTS)/spike lee fireside chat poster.png'}
-                        backgroundImage={'/assets/Spike Lee Fireside Chat (BTS)/spike lee fireside chat background.png'}
-                        hoverImage={'/assets/Spike Lee Fireside Chat (BTS)/spike lee fireside chat solo.png'}
-                        logoImage={'/assets/Spike Lee Fireside Chat (BTS)/spike lee fireside logo.png'}
+                        baseImage={getAssetUrl('spike_lee_fireside_chat_poster')}
+                        backgroundImage={getAssetUrl('spike_lee_fireside_chat_background')}
+                        hoverImage={getAssetUrl('spike_lee_fireside_chat_solo')}
+                        logoImage={getAssetUrl('spike_lee_fireside_logo')}
                         className="spike-lee-fireside-card w-full h-full"
                     />
                 ) : project.id === 11 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/creatives at sea/creatives at sea poster.png'}
-                        backgroundImage={'/assets/creatives at sea/creatives at sea background.png'}
-                        hoverImage={'/assets/creatives at sea/creatives at sea solo.png'}
-                        logoImage={'/assets/creatives at sea/creatives at sea logo.png'}
+                        baseImage={getAssetUrl('creatives_at_sea_poster')}
+                        backgroundImage={getAssetUrl('creatives_at_sea_background')}
+                        hoverImage={getAssetUrl('creatives_at_sea_solo')}
+                        logoImage={getAssetUrl('creatives_at_sea_logo')}
                         className="creatives-at-sea-card w-full h-full"
                     />
                 ) : project.id === 12 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/spike lee dinner/spike lee dinner poster.png'}
-                        backgroundImage={'/assets/spike lee dinner/spike lee dinner background.png'}
-                        hoverImage={'/assets/spike lee dinner/spike lee dinner solo.png'}
-                        logoImage={'/assets/brands/-air-jordan.svg'}
+                        baseImage={getAssetUrl('spike_lee_dinner_poster')}
+                        backgroundImage={getAssetUrl('spike_lee_dinner_background')}
+                        hoverImage={getAssetUrl('spike_lee_dinner_solo')}
+                        logoImage={getAssetUrl('-air-jordan')}
                         className="spike-lee-dinner-card w-full h-full"
                     />
                 ) : project.id === 13 ? (
                     <ThreeDPosterCard
-                        baseImage={'/assets/CMO brunch/CMO brunch poster.png'}
-                        backgroundImage={'/assets/CMO brunch/CMO brunch background.png'}
-                        hoverImage={'/assets/CMO brunch/CMO brunch solo.png'}
-                        logoImage={'/assets/Cannes 2025/BLKAT_FinalLogoColor (2).png'}
+                        baseImage={getAssetUrl('CMO_brunch_poster')}
+                        backgroundImage={getAssetUrl('CMO_brunch_background')}
+                        hoverImage={getAssetUrl('CMO_brunch_solo')}
+                        logoImage={getAssetUrl('BLKAT_FinalLogoColor_2')}
                         className="cmo-brunch-card w-full h-full"
                     />
                 ) : (

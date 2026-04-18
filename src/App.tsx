@@ -259,7 +259,7 @@ const AboutFounder = () => (
       <Reveal className="flex-shrink-0 z-10">
         <div className="float-slow relative">
           <div className="w-[240px] md:w-[280px] lg:w-[340px] aspect-[3/4] rounded-sm overflow-hidden border-2 border-rose/20 shadow-ember-intense relative">
-            <img src={getAssetUrl('/founder.png')} alt="Kelsey Matthews" className="w-full h-full object-cover object-top brightness-90 contrast-105" />
+            <img src={getAssetUrl('founder')} alt="Kelsey Matthews" className="w-full h-full object-cover object-top brightness-90 contrast-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           </div>
           {/* Orbit ring */}
@@ -607,7 +607,7 @@ const TrustedBrands = () => {
                 }}
               >
                 <img
-                  src={getAssetUrl(`/assets/brands/${logo.fileName}`)}
+                  src={getAssetUrl(logo.fileName)}
                   alt={logo.name}
                   className={`h-10 md:h-14 w-auto object-contain transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     isActive 
