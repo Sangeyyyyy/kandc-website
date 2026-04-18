@@ -15,8 +15,44 @@ import { Volume2, VolumeX, X, Trophy, Medal, Award as AwardIcon, Star, Sparkles 
 import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+export type Award = {
+    group: string;
+    count: number;
+    nominations?: number;
+    note?: string;
+    tier?: 'gold' | 'silver' | 'bronze' | 'standard';
+};
+
+export type Project = {
+    id: number;
+    title: string;
+    category: string;
+    client: string;
+    year: string;
+    role: string;
+    img: string;
+    video?: string;
+    teaserImg?: string;
+    teaser?: string;
+    description: string;
+    deliverables: string[];
+    subtitle: string;
+    highlight: string;
+    themeLabel: string;
+    themeDescription: string;
+    scaleValue: string;
+    awards?: Award[];
+    gallery?: string[];
+    partnerLogos?: any[];
+    roadmap?: any[];
+    orientation?: string;
+    highlightLabel?: string;
+    theme?: string;
+};
+
 // ─── PROJECT DATA ─────────────────────────────────────────────────────────────
-const projects = [
+const projects: Project[] = [
     {
         id: 2,
         title: 'Sinners',
@@ -555,19 +591,6 @@ const projects = [
     },
 ];
 
-type Award = {
-    group: string;
-    count: number;
-    nominations?: number;
-    note?: string;
-    tier?: 'gold' | 'silver' | 'bronze' | 'standard';
-};
-
-type Project = typeof projects[0] & { 
-    video?: string; 
-    orientation?: string;
-    awards?: Award[];
-};
 
 const StatCounter = ({ to, duration = 1.5 }: { to: number; duration?: number }) => {
     const [count, setCount] = useState(0);

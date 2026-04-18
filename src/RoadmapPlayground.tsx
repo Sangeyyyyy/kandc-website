@@ -1,6 +1,6 @@
-import React, { useState, useRef, useMemo } from 'react';
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { RoadmapStep } from './RoadmapSection'; // Reuse the type
+import { useState, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import type { RoadmapStep } from './RoadmapSection'; // Reuse the type
 
 // ─── DATA ───────────────────────────────────────────────────────────────────
 const TEST_STEPS: RoadmapStep[] = [
