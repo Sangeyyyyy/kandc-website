@@ -423,7 +423,7 @@ const PARTNERS: Partner[] = [
     name: 'Jordan Brand',
     category: 'Major Client',
     description: 'K&C produced an exclusive Spike Lee-powered Jordan Brand dinner at Cannes Lions — a luxurious 5-course experience for 50 top creatives, culminating in a private Jordan drop, signing, and personalized merch. Culture and commerce at their highest intersection.',
-    image: getAssetUrl('spike_lee_dinner_1'),
+    image: getAssetUrl('assets/spike lee dinner/spike lee dinner 1.png'),
     logoFile: '-air-jordan.svg',
     role: 'Luxury Event Production & Brand Activation',
   },

@@ -39,6 +39,8 @@ export const useInView = (threshold = 0.12) => {
 export const useMagnetic = (strength = 40) => {
     const ref = useRef<HTMLDivElement>(null);
     useEffect(() => {
+        if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) return;
+        
         const el = ref.current;
         if (!el) return;
         const onMouseMove = (e: MouseEvent) => {

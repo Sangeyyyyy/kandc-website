@@ -170,7 +170,7 @@ const SERVICES_DATA = [
             { 
                 name: 'CANNES LIONS', 
                 type: 'event', 
-                portrait: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
+                portrait: getAssetUrl('spike_lee_fireside_chat_poster'),
                 objectPosition: 'center 10%',
                 year: '2023',
                 role: 'Featured Programming',
@@ -183,23 +183,12 @@ const SERVICES_DATA = [
                             theme: 'OWNERSHIP ON OUR OWN TERMS: Reclaiming Our Cultural Significance',
                             description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. Our curated lineup included a captivating Palais presentation, an exclusive Keynote/fireside chat with Spike Lee, a press junket, & a lavish 5-course celebratory meal powered by the prestigious Jordan Brand.",
                             capacity: '80 Guests (18+)',
-                            heroImage: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'),
+                            heroImage: getAssetUrl('spike_lee_fireside_chat_poster'),
                             galleryImages: [
-                                { src: getAssetUrl('097092A5-2DFA-42E8-908A-D246FFF2C967_4_5005_c'), orientation: 'landscape' },
-                                { src: getAssetUrl('0A47E56A-4AC9-44A3-86AE-25F5B2EFBDEF_4_5005_c'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('0B9BC777-27AB-47EC-9770-89E54E5EE775'), orientation: 'landscape' },
-                                { src: getAssetUrl('0BBD07DF-229D-45C9-B339-ED6078A47A7D'), orientation: 'landscape' },
-                                { src: getAssetUrl('1FFB132C-3D82-40F5-9A90-83904B4F8580'), orientation: 'landscape' },
-                                { src: getAssetUrl('41D6B12A-636A-49AC-B951-9A1AB7234CC9_4_5005_c'), orientation: 'landscape' },
-                                { src: getAssetUrl('925DF716-D0DC-4157-83F3-172E9AA6335B_4_5005_c'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/93397C95-4601-4D48-9660-0B6D7E1389EA_4_5005_c.jpeg'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC.poster.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/9D59202B-5E08-4F1F-8FB4-DE0B60EAC5CC_4_5005_c.jpeg'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster (1).JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/C9070FC2-3617-4B04-BC72-9F033B72B76D.poster.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('D441AE26-BD60-4A00-8833-5FFEC1DE2D84_4_5005_c'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Spike Lee Fireside Chat (BTS)/D9CD118B-69B1-4DBA-A564-1BA8CABD52BC_4_5005_c.jpeg'), orientation: 'landscape' }
+                                { src: getAssetUrl('spike_lee_fireside_chat_1'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_fireside_chat_2'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_fireside_chat_3'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_fireside_chat_4'), orientation: 'portrait' }
                             ]
                         }
                     },
@@ -229,16 +218,10 @@ const SERVICES_DATA = [
                             capacity: 'Capacity | 50 guests',
                             heroImage: getAssetUrl('spike_lee_dinner_1'),
                             galleryImages: [
-                                { src: getAssetUrl('spike_lee_dinner_1'), orientation: 'portrait' },
-                                { src: getAssetUrl('spike_lee_dinner_2'), orientation: 'portrait' },
-                                { src: getAssetUrl('03A1307A-9BDE-4511-AE75-CAD027D829FA_1_105_c'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/spike lee dinner/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/spike lee dinner/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/spike lee dinner/55C9A9D2-6B78-41F4-B07F-8CE97C902828.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/spike lee dinner/84733DF7-1A5E-4167-B4EC-829F6CA34504.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/spike lee dinner/E870BD89-51F3-489F-8AC6-544AED22DF90.JPG'), orientation: 'landscape' },
                                 { src: getAssetUrl('spike_lee_dinner'), orientation: 'landscape' },
+                                { src: getAssetUrl('spike_lee_dinner_1'), orientation: 'landscape' },
+                                { src: getAssetUrl('spike_lee_dinner_2'), orientation: 'landscape' },
+                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' }
                             ]
                         }
                     },
@@ -306,14 +289,13 @@ const SERVICES_DATA = [
                             videoPoster: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'),
                             heroImage: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'),
                             galleryImages: [
-                                { src: getAssetUrl('0B43F544-3EC9-4416-BF85-04CA828EFA9A'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/4B256DB9-23F5-44B2-93F9-E699D5A0E847.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/65D00D1E-3C5A-4687-A767-1B80B3D8C00E.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/8F4E3EEB-2503-444C-AED6-E3DAD6672246.JPG'), orientation: 'portrait' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/E0E83EB7-1E4A-46EA-A2B8-61FFBC99A008.JPG'), orientation: 'landscape' },
-                                { src: getAssetUrl('/assets/Black At Cannes ATLANTA/FE777B16-17F6-4F7E-AD6A-B31A3DFC901F.JPG'), orientation: 'portrait' }
+                                { src: getAssetUrl('blackat_atlanta_1'), orientation: 'portrait' },
+                                { src: getAssetUrl('blackat_atlanta_2'), orientation: 'portrait' },
+                                { src: getAssetUrl('blackat_atlanta_3'), orientation: 'landscape' },
+                                { src: getAssetUrl('blackat_atlanta_5'), orientation: 'landscape' },
+                                { src: getAssetUrl('blackat_atlanta_6'), orientation: 'landscape' },
+                                { src: getAssetUrl('blackat_atlanta_7'), orientation: 'landscape' },
+                                { src: getAssetUrl('blackat_atlanta_9'), orientation: 'landscape' }
                             ]
                         }
                     },
@@ -358,8 +340,6 @@ const SERVICES_DATA = [
                     heroOrientation: 'portrait',
                     videoSrc: getAssetUrl('jason_harvey_video'),
                     videoPoster: getAssetUrl('jason_harvey_1'),
-                    bookPdf: getAssetUrl('/assets/jason harvey/LeavingMoney-JasonEHarvey (1) (1).pdf'),
-                    pressKitPdf: getAssetUrl('/assets/jason harvey/Jason-Harvey-Visionary-Tech-and-Media-Executive_Aug_2025.key.pdf'),
                     galleryImages: [
                         { src: getAssetUrl('jason_harvey_1'), orientation: 'portrait' },
                         { src: getAssetUrl('jason_harvey_2'), orientation: 'portrait' },
@@ -667,17 +647,17 @@ const ServicesPage = () => {
                                                     </div>
 
                                                     {/* Information */}
-                                                    <div className="flex-grow">
-                                                        <div className="flex items-center justify-between mb-1.5 px-0.5">
-                                                            <h5 className="text-[0.85rem] md:text-[0.9rem] tracking-[0.25em] font-sans uppercase text-cream group-hover/client:text-rose transition-colors duration-500">
+                                                    <div className="flex-grow min-w-0">
+                                                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 md:mb-1.5 px-0.5 gap-1 md:gap-0">
+                                                            <h5 className="text-[0.85rem] md:text-[0.9rem] tracking-[0.25em] font-sans uppercase text-cream group-hover/client:text-rose transition-colors duration-500 truncate md:whitespace-normal">
                                                                 {client.name}
                                                             </h5>
                                                             {client.year && (
-                                                                <span className="text-[0.6rem] md:text-[0.65rem] font-sans text-rose/30 tracking-[0.3em] font-light">{client.year}</span>
+                                                                <span className="text-[0.6rem] md:text-[0.65rem] font-sans text-rose/30 tracking-[0.3em] font-light shrink-0">{client.year}</span>
                                                             )}
                                                         </div>
                                                         
-                                                        <div className="flex items-center gap-4 md:gap-8">
+                                                        <div className="flex flex-wrap items-center gap-3 md:gap-8 mt-1 md:mt-0">
                                                             {client.role && (
                                                                 <span className="text-[0.5rem] tracking-[0.2em] uppercase font-sans px-3 py-1.5 border border-rose/20 text-rose/60 rounded-[4px] bg-rose/[0.02] group-hover/client:border-rose/40 transition-colors">
                                                                     {client.role}

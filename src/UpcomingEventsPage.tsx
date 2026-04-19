@@ -23,7 +23,7 @@ const ALL_EVENTS = [
         location: 'New York, NY',
         type: 'Private Mixer',
         description: 'An invitation-only gathering for our closest brand partners and creative collaborators to celebrate the year\'s milestones.',
-        image: getAssetUrl('spike_lee_dinner_1'),
+        image: getAssetUrl('assets/spike lee dinner/spike lee dinner 1.png'),
     },
     {
         id: 'ev-03',

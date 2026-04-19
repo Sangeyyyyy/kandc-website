@@ -324,8 +324,6 @@ const projects: Project[] = [
         themeLabel: 'SENIOR DIRECTOR LEVEL - BRAND MANAGEMENT',
         themeDescription: 'Kelsey & Company supports Jason Harvey as his primary brand manager. Our engagement functions at a senior director level across strategy, planning, and execution — including complex brand high-stakes bookings, coordination, and overarching multi-platform development.',
         scaleValue: 'Proven Engaging Speaker',
-        bookPdf: getAssetUrl('/assets/jason harvey/LeavingMoney-JasonEHarvey (1) (1).pdf'),
-        pressKitPdf: getAssetUrl('/assets/jason harvey/Jason-Harvey-Visionary-Tech-and-Media-Executive_Aug_2025.key.pdf'),
         gallery: [
             getAssetUrl('jason_harvey_background'),
             getAssetUrl('jason_harvey_solo'),
@@ -405,14 +403,10 @@ const projects: Project[] = [
             getAssetUrl('spike_lee_fireside_chat_background'),
             getAssetUrl('spike_lee_fireside_chat_solo'),
             getAssetUrl('spike_lee_fireside_logo'),
-            getAssetUrl('097092A5-2DFA-42E8-908A-D246FFF2C967_4_5005_c'),
-            getAssetUrl('0A47E56A-4AC9-44A3-86AE-25F5B2EFBDEF_4_5005_c'),
-            getAssetUrl('0B9BC777-27AB-47EC-9770-89E54E5EE775'),
-            getAssetUrl('0BBD07DF-229D-45C9-B339-ED6078A47A7D'),
-            getAssetUrl('1FFB132C-3D82-40F5-9A90-83904B4F8580'),
-            getAssetUrl('41D6B12A-636A-49AC-B951-9A1AB7234CC9_4_5005_c'),
-            getAssetUrl('925DF716-D0DC-4157-83F3-172E9AA6335B_4_5005_c'),
-            getAssetUrl('D441AE26-BD60-4A00-8833-5FFEC1DE2D84_4_5005_c')
+            getAssetUrl('spike_lee_fireside_chat_1'),
+            getAssetUrl('spike_lee_fireside_chat_2'),
+            getAssetUrl('spike_lee_fireside_chat_3'),
+            getAssetUrl('spike_lee_fireside_chat_4'),
         ],
         partnerLogos: [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'),          mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
@@ -421,8 +415,8 @@ const projects: Project[] = [
         ],
         roadmap: [
             { phase: 'Strategy', step: '01', title: 'Executive Booking', description: 'Securing the talent and structuring the conversational arc to ensure high-impact dialogue around storytelling.', tag: 'Curation', media: getAssetUrl('spike_lee_fireside_chat_poster') },
-            { phase: 'Design', step: '02', title: 'Set & Staging', description: 'Designing an intimate, camera-ready environment that felt both premium and relaxed for an authentic fireside feel.', tag: 'Production', media: getAssetUrl('097092A5-2DFA-42E8-908A-D246FFF2C967_4_5005_c'), mediaPosition: 'right' },
-            { phase: 'Operations', step: '03', title: 'Live Show Production', description: 'Managing press access, live audience seating, and the technical execution of the chat.', tag: 'Execution', media: getAssetUrl('925DF716-D0DC-4157-83F3-172E9AA6335B_4_5005_c') },
+            { phase: 'Design', step: '02', title: 'Set & Staging', description: 'Designing an intimate, camera-ready environment that felt both premium and relaxed for an authentic fireside feel.', tag: 'Production', media: getAssetUrl('spike_lee_fireside_chat_2'), mediaPosition: 'right' },
+            { phase: 'Operations', step: '03', title: 'Live Show Production', description: 'Managing press access, live audience seating, and the technical execution of the chat.', tag: 'Execution', media: getAssetUrl('spike_lee_fireside_chat_1') },
         ],
     },
     {
@@ -488,13 +482,7 @@ const projects: Project[] = [
             getAssetUrl('spike_lee_dinner_1'),
             getAssetUrl('spike_lee_dinner'),
             getAssetUrl('spike_lee_dinner_2'),
-            getAssetUrl('03A1307A-9BDE-4511-AE75-CAD027D829FA_1_105_c'),
-            getAssetUrl('/assets/spike lee dinner/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'),
-            getAssetUrl('/assets/spike lee dinner/0F4514D5-BBF6-4C5C-8693-5BECE6012D48.JPG'),
-            getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'),
-            getAssetUrl('/assets/spike lee dinner/55C9A9D2-6B78-41F4-B07F-8CE97C902828.JPG'),
-            getAssetUrl('/assets/spike lee dinner/84733DF7-1A5E-4167-B4EC-829F6CA34504.JPG'),
-            getAssetUrl('/assets/spike lee dinner/E870BD89-51F3-489F-8AC6-544AED22DF90.JPG')
+            getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1')
         ],
         partnerLogos: [
             { src: getAssetUrl('-air-jordan'),                   mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
@@ -503,8 +491,8 @@ const projects: Project[] = [
         ],
         roadmap: [
             { phase: 'Planning', step: '01', title: 'Targeted Curation', description: 'Curating an invite-only list of 50 top-tier creative executives to foster high-level networking and intimate cause presentations.', tag: 'Strategy', media: getAssetUrl('spike_lee_dinner_poster') },
-            { phase: 'Hospitality', step: '02', title: '5-Course Experience', description: 'Working with elite culinary teams to design and serve a seamless 5-course luxury dining experience.', tag: 'Operations', media: getAssetUrl('/assets/spike lee dinner/0B3648C1-7949-4D36-856E-0401E343B1AA.JPG'), mediaPosition: 'right' },
-            { phase: 'Fulfillment', step: '03', title: 'Jordan Brand Drop', description: 'Executing the surprise gifting moment, including personalized merch distribution and managing the exclusive signing.', tag: 'Execution', media: getAssetUrl('/assets/spike lee dinner/84733DF7-1A5E-4167-B4EC-829F6CA34504.JPG') },
+            { phase: 'Hospitality', step: '02', title: '5-Course Experience', description: 'Working with elite culinary teams to design and serve a seamless 5-course luxury dining experience.', tag: 'Operations', media: getAssetUrl('spike_lee_dinner_1'), mediaPosition: 'right' },
+            { phase: 'Fulfillment', step: '03', title: 'Jordan Brand Drop', description: 'Executing the surprise gifting moment, including personalized merch distribution and managing the exclusive signing.', tag: 'Execution', media: getAssetUrl('spike_lee_dinner_2') },
         ],
     },
     {
@@ -588,6 +576,166 @@ const projects: Project[] = [
         partnerLogos: [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
         ],
+    },
+    {
+        id: 16,
+        title: 'ONE Musicfest x Eventnoire',
+        category: 'Digital Campaigns',
+        client: 'Eventnoire / ONE Musicfest',
+        year: '2025',
+        role: 'Partnership Broker & Digital Strategy Lead',
+        img: '',
+        teaserImg: '',
+        teaser: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire, leveraging over 1.2M subscribers for targeted audience acquisition.',
+        description: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility. The collaboration leveraged Eventnoire\'s ecosystem of over 1.2M culturally engaged subscribers through targeted email campaigns, SMS, banner ads, and national/regional newsletters. Additionally, we used first-party data strategies to drive new audience acquisition for ONE Musicfest—expanding their marketing funnel with qualified, affinity-aligned leads across key markets.',
+        deliverables: ['Presale Ticketing Strategy', 'Audience Engagement', 'In-Festival Brand Integrations', 'First-Party Data Acquisition', 'Email & SMS Campaigns'],
+        subtitle: 'High-impact partnership across digital and live channels.',
+        highlight: 'Partnership',
+        themeLabel: 'STRATEGIC AUDIENCE ACQUISITION',
+        themeDescription: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility.',
+        scaleValue: '1.2M+ Engaged Subscribers',
+        gallery: [],
+    },
+    {
+        id: 17,
+        title: 'BET+ x Braze',
+        category: 'Digital Campaigns',
+        client: 'BET+ & Braze',
+        year: '2024 - 2025',
+        role: 'Partnership Facilitator & Brand Programming',
+        img: '',
+        teaserImg: '',
+        teaser: 'A product grant program working to break down barriers for underrepresented startup founders.',
+        description: 'We partnered with Braze to launch the "Tech for an Equitable Future" initiative alongside BET+. This product grant program is dedicated to breaking down barriers for underrepresented startup founders. Providing 20 startups across the US, EMEA, and APAC with 12 months of free Braze access, a dedicated Customer Success Manager, and a private digital community. In return, BET+ provided 1:1 mentorship, hosted a Branding Masterclass, and gave founders access to their 4M+ subscriber base for unprecedented visibility.',
+        deliverables: ['Partnership Facilitator', 'Internal Comms', 'Programming', 'Brand Messaging'],
+        subtitle: 'Tech for an Equitable Future',
+        highlight: 'PR & Brand Programming',
+        themeLabel: 'STRATEGIC BRAND PROGRAMMING',
+        themeDescription: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
+        scaleValue: '20 Startups | 4M Subscribers',
+        gallery: [],
+        roadmap: [
+            {
+                phase: 'The Partnership',
+                step: '01',
+                title: 'Tech for an Equitable Future',
+                description: 'Structuring a robust product grant where Braze provided enterprise-level access and support, while BET+ delivered 1:1 mentorship and subscriber spotlights.',
+                tag: 'Strategy',
+                media: ''
+            },
+            {
+                phase: 'Global Launch',
+                step: '02',
+                title: 'PR & Brand Programming',
+                description: 'Launching the initiative globally at the Cannes Lions Festival 2024 in the Braze Lounge alongside Roc Nation.',
+                tag: 'Activation',
+                media: '',
+                mediaPosition: 'right'
+            },
+            {
+                phase: 'Amplification',
+                step: '03',
+                title: 'Conference Integrations',
+                description: 'Expanding the program\'s footprint through high-visibility conference integrations at FORGE 2024 and AFROTECH 2024.',
+                tag: 'Integration',
+                media: ''
+            }
+        ]
+    },
+    {
+        id: 18,
+        title: 'Average Joe',
+        category: 'Digital Campaigns',
+        client: 'BET+',
+        year: '2023',
+        role: 'Lead Brand Strategist & Copywriter',
+        img: '',
+        teaserImg: '',
+        teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
+        description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
+        deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
+        subtitle: 'BET+ Original Series',
+        highlight: 'Clio Integrated Campaign',
+        themeLabel: 'DIGITAL INNOVATION & LIFECYCLE',
+        themeDescription: 'Using metrics and focus group insights, I built strategies that connected the BET+ brand with its audiences in unforgettable ways—rolling out immersive interactive games, gamified AR lenses, and a bespoke Pittsburgh Steelers broadcast integration.',
+        scaleValue: 'Multi-Platform Campaign',
+        gallery: [],
+        roadmap: [
+            {
+                phase: 'Digital Ecosystem',
+                step: '01',
+                title: 'Interactive Experiences',
+                description: 'Developing a gamified Snapchat AR Lens, an Adikteev interactive game ("Search for Joe\'s Millions"), and multi-platform countdown elements natively connecting users to the show\'s narrative.',
+                tag: 'Digital',
+                media: ''
+            },
+            {
+                phase: 'Partnership Integration',
+                step: '02',
+                title: 'Pittsburgh Steelers',
+                description: 'Executing an anchor sports partnership featuring in-show product integration and custom promotional spots with the Pittsburgh Steelers during wildcard weekend.',
+                tag: 'Integration',
+                media: '',
+                mediaPosition: 'right'
+            },
+            {
+                phase: 'Accolades',
+                step: '03',
+                title: 'Clio Award Shortlist',
+                description: 'The campaign successfully reached audiences across all fragmented channels, earning a prestigious Clio Entertainment Shortlist designation for Integrated Campaign.',
+                tag: 'Awards',
+                media: ''
+            }
+        ],
+        awards: [
+            { group: 'CLIO Entertainment Awards', count: 1, tier: 'standard', note: 'Shortlist: Television | Series: Integrated Campaign' }
+        ]
+    },
+    {
+        id: 19,
+        title: 'The Come Up Brunch',
+        category: 'Event Producing and Programming',
+        client: 'The Come Up / The One Club for Creativity',
+        year: '2024',
+        role: 'Co-Founder, Programming Director & Creative Strategist',
+        img: '',
+        teaserImg: '',
+        teaser: 'A networking experience providing marginalized groups a pathway to a seat at the table.',
+        description: 'The Come Up Brunch is natively a networking event series designed to give marginalized groups a pathway to a seat at the table, spark conversation, build relationships, and gain resources. The event is an industry-wide call to all mid-level advertisers and above to join important conversations accompanied by a soulful brunch and lively music. All disciplines including creative, strategy, account, media, entertainment, etc., were welcome to attend.',
+        deliverables: ['Strategic Partnerships', 'Panel Programming', 'Creative Strategy', 'Vendor & Volunteer Management'],
+        subtitle: 'Networking Experience & Panel Series',
+        highlight: '11,175+ Connections',
+        themeLabel: 'COMMUNITY & CULTURAL EMPOWERMENT',
+        themeDescription: 'It\'s no secret that you can find Black people at brunch. Food is a way our BIPOC community comes together to share culture. We transformed a cultural staple into an actionable pathway connecting diverse professionals with career coaching, job opportunities with Black HR reps, and thousands of networking connections.',
+        scaleValue: '150+ Attendees | 11,175+ Interactions',
+        gallery: [],
+        roadmap: [
+            {
+                phase: 'The Vision',
+                step: '01',
+                title: 'Strategic Partnerships',
+                description: 'Collaborating with The One Club for Creativity and major sponsors like Chemistry to build an industry-wide call to all mid-level advertisers.',
+                tag: 'Strategy',
+                media: ''
+            },
+            {
+                phase: 'Programming',
+                step: '02',
+                title: 'Curated Panels',
+                description: 'Directing multiple impactful panel series including "Breaking Into Advertising," "Access Granted," "Laid Off: The Good, The Bad, & The Ugly," and "Your Network Is Your Net Worth."',
+                tag: 'Curation',
+                media: '',
+                mediaPosition: 'right'
+            },
+            {
+                phase: 'Impact',
+                step: '03',
+                title: 'Tangible Connections',
+                description: 'Facilitating over 11,175 networking connections, providing career coaching, and generating job opportunities directly with Black HR representatives.',
+                tag: 'Result',
+                media: ''
+            }
+        ]
     },
 ];
 
@@ -1144,12 +1292,13 @@ export default function ArchivesPage() {
 
     const moviePremieres = [1, 2, 3, 4, 5, 6].map(id => projects.find(p => p.id === id)).filter((p): p is Project => p !== undefined);
     const executiveBrand = projects.filter(p => [8].includes(p.id));
-    const digitalCampaigns = projects.filter(p => [7].includes(p.id));
+    const digitalCampaigns = projects.filter(p => [7, 16, 17, 18].includes(p.id));
     
     // Categorized Programming & Production
     const blackat2023Projects = projects.filter(p => [9, 11, 13, 14].includes(p.id));
     const blackat2025Projects = projects.filter(p => [15].includes(p.id));
     const spikeLeeProjects = projects.filter(p => [10, 12].includes(p.id));
+    const comeUpProjects = projects.filter(p => [19].includes(p.id));
 
     return (
         <div className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
@@ -1229,6 +1378,22 @@ export default function ArchivesPage() {
                                         ))}
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* The Come Up Subsection */}
+                        <div>
+                            <Reveal>
+                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
+                                    THE COME UP
+                                </h3>
+                            </Reveal>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32 mb-32 md:mb-48">
+                                {comeUpProjects.map((p, i) => (
+                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + blackat2023Projects.length + blackat2025Projects.length + i) * 100}>
+                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
+                                    </Reveal>
+                                ))}
                             </div>
                         </div>
 

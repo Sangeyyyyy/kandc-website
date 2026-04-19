@@ -197,25 +197,25 @@ const StepScene: React.FC<{
 
             {/* LEFT Content */}
             <motion.div
-                className="absolute top-1/2 -translate-y-1/2 left-[7%] md:left-[10%] z-10 flex flex-col gap-6"
-                style={{ opacity: contentOpacity, x: contentX, maxWidth: '42vw' }}
+                className="absolute top-1/2 -translate-y-1/2 left-[7%] md:left-[10%] z-10 flex flex-col gap-4 md:gap-6 w-[86vw] md:w-[42vw] max-w-[600px]"
+                style={{ opacity: contentOpacity, x: contentX }}
             >
                 <div className="flex items-center gap-4">
-                    <span className="h-px w-10 bg-rose/60 flex-shrink-0" />
-                    <span className="text-rose/75 text-[0.6rem] tracking-[0.55em] uppercase font-sans whitespace-nowrap">
+                    <span className="h-px w-8 md:w-10 bg-rose/60 flex-shrink-0" />
+                    <span className="text-rose/75 text-[0.55rem] md:text-[0.6rem] tracking-[0.55em] uppercase font-sans whitespace-nowrap">
                         {step.phase}
                     </span>
                 </div>
                 <h3
                     className="font-serif text-white italic leading-[1.03] tracking-tighter"
-                    style={{ fontSize: 'clamp(3rem, 5vw, 6rem)' }}
+                    style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
                 >
                     {step.title}
                 </h3>
-                <p className="text-white/45 text-base md:text-[1.1rem] font-serif italic leading-relaxed">
+                <p className="text-white/60 md:text-white/45 text-[0.95rem] md:text-[1.1rem] font-serif italic leading-relaxed drop-shadow-md">
                     {step.description}
                 </p>
-                <span className="text-[0.55rem] tracking-[0.45em] uppercase font-sans text-white/25 border border-white/10 px-6 py-2 self-start">
+                <span className="text-[0.55rem] tracking-[0.45em] uppercase font-sans text-white/25 border border-white/10 px-6 py-2 self-start backdrop-blur-sm bg-black/20 md:bg-transparent">
                     {step.tag}
                 </span>
             </motion.div>
@@ -223,18 +223,20 @@ const StepScene: React.FC<{
             {/* RIGHT Panel */}
             {step.media && (
                 <motion.div
-                    className="absolute top-0 right-0 bottom-0 z-20"
-                    style={{ opacity: mediaOpacity, x: mediaX, width: 'clamp(300px, 42vw, 620px)' }}
+                    className="absolute inset-0 md:inset-auto md:top-0 md:right-0 md:bottom-0 z-0 md:z-20 w-full md:w-[clamp(300px,42vw,620px)]"
+                    style={{ opacity: mediaOpacity, x: mediaX }}
                 >
                     <img
                         src={step.media}
                         alt={step.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover opacity-25 md:opacity-100"
                         style={{ objectPosition: step.mediaPosition || 'center' }}
                     />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.6) 25%, transparent 65%)' }} />
-                    <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 md:via-black/60 to-transparent md:bg-none">
+                        <div className="hidden md:block absolute inset-0" style={{ background: 'linear-gradient(to right, #000 0%, rgba(0,0,0,0.6) 25%, transparent 65%)' }} />
+                    </div>
+                    <div className="absolute inset-x-0 top-0 h-32 md:h-40 bg-gradient-to-b from-black to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-32 md:h-40 bg-gradient-to-t from-black to-transparent" />
                 </motion.div>
             )}
         </motion.div>
@@ -260,11 +262,11 @@ const HorizontalTimelineDot: React.FC<{
 
     return (
         <div className="flex flex-col items-center">
-            <motion.div style={{ opacity: labelOpacity }} className="text-center mb-5">
-                <p className="text-[0.68rem] font-sans font-bold uppercase tracking-[0.22em] text-white/90 whitespace-nowrap">
+            <motion.div style={{ opacity: labelOpacity }} className="text-center mb-5 w-20 md:w-32">
+                <p className="text-[0.55rem] md:text-[0.68rem] font-sans font-bold uppercase tracking-[0.22em] text-white/90 truncate md:whitespace-nowrap px-1">
                     {step.phase}
                 </p>
-                <p className="text-[0.62rem] font-sans text-white/35 whitespace-nowrap mt-1.5 px-0.5">
+                <p className="text-[0.45rem] md:text-[0.62rem] font-sans text-white/35 truncate md:whitespace-nowrap mt-1.5 px-1">
                     {step.title}
                 </p>
             </motion.div>
