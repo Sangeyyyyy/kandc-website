@@ -5,7 +5,6 @@ import { SectionBlender } from './SharedComponents';
 // ─── CONSTANTS ─────────────────────────────────────────────────────────────────
 const CANVAS_W    = 3000;  // SVG coordinate space width
 const CANVAS_H    = 2000;  // SVG coordinate space height
-const SCENE_SCALE = 1.45;  // SVG units → CSS pixels
 // Camera sits at (50vw, 48vh) — the "star focus point"
 const CAM_X_VH = 0.50;
 const CAM_Y_VH = 0.48;
