@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Reveal, TopNav, UtilityFooter, useModal, FooterCTA, WhyKelseyCompany, SectionBlender } from './SharedComponents';
 import { getAssetUrl } from './utils/assets';
-import { ResumeRoadmap } from './ResumeRoadmap';
+
 
 const WhoWeArePage = () => {
     const [loaded, setLoaded] = useState(false);
@@ -181,7 +181,7 @@ const WhoWeArePage = () => {
                 </div>
             </section>
 
-            <ResumeRoadmap />
+
 
             {/* ─── CHAPTER IV: THE CAPABILITIES / WHY US ─── */}
             <div className="bg-ink relative min-h-screen">
