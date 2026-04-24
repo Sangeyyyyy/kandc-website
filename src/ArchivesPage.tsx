@@ -1460,9 +1460,9 @@ export default function ArchivesPage() {
             </div>
 
             <div className="py-48 container mx-auto px-8 max-w-7xl">
-                <ProjectSection title="Movie Premieres & Integrated Activations" description="Blockbuster activations and immersive launch strategies for Hollywood's most anticipated releases." items={moviePremieres} onProjectClick={setSelectedProject} sectionIndex={0} />
+                <ProjectSection title="Movie Premieres & Integrated Activations" description="Blockbuster activations and immersive launch strategies for Hollywood's most anticipated releases." items={moviePremieres} onProjectClick={setSelectedProject} />
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
-                <ProjectSection title="Executive Brand Management" description="Strategic brand positioning and high-stakes coordination for industry visionaries and cultural leaders." items={executiveBrand} onProjectClick={setSelectedProject} sectionIndex={moviePremieres.length} cols={4} />
+                <ProjectSection title="Executive Brand Management" description="Strategic brand positioning and high-stakes coordination for industry visionaries and cultural leaders." items={executiveBrand} onProjectClick={setSelectedProject} cols={4} />
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
                 {/* ── Digital Campaigns Section ── */}
                 <section className="mb-48 md:mb-64">
@@ -1760,7 +1760,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
     );
 };
 
-const ProjectSection = ({ title, description, items, onProjectClick, sectionIndex, cols = 3 }: { title: string; description: string; items: Project[]; onProjectClick: (p: Project) => void; sectionIndex: number; cols?: number }) => (
+const ProjectSection = ({ title, description, items, onProjectClick, cols = 3 }: { title: string; description: string; items: Project[]; onProjectClick: (p: Project) => void; cols?: number }) => (
     <section className="mb-48 md:mb-64">
         <div className="mb-20 md:mb-32 max-w-4xl">
             <Reveal mode="mask"><h2 className="text-4xl md:text-7xl font-serif text-cream uppercase mb-8 leading-[0.9]">{title.split(' ').map((word, idx) => (<span key={idx}>{idx % 2 === 1 ? <i className="font-light italic text-rose/60">{word}</i> : word}{' '}</span>))}</h2></Reveal>
