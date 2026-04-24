@@ -109,7 +109,7 @@ export const Reveal = ({
         <div
             ref={ref}
             onClick={onClick}
-            className={`transition-all duration-[1100ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`transition-all duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 } ${className}`}
             style={{ transitionDelay: visible ? `${delay}ms` : '0ms' }}
         >

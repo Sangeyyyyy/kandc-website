@@ -1484,7 +1484,7 @@ export default function ArchivesPage() {
                         <div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                 {digitalCampaigns.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + i) * 100}>
+                                    <Reveal key={p.id} delay={(i % 4) * 60}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
                                 ))}
@@ -1500,7 +1500,7 @@ export default function ArchivesPage() {
                             </Reveal>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                 {copywritingProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + i) * 100}>
+                                    <Reveal key={p.id} delay={(i % 4) * 60}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
                                 ))}
@@ -1535,7 +1535,7 @@ export default function ArchivesPage() {
                             </Reveal>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                 {spikeLeeProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + i) * 100}>
+                                    <Reveal key={p.id} delay={(i % 4) * 60}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
                                 ))}
@@ -1560,7 +1560,7 @@ export default function ArchivesPage() {
                                     </Reveal>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                         {blackat2023Projects.map((p, i) => (
-                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + i) * 100}>
+                                            <Reveal key={p.id} delay={(i % 4) * 60}>
                                                 <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                             </Reveal>
                                         ))}
@@ -1576,7 +1576,7 @@ export default function ArchivesPage() {
                                     </Reveal>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                         {blackat2025Projects.map((p, i) => (
-                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + blackat2023Projects.length + i) * 100}>
+                                            <Reveal key={p.id} delay={(i % 4) * 60}>
                                                 <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                             </Reveal>
                                         ))}
@@ -1594,7 +1594,7 @@ export default function ArchivesPage() {
                             </Reveal>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32 mb-32 md:mb-48">
                                 {comeUpProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + blackat2023Projects.length + blackat2025Projects.length + i) * 100}>
+                                    <Reveal key={p.id} delay={(i % 4) * 60}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
                                 ))}
@@ -1768,7 +1768,7 @@ const ProjectSection = ({ title, description, items, onProjectClick, sectionInde
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 ${cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-x-12 gap-y-32`}>
             {items.map((project, i) => (
-                <Reveal key={project.id} delay={(sectionIndex + i) * 100}>
+                <Reveal key={project.id} delay={(i % cols) * 60}>
                     <ProjectCard project={project} index={i} onClick={() => onProjectClick(project)} />
                 </Reveal>
             ))}
