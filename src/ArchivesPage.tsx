@@ -584,8 +584,8 @@ const projects: Project[] = [
         client: 'Eventnoire / ONE Musicfest',
         year: '2025',
         role: 'Partnership Broker & Digital Strategy Lead',
-        img: '',
-        teaserImg: '',
+        img: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
+        teaserImg: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
         teaser: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire, leveraging over 1.2M subscribers for targeted audience acquisition.',
         description: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility. The collaboration leveraged Eventnoire\'s ecosystem of over 1.2M culturally engaged subscribers through targeted email campaigns, SMS, banner ads, and national/regional newsletters. Additionally, we used first-party data strategies to drive new audience acquisition for ONE Musicfest—expanding their marketing funnel with qualified, affinity-aligned leads across key markets.',
         deliverables: ['Presale Ticketing Strategy', 'Audience Engagement', 'In-Festival Brand Integrations', 'First-Party Data Acquisition', 'Email & SMS Campaigns'],
@@ -594,7 +594,41 @@ const projects: Project[] = [
         themeLabel: 'STRATEGIC AUDIENCE ACQUISITION',
         themeDescription: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility.',
         scaleValue: '1.2M+ Engaged Subscribers',
-        gallery: [],
+        gallery: [
+            getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
+            getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
+        ],
+        partnerLogos: [
+            { src: getAssetUrl('assets/brands/ONE_Musicfest_Logo.png'), mode: 'monochrome', size: 'wide', alt: 'ONE Musicfest', scale: 1.2 },
+            { src: getAssetUrl('assets/eventnoire/eventnoire logo.webp'), mode: 'monochrome', size: 'wide', alt: 'Eventnoire', scale: 1.2 }
+        ],
+        roadmap: [
+            {
+                phase: 'The Partnership',
+                step: '01',
+                title: 'Brokerage & Strategy',
+                description: 'Securing a high-impact partnership with ONE Musicfest on behalf of client Eventnoire, leveraging a deep ecosystem of culturally engaged subscribers.',
+                tag: 'Strategy',
+                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
+            },
+            {
+                phase: 'Digital Campaign',
+                step: '02',
+                title: 'Campaign Execution',
+                description: 'Leading efforts around presale ticketing, targeted email campaigns, SMS, and newsletter distribution to drive platform visibility.',
+                tag: 'Activation',
+                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
+                mediaPosition: 'right'
+            },
+            {
+                phase: 'Integration',
+                step: '03',
+                title: 'In-Festival Data Acquisition',
+                description: 'Using first-party data strategies and in-festival brand integrations to drive new audience acquisition and expand the marketing funnel.',
+                tag: 'Integration',
+                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
+            }
+        ]
     },
     {
         id: 17,
@@ -603,8 +637,8 @@ const projects: Project[] = [
         client: 'BET+ & Braze',
         year: '2024 - 2025',
         role: 'Partnership Facilitator & Brand Programming',
-        img: '',
-        teaserImg: '',
+        img: getAssetUrl('assets/BET+ x Braze/braze poster.png'),
+        teaserImg: getAssetUrl('assets/BET+ x Braze/braze poster.png'),
         teaser: 'A product grant program working to break down barriers for underrepresented startup founders.',
         description: 'We partnered with Braze to launch the "Tech for an Equitable Future" initiative alongside BET+. This product grant program is dedicated to breaking down barriers for underrepresented startup founders. Providing 20 startups across the US, EMEA, and APAC with 12 months of free Braze access, a dedicated Customer Success Manager, and a private digital community. In return, BET+ provided 1:1 mentorship, hosted a Branding Masterclass, and gave founders access to their 4M+ subscriber base for unprecedented visibility.',
         deliverables: ['Partnership Facilitator', 'Internal Comms', 'Programming', 'Brand Messaging'],
@@ -613,7 +647,19 @@ const projects: Project[] = [
         themeLabel: 'STRATEGIC BRAND PROGRAMMING',
         themeDescription: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
         scaleValue: '20 Startups | 4M Subscribers',
-        gallery: [],
+        gallery: [
+            getAssetUrl('assets/BET+ x Braze/braze poster.png'),
+            getAssetUrl('assets/BET+ x Braze/IMG_0509.JPG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_4960.PNG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_4966.PNG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_4967.PNG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_4968.PNG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_4969.PNG'),
+            getAssetUrl('assets/BET+ x Braze/IMG_9696.PNG')
+        ],
+        partnerLogos: [
+            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
+        ],
         roadmap: [
             {
                 phase: 'The Partnership',
@@ -621,7 +667,7 @@ const projects: Project[] = [
                 title: 'Tech for an Equitable Future',
                 description: 'Structuring a robust product grant where Braze provided enterprise-level access and support, while BET+ delivered 1:1 mentorship and subscriber spotlights.',
                 tag: 'Strategy',
-                media: ''
+                media: getAssetUrl('assets/BET+ x Braze/IMG_4966.PNG')
             },
             {
                 phase: 'Global Launch',
@@ -629,7 +675,7 @@ const projects: Project[] = [
                 title: 'PR & Brand Programming',
                 description: 'Launching the initiative globally at the Cannes Lions Festival 2024 in the Braze Lounge alongside Roc Nation.',
                 tag: 'Activation',
-                media: '',
+                media: getAssetUrl('assets/BET+ x Braze/IMG_4967.PNG'),
                 mediaPosition: 'right'
             },
             {
@@ -638,7 +684,7 @@ const projects: Project[] = [
                 title: 'Conference Integrations',
                 description: 'Expanding the program\'s footprint through high-visibility conference integrations at FORGE 2024 and AFROTECH 2024.',
                 tag: 'Integration',
-                media: ''
+                media: getAssetUrl('assets/BET+ x Braze/IMG_4968.PNG')
             }
         ]
     },
@@ -649,8 +695,9 @@ const projects: Project[] = [
         client: 'BET+',
         year: '2023',
         role: 'Lead Brand Strategist & Copywriter',
-        img: '',
-        teaserImg: '',
+        img: getAssetUrl('assets/average joe/average joe poster.jpg'),
+        teaserImg: getAssetUrl('assets/average joe/average joe poster.jpg'),
+        video: getAssetUrl('assets/average joe/average joe main video.mp4'),
         teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
         description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
         deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
@@ -659,7 +706,18 @@ const projects: Project[] = [
         themeLabel: 'DIGITAL INNOVATION & LIFECYCLE',
         themeDescription: 'Using metrics and focus group insights, I built strategies that connected the BET+ brand with its audiences in unforgettable ways—rolling out immersive interactive games, gamified AR lenses, and a bespoke Pittsburgh Steelers broadcast integration.',
         scaleValue: 'Multi-Platform Campaign',
-        gallery: [],
+        gallery: [
+            getAssetUrl('assets/average joe/average joe poster.jpg'),
+            getAssetUrl('assets/average joe/average joe.png'),
+            getAssetUrl('assets/average joe/average joe 1 .png'),
+            getAssetUrl('assets/average joe/average joe 3.png'),
+            getAssetUrl('assets/average joe/average joe 4.png'),
+            getAssetUrl('assets/average joe/average joe main video.mp4'),
+            getAssetUrl('assets/average joe/average joe phone video.mp4')
+        ],
+        partnerLogos: [
+             { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
+        ],
         roadmap: [
             {
                 phase: 'Digital Ecosystem',
@@ -667,7 +725,7 @@ const projects: Project[] = [
                 title: 'Interactive Experiences',
                 description: 'Developing a gamified Snapchat AR Lens, an Adikteev interactive game ("Search for Joe\'s Millions"), and multi-platform countdown elements natively connecting users to the show\'s narrative.',
                 tag: 'Digital',
-                media: ''
+                media: getAssetUrl('assets/average joe/average joe phone video.mp4')
             },
             {
                 phase: 'Partnership Integration',
@@ -675,7 +733,7 @@ const projects: Project[] = [
                 title: 'Pittsburgh Steelers',
                 description: 'Executing an anchor sports partnership featuring in-show product integration and custom promotional spots with the Pittsburgh Steelers during wildcard weekend.',
                 tag: 'Integration',
-                media: '',
+                media: getAssetUrl('assets/average joe/average joe 3.png'),
                 mediaPosition: 'right'
             },
             {
@@ -684,7 +742,7 @@ const projects: Project[] = [
                 title: 'Clio Award Shortlist',
                 description: 'The campaign successfully reached audiences across all fragmented channels, earning a prestigious Clio Entertainment Shortlist designation for Integrated Campaign.',
                 tag: 'Awards',
-                media: ''
+                media: getAssetUrl('assets/average joe/average joe 1 .png')
             }
         ],
         awards: [
@@ -744,7 +802,25 @@ const projects: Project[] = [
         client: 'Sprite',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/sprite/sprite poster.png'),
+        teaserImg: getAssetUrl('assets/sprite/sprite poster.png'),
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 24,
+        title: 'Kids Foot Locker',
+        category: 'Copywriting',
+        client: 'Foot Locker',
+        year: '2023',
+        role: 'Copywriter',
+        img: getAssetUrl('assets/kids foot locker/kids foot locker poster.png'),
+        teaserImg: getAssetUrl('assets/kids foot locker/kids foot locker poster.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -808,7 +884,8 @@ const projects: Project[] = [
         client: 'Popeyes',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/popeyes/Gemini_Generated_Image_gtyk2gtyk2gtyk2g.png'),
+        teaserImg: getAssetUrl('assets/popeyes/Gemini_Generated_Image_gtyk2gtyk2gtyk2g.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -824,7 +901,8 @@ const projects: Project[] = [
         client: 'Kelsey Nashe',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/shuffle slay/Gemini_Generated_Image_9tf0619tf0619tf0.png'),
+        teaserImg: getAssetUrl('assets/shuffle slay/Gemini_Generated_Image_9tf0619tf0619tf0.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -840,7 +918,8 @@ const projects: Project[] = [
         client: 'BP / Dairy Queen',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/bp x dq/dp x dq.png'),
+        teaserImg: getAssetUrl('assets/bp x dq/dp x dq.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -852,11 +931,28 @@ const projects: Project[] = [
     {
         id: 27,
         title: "A Father's Love",
-        category: 'Copywriting',
+        category: 'Film Production',
         client: 'K&C',
-        year: '2023',
+        year: '2025',
         role: 'Copywriter',
         img: '',
+        description: 'Copywriting and strategic development for the short film "A Father\'s Love," exploring themes of legacy and emotional resonance.',
+        deliverables: ['Copywriting', 'Script Consulting', 'Brand Narrative'],
+        subtitle: 'Short Film',
+        highlight: 'Cinematic Storytelling',
+        themeLabel: 'FILM PRODUCTION',
+        themeDescription: 'Copywriting and strategic development for the short film "A Father\'s Love," exploring themes of legacy and emotional resonance.',
+        scaleValue: '2025 Release',
+    },
+    {
+        id: 28,
+        title: "Minute Maid Twist 'n Sip",
+        category: 'Copywriting',
+        client: 'Minute Maid',
+        year: '2023',
+        role: 'Copywriter',
+        img: getAssetUrl('assets/minute maid/Gemini_Generated_Image_8yqxm38yqxm38yqx.png'),
+        teaserImg: getAssetUrl('assets/minute maid/Gemini_Generated_Image_8yqxm38yqxm38yqx.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -866,20 +962,52 @@ const projects: Project[] = [
         scaleValue: '',
     },
     {
-        id: 28,
-        title: "Minute Maid Twist 'n Sip",
-        category: 'Copywriting',
-        client: 'Minute Maid',
+        id: 29,
+        title: 'Kingdom Business',
+        category: 'Digital Campaigns',
+        client: 'BET+',
         year: '2023',
-        role: 'Copywriter',
+        role: 'Lead Brand Strategist & Copywriter',
         img: '',
-        description: '',
-        deliverables: [],
-        subtitle: '',
-        highlight: '',
-        themeLabel: '',
-        themeDescription: '',
-        scaleValue: '',
+        video: getAssetUrl('assets/kingdom business/kingdom business video.mov'),
+        teaserImg: '',
+        description: 'Lead brand strategy and copywriting for the BET+ original series Kingdom Business, creating a cohesive narrative across digital and broadcast channels.',
+        deliverables: ['Brand Strategy', 'Copywriting', 'Digital Content', 'Broadcast Integration'],
+        subtitle: 'BET+ Original Series',
+        highlight: 'Series Launch',
+        themeLabel: 'BRAND STRATEGY & COPYWRITING',
+        themeDescription: 'Lead brand strategy and copywriting for the BET+ original series Kingdom Business, creating a cohesive narrative across digital and broadcast channels.',
+        scaleValue: 'BET+ Original',
+        gallery: [getAssetUrl('assets/kingdom business/kingdom business video.mov')],
+    },
+    {
+        id: 30,
+        title: 'Black At Cannes ATLANTA',
+        category: 'Event Producing and Programming',
+        client: 'Black At Cannes',
+        year: '2024',
+        role: 'Global Director and Producer',
+        img: getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
+        teaserImg: getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
+        video: getAssetUrl('assets/Black At Cannes ATLANTA/ABE.mp4'),
+        description: 'The Atlanta activation of Black At Cannes, celebrating excellence in the local market with high-level networking and insightful panels.',
+        deliverables: ['Event Production', 'Talent Curation', 'Sponsor Integration', 'Community Engagement'],
+        subtitle: 'Atlanta Activation',
+        highlight: 'Community Excellence',
+        themeLabel: 'EVENT PRODUCTION',
+        themeDescription: 'The Atlanta activation of Black At Cannes, celebrating excellence in the local market with high-level networking and insightful panels.',
+        scaleValue: 'Local Market Leader',
+        gallery: [
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (2).JPG'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (2).jpeg'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (3).jpeg'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (5).jpeg'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (6).jpeg'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (7).JPG'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (9).JPG'),
+            getAssetUrl('assets/Black At Cannes ATLANTA/ABE.mp4')
+        ],
     },
 ];
 
