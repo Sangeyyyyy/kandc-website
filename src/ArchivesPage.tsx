@@ -118,7 +118,7 @@ const projects: Project[] = [
             {
                 phase: 'On-Site Production',
                 step: '03',
-                title: 'Premiere & Execuion',
+                title: 'Premiere & Execution',
                 description: 'Directing on-site red carpet production, managing asset delivery, and overseeing audience engagement for advanced screenings.',
                 tag: 'Execution',
                 media: getAssetUrl('sinners_5'),
@@ -737,6 +737,150 @@ const projects: Project[] = [
             }
         ]
     },
+    {
+        id: 20,
+        title: 'Sprite',
+        category: 'Copywriting',
+        client: 'Sprite',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 21,
+        title: 'Instagram Shop',
+        category: 'Copywriting',
+        client: 'Instagram',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 22,
+        title: 'Cards Against Concussions',
+        category: 'Copywriting',
+        client: 'PADV',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 23,
+        title: 'Philadelphia',
+        category: 'Copywriting',
+        client: 'Kraft Philadelphia',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 24,
+        title: 'Popeyes',
+        category: 'Copywriting',
+        client: 'Popeyes',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 25,
+        title: 'Holiday Slay Shuffle',
+        category: 'Copywriting',
+        client: 'Kelsey Nashe',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 26,
+        title: 'Radio Spots',
+        category: 'Copywriting',
+        client: 'BP / Dairy Queen',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 27,
+        title: "A Father's Love",
+        category: 'Copywriting',
+        client: 'K&C',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
+    {
+        id: 28,
+        title: "Minute Maid Twist 'n Sip",
+        category: 'Copywriting',
+        client: 'Minute Maid',
+        year: '2023',
+        role: 'Copywriter',
+        img: '',
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
+    },
 ];
 
 
@@ -1299,6 +1443,7 @@ export default function ArchivesPage() {
     const blackat2025Projects = projects.filter(p => [15].includes(p.id));
     const spikeLeeProjects = projects.filter(p => [10, 12].includes(p.id));
     const comeUpProjects = projects.filter(p => [19].includes(p.id));
+    const copywritingProjects = projects.filter(p => [20, 21, 22, 23, 24, 25, 26, 27, 28].includes(p.id));
 
     return (
         <div className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
@@ -1317,9 +1462,52 @@ export default function ArchivesPage() {
             <div className="py-48 container mx-auto px-8 max-w-7xl">
                 <ProjectSection title="Movie Premieres & Integrated Activations" description="Blockbuster activations and immersive launch strategies for Hollywood's most anticipated releases." items={moviePremieres} onProjectClick={setSelectedProject} sectionIndex={0} />
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
-                <ProjectSection title="Executive Brand Management" description="Strategic brand positioning and high-stakes coordination for industry visionaries and cultural leaders." items={executiveBrand} onProjectClick={setSelectedProject} sectionIndex={moviePremieres.length} />
+                <ProjectSection title="Executive Brand Management" description="Strategic brand positioning and high-stakes coordination for industry visionaries and cultural leaders." items={executiveBrand} onProjectClick={setSelectedProject} sectionIndex={moviePremieres.length} cols={4} />
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
-                <ProjectSection title="Digital Campaigns" description="Strategic digital marketing and culture-first storytelling for streaming platforms and digital identity." items={digitalCampaigns} onProjectClick={setSelectedProject} sectionIndex={moviePremieres.length + executiveBrand.length} />
+                {/* ── Digital Campaigns Section ── */}
+                <section className="mb-48 md:mb-64">
+                    <div className="mb-20 md:mb-32 max-w-4xl">
+                        <Reveal mode="mask">
+                            <h2 className="text-4xl md:text-7xl font-serif text-cream uppercase mb-8 leading-[0.9]">
+                                Digital <i>Campaigns</i>
+                            </h2>
+                        </Reveal>
+                        <Reveal delay={200}>
+                            <p className="text-lg md:text-2xl text-cream/40 font-serif italic border-l-2 border-rose/30 pl-8 ml-1 leading-relaxed">
+                                Strategic digital marketing and culture-first storytelling for streaming platforms and digital identity.
+                            </p>
+                        </Reveal>
+                    </div>
+
+                    <div className="space-y-48 md:space-y-64">
+                        {/* Primary Campaigns */}
+                        <div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+                                {digitalCampaigns.map((p, i) => (
+                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + i) * 100}>
+                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Copywriting Subsection */}
+                        <div>
+                            <Reveal>
+                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
+                                    COPYWRITING
+                                </h3>
+                            </Reveal>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+                                {copywritingProjects.map((p, i) => (
+                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + i) * 100}>
+                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
                 
                 {/* ── International Events Section ── */}
@@ -1338,6 +1526,22 @@ export default function ArchivesPage() {
                     </div>
 
                     <div className="space-y-48 md:space-y-64">
+                        {/* Spike Lee Subsection */}
+                        <div>
+                            <Reveal>
+                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
+                                    SPIKE LEE
+                                </h3>
+                            </Reveal>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+                                {spikeLeeProjects.map((p, i) => (
+                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + i) * 100}>
+                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
+
                         {/* Blackat Subsection */}
                         <div>
                             <Reveal>
@@ -1354,9 +1558,9 @@ export default function ArchivesPage() {
                                             2023 Programming
                                         </h4>
                                     </Reveal>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                         {blackat2023Projects.map((p, i) => (
-                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + i) * 100}>
+                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + i) * 100}>
                                                 <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                             </Reveal>
                                         ))}
@@ -1370,9 +1574,9 @@ export default function ArchivesPage() {
                                             2025 Programming
                                         </h4>
                                     </Reveal>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
                                         {blackat2025Projects.map((p, i) => (
-                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + blackat2023Projects.length + i) * 100}>
+                                            <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + blackat2023Projects.length + i) * 100}>
                                                 <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                             </Reveal>
                                         ))}
@@ -1388,25 +1592,9 @@ export default function ArchivesPage() {
                                     THE COME UP
                                 </h3>
                             </Reveal>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32 mb-32 md:mb-48">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32 mb-32 md:mb-48">
                                 {comeUpProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + blackat2023Projects.length + blackat2025Projects.length + i) * 100}>
-                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
-                                    </Reveal>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Spike Lee Subsection */}
-                        <div>
-                            <Reveal>
-                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
-                                    SPIKE LEE
-                                </h3>
-                            </Reveal>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32">
-                                {spikeLeeProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + blackat2023Projects.length + blackat2025Projects.length + i) * 100}>
+                                    <Reveal key={p.id} delay={(moviePremieres.length + executiveBrand.length + digitalCampaigns.length + spikeLeeProjects.length + blackat2023Projects.length + blackat2025Projects.length + i) * 100}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
                                 ))}
@@ -1534,11 +1722,17 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
                     />
                 ) : (
                     <div className="w-full h-full overflow-hidden relative rounded-sm bg-burgundy/5 border border-rose/5 transition-colors">
-                        <img 
-                            src={project.img} 
-                            alt={project.title} 
-                            className="w-full h-full transition-all duration-[1500ms] ease-out object-cover"
-                        />
+                        {project.img ? (
+                            <img 
+                                src={project.img} 
+                                alt={project.title} 
+                                className="w-full h-full transition-all duration-[1500ms] ease-out object-cover"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+                                <span className="text-[0.45rem] tracking-[0.4em] uppercase text-cream/10">Coming Soon</span>
+                            </div>
+                        )}
                     </div>
                 )}
 
@@ -1566,13 +1760,13 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
     );
 };
 
-const ProjectSection = ({ title, description, items, onProjectClick, sectionIndex }: { title: string; description: string; items: Project[]; onProjectClick: (p: Project) => void; sectionIndex: number }) => (
+const ProjectSection = ({ title, description, items, onProjectClick, sectionIndex, cols = 3 }: { title: string; description: string; items: Project[]; onProjectClick: (p: Project) => void; sectionIndex: number; cols?: number }) => (
     <section className="mb-48 md:mb-64">
         <div className="mb-20 md:mb-32 max-w-4xl">
             <Reveal mode="mask"><h2 className="text-4xl md:text-7xl font-serif text-cream uppercase mb-8 leading-[0.9]">{title.split(' ').map((word, idx) => (<span key={idx}>{idx % 2 === 1 ? <i className="font-light italic text-rose/60">{word}</i> : word}{' '}</span>))}</h2></Reveal>
             <Reveal delay={200}><p className="text-lg md:text-2xl text-cream/40 font-serif italic border-l-2 border-rose/30 pl-8 ml-1 leading-relaxed">{description}</p></Reveal>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-32">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-x-12 gap-y-32`}>
             {items.map((project, i) => (
                 <Reveal key={project.id} delay={(sectionIndex + i) * 100}>
                     <ProjectCard project={project} index={i} onClick={() => onProjectClick(project)} />

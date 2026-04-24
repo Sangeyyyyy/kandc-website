@@ -32,12 +32,10 @@ const Bg: React.FC<{ step: RoadmapStep }> = ({ step }) => (
                 src={step.media}
                 alt=""
                 aria-hidden
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 style={{
                     objectPosition: step.mediaPosition || 'center',
                     filter: 'grayscale(80%) brightness(0.3) contrast(1.05)',
-                    transform: 'scale(1.04)',
-                    transition: 'transform 8s ease-out',
                 }}
             />
         ) : (
