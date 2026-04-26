@@ -7,7 +7,6 @@ import {
     UtilityFooter
 } from './SharedComponents';
 import { getAssetUrl } from './utils/assets';
-import { ThreeDPosterCard } from './ThreeDPosterCard';
 import { RoadmapSection } from './RoadmapSection';
 import { Volume2, VolumeX, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -60,9 +59,9 @@ const projects: Project[] = [
         client: 'Warner Bros. Pictures',
         year: '2024',
         role: 'Live Activation Creative Producer | HBCU & Film Community Amplification',
-        img: getAssetUrl('sinners_poster'),
+        img: getAssetUrl('assets/posters/sinners.jpg'),
         video: getAssetUrl('Sinners_video'),
-        teaserImg: getAssetUrl('sinners_poster'),
+        teaserImg: getAssetUrl('assets/posters/sinners.jpg'),
         teaser: 'A cinematic premiere event that redefined the red carpet experience.',
         description: `Kelsey & Company partnered with Warner Bros. and MACRO to produce the premiere activation for Sinners—a full-scale, immersive launch experience that blurred the line between film and lived reality. We led the HBCU & Film Community Amplification strategy, including the "HBCU Classic" partnership during All-Star Weekend, the Morehouse Student Poster Contest, and 4 high-impact virtual fireside chats featuring filmmakers Ryan Coogler and Michael B. Jordan.`,
         deliverables: ['HBCU Community Amplification', 'Virtual Fireside Chat Series', 'Morehouse Student Poster Contest', 'Core Market Strategy (ATL, NC, FL, TN, AL)', 'Red Carpet Production', 'Live Brand Activation'],
@@ -132,8 +131,8 @@ const projects: Project[] = [
         client: 'Walt Disney Studios',
         year: '2025',
         role: 'Integrated Marketing & Brand Activation',
-        img: getAssetUrl('tron'),
-        teaserImg: getAssetUrl('tron'),
+        img: getAssetUrl('assets/posters/tron.jpeg'),
+        teaserImg: getAssetUrl('assets/posters/tron.jpeg'),
         teaser: 'A neon-drenched, world-building marketing campaign built for the digital age.',
         description: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
         deliverables: ['Pop-Up Experience Design', 'Influencer & Talent Relations', 'Digital Content Strategy', 'Launch Event Production'],
@@ -166,8 +165,8 @@ const projects: Project[] = [
         client: 'Walt Disney Animation',
         year: '2023',
         role: 'Brand Partnership Management',
-        img: getAssetUrl('zootopia'),
-        teaserImg: getAssetUrl('zootopia'),
+        img: getAssetUrl('assets/posters/zootopia.jpg'),
+        teaserImg: getAssetUrl('assets/posters/zootopia.jpg'),
         teaser: 'Strategic partnerships that extended the world of Zootopia into everyday culture.',
         description: `K&C curated and managed a suite of co-branded partnerships for the Zootopia franchise, connecting the animated world with premium lifestyle brands. Our curation drove unprecedented cultural penetration and brand affinity across key demographics.`,
         deliverables: ['Brand Partner Curation', 'Co-Branded Campaign Strategy', 'Deal Negotiation & Execution', 'Cultural Alignment Oversight'],
@@ -187,8 +186,8 @@ const projects: Project[] = [
         client: '20th Century Studios',
         year: '2023',
         role: 'Experiential Production Lead',
-        img: getAssetUrl('avatar_2'),
-        teaserImg: getAssetUrl('avatar_2'),
+        img: getAssetUrl('assets/posters/avatar.jpeg'),
+        teaserImg: getAssetUrl('assets/posters/avatar.jpeg'),
         teaser: 'An otherworldly launch experience that transported audiences to Pandora.',
         description: `For Avatar: The Way of Water, Kelsey & Company designed and produced an immersive theatrical world-preview event. Guests were transported through the film's oceanic environments via multi-sensory staging, setting a new benchmark for blockbuster experiential marketing.`,
         deliverables: ['Immersive Environment Design', 'Multi-Sensory Event Production', 'Talent & Talent Management', 'Press Activation Strategy'],
@@ -226,8 +225,8 @@ const projects: Project[] = [
         client: 'Netflix',
         year: '2024',
         role: 'Live Experience Production',
-        img: getAssetUrl('hoppers_1'),
-        teaserImg: getAssetUrl('hoppers_1'),
+        img: getAssetUrl('assets/posters/hoppers.jpeg'),
+        teaserImg: getAssetUrl('assets/posters/hoppers.jpeg'),
         teaser: 'A live-to-screen event series that brought Netflix\'s biggest series to life.',
         description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
         deliverables: ['Live Event Series', 'Fan Engagement Strategy', 'Venue Production & Staffing', 'Social Media Amplification'],
@@ -266,8 +265,8 @@ const projects: Project[] = [
         client: 'Fox Entertainment',
         year: '2025',
         role: 'Strategic Brand & Fashion Partnerships',
-        img: getAssetUrl('devil_wears_prada'),
-        teaserImg: getAssetUrl('devil_wears_prada'),
+        img: getAssetUrl('assets/posters/devil wears prada.jpeg'),
+        teaserImg: getAssetUrl('assets/posters/devil wears prada.jpeg'),
         teaser: 'A fashion-forward partnership strategy that made the world pay attention.',
         description: `For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.`,
         deliverables: ['Luxury Fashion Partnerships', 'Editorial Integration', 'Press Preview Production', 'Global Brand Strategy'],
@@ -555,6 +554,7 @@ const projects: Project[] = [
         role: 'Global Director and Producer',
         img: getAssetUrl('thought_leadership_brunch_poster'),
         teaserImg: getAssetUrl('thought_leadership_brunch_poster'),
+        video: getAssetUrl('assets/thought leadership brunch/thought leadership brunch video.mov'),
         teaser: 'A premier summit celebrating global Black excellence.',
         description: 'As Global Director and Producer, I led the end-to-end execution of Black at Cannes, a premier summit celebrating global Black excellence. I managed an international team and global vendors to deliver high-level programming, ranging from executive-led panels to an exclusive gala for Nedbank. This world-class experience successfully connected top-tier industry leaders on a global stage. \n\nThought Leadership Brunch Cannes @ The Martinez',
         deliverables: ['High-level Programming', 'Executive-Led Panels', 'Exclusive Gala Execution', 'Global Vendor Management'],
@@ -576,6 +576,7 @@ const projects: Project[] = [
         partnerLogos: [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
         ],
+        orientation: 'portrait',
     },
     {
         id: 16,
@@ -756,8 +757,9 @@ const projects: Project[] = [
         client: 'The Come Up / The One Club for Creativity',
         year: '2024',
         role: 'Co-Founder, Programming Director & Creative Strategist',
-        img: '',
-        teaserImg: '',
+        img: getAssetUrl('assets/the come up brunch/the come up brunch poster.png'),
+        teaserImg: getAssetUrl('assets/the come up brunch/the come up brunch poster.png'),
+        video: getAssetUrl('assets/the come up brunch/the_come_up_brunch_video.mp4'),
         teaser: 'A networking experience providing marginalized groups a pathway to a seat at the table.',
         description: 'The Come Up Brunch is natively a networking event series designed to give marginalized groups a pathway to a seat at the table, spark conversation, build relationships, and gain resources. The event is an industry-wide call to all mid-level advertisers and above to join important conversations accompanied by a soulful brunch and lively music. All disciplines including creative, strategy, account, media, entertainment, etc., were welcome to attend.',
         deliverables: ['Strategic Partnerships', 'Panel Programming', 'Creative Strategy', 'Vendor & Volunteer Management'],
@@ -793,7 +795,8 @@ const projects: Project[] = [
                 tag: 'Result',
                 media: ''
             }
-        ]
+        ],
+        orientation: 'portrait',
     },
     {
         id: 20,
@@ -836,7 +839,8 @@ const projects: Project[] = [
         client: 'Instagram',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/instagram/Gemini_Generated_Image_738o8m738o8m738o.png'),
+        teaserImg: getAssetUrl('assets/instagram/Gemini_Generated_Image_738o8m738o8m738o.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -852,7 +856,8 @@ const projects: Project[] = [
         client: 'PADV',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/cards against concussion/Gemini_Generated_Image_242gl2242gl2242g.png'),
+        teaserImg: getAssetUrl('assets/cards against concussion/Gemini_Generated_Image_242gl2242gl2242g.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -868,7 +873,8 @@ const projects: Project[] = [
         client: 'Kraft Philadelphia',
         year: '2023',
         role: 'Copywriter',
-        img: '',
+        img: getAssetUrl('assets/Philadelphia/Gemini_Generated_Image_kn692jkn692jkn69.png'),
+        teaserImg: getAssetUrl('assets/Philadelphia/Gemini_Generated_Image_kn692jkn692jkn69.png'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -931,18 +937,19 @@ const projects: Project[] = [
     {
         id: 27,
         title: "A Father's Love",
-        category: 'Film Production',
+        category: 'Copywriting',
         client: 'K&C',
-        year: '2025',
+        year: '2023',
         role: 'Copywriter',
-        img: '',
-        description: 'Copywriting and strategic development for the short film "A Father\'s Love," exploring themes of legacy and emotional resonance.',
-        deliverables: ['Copywriting', 'Script Consulting', 'Brand Narrative'],
-        subtitle: 'Short Film',
-        highlight: 'Cinematic Storytelling',
-        themeLabel: 'FILM PRODUCTION',
-        themeDescription: 'Copywriting and strategic development for the short film "A Father\'s Love," exploring themes of legacy and emotional resonance.',
-        scaleValue: '2025 Release',
+        img: getAssetUrl('assets/fathers love/Gemini_Generated_Image_quad0mquad0mquad.png'),
+        teaserImg: getAssetUrl('assets/fathers love/Gemini_Generated_Image_quad0mquad0mquad.png'),
+        description: '',
+        deliverables: [],
+        subtitle: '',
+        highlight: '',
+        themeLabel: '',
+        themeDescription: '',
+        scaleValue: '',
     },
     {
         id: 28,
@@ -964,50 +971,21 @@ const projects: Project[] = [
     {
         id: 29,
         title: 'Kingdom Business',
-        category: 'Digital Campaigns',
-        client: 'BET+',
-        year: '2023',
-        role: 'Lead Brand Strategist & Copywriter',
-        img: '',
-        video: getAssetUrl('assets/kingdom business/kingdom business video.mov'),
-        teaserImg: '',
-        description: 'Lead brand strategy and copywriting for the BET+ original series Kingdom Business, creating a cohesive narrative across digital and broadcast channels.',
-        deliverables: ['Brand Strategy', 'Copywriting', 'Digital Content', 'Broadcast Integration'],
-        subtitle: 'BET+ Original Series',
-        highlight: 'Series Launch',
-        themeLabel: 'BRAND STRATEGY & COPYWRITING',
-        themeDescription: 'Lead brand strategy and copywriting for the BET+ original series Kingdom Business, creating a cohesive narrative across digital and broadcast channels.',
-        scaleValue: 'BET+ Original',
-        gallery: [getAssetUrl('assets/kingdom business/kingdom business video.mov')],
-    },
-    {
-        id: 30,
-        title: 'Black At Cannes ATLANTA',
         category: 'Event Producing and Programming',
-        client: 'Black At Cannes',
+        client: 'BET+',
         year: '2024',
-        role: 'Global Director and Producer',
-        img: getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
-        teaserImg: getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
-        video: getAssetUrl('assets/Black At Cannes ATLANTA/ABE.mp4'),
-        description: 'The Atlanta activation of Black At Cannes, celebrating excellence in the local market with high-level networking and insightful panels.',
-        deliverables: ['Event Production', 'Talent Curation', 'Sponsor Integration', 'Community Engagement'],
-        subtitle: 'Atlanta Activation',
-        highlight: 'Community Excellence',
-        themeLabel: 'EVENT PRODUCTION',
-        themeDescription: 'The Atlanta activation of Black At Cannes, celebrating excellence in the local market with high-level networking and insightful panels.',
-        scaleValue: 'Local Market Leader',
-        gallery: [
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (1).JPG'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (2).JPG'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (2).jpeg'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (3).jpeg'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (5).jpeg'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (6).jpeg'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (7).JPG'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/blackat_atlanta (9).JPG'),
-            getAssetUrl('assets/Black At Cannes ATLANTA/ABE.mp4')
-        ],
+        role: 'Production',
+        img: getAssetUrl('assets/kingdom business/kingdom business poster.jpg'),
+        teaserImg: getAssetUrl('assets/kingdom business/kingdom business poster.jpg'),
+        video: getAssetUrl('assets/kingdom business/kingdom business video.mov'),
+        description: 'Internal programming and brand integration for the BET+ original series Kingdom Business.',
+        deliverables: ['Internal Programming', 'Brand Integration', 'Film Production'],
+        subtitle: 'BET+ Original Series',
+        highlight: 'Programming & Production',
+        themeLabel: 'PROGRAMMING & PRODUCTION',
+        themeDescription: 'We led the internal programming and strategic brand integration for Kingdom Business, ensuring the series resonated with its core audience while maintaining BET+\'s premium brand standards.',
+        scaleValue: 'Original Series',
+        orientation: 'portrait',
     },
 ];
 
@@ -1571,6 +1549,7 @@ export default function ArchivesPage() {
     const blackat2025Projects = projects.filter(p => [15].includes(p.id));
     const spikeLeeProjects = projects.filter(p => [10, 12].includes(p.id));
     const comeUpProjects = projects.filter(p => [19].includes(p.id));
+    const kingdomBusinessProjects = projects.filter(p => [29].includes(p.id));
     const copywritingProjects = projects.filter(p => [20, 21, 22, 23, 24, 25, 26, 27, 28].includes(p.id));
 
     return (
@@ -1720,8 +1699,24 @@ export default function ArchivesPage() {
                                     THE COME UP
                                 </h3>
                             </Reveal>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32 mb-32 md:mb-48">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32 mb-32">
                                 {comeUpProjects.map((p, i) => (
+                                    <Reveal key={p.id} delay={(i % 4) * 60}>
+                                        <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
+                                    </Reveal>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Kingdom Business Subsection */}
+                        <div>
+                            <Reveal>
+                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
+                                    KINGDOM BUSINESS
+                                </h3>
+                            </Reveal>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32 mb-32 md:mb-48">
+                                {kingdomBusinessProjects.map((p, i) => (
                                     <Reveal key={p.id} delay={(i % 4) * 60}>
                                         <ProjectCard project={p} index={i} onClick={() => setSelectedProject(p)} />
                                     </Reveal>
@@ -1744,125 +1739,28 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
 
             {/* ── Card Image (clean, no labels) ── */}
             <div className="aspect-[4/5] relative overflow-visible">
-                {project.id === 2 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('sinners_poster')}
-                        backgroundImage={getAssetUrl('Sinners_background')}
-                        hoverImage={getAssetUrl('MPJ_solo')}
-                        logoImage={getAssetUrl('Sinners_logo')}
-                        className="w-full h-full"
-                    />
-                ) : project.id === 3 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('tron')}
-                        backgroundImage={getAssetUrl('Tron_background')}
-                        hoverImage={getAssetUrl('Tron_solo')}
-                        logoImage={getAssetUrl('Tron_logo')}
-                        className="w-full h-full"
-                    />
-                ) : project.id === 4 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('zootopia')}
-                        backgroundImage={getAssetUrl('Zootopia_background')}
-                        hoverImage={getAssetUrl('Zootopia_solo')}
-                        logoImage={getAssetUrl('Zootopia_logo')}
-                        className="w-full h-full"
-                    />
-                ) : project.id === 5 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('avatar')}
-                        backgroundImage={getAssetUrl('Avatar_background')}
-                        hoverImage={getAssetUrl('Avatar_solo')}
-                        logoImage={getAssetUrl('Avatar_logo')}
-                        className="avatar-card w-full h-full"
-                    />
-                ) : project.id === 6 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('hoppers')}
-                        backgroundImage={getAssetUrl('Hoppers_background')}
-                        hoverImage={getAssetUrl('Hoppers_solo')}
-                        logoImage={getAssetUrl('Hoppers_logo')}
-                        className="w-full h-full"
-                    />
-                ) : project.id === 1 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('devil_wears_prada')}
-                        backgroundImage={getAssetUrl('Devil_wears_prada_background')}
-                        hoverImage={getAssetUrl('Devil_wears_prada_solo')}
-                        logoImage={getAssetUrl('Devil_wears_prada_logo')}
-                        className="w-full h-full"
-                    />
-                ) : project.id === 7 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('BET_is_the_cookout_poster')}
-                        backgroundImage={getAssetUrl('BET_is_the_cookout_background')}
-                        hoverImage={getAssetUrl('BET_is_the_cookout_solo')}
-                        logoImage={getAssetUrl('BET_logo')}
-                        className="bet-cookout-card w-full h-full"
-                    />
-                ) : project.id === 8 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('jason_harvey_poster')}
-                        backgroundImage={getAssetUrl('jason_harvey_background')}
-                        hoverImage={getAssetUrl('jason_harvey_solo')}
-                        logoImage={getAssetUrl('jason_harvey_logo')}
-                        className="jason-harvey-card w-full h-full"
-                    />
-                ) : project.id === 9 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('sneaker_ball_poster')}
-                        backgroundImage={getAssetUrl('sneaker_ball_background')}
-                        hoverImage={getAssetUrl('sneaker_ball_solo')}
-                        logoImage={getAssetUrl('sneaker_ball_logo')}
-                        className="sneaker-ball-card w-full h-full"
-                    />
-                ) : project.id === 10 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('spike_lee_fireside_chat_poster')}
-                        backgroundImage={getAssetUrl('spike_lee_fireside_chat_background')}
-                        hoverImage={getAssetUrl('spike_lee_fireside_chat_solo')}
-                        logoImage={getAssetUrl('spike_lee_fireside_logo')}
-                        className="spike-lee-fireside-card w-full h-full"
-                    />
-                ) : project.id === 11 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('creatives_at_sea_poster')}
-                        backgroundImage={getAssetUrl('creatives_at_sea_background')}
-                        hoverImage={getAssetUrl('creatives_at_sea_solo')}
-                        logoImage={getAssetUrl('creatives_at_sea_logo')}
-                        className="creatives-at-sea-card w-full h-full"
-                    />
-                ) : project.id === 12 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('spike_lee_dinner_poster')}
-                        backgroundImage={getAssetUrl('spike_lee_dinner_background')}
-                        hoverImage={getAssetUrl('spike_lee_dinner_solo')}
-                        logoImage={getAssetUrl('-air-jordan')}
-                        className="spike-lee-dinner-card w-full h-full"
-                    />
-                ) : project.id === 13 ? (
-                    <ThreeDPosterCard
-                        baseImage={getAssetUrl('CMO_brunch_poster')}
-                        backgroundImage={getAssetUrl('CMO_brunch_background')}
-                        hoverImage={getAssetUrl('CMO_brunch_solo')}
-                        logoImage={getAssetUrl('BLKAT_FinalLogoColor_2')}
-                        className="cmo-brunch-card w-full h-full"
-                    />
-                ) : (
-                    <div className="w-full h-full overflow-hidden relative rounded-sm bg-burgundy/5 border border-rose/5 transition-colors">
-                        {project.img ? (
-                            <img 
-                                src={project.img} 
-                                alt={project.title} 
-                                className="w-full h-full transition-all duration-[1500ms] ease-out object-cover"
-                            />
-                        ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
-                                <span className="text-[0.45rem] tracking-[0.4em] uppercase text-cream/10">Coming Soon</span>
-                            </div>
-                        )}
-                    </div>
-                )}
+                <div className="w-full h-full overflow-hidden relative rounded-sm bg-burgundy/5 border border-rose/5 transition-colors">
+                    {project.img ? (
+                        <img 
+                            src={project.img} 
+                            alt={project.title} 
+                            className="w-full h-full transition-all duration-[1500ms] ease-out object-cover"
+                        />
+                    ) : project.video ? (
+                        <video
+                            src={project.video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                        />
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+                            <span className="text-[0.45rem] tracking-[0.4em] uppercase text-cream/10">Coming Soon</span>
+                        </div>
+                    )}
+                </div>
 
                 {/* Subtle tint — fades on hover */}
                 <div className="absolute inset-0 z-20 pointer-events-none bg-burgundy/20 transition-opacity duration-500 group-hover:opacity-0" />
