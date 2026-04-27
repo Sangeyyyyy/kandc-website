@@ -9,7 +9,16 @@ const VIDEO_ASSETS = [
   'Sinners_video',
   'ABE',
   'Zootopia_video',
-  'creatives_at_sea_video'
+  'creatives_at_sea_video',
+  'Tron_video',
+  'onemusicfest_video',
+  'instagram_video',
+  'spike_lee_fireside_chat_video',
+  'spike_lee_dinner_video',
+  'thought_leadership_brunch_video',
+  'average_joe_video',
+  'the_come_up_brunch_video',
+  'kingdom_business_video'
 ];
 
 // List of public IDs that should be treated as raw (e.g. PDFs)

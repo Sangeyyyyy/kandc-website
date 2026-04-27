@@ -21,6 +21,13 @@ export type Award = {
     tier?: 'gold' | 'silver' | 'bronze' | 'standard';
 };
 
+export type AudioSpot = {
+    title: string;
+    src: string;
+    duration: string;
+    credit: string;
+};
+
 export type Project = {
     id: number;
     title: string;
@@ -48,6 +55,8 @@ export type Project = {
     theme?: string;
     bookPdf?: string;
     pressKitPdf?: string;
+    galleryLayout?: 'masonry' | 'poster';
+    audioSpots?: AudioSpot[];
 };
 
 // ─── PROJECT DATA ─────────────────────────────────────────────────────────────
@@ -59,9 +68,9 @@ const projects: Project[] = [
         client: 'Warner Bros. Pictures',
         year: '2024',
         role: 'Live Activation Creative Producer | HBCU & Film Community Amplification',
-        img: getAssetUrl('assets/posters/sinners.jpg'),
+        img: getAssetUrl('sinners_poster'),
         video: getAssetUrl('Sinners_video'),
-        teaserImg: getAssetUrl('assets/posters/sinners.jpg'),
+        teaserImg: getAssetUrl('sinners_poster'),
         teaser: 'A cinematic premiere event that redefined the red carpet experience.',
         description: `Kelsey & Company partnered with Warner Bros. and MACRO to produce the premiere activation for Sinners—a full-scale, immersive launch experience that blurred the line between film and lived reality. We led the HBCU & Film Community Amplification strategy, including the "HBCU Classic" partnership during All-Star Weekend, the Morehouse Student Poster Contest, and 4 high-impact virtual fireside chats featuring filmmakers Ryan Coogler and Michael B. Jordan.`,
         deliverables: ['HBCU Community Amplification', 'Virtual Fireside Chat Series', 'Morehouse Student Poster Contest', 'Core Market Strategy (ATL, NC, FL, TN, AL)', 'Red Carpet Production', 'Live Brand Activation'],
@@ -104,7 +113,7 @@ const projects: Project[] = [
                 description: 'Launching a virtual fireside chat series with Ryan Coogler and Michael B. Jordan. Organizing the Morehouse Student Poster Contest to engage the next generation of creatives.',
                 tag: 'Strategy',
                 media: getAssetUrl('sinners_brochure'),
-                mediaPosition: 'right',
+                mediaPosition: '40% center',
             },
             {
                 phase: 'Coordination',
@@ -112,7 +121,8 @@ const projects: Project[] = [
                 title: 'HBCU Classic Partnership',
                 description: 'Coordinating with Warner Bros, MACRO, and the NBA during the HBCU Classic at All-Star Weekend. Serving as the local market representative for Morehouse and Tuskegee screenings.',
                 tag: 'Operations',
-                media: getAssetUrl('sinners_3'),
+                media: getAssetUrl('sinners_4'),
+                mediaPosition: '40% center',
             },
             {
                 phase: 'On-Site Production',
@@ -121,6 +131,7 @@ const projects: Project[] = [
                 description: 'Directing on-site red carpet production, managing asset delivery, and overseeing audience engagement for advanced screenings.',
                 tag: 'Execution',
                 media: getAssetUrl('sinners_5'),
+                mediaPosition: '40% center',
             },
         ],
     },
@@ -131,8 +142,8 @@ const projects: Project[] = [
         client: 'Walt Disney Studios',
         year: '2025',
         role: 'Integrated Marketing & Brand Activation',
-        img: getAssetUrl('assets/posters/tron.jpeg'),
-        teaserImg: getAssetUrl('assets/posters/tron.jpeg'),
+        img: getAssetUrl('tron_poster'),
+        teaserImg: getAssetUrl('tron_poster'),
         teaser: 'A neon-drenched, world-building marketing campaign built for the digital age.',
         description: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
         deliverables: ['Pop-Up Experience Design', 'Influencer & Talent Relations', 'Digital Content Strategy', 'Launch Event Production'],
@@ -141,6 +152,7 @@ const projects: Project[] = [
         themeLabel: 'INTEGRATED MARKETING STRATEGY',
         themeDescription: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
         scaleValue: 'Multi-Market Integration',
+        video: getAssetUrl('Tron_video'),
         gallery: [
             getAssetUrl('Tron_1'),
             getAssetUrl('Tron_2'),
@@ -152,11 +164,7 @@ const projects: Project[] = [
         partnerLogos: [
             { src: getAssetUrl('icons8-disney-50'), mode: 'monochrome', size: 'icon', alt: 'Disney' }
         ],
-        roadmap: [
-            { phase: 'Strategy', step: '01', title: 'Immersive Campaign Design', description: 'Architecting an immersive digital-physical campaign that merged the neon aesthetic of Tron with modern real-world touchpoints.', tag: 'Creative', media: getAssetUrl('tron') },
-            { phase: 'Integration', step: '02', title: 'Influencer Amplification', description: 'Coordinating heavy-hitting tech and lifestyle influencers to build organic hype and amplify the campaign reach.', tag: 'Social', media: getAssetUrl('Tron_3'), mediaPosition: 'right' },
-            { phase: 'Execution', step: '03', title: 'Launch Production', description: 'Executing the pop-up experiences and premiere launch, ensuring a seamless translation from digital hype to physical presence.', tag: 'Production', media: getAssetUrl('Tron_5') },
-        ],
+        orientation: 'portrait',
     },
     {
         id: 4,
@@ -165,8 +173,8 @@ const projects: Project[] = [
         client: 'Walt Disney Animation',
         year: '2023',
         role: 'Brand Partnership Management',
-        img: getAssetUrl('assets/posters/zootopia.jpg'),
-        teaserImg: getAssetUrl('assets/posters/zootopia.jpg'),
+        img: getAssetUrl('zootopia'),
+        teaserImg: getAssetUrl('zootopia'),
         teaser: 'Strategic partnerships that extended the world of Zootopia into everyday culture.',
         description: `K&C curated and managed a suite of co-branded partnerships for the Zootopia franchise, connecting the animated world with premium lifestyle brands. Our curation drove unprecedented cultural penetration and brand affinity across key demographics.`,
         deliverables: ['Brand Partner Curation', 'Co-Branded Campaign Strategy', 'Deal Negotiation & Execution', 'Cultural Alignment Oversight'],
@@ -186,8 +194,8 @@ const projects: Project[] = [
         client: '20th Century Studios',
         year: '2023',
         role: 'Experiential Production Lead',
-        img: getAssetUrl('assets/posters/avatar.jpeg'),
-        teaserImg: getAssetUrl('assets/posters/avatar.jpeg'),
+        img: getAssetUrl('avatar'),
+        teaserImg: getAssetUrl('avatar'),
         teaser: 'An otherworldly launch experience that transported audiences to Pandora.',
         description: `For Avatar: The Way of Water, Kelsey & Company designed and produced an immersive theatrical world-preview event. Guests were transported through the film's oceanic environments via multi-sensory staging, setting a new benchmark for blockbuster experiential marketing.`,
         deliverables: ['Immersive Environment Design', 'Multi-Sensory Event Production', 'Talent & Talent Management', 'Press Activation Strategy'],
@@ -212,11 +220,6 @@ const projects: Project[] = [
             getAssetUrl('avatar_12'),
         ],
         orientation: 'portrait',
-        roadmap: [
-            { phase: 'Conceptualization', step: '01', title: 'World-Preview Concept', description: 'Designing a theatrical preview event that authentically mirrored the aquatic environments of Pandora.', tag: 'Design', media: getAssetUrl('avatar_2') },
-            { phase: 'Build', step: '02', title: 'Multi-Sensory Staging', description: 'Constructing immersive sets with specialized lighting, water effects, and ambient soundscapes to transport attendees.', tag: 'Fabrication', media: getAssetUrl('avatar_5'), mediaPosition: 'right' },
-            { phase: 'The Event', step: '03', title: 'Talent & Press', description: 'Managing the arrival, flow, and experience of A-list talent and top-tier press to maximize earned media.', tag: 'Management', media: getAssetUrl('avatar_8') },
-        ],
     },
     {
         id: 6,
@@ -225,8 +228,8 @@ const projects: Project[] = [
         client: 'Netflix',
         year: '2024',
         role: 'Live Experience Production',
-        img: getAssetUrl('assets/posters/hoppers.jpeg'),
-        teaserImg: getAssetUrl('assets/posters/hoppers.jpeg'),
+        img: getAssetUrl('hoppers_1'),
+        teaserImg: getAssetUrl('hoppers_1'),
         teaser: 'A live-to-screen event series that brought Netflix\'s biggest series to life.',
         description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
         deliverables: ['Live Event Series', 'Fan Engagement Strategy', 'Venue Production & Staffing', 'Social Media Amplification'],
@@ -252,11 +255,6 @@ const projects: Project[] = [
             getAssetUrl('hoppers_13'),
         ],
         orientation: 'portrait',
-        roadmap: [
-            { phase: 'Planning', step: '01', title: 'Fan Engagement Strategy', description: 'Developing a live event strategy designed to deepen the connection between the series narrative and its fanbase.', tag: 'Strategy', media: getAssetUrl('hoppers_1') },
-            { phase: 'Operations', step: '02', title: 'Live Event Build', description: 'Sourcing venues, handling staffing, and building out the physical footprint for nationwide activations.', tag: 'Production', media: getAssetUrl('hoppers_5'), mediaPosition: 'right' },
-            { phase: 'Amplification', step: '03', title: 'Social Amplification', description: 'Creating shareable moments and coordinating with social teams to ensure the live events trended globally.', tag: 'Digital', media: getAssetUrl('hoppers_9') },
-        ],
     },
     {
         id: 1,
@@ -265,8 +263,8 @@ const projects: Project[] = [
         client: 'Fox Entertainment',
         year: '2025',
         role: 'Strategic Brand & Fashion Partnerships',
-        img: getAssetUrl('assets/posters/devil wears prada.jpeg'),
-        teaserImg: getAssetUrl('assets/posters/devil wears prada.jpeg'),
+        img: getAssetUrl('devil_wears_prada'),
+        teaserImg: getAssetUrl('devil_wears_prada'),
         teaser: 'A fashion-forward partnership strategy that made the world pay attention.',
         description: `For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.`,
         deliverables: ['Luxury Fashion Partnerships', 'Editorial Integration', 'Press Preview Production', 'Global Brand Strategy'],
@@ -285,7 +283,7 @@ const projects: Project[] = [
         year: '2024',
         role: 'Activation Strategy & Content Production',
         img: getAssetUrl('BET_is_the_cookout_poster'),
-        video: getAssetUrl('BET_is_the_cookout_poster'),
+        video: getAssetUrl('Bet_Is_The_Cookout'),
         teaserImg: getAssetUrl('BET_is_the_cookout_poster'),
         teaser: 'Strategic content production and activation for the premier streaming service for Black culture.',
         description: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
@@ -295,14 +293,14 @@ const projects: Project[] = [
         themeLabel: 'CONTENT PRODUCTION',
         themeDescription: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
         scaleValue: 'Streaming Content Reach',
-        gallery: [getAssetUrl('BET_is_the_cookout_solo'), getAssetUrl('BET_is_the_cookout_background')],
+        gallery: [
+            getAssetUrl('BET_1'), 
+            getAssetUrl('BET_is_the_cookout'), 
+            getAssetUrl('BET_is_the_cookout_solo'), 
+            getAssetUrl('BET_is_the_cookout_background')
+        ],
         partnerLogos: [
             { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide',   alt: 'BET+', scale: 1.3 }
-        ],
-        roadmap: [
-            { phase: 'Ideation', step: '01', title: 'Culture-First Brief', description: 'Developing a strategic approach that honors and elevates Black culture, aligning perfectly with the BET+ streaming audience.', tag: 'Strategy', media: getAssetUrl('BET_is_the_cookout_poster') },
-            { phase: 'Creation', step: '02', title: 'Content Production', description: 'Directing and capturing high-impact footage, focusing on authentic storytelling and premium visual aesthetics.', tag: 'Production', media: getAssetUrl('BET_is_the_cookout_background'), mediaPosition: 'right' },
-            { phase: 'Delivery', step: '03', title: 'Brand Integration', description: 'Weaving the BET+ brand naturally into the activation, creating a cohesive experience that drives platform affinity.', tag: 'Execution', media: getAssetUrl('BET_is_the_cookout_solo') },
         ],
     },
     {
@@ -374,11 +372,6 @@ const projects: Project[] = [
         partnerLogos: [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
         ],
-        roadmap: [
-            { phase: 'Vision', step: '01', title: 'Concept & Spatial Design', description: 'Merging the elegance of a traditional gala with the raw energy of street and sneaker culture into a singular spatial experience.', tag: 'Creative', media: getAssetUrl('sneaker_ball_poster') },
-            { phase: 'Curation', step: '02', title: 'Guest Experience', description: 'Curating the attendee journey from red carpet arrival through the main room, ensuring luxury touchpoints at every step.', tag: 'Curation', media: getAssetUrl('sneaker_ball_2'), mediaPosition: 'right' },
-            { phase: 'Execution', step: '03', title: 'Event Night Production', description: 'Calling the show, managing talent, and overseeing front-of-house and back-of-house operations to ensure flawless delivery.', tag: 'Production', media: getAssetUrl('sneakerball') },
-        ],
     },
     {
         id: 10,
@@ -389,6 +382,8 @@ const projects: Project[] = [
         role: 'Executive Production & Curation',
         img: getAssetUrl('spike_lee_fireside_chat_poster'),
         teaserImg: getAssetUrl('spike_lee_fireside_chat_poster'),
+        video: getAssetUrl('spike_lee_fireside_chat_video'),
+        orientation: 'portrait',
         teaser: 'An intimate, high-impact conversation with a legendary filmmaker.',
         description: 'We executive produced and curated an exclusive fireside chat with Spike Lee. This high-profile event focused on the power of storytelling and cultural impact, providing an intimate platform for one of cinema\'s most influential voices.',
         deliverables: ['Executive Production', 'Talent Curation', 'Set Design & Staging', 'Press Coordination'],
@@ -411,11 +406,6 @@ const projects: Project[] = [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'),          mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
             { src: getAssetUrl('-air-jordan'),                            mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
             { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
-        ],
-        roadmap: [
-            { phase: 'Strategy', step: '01', title: 'Executive Booking', description: 'Securing the talent and structuring the conversational arc to ensure high-impact dialogue around storytelling.', tag: 'Curation', media: getAssetUrl('spike_lee_fireside_chat_poster') },
-            { phase: 'Design', step: '02', title: 'Set & Staging', description: 'Designing an intimate, camera-ready environment that felt both premium and relaxed for an authentic fireside feel.', tag: 'Production', media: getAssetUrl('spike_lee_fireside_chat_2'), mediaPosition: 'right' },
-            { phase: 'Operations', step: '03', title: 'Live Show Production', description: 'Managing press access, live audience seating, and the technical execution of the chat.', tag: 'Execution', media: getAssetUrl('spike_lee_fireside_chat_1') },
         ],
     },
     {
@@ -451,11 +441,6 @@ const projects: Project[] = [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes' },
         ],
         orientation: 'portrait',
-        roadmap: [
-            { phase: 'Curation', step: '01', title: 'Panel Recruitment', description: 'Assembling a powerhouse lineup of executives from NAACP, CBS, and Roc Nation to speak on diversity in media.', tag: 'Strategy', media: getAssetUrl('creatives_at_sea_poster') },
-            { phase: 'Logistics', step: '02', title: 'Maritime Build', description: 'Adapting standard event production requirements for a maritime setting, ensuring safety, audio quality, and premium catering.', tag: 'Operations', media: getAssetUrl('creatives_at_sea_2'), mediaPosition: 'right' },
-            { phase: 'Execution', step: '03', title: 'The Voyage', description: 'Facilitating the panel discussion, managing the networking flow, and ensuring an unforgettable experience on the water.', tag: 'Production', media: getAssetUrl('creatives_at_sea_4') },
-        ],
     },
     {
         id: 12,
@@ -466,6 +451,8 @@ const projects: Project[] = [
         role: 'Event Production & Strategy',
         img: getAssetUrl('spike_lee_dinner_poster'),
         teaserImg: getAssetUrl('spike_lee_dinner_poster'),
+        video: getAssetUrl('spike_lee_dinner_video'),
+        orientation: 'portrait',
         teaser: 'A luxurious 5-course meal powered by Jordan Brand for 50 top creatives.',
         description: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
         deliverables: ['5-Course Luxurious Meal', 'Creative Cause Presentations', 'Exclusive Jordan Drop', 'Personalized Merch & Signing'],
@@ -488,11 +475,6 @@ const projects: Project[] = [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
             { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
         ],
-        roadmap: [
-            { phase: 'Planning', step: '01', title: 'Targeted Curation', description: 'Curating an invite-only list of 50 top-tier creative executives to foster high-level networking and intimate cause presentations.', tag: 'Strategy', media: getAssetUrl('spike_lee_dinner_poster') },
-            { phase: 'Hospitality', step: '02', title: '5-Course Experience', description: 'Working with elite culinary teams to design and serve a seamless 5-course luxury dining experience.', tag: 'Operations', media: getAssetUrl('spike_lee_dinner_1'), mediaPosition: 'right' },
-            { phase: 'Fulfillment', step: '03', title: 'Jordan Brand Drop', description: 'Executing the surprise gifting moment, including personalized merch distribution and managing the exclusive signing.', tag: 'Execution', media: getAssetUrl('spike_lee_dinner_2') },
-        ],
     },
     {
         id: 13,
@@ -514,11 +496,6 @@ const projects: Project[] = [
         gallery: [getAssetUrl('CEOCMO_BRUNCH')],
         partnerLogos: [
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
-        ],
-        roadmap: [
-            { phase: 'Talent', step: '01', title: 'Programming & Booking', description: 'Securing Grammy award winner J.Ivy to provide the emotional and poetic anchor for the executive gathering.', tag: 'Programming', media: getAssetUrl('CMO_brunch_poster') },
-            { phase: 'Design', step: '02', title: 'Intimate Venue Setup', description: 'Crafting a warm, inviting environment that encouraged open dialogue among high-level attendees.', tag: 'Production', media: getAssetUrl('CEOCMO_BRUNCH'), mediaPosition: 'right' },
-            { phase: 'Delivery', step: '03', title: 'Executive Experience', description: 'Running the front-of-house operations to ensure seamless catering and a flawless program flow.', tag: 'Execution', media: getAssetUrl('CMO_brunch_poster') },
         ],
     },
     {
@@ -554,7 +531,7 @@ const projects: Project[] = [
         role: 'Global Director and Producer',
         img: getAssetUrl('thought_leadership_brunch_poster'),
         teaserImg: getAssetUrl('thought_leadership_brunch_poster'),
-        video: getAssetUrl('assets/thought leadership brunch/thought leadership brunch video.mov'),
+        video: getAssetUrl('thought_leadership_brunch_video'),
         teaser: 'A premier summit celebrating global Black excellence.',
         description: 'As Global Director and Producer, I led the end-to-end execution of Black at Cannes, a premier summit celebrating global Black excellence. I managed an international team and global vendors to deliver high-level programming, ranging from executive-led panels to an exclusive gala for Nedbank. This world-class experience successfully connected top-tier industry leaders on a global stage. \n\nThought Leadership Brunch Cannes @ The Martinez',
         deliverables: ['High-level Programming', 'Executive-Led Panels', 'Exclusive Gala Execution', 'Global Vendor Management'],
@@ -595,41 +572,15 @@ const projects: Project[] = [
         themeLabel: 'STRATEGIC AUDIENCE ACQUISITION',
         themeDescription: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility.',
         scaleValue: '1.2M+ Engaged Subscribers',
+        video: getAssetUrl('onemusicfest_video'),
         gallery: [
-            getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
-            getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
+            getAssetUrl('onemusicfest_poster'),
+            getAssetUrl('onemusicfest_image')
         ],
         partnerLogos: [
-            { src: getAssetUrl('assets/brands/ONE_Musicfest_Logo.png'), mode: 'monochrome', size: 'wide', alt: 'ONE Musicfest', scale: 1.2 },
-            { src: getAssetUrl('assets/eventnoire/eventnoire logo.webp'), mode: 'monochrome', size: 'wide', alt: 'Eventnoire', scale: 1.2 }
+            { src: getAssetUrl('ONE_Musicfest_Logo'), mode: 'monochrome', size: 'wide', alt: 'ONE Musicfest', scale: 1.2 },
+            { src: getAssetUrl('eventnoire_logo'), mode: 'monochrome', size: 'wide', alt: 'Eventnoire', scale: 1.2 }
         ],
-        roadmap: [
-            {
-                phase: 'The Partnership',
-                step: '01',
-                title: 'Brokerage & Strategy',
-                description: 'Securing a high-impact partnership with ONE Musicfest on behalf of client Eventnoire, leveraging a deep ecosystem of culturally engaged subscribers.',
-                tag: 'Strategy',
-                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
-            },
-            {
-                phase: 'Digital Campaign',
-                step: '02',
-                title: 'Campaign Execution',
-                description: 'Leading efforts around presale ticketing, targeted email campaigns, SMS, and newsletter distribution to drive platform visibility.',
-                tag: 'Activation',
-                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest poster.jpg'),
-                mediaPosition: 'right'
-            },
-            {
-                phase: 'Integration',
-                step: '03',
-                title: 'In-Festival Data Acquisition',
-                description: 'Using first-party data strategies and in-festival brand integrations to drive new audience acquisition and expand the marketing funnel.',
-                tag: 'Integration',
-                media: getAssetUrl('assets/onemusicfest x eventnoire/onemusicfest.png')
-            }
-        ]
     },
     {
         id: 17,
@@ -638,8 +589,9 @@ const projects: Project[] = [
         client: 'BET+ & Braze',
         year: '2024 - 2025',
         role: 'Partnership Facilitator & Brand Programming',
-        img: getAssetUrl('assets/BET+ x Braze/braze poster.png'),
-        teaserImg: getAssetUrl('assets/BET+ x Braze/braze poster.png'),
+        orientation: 'portrait',
+        img: getAssetUrl('braze_poster'),
+        teaserImg: getAssetUrl('braze_poster'),
         teaser: 'A product grant program working to break down barriers for underrepresented startup founders.',
         description: 'We partnered with Braze to launch the "Tech for an Equitable Future" initiative alongside BET+. This product grant program is dedicated to breaking down barriers for underrepresented startup founders. Providing 20 startups across the US, EMEA, and APAC with 12 months of free Braze access, a dedicated Customer Success Manager, and a private digital community. In return, BET+ provided 1:1 mentorship, hosted a Branding Masterclass, and gave founders access to their 4M+ subscriber base for unprecedented visibility.',
         deliverables: ['Partnership Facilitator', 'Internal Comms', 'Programming', 'Brand Messaging'],
@@ -649,45 +601,18 @@ const projects: Project[] = [
         themeDescription: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
         scaleValue: '20 Startups | 4M Subscribers',
         gallery: [
-            getAssetUrl('assets/BET+ x Braze/braze poster.png'),
-            getAssetUrl('assets/BET+ x Braze/IMG_0509.JPG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_4960.PNG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_4966.PNG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_4967.PNG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_4968.PNG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_4969.PNG'),
-            getAssetUrl('assets/BET+ x Braze/IMG_9696.PNG')
+            getAssetUrl('braze_poster'),
+            getAssetUrl('braze_image_1'),
+            getAssetUrl('braze_image_2'),
+            getAssetUrl('braze_image_3'),
+            getAssetUrl('braze_image_4'),
+            getAssetUrl('braze_image_5'),
+            getAssetUrl('braze_image_6'),
+            getAssetUrl('braze_image_7')
         ],
         partnerLogos: [
             { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
         ],
-        roadmap: [
-            {
-                phase: 'The Partnership',
-                step: '01',
-                title: 'Tech for an Equitable Future',
-                description: 'Structuring a robust product grant where Braze provided enterprise-level access and support, while BET+ delivered 1:1 mentorship and subscriber spotlights.',
-                tag: 'Strategy',
-                media: getAssetUrl('assets/BET+ x Braze/IMG_4966.PNG')
-            },
-            {
-                phase: 'Global Launch',
-                step: '02',
-                title: 'PR & Brand Programming',
-                description: 'Launching the initiative globally at the Cannes Lions Festival 2024 in the Braze Lounge alongside Roc Nation.',
-                tag: 'Activation',
-                media: getAssetUrl('assets/BET+ x Braze/IMG_4967.PNG'),
-                mediaPosition: 'right'
-            },
-            {
-                phase: 'Amplification',
-                step: '03',
-                title: 'Conference Integrations',
-                description: 'Expanding the program\'s footprint through high-visibility conference integrations at FORGE 2024 and AFROTECH 2024.',
-                tag: 'Integration',
-                media: getAssetUrl('assets/BET+ x Braze/IMG_4968.PNG')
-            }
-        ]
     },
     {
         id: 18,
@@ -696,9 +621,9 @@ const projects: Project[] = [
         client: 'BET+',
         year: '2023',
         role: 'Lead Brand Strategist & Copywriter',
-        img: getAssetUrl('assets/average joe/average joe poster.jpg'),
-        teaserImg: getAssetUrl('assets/average joe/average joe poster.jpg'),
-        video: getAssetUrl('assets/average joe/average joe main video.mp4'),
+        img: getAssetUrl('average_joe_poster'),
+        teaserImg: getAssetUrl('average_joe_poster'),
+        video: getAssetUrl('average_joe_video'),
         teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
         description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
         deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
@@ -708,43 +633,16 @@ const projects: Project[] = [
         themeDescription: 'Using metrics and focus group insights, I built strategies that connected the BET+ brand with its audiences in unforgettable ways—rolling out immersive interactive games, gamified AR lenses, and a bespoke Pittsburgh Steelers broadcast integration.',
         scaleValue: 'Multi-Platform Campaign',
         gallery: [
-            getAssetUrl('assets/average joe/average joe poster.jpg'),
-            getAssetUrl('assets/average joe/average joe.png'),
-            getAssetUrl('assets/average joe/average joe 1 .png'),
-            getAssetUrl('assets/average joe/average joe 3.png'),
-            getAssetUrl('assets/average joe/average joe 4.png'),
-            getAssetUrl('assets/average joe/average joe main video.mp4'),
-            getAssetUrl('assets/average joe/average joe phone video.mp4')
+            getAssetUrl('average_joe_poster'),
+            getAssetUrl('average_joe_image_1'),
+            getAssetUrl('average_joe_image_2'),
+            getAssetUrl('average_joe_image_3'),
+            getAssetUrl('average_joe_image_4'),
+            getAssetUrl('average_joe_video'),
+            getAssetUrl('average_joe_video_phone')
         ],
         partnerLogos: [
              { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
-        ],
-        roadmap: [
-            {
-                phase: 'Digital Ecosystem',
-                step: '01',
-                title: 'Interactive Experiences',
-                description: 'Developing a gamified Snapchat AR Lens, an Adikteev interactive game ("Search for Joe\'s Millions"), and multi-platform countdown elements natively connecting users to the show\'s narrative.',
-                tag: 'Digital',
-                media: getAssetUrl('assets/average joe/average joe phone video.mp4')
-            },
-            {
-                phase: 'Partnership Integration',
-                step: '02',
-                title: 'Pittsburgh Steelers',
-                description: 'Executing an anchor sports partnership featuring in-show product integration and custom promotional spots with the Pittsburgh Steelers during wildcard weekend.',
-                tag: 'Integration',
-                media: getAssetUrl('assets/average joe/average joe 3.png'),
-                mediaPosition: 'right'
-            },
-            {
-                phase: 'Accolades',
-                step: '03',
-                title: 'Clio Award Shortlist',
-                description: 'The campaign successfully reached audiences across all fragmented channels, earning a prestigious Clio Entertainment Shortlist designation for Integrated Campaign.',
-                tag: 'Awards',
-                media: getAssetUrl('assets/average joe/average joe 1 .png')
-            }
         ],
         awards: [
             { group: 'CLIO Entertainment Awards', count: 1, tier: 'standard', note: 'Shortlist: Television | Series: Integrated Campaign' }
@@ -757,9 +655,9 @@ const projects: Project[] = [
         client: 'The Come Up / The One Club for Creativity',
         year: '2024',
         role: 'Co-Founder, Programming Director & Creative Strategist',
-        img: getAssetUrl('assets/the come up brunch/the come up brunch poster.png'),
-        teaserImg: getAssetUrl('assets/the come up brunch/the come up brunch poster.png'),
-        video: getAssetUrl('assets/the come up brunch/the_come_up_brunch_video.mp4'),
+        img: getAssetUrl('the_come_up_brunch_poster'),
+        teaserImg: getAssetUrl('the_come_up_brunch_poster'),
+        video: getAssetUrl('the_come_up_brunch_video'),
         teaser: 'A networking experience providing marginalized groups a pathway to a seat at the table.',
         description: 'The Come Up Brunch is natively a networking event series designed to give marginalized groups a pathway to a seat at the table, spark conversation, build relationships, and gain resources. The event is an industry-wide call to all mid-level advertisers and above to join important conversations accompanied by a soulful brunch and lively music. All disciplines including creative, strategy, account, media, entertainment, etc., were welcome to attend.',
         deliverables: ['Strategic Partnerships', 'Panel Programming', 'Creative Strategy', 'Vendor & Volunteer Management'],
@@ -769,37 +667,11 @@ const projects: Project[] = [
         themeDescription: 'It\'s no secret that you can find Black people at brunch. Food is a way our BIPOC community comes together to share culture. We transformed a cultural staple into an actionable pathway connecting diverse professionals with career coaching, job opportunities with Black HR reps, and thousands of networking connections.',
         scaleValue: '150+ Attendees | 11,175+ Interactions',
         gallery: [],
-        roadmap: [
-            {
-                phase: 'The Vision',
-                step: '01',
-                title: 'Strategic Partnerships',
-                description: 'Collaborating with The One Club for Creativity and major sponsors like Chemistry to build an industry-wide call to all mid-level advertisers.',
-                tag: 'Strategy',
-                media: ''
-            },
-            {
-                phase: 'Programming',
-                step: '02',
-                title: 'Curated Panels',
-                description: 'Directing multiple impactful panel series including "Breaking Into Advertising," "Access Granted," "Laid Off: The Good, The Bad, & The Ugly," and "Your Network Is Your Net Worth."',
-                tag: 'Curation',
-                media: '',
-                mediaPosition: 'right'
-            },
-            {
-                phase: 'Impact',
-                step: '03',
-                title: 'Tangible Connections',
-                description: 'Facilitating over 11,175 networking connections, providing career coaching, and generating job opportunities directly with Black HR representatives.',
-                tag: 'Result',
-                media: ''
-            }
-        ],
         orientation: 'portrait',
     },
+/*
     {
-        id: 20,
+        id: 23,
         title: 'Sprite',
         category: 'Copywriting',
         client: 'Sprite',
@@ -815,8 +687,10 @@ const projects: Project[] = [
         themeDescription: '',
         scaleValue: '',
     },
+*/
+/*
     {
-        id: 24,
+        id: 30,
         title: 'Kids Foot Locker',
         category: 'Copywriting',
         client: 'Foot Locker',
@@ -832,8 +706,10 @@ const projects: Project[] = [
         themeDescription: '',
         scaleValue: '',
     },
+*/
+/*
     {
-        id: 21,
+        id: 24,
         title: 'Instagram Shop',
         category: 'Copywriting',
         client: 'Instagram',
@@ -841,6 +717,7 @@ const projects: Project[] = [
         role: 'Copywriter',
         img: getAssetUrl('assets/instagram/Gemini_Generated_Image_738o8m738o8m738o.png'),
         teaserImg: getAssetUrl('assets/instagram/Gemini_Generated_Image_738o8m738o8m738o.png'),
+        video: getAssetUrl('assets/instagram/instagram video.mp4'),
         description: '',
         deliverables: [],
         subtitle: '',
@@ -849,15 +726,25 @@ const projects: Project[] = [
         themeDescription: '',
         scaleValue: '',
     },
+*/
+/*
     {
-        id: 22,
+        id: 25,
         title: 'Cards Against Concussions',
         category: 'Copywriting',
         client: 'PADV',
         year: '2023',
         role: 'Copywriter',
+        orientation: 'portrait',
+        galleryLayout: 'poster',
         img: getAssetUrl('assets/cards against concussion/Gemini_Generated_Image_242gl2242gl2242g.png'),
         teaserImg: getAssetUrl('assets/cards against concussion/Gemini_Generated_Image_242gl2242gl2242g.png'),
+        gallery: [
+            getAssetUrl('assets/cards against concussion/cards against concussion 1.png'),
+            getAssetUrl('assets/cards against concussion/cards against concussion (2).png'),
+            getAssetUrl('assets/cards against concussion/cards against concussion (3).png'),
+            getAssetUrl('assets/cards against concussion/cards against concussion (4).png')
+        ],
         description: '',
         deliverables: [],
         subtitle: '',
@@ -866,8 +753,10 @@ const projects: Project[] = [
         themeDescription: '',
         scaleValue: '',
     },
+*/
+/*
     {
-        id: 23,
+        id: 26,
         title: 'Philadelphia',
         category: 'Copywriting',
         client: 'Kraft Philadelphia',
@@ -882,14 +771,26 @@ const projects: Project[] = [
         themeLabel: '',
         themeDescription: '',
         scaleValue: '',
+        video: getAssetUrl('assets/Philadelphia/2570248398.mp4'),
+        gallery: [
+            getAssetUrl('assets/Philadelphia/Philly+Tweet+1.png'),
+            getAssetUrl('assets/Philadelphia/Philly+Tweet+3.png'),
+            getAssetUrl('assets/Philadelphia/Philly+Tweet+4.png'),
+            getAssetUrl('assets/Philadelphia/Screen+Shot+2021-04-27+at+10.16.29+AM.png'),
+            getAssetUrl('assets/Philadelphia/Screen+Shot+2021-04-27+at+9.59.31+AM.png'),
+        ],
     },
+*/
+/*
     {
-        id: 24,
+        id: 27,
         title: 'Popeyes',
         category: 'Copywriting',
         client: 'Popeyes',
         year: '2023',
         role: 'Copywriter',
+        orientation: 'portrait',
+        galleryLayout: 'poster',
         img: getAssetUrl('assets/popeyes/Gemini_Generated_Image_gtyk2gtyk2gtyk2g.png'),
         teaserImg: getAssetUrl('assets/popeyes/Gemini_Generated_Image_gtyk2gtyk2gtyk2g.png'),
         description: '',
@@ -899,9 +800,16 @@ const projects: Project[] = [
         themeLabel: '',
         themeDescription: '',
         scaleValue: '',
+        gallery: [
+            getAssetUrl('assets/popeyes/popeyes-01.PNG'),
+            getAssetUrl('assets/popeyes/popeyess+2-02.PNG'),
+            getAssetUrl('assets/popeyes/popeyes-03.PNG'),
+        ],
     },
+*/
+/*
     {
-        id: 25,
+        id: 22,
         title: 'Holiday Slay Shuffle',
         category: 'Copywriting',
         client: 'Kelsey Nashe',
@@ -916,26 +824,55 @@ const projects: Project[] = [
         themeLabel: '',
         themeDescription: '',
         scaleValue: '',
+        video: getAssetUrl('assets/shuffle slay/Kelsey Nashe - Holiday Slay Shuffle (Official Music Video) - Kelsey Nashe (1080p, h264).mp4'),
+        gallery: [
+            getAssetUrl('assets/shuffle slay/IMG_8738.jpg'),
+            getAssetUrl('assets/shuffle slay/IMG_8868.JPG'),
+            getAssetUrl('assets/shuffle slay/MN+Portfolio+sm.003.jpeg'),
+            getAssetUrl('assets/shuffle slay/TheBox.jpeg'),
+        ],
     },
+*/
     {
-        id: 26,
-        title: 'Radio Spots',
+        id: 21,
+        title: 'Radio Spots for FM Radio',
         category: 'Copywriting',
         client: 'BP / Dairy Queen',
         year: '2023',
         role: 'Copywriter',
         img: getAssetUrl('assets/bp x dq/dp x dq.png'),
         teaserImg: getAssetUrl('assets/bp x dq/dp x dq.png'),
-        description: '',
-        deliverables: [],
-        subtitle: '',
-        highlight: '',
-        themeLabel: '',
-        themeDescription: '',
-        scaleValue: '',
+        description: 'A collection of radio commercials written for BP Morgan Oil and Dairy Queen, crafted for FM broadcast. Each 18–31 second spot balances brand voice with listener engagement, demonstrating precision copywriting for audio-first formats.',
+        deliverables: ['FM Radio Copywriting', 'Brand Voice Development', 'Audio Script Production', 'Multi-Client Campaign'],
+        subtitle: 'BP Morgan Oil & Dairy Queen',
+        highlight: '3 Broadcast Spots',
+        themeLabel: 'AUDIO-FIRST COPYWRITING',
+        themeDescription: 'Radio demands economy of language—every word must earn its place. These spots were written to cut through the noise of FM airwaves, delivering brand messages that are memorable, clear, and emotionally resonant within seconds.',
+        scaleValue: 'FM Radio Broadcast',
+        audioSpots: [
+            {
+                title: 'BP Morgan Oil [Ice Cream]',
+                src: '/assets/bp x dq/Morgan+Oil+[Ice+Cream]+Jul28-Sep01.mp3',
+                duration: '0:18',
+                credit: 'Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Dairy Queen [Breakfast – Female]',
+                src: '/assets/bp x dq/Dairy+Queen+[Breakfast-Female]+Aug2015.mp3',
+                duration: '0:31',
+                credit: 'Copywriter: Kelsey Matthews'
+            },
+            {
+                title: '07 Project 96 Radio Spot',
+                src: '/assets/bp x dq/07+Project+96+Radio+Spot.mp3',
+                duration: '0:31',
+                credit: 'Copywriter: Kelsey Matthews'
+            }
+        ],
     },
+/*
     {
-        id: 27,
+        id: 28,
         title: "A Father's Love",
         category: 'Copywriting',
         client: 'K&C',
@@ -950,9 +887,12 @@ const projects: Project[] = [
         themeLabel: '',
         themeDescription: '',
         scaleValue: '',
+        video: 'https://youtu.be/bFfPwwxkv2U',
     },
+*/
+/*
     {
-        id: 28,
+        id: 29,
         title: "Minute Maid Twist 'n Sip",
         category: 'Copywriting',
         client: 'Minute Maid',
@@ -967,17 +907,26 @@ const projects: Project[] = [
         themeLabel: '',
         themeDescription: '',
         scaleValue: '',
+        video: getAssetUrl('assets/minute maid/1935685833.mp4'),
+        gallery: [
+            getAssetUrl('assets/minute maid/Screen+Shot+2020-07-27+at+9.30.37+PM.png'),
+            getAssetUrl('assets/minute maid/Screen+Shot+2020-07-27+at+9.31.10+PM.png'),
+            getAssetUrl('assets/minute maid/Screen+Shot+2020-07-27+at+9.32.31+PM.png'),
+            getAssetUrl('assets/minute maid/Screen+Shot+2020-07-27+at+9.32.56+PM.png'),
+            getAssetUrl('assets/minute maid/Screen+Shot+2020-07-27+at+9.33.23+PM.png'),
+        ],
     },
+*/
     {
-        id: 29,
+        id: 31,
         title: 'Kingdom Business',
         category: 'Event Producing and Programming',
         client: 'BET+',
         year: '2024',
         role: 'Production',
-        img: getAssetUrl('assets/kingdom business/kingdom business poster.jpg'),
-        teaserImg: getAssetUrl('assets/kingdom business/kingdom business poster.jpg'),
-        video: getAssetUrl('assets/kingdom business/kingdom business video.mov'),
+        img: getAssetUrl('kingdom_business_poster'),
+        teaserImg: getAssetUrl('kingdom_business_poster'),
+        video: getAssetUrl('kingdom_business_video'),
         description: 'Internal programming and brand integration for the BET+ original series Kingdom Business.',
         deliverables: ['Internal Programming', 'Brand Integration', 'Film Production'],
         subtitle: 'BET+ Original Series',
@@ -986,6 +935,91 @@ const projects: Project[] = [
         themeDescription: 'We led the internal programming and strategic brand integration for Kingdom Business, ensuring the series resonated with its core audience while maintaining BET+\'s premium brand standards.',
         scaleValue: 'Original Series',
         orientation: 'portrait',
+    },
+    {
+        id: 20,
+        title: 'Radio Commercials',
+        category: 'Copywriting',
+        client: 'K&C Portfolio',
+        year: '2024',
+        role: 'Lead Copywriter',
+        img: getAssetUrl('radio_commercials_poster'),
+        teaserImg: getAssetUrl('radio_commercials_poster'),
+        description: 'A curated selection of high-impact radio commercials designed for national and regional broadcast. These spots showcase specialized copywriting that captures brand essence and drives consumer action through audio storytelling.',
+        deliverables: ['Radio Scripting', 'Brand Voice Alignment', 'Commercial Production', 'Targeted Messaging'],
+        subtitle: 'Broadcast Audio Campaigns',
+        highlight: 'National Radio Spots',
+        themeLabel: 'AUDIO STORYTELLING & IMPACT',
+        themeDescription: 'Crafting commercials for radio requires a unique blend of rhythm, clarity, and emotional resonance. Our approach focuses on creating "theatre of the mind" experiences that connect brands with listeners in the most personal and direct medium available.',
+        scaleValue: 'Multi-Market Broadcast',
+        audioSpots: [
+            {
+                title: 'Project 96 Radio Spot',
+                src: '/assets/radio%20commercials/07%20Project%2096%20Radio%20Spot.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Morgan Oil [Ice Cream 30]',
+                src: '/assets/radio%20commercials/Copy%20of%20Morgan%20Oil%20[Ice%20Cream%2030]%20Aug13-Sep01.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Gutters Installed',
+                src: '/assets/radio%20commercials/Gutters%20Installed%20[Oct17-Nov21].mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Morgan Oil [Ice Cream]',
+                src: '/assets/radio%20commercials/Morgan%20Oil%20[Ice%20Cream]%20Jul28-Sep01.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'One Stop Shop Tax (60 sec)',
+                src: '/assets/radio%20commercials/One%20Stop%20Shop%20Tax%2060%20sec%20revised%20(Joc).mp3',
+                duration: '1:00',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Stitches Galore [Mother\'s Day]',
+                src: '/assets/radio%20commercials/Stitches%20Galore%20[Mom_s%20Day]%20Apr25-May07.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Stitches Galore [Pre Christmas]',
+                src: '/assets/radio%20commercials/Stitches%20Galore%20[Pre%20Christmas]%20Nov01-30.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Stitches Galore [School]',
+                src: '/assets/radio%20commercials/Stitches%20Galore%20[School]%20Jul21-Aug15.mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Stitches Galore & More [Summer]',
+                src: '/assets/radio%20commercials/Stitches%20Glaore%20%26%20More%20[Summer].mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Camp Blood',
+                src: '/assets/radio%20commercials/_Camp%20Blood%20[Oct04-Nov01].mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            },
+            {
+                title: 'Great Southern Agency',
+                src: '/assets/radio%20commercials/_Great%20Southern%20Agency%20[Nov03-Dec24].mp3',
+                duration: '0:30',
+                credit: 'Lead Copywriter: Kelsey Matthews'
+            }
+        ],
     },
 ];
 
@@ -1059,7 +1093,82 @@ const GoldDust = ({ active }: { active: boolean }) => {
     );
 };
 
-const FloatingAwardIcon = ({ src, alt }: { src: string; alt: string }) => {
+const AwardIcon = ({ type, className = "" }: { type: string; className?: string }) => {
+    const t = type.toLowerCase();
+    
+    // Gradient definitions are handled in index.css or inline
+    const goldGradient = "url(#gold-gradient)";
+
+    if (t.includes('academy') || t.includes('oscar')) {
+        return (
+            <svg viewBox="0 0 24 24" fill="none" className={className}>
+                <defs>
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#FDB931" />
+                        <stop offset="50%" stopColor="#9E7E38" />
+                        <stop offset="100%" stopColor="#FDB931" />
+                    </linearGradient>
+                </defs>
+                <path d="M12 2L9 7H15L12 2Z" fill={goldGradient} />
+                <path d="M10 7H14V17H10V7Z" fill={goldGradient} />
+                <path d="M8 17H16V19H8V17Z" fill={goldGradient} />
+                <path d="M7 19H17V21H7V19Z" fill={goldGradient} />
+                <path d="M12 4.5L10.5 7H13.5L12 4.5Z" fill="#FFF" fillOpacity="0.3" />
+            </svg>
+        );
+    }
+
+    if (t.includes('bafta')) {
+        return (
+            <svg viewBox="0 0 24 24" fill="none" className={className}>
+                <path d="M12 2C7.58 2 4 5.58 4 10C4 13.5 6.25 16.5 9.38 17.61L10.5 21H13.5L14.62 17.61C17.75 16.5 20 13.5 20 10C20 5.58 16.42 2 12 2ZM12 16C8.69 16 6 13.31 6 10C6 6.69 8.69 4 12 4C15.31 4 18 6.69 18 10C18 13.31 15.31 16 12 16Z" fill="url(#gold-gradient)" />
+                <circle cx="9" cy="9" r="1.5" fill="url(#gold-gradient)" />
+                <circle cx="15" cy="9" r="1.5" fill="url(#gold-gradient)" />
+                <path d="M9 13C9 13 10.5 14.5 12 14.5C13.5 14.5 15 13 15 13" stroke="url(#gold-gradient)" strokeWidth="1" strokeLinecap="round" />
+            </svg>
+        );
+    }
+
+    if (t.includes('grammy')) {
+        return (
+            <svg viewBox="0 0 24 24" fill="none" className={className}>
+                <path d="M5 19H19V21H5V19Z" fill="url(#gold-gradient)" />
+                <path d="M7 17H17V19H7V17Z" fill="url(#gold-gradient)" />
+                <path d="M12 17C10.5 17 8 16 8 13V11C8 9.34 9.34 8 11 8H13V17H12Z" fill="url(#gold-gradient)" />
+                <path d="M13 3L13 11H17C18.66 11 20 12.34 20 14V17H13V3Z" fill="url(#gold-gradient)" />
+                <circle cx="11.5" cy="11.5" r="2.5" stroke="url(#gold-gradient)" strokeWidth="1" />
+            </svg>
+        );
+    }
+
+    if (t.includes('critics')) {
+        return (
+            <svg viewBox="0 0 24 24" fill="none" className={className}>
+                <path d="M12 2L14.5 8.5L21.5 9.5L16.5 14.5L17.5 21.5L12 18L6.5 21.5L7.5 14.5L2.5 9.5L9.5 8.5L12 2Z" fill="url(#gold-gradient)" />
+                <path d="M11 18H13V22H11V18Z" fill="url(#gold-gradient)" opacity="0.5" />
+            </svg>
+        );
+    }
+
+    if (t.includes('globe')) {
+        return (
+            <svg viewBox="0 0 24 24" fill="none" className={className}>
+                <circle cx="12" cy="8" r="6" fill="url(#gold-gradient)" />
+                <path d="M12 2V14M6 8H18" stroke="white" strokeOpacity="0.2" strokeWidth="0.5" />
+                <path d="M10 14H14V20H10V14Z" fill="url(#gold-gradient)" />
+                <path d="M8 20H16V22H8V20Z" fill="url(#gold-gradient)" />
+            </svg>
+        );
+    }
+
+    return (
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
+            <path d="M12 2L15 8H21L16 12L18 18L12 14L6 18L8 12L3 8H9L12 2Z" fill="url(#gold-gradient)" />
+        </svg>
+    );
+};
+
+const FloatingAwardIcon = ({ type, alt }: { type: string; alt: string }) => {
     return (
         <motion.div
             animate={{ 
@@ -1071,13 +1180,9 @@ const FloatingAwardIcon = ({ src, alt }: { src: string; alt: string }) => {
                 repeat: Infinity, 
                 ease: "easeInOut" 
             }}
-            className="relative z-30 drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+            className="relative z-30 drop-shadow-[0_20px_40px_rgba(253,185,49,0.2)]"
         >
-            <img 
-                src={src} 
-                alt={alt} 
-                className="h-28 md:h-36 w-auto object-contain scale-110"
-            />
+            <AwardIcon type={type} className="h-28 md:h-36 w-auto" />
         </motion.div>
     );
 };
@@ -1128,7 +1233,7 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
                         
                         {/* Suggestion: Floating 3D PNG Icon */}
                         <FloatingAwardIcon 
-                            src={getAwardImg(award.group)} 
+                            type={award.group} 
                             alt={award.group} 
                         />
                     </div>
@@ -1155,6 +1260,379 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
     );
 };
 
+// ─── RADIO PLAYER ────────────────────────────────────────────────────────────
+const WaveformBars = ({ isPlaying }: { isPlaying: boolean }) => {
+    const bars = Array.from({ length: 28 });
+    return (
+        <div className="flex items-center gap-[3px] h-16">
+            {bars.map((_, i) => (
+                <div
+                    key={i}
+                    className="w-[3px] rounded-full bg-gradient-to-t from-rose to-burgundy/60"
+                    style={{
+                        height: isPlaying ? `${20 + Math.sin(i * 0.7) * 16 + 8}px` : '6px',
+                        animation: isPlaying
+                            ? `waveBar ${0.6 + (i % 5) * 0.12}s ease-in-out infinite alternate`
+                            : 'none',
+                        animationDelay: `${(i % 7) * 0.07}s`,
+                        transition: 'height 0.4s ease',
+                        opacity: isPlaying ? 1 : 0.3,
+                    }}
+                />
+            ))}
+        </div>
+    );
+};
+
+const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void }) => {
+    const { openModal } = useModal();
+    const [activeIdx, setActiveIdx]     = useState(0);
+    const [isPlaying, setIsPlaying]     = useState(false);
+    const [progress, setProgress]       = useState(0);
+    const [currentTime, setCurrentTime] = useState('0:00');
+    const [duration, setDuration]       = useState('0:00');
+    const [volume, setVolume]           = useState(0.8);
+    const [isMuted, setIsMuted]         = useState(false);
+    const audioRef = useRef<HTMLAudioElement>(null);
+    const spots = project.audioSpots!;
+
+    const formatTime = (sec: number) => {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+    };
+
+    // Load new track whenever activeIdx changes
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        audio.pause();
+        audio.src = spots[activeIdx].src;
+        audio.load();
+        setProgress(0);
+        setCurrentTime('0:00');
+        if (isPlaying) audio.play().catch(() => {});
+    }, [activeIdx]);
+
+    const togglePlay = () => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play().catch(() => {});
+        }
+    };
+
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        const onPlay    = () => setIsPlaying(true);
+        const onPause   = () => setIsPlaying(false);
+        const onEnded   = () => {
+            setIsPlaying(false);
+            setProgress(0);
+            if (activeIdx < spots.length - 1) setActiveIdx(i => i + 1);
+        };
+        const onTime    = () => {
+            if (!audio.duration) return;
+            setProgress((audio.currentTime / audio.duration) * 100);
+            setCurrentTime(formatTime(audio.currentTime));
+        };
+        const onLoaded  = () => setDuration(formatTime(audio.duration));
+        audio.addEventListener('play',           onPlay);
+        audio.addEventListener('pause',          onPause);
+        audio.addEventListener('ended',          onEnded);
+        audio.addEventListener('timeupdate',     onTime);
+        audio.addEventListener('loadedmetadata', onLoaded);
+        return () => {
+            audio.removeEventListener('play',           onPlay);
+            audio.removeEventListener('pause',          onPause);
+            audio.removeEventListener('ended',          onEnded);
+            audio.removeEventListener('timeupdate',     onTime);
+            audio.removeEventListener('loadedmetadata', onLoaded);
+        };
+    }, [activeIdx, spots.length]);
+
+    useEffect(() => {
+        return () => { audioRef.current?.pause(); };
+    }, []);
+
+    const scrub = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const audio = audioRef.current;
+        if (!audio || !audio.duration) return;
+        const val = parseFloat(e.target.value);
+        audio.currentTime = (val / 100) * audio.duration;
+        setProgress(val);
+    };
+
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = parseFloat(e.target.value);
+        setVolume(val);
+        setIsMuted(val === 0);
+        if (audioRef.current) {
+            audioRef.current.volume = val;
+            audioRef.current.muted  = val === 0;
+        }
+    };
+
+    const toggleMute = () => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        if (isMuted) {
+            const restored = volume === 0 ? 0.8 : volume;
+            audio.muted  = false;
+            audio.volume = restored;
+            setVolume(restored);
+            setIsMuted(false);
+        } else {
+            audio.muted = true;
+            setIsMuted(true);
+        }
+    };
+
+    // Sync initial volume to audio element
+    useEffect(() => {
+        if (audioRef.current) audioRef.current.volume = volume;
+    }, []);
+
+    return (
+        <div className="fixed inset-0 z-[200] bg-ink flex flex-col pointer-events-auto animate-slide-in-right">
+            {/* Hidden audio element */}
+            <audio ref={audioRef} src={spots[0].src} preload="metadata" />
+
+            {/* Close button */}
+            <button
+                onClick={onClose}
+                className="absolute top-8 right-8 md:top-12 md:right-12 w-12 h-12 flex items-center justify-center bg-cream/5 border border-cream/10 rounded-full text-cream/40 hover:bg-cream hover:text-ink transition-all duration-500 z-50 group"
+            >
+                <span className="text-xl group-hover:rotate-90 transition-transform duration-500">✕</span>
+            </button>
+
+            {/* Main layout */}
+            <div className="flex flex-col lg:flex-row h-full">
+
+                {/* ── LEFT: Player ── */}
+                <div className="lg:w-[42%] flex flex-col items-center justify-center bg-[#0a0507] border-r border-white/5 p-10 md:p-16 relative overflow-hidden flex-shrink-0">
+                    {/* Background glow */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-rose/10 blur-[100px] transition-all duration-1000 ${isPlaying ? 'opacity-100 scale-110' : 'opacity-30 scale-100'}`} />
+                        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-burgundy/20 blur-[60px] transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-20'}`} />
+                    </div>
+
+                    {/* Logos */}
+                    <div className="relative z-10 flex items-center justify-center gap-6 mb-10">
+                        <img
+                            src={project.img}
+                            alt="BP x Dairy Queen"
+                            className="h-28 md:h-36 w-auto object-contain brightness-0 invert opacity-80"
+                        />
+                    </div>
+
+                    {/* Waveform */}
+                    <div className="relative z-10 mb-10">
+                        <WaveformBars isPlaying={isPlaying} />
+                    </div>
+
+                    {/* Play / Pause */}
+                    <button
+                        onClick={togglePlay}
+                        className={`relative z-10 w-20 h-20 rounded-full flex items-center justify-center border-2 transition-all duration-500 mb-8 group ${
+                            isPlaying
+                                ? 'border-rose bg-rose/10 shadow-[0_0_40px_rgba(220,38,38,0.3)]'
+                                : 'border-cream/20 bg-white/5 hover:border-rose/60 hover:bg-rose/10'
+                        }`}
+                        aria-label={isPlaying ? 'Pause' : 'Play'}
+                    >
+                        {isPlaying ? (
+                            /* Pause icon */
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-cream">
+                                <rect x="6" y="4" width="4" height="16" rx="1" />
+                                <rect x="14" y="4" width="4" height="16" rx="1" />
+                            </svg>
+                        ) : (
+                            /* Play icon */
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-cream ml-1">
+                                <path d="M8 5.14v14l11-7-11-7z" />
+                            </svg>
+                        )}
+                    </button>
+
+                    {/* Track name */}
+                    <div className="relative z-10 text-center mb-6 px-4">
+                        <p className="text-rose text-[0.55rem] tracking-[0.4em] uppercase mb-2">Now Playing</p>
+                        <h3 className="text-cream font-serif text-xl md:text-2xl leading-tight">{spots[activeIdx].title}</h3>
+                        <p className="text-cream/40 text-xs tracking-widest mt-1">{spots[activeIdx].credit}</p>
+                    </div>
+
+                    {/* Scrubber */}
+                    <div className="relative z-10 w-full max-w-xs">
+                        <input
+                            type="range" min="0" max="100" step="0.1"
+                            value={progress}
+                            onChange={scrub}
+                            className="radio-scrubber w-full"
+                        />
+                        <div className="flex justify-between text-cream/30 text-[0.6rem] mt-1 font-mono">
+                            <span>{currentTime}</span>
+                            <span>{duration}</span>
+                        </div>
+                    </div>
+
+                    {/* Volume Control */}
+                    <div className="relative z-10 w-full max-w-xs mt-6">
+                        <div className="flex items-center gap-3">
+                            {/* Mute toggle */}
+                            <button
+                                onClick={toggleMute}
+                                className="flex-shrink-0 text-cream/40 hover:text-cream transition-colors duration-200 outline-none"
+                                aria-label={isMuted ? 'Unmute' : 'Mute'}
+                            >
+                                {isMuted || volume === 0 ? (
+                                    /* Muted speaker */
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                        <line x1="23" y1="9" x2="17" y2="15" />
+                                        <line x1="17" y1="9" x2="23" y2="15" />
+                                    </svg>
+                                ) : volume < 0.5 ? (
+                                    /* Low volume */
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                    </svg>
+                                ) : (
+                                    /* Full volume */
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                                    </svg>
+                                )}
+                            </button>
+
+                            {/* Volume slider */}
+                            <input
+                                type="range" min="0" max="1" step="0.01"
+                                value={isMuted ? 0 : volume}
+                                onChange={handleVolumeChange}
+                                className="radio-scrubber flex-1"
+                                aria-label="Volume"
+                            />
+
+                            {/* Percentage */}
+                            <span className="text-cream/25 text-[0.55rem] font-mono w-8 text-right flex-shrink-0">
+                                {isMuted ? '0' : Math.round(volume * 100)}%
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Label */}
+                    <div className="relative z-10 mt-8 border-t border-white/5 pt-6 text-center">
+                        <p className="text-[0.55rem] tracking-[0.5em] uppercase text-cream/20">Radio Spots for FM Radio</p>
+                        <p className="text-[0.55rem] tracking-[0.3em] text-cream/15 mt-1">by Copywriter: Kelsey Matthews</p>
+                    </div>
+                </div>
+
+                {/* ── RIGHT: Track List + Project Info ── */}
+                <div className="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
+
+                    {/* Track list header */}
+                    <div className="px-10 md:px-16 pt-16 pb-6 border-b border-white/5">
+                        <p className="text-rose/50 text-[0.55rem] tracking-[0.5em] uppercase mb-2">Copywriting · {project.year}</p>
+                        <h2 className="text-4xl md:text-6xl font-serif text-cream uppercase leading-[0.9] tracking-tighter">{project.title}</h2>
+                        <p className="text-cream/40 font-serif italic text-base md:text-lg mt-3">{project.client}</p>
+                    </div>
+
+                    {/* Tracks */}
+                    <div className="px-10 md:px-16 py-6 border-b border-white/5">
+                        <p className="text-rose/50 text-[0.55rem] tracking-[0.4em] uppercase mb-4">Spots</p>
+                        <ul className="space-y-1">
+                            {spots.map((spot, i) => (
+                                <li key={i}>
+                                    <button
+                                        onClick={() => { setActiveIdx(i); if (!isPlaying) setTimeout(() => audioRef.current?.play().catch(() => {}), 80); }}
+                                        className={`w-full text-left group flex items-center justify-between px-4 py-4 rounded-sm transition-all duration-300 ${
+                                            activeIdx === i
+                                                ? 'bg-rose/10 border border-rose/20'
+                                                : 'hover:bg-white/5 border border-transparent'
+                                        }`}
+                                    >
+                                        <div className="flex items-center gap-5 min-w-0">
+                                            {/* Track number / playing indicator */}
+                                            <span className={`text-[0.65rem] font-mono w-5 text-center flex-shrink-0 ${
+                                                activeIdx === i ? 'text-rose' : 'text-cream/25 group-hover:text-cream/50'
+                                            }`}>
+                                                {activeIdx === i && isPlaying ? (
+                                                    <span className="inline-flex gap-[2px] items-end h-3">
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.5s_ease_infinite_alternate]" style={{height:'6px'}} />
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.7s_ease_infinite_alternate]" style={{height:'10px', animationDelay:'0.1s'}} />
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.4s_ease_infinite_alternate]" style={{height:'7px', animationDelay:'0.2s'}} />
+                                                    </span>
+                                                ) : String(i + 1).padStart(2, '0')}
+                                            </span>
+                                            <div className="min-w-0">
+                                                <p className={`text-sm md:text-base truncate transition-colors ${
+                                                    activeIdx === i ? 'text-cream' : 'text-cream/60 group-hover:text-cream/90'
+                                                }`}>{spot.title}</p>
+                                                <p className="text-cream/25 text-[0.65rem] tracking-wider mt-0.5">{spot.credit}</p>
+                                            </div>
+                                        </div>
+                                        <span className={`text-xs font-mono flex-shrink-0 ml-4 ${
+                                            activeIdx === i ? 'text-rose' : 'text-cream/30'
+                                        }`}>{spot.duration}</span>
+                                    </button>
+                                    {i < spots.length - 1 && <div className="h-px bg-white/5 mx-4" />}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Project narrative */}
+                    <div className="px-10 md:px-16 py-10 border-b border-white/5 space-y-10">
+                        <div>
+                            <p className="text-rose/50 text-[0.55rem] tracking-[0.4em] uppercase mb-4">The Work</p>
+                            <p className="text-cream/70 font-serif italic text-lg md:text-2xl leading-relaxed">{project.description}</p>
+                        </div>
+                        {project.themeDescription && (
+                            <div>
+                                <p className="text-rose/50 text-[0.55rem] tracking-[0.4em] uppercase mb-4">{project.themeLabel}</p>
+                                <p className="text-cream/50 font-serif italic text-base md:text-lg leading-relaxed border-l-2 border-burgundy/30 pl-5">{project.themeDescription}</p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Deliverables */}
+                    {project.deliverables.length > 0 && (
+                        <div className="px-10 md:px-16 py-10 border-b border-white/5">
+                            <p className="text-rose/50 text-[0.55rem] tracking-[0.4em] uppercase mb-6">Key Deliverables</p>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12">
+                                {project.deliverables.map((d, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-cream font-sans text-sm group">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-burgundy/40 group-hover:bg-rose transition-colors flex-shrink-0" />
+                                        <span className="opacity-60 group-hover:opacity-100 transition-opacity">{d}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {/* CTA */}
+                    <div className="px-10 md:px-16 py-16 flex items-center justify-center">
+                        <button
+                            onClick={() => { onClose(); openModal(); }}
+                            className="inline-flex items-center gap-6 border border-rose/30 px-10 py-5 text-rose hover:bg-rose hover:text-ink transition-all duration-700 text-[0.65rem] tracking-[0.5em] uppercase font-sans group"
+                        >
+                            Start A Project
+                            <span className="text-xl group-hover:translate-x-3 transition-transform duration-500">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: () => void }) => {
     const { openModal } = useModal();
     const [isHeroInView, setIsHeroInView] = useState(true);
@@ -1164,6 +1642,22 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
     const videoRef = useRef<HTMLVideoElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const isPortrait = project?.orientation === 'portrait';
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const filteredGallery = project?.gallery?.filter(img => 
+        !img.toLowerCase().includes('solo') && 
+        !img.toLowerCase().includes('logo') &&
+        !img.toLowerCase().includes('background')
+    ) || [];
+
+    useEffect(() => {
+        if (project && !project.video && filteredGallery.length > 0) {
+            const interval = setInterval(() => {
+                setCurrentSlide(prev => (prev + 1) % filteredGallery.length);
+            }, 5000);
+            return () => clearInterval(interval);
+        }
+    }, [project, filteredGallery.length]);
 
     useEffect(() => {
         if (!isHeroInView) return;
@@ -1222,15 +1716,14 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
 
     if (!project) return null;
 
-    const filteredGallery = project.gallery?.filter(img => 
-        !img.toLowerCase().includes('solo') && 
-        !img.toLowerCase().includes('logo') &&
-        !img.toLowerCase().includes('background')
-    ) || [];
+    // Radio-only projects get their own dedicated layout
+    if (project.audioSpots && project.audioSpots.length > 0) {
+        return <RadioHero project={project} onClose={onClose} />;
+    }
 
     return (
         <div className="fixed inset-0 z-[200] animate-slide-in-right pointer-events-none bg-ink">
-            {project.video && (
+            {(project.video || (filteredGallery.length > 0 && !project.video)) && (
                 <motion.div 
                     layout
                     initial={false}
@@ -1247,15 +1740,55 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                 : 'absolute bottom-8 right-8 w-60 md:w-80 aspect-video z-[250] rounded-sm flex shadow-2xl border border-cream/10 shadow-ember group/pip'
                     }`}
                 >
-                    <video
-                        ref={videoRef}
-                        src={project.video}
-                        autoPlay
-                        loop
-                        muted={volume === 0}
-                        playsInline
-                        className="w-full h-full object-cover brightness-[0.7] scale-105"
-                    />
+                    {project.video ? (
+                        (() => {
+                            const isYouTube = project.video.includes('youtube.com') || project.video.includes('youtu.be');
+                            if (isYouTube) {
+                                let videoId = '';
+                                if (project.video.includes('v=')) {
+                                    videoId = project.video.split('v=')[1].split('&')[0];
+                                } else if (project.video.includes('youtu.be/')) {
+                                    videoId = project.video.split('youtu.be/')[1].split('?')[0];
+                                } else if (project.video.includes('embed/')) {
+                                    videoId = project.video.split('embed/')[1].split('?')[0];
+                                }
+                                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1`;
+                                
+                                return (
+                                    <iframe
+                                        src={embedUrl}
+                                        className="w-full h-full border-none brightness-[0.7]"
+                                        allow="autoplay; encrypted-media"
+                                        title={project.title}
+                                    />
+                                );
+                            }
+                            return (
+                                <video
+                                    ref={videoRef}
+                                    src={project.video}
+                                    autoPlay
+                                    loop
+                                    muted={volume === 0}
+                                    playsInline
+                                    className="w-full h-full object-contain brightness-[0.7]"
+                                />
+                            );
+                        })()
+                    ) : (
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={currentSlide}
+                                src={filteredGallery[currentSlide]}
+                                alt={project.title}
+                                initial={{ opacity: 0, scale: 1.1 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                className="absolute inset-0 w-full h-full object-contain brightness-[0.7]"
+                            />
+                        </AnimatePresence>
+                    )}
                     <div className={`absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent transition-opacity duration-700 pointer-events-none ${isHeroInView ? 'opacity-100' : 'opacity-0'}`} />
                     <button 
                         onClick={() => setIsPipClosed(true)} 
@@ -1264,27 +1797,29 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                     >
                         <X size={16} strokeWidth={1.5} />
                     </button>
-                    <button 
-                        onClick={toggleMute} 
-                        className={`absolute bottom-4 right-4 z-50 text-cream/70 hover:text-cream bg-black/40 hover:bg-black/80 rounded-full p-2 backdrop-blur-md transition-all duration-300 outline-none ${!isHeroInView ? 'opacity-0 group-hover/pip:opacity-100' : 'opacity-0 pointer-events-none'}`}
-                    >
-                        {volume === 0 ? <VolumeX size={16} strokeWidth={1.5} /> : <Volume2 size={16} strokeWidth={1.5} />}
-                    </button>
+                    {project.video && (
+                        <button 
+                            onClick={toggleMute} 
+                            className={`absolute bottom-4 right-4 z-50 text-cream/70 hover:text-cream bg-black/40 hover:bg-black/80 rounded-full p-2 backdrop-blur-md transition-all duration-300 outline-none ${!isHeroInView ? 'opacity-0 group-hover/pip:opacity-100' : 'opacity-0 pointer-events-none'}`}
+                        >
+                            {volume === 0 ? <VolumeX size={16} strokeWidth={1.5} /> : <Volume2 size={16} strokeWidth={1.5} />}
+                        </button>
+                    )}
                 </motion.div>
             )}
 
             <div ref={scrollRef} onScroll={handleScroll} className="absolute inset-0 overflow-y-auto custom-scrollbar pointer-events-auto">
                 <section className="relative h-screen w-full flex flex-col justify-end p-12 md:p-24 pointer-events-none">
                     <div className="absolute inset-0 z-0 pointer-events-none">
-                        {!project.video && (
-                            <>
+                        {!project.video && filteredGallery.length === 0 && (
+                            <div className="w-full h-full relative">
                                 <img
                                     src={project.img}
                                     alt={project.title}
-                                    className="w-full h-full transition-all duration-[1500ms] ease-out pointer-events-auto object-cover brightness-[0.7] scale-105"
+                                    className="w-full h-full transition-all duration-[1500ms] ease-out pointer-events-auto object-contain brightness-[0.7]"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-                            </>
+                            </div>
                         )}
                     </div>
 
@@ -1341,7 +1876,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                 <div>
                                     <p className="text-rose/50 text-[0.65rem] tracking-[0.4em] uppercase mb-10">Key Deliverables</p>
                                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                                        {project.deliverables.map((d, i) => (
+                                        {project.deliverables?.map((d, i) => (
                                             <li key={i} className="flex items-center gap-4 text-cream font-sans text-lg group">
                                                 <span className="w-1.5 h-1.5 rounded-full bg-burgundy/40 group-hover:bg-rose transition-colors" />
                                                 <span className="opacity-60 group-hover:opacity-100 transition-opacity">{d}</span>
@@ -1419,17 +1954,19 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                     </div>
 
                                     {/* Suggestion 1: Summary Stat Bar */}
-                                    <div className="flex items-center gap-12 bg-white/5 backdrop-blur-md border border-white/10 px-8 py-6 rounded-sm">
-                                        <div className="text-center">
-                                            <p className="text-[0.6rem] tracking-[0.2em] text-cream/40 uppercase mb-1">Total Wins</p>
-                                            <p className="text-3xl font-serif text-cream"><StatCounter to={project.awards.reduce((acc, curr) => acc + curr.count, 0)} /></p>
+                                    {project.title === 'Sinners' && (
+                                        <div className="flex items-center gap-12 bg-white/5 backdrop-blur-md border border-white/10 px-8 py-6 rounded-sm">
+                                            <div className="text-center">
+                                                <p className="text-[0.6rem] tracking-[0.2em] text-cream/40 uppercase mb-1">Total Wins</p>
+                                                <p className="text-3xl font-serif text-cream"><StatCounter to={project.awards.reduce((acc, curr) => acc + curr.count, 0)} /></p>
+                                            </div>
+                                            <div className="w-px h-12 bg-white/10" />
+                                            <div className="text-center">
+                                                <p className="text-[0.6rem] tracking-[0.2em] text-cream/40 uppercase mb-1">Nominations</p>
+                                                <p className="text-3xl font-serif text-cream">{project.awards.find(a => a.group.includes('Academy'))?.nominations || 16}</p>
+                                            </div>
                                         </div>
-                                        <div className="w-px h-12 bg-white/10" />
-                                        <div className="text-center">
-                                            <p className="text-[0.6rem] tracking-[0.2em] text-cream/40 uppercase mb-1">Nominations</p>
-                                            <p className="text-3xl font-serif text-cream">{project.awards.find(a => a.group.includes('Academy'))?.nominations || 16}</p>
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
                             </Reveal>
 
@@ -1441,22 +1978,24 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                             </div>
 
                             {/* Suggestion 4: Historic Callout Card */}
-                            <Reveal delay={600}>
-                                <div className="bg-gradient-to-r from-burgundy/20 to-rose/5 border border-rose/20 p-12 md:p-16 rounded-lg relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 w-96 h-96 bg-rose/10 blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-rose/20 transition-colors duration-1000" />
-                                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-center">
-                                        <div className="w-24 h-24 rounded-full bg-rose/10 flex items-center justify-center border border-rose/30">
-                                            <Sparkles className="text-rose" size={40} />
-                                        </div>
-                                        <div className="space-y-4">
-                                            <p className="text-rose text-[0.7rem] tracking-[0.4em] uppercase font-sans">Historic Achievement</p>
-                                            <h4 className="text-2xl md:text-4xl font-serif text-cream italic leading-tight">
-                                                “Autumn Durald Arkapaw made history as the <span className="text-rose underline decoration-rose/30 underline-offset-8">first woman to win</span> Best Cinematography at the Oscars for Sinners.”
-                                            </h4>
+                            {project.title === 'Sinners' && (
+                                <Reveal delay={600}>
+                                    <div className="bg-gradient-to-r from-burgundy/20 to-rose/5 border border-rose/20 p-12 md:p-16 rounded-lg relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 w-96 h-96 bg-rose/10 blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-rose/20 transition-colors duration-1000" />
+                                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-12 items-center">
+                                            <div className="w-24 h-24 rounded-full bg-rose/10 flex items-center justify-center border border-rose/30">
+                                                <Sparkles className="text-rose" size={40} />
+                                            </div>
+                                            <div className="space-y-4">
+                                                <p className="text-rose text-[0.7rem] tracking-[0.4em] uppercase font-sans">Historic Achievement</p>
+                                                <h4 className="text-2xl md:text-4xl font-serif text-cream italic leading-tight">
+                                                    “Autumn Durald Arkapaw made history as the <span className="text-rose underline decoration-rose/30 underline-offset-8">first woman to win</span> Best Cinematography at the Oscars for Sinners.”
+                                                </h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Reveal>
+                                </Reveal>
+                            )}
                         </div>
                     </section>
                 )}
@@ -1472,10 +2011,10 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                 <p className="text-rose/50 text-[0.65rem] tracking-[0.4em] uppercase">Production Gallery</p>
                                 <span className="text-cream/20 font-serif italic">{filteredGallery.length} Selected Assets</span>
                             </div>
-                            <div className="columns-1 md:columns-2 lg:columns-2 gap-8 space-y-8">
+                            <div className={project.galleryLayout === 'poster' ? "flex flex-col gap-0 max-w-4xl mx-auto" : "columns-1 md:columns-2 lg:columns-2 gap-8 space-y-8"}>
                                 {filteredGallery.map((img, i) => (
                                     <Reveal key={i} delay={i * 50}>
-                                        <div className="break-inside-avoid overflow-hidden bg-white/5 border border-white/5 group relative">
+                                        <div className={project.galleryLayout === 'poster' ? "overflow-hidden group relative" : "break-inside-avoid overflow-hidden bg-white/5 border border-white/5 group relative"}>
                                             <img src={img} alt={`Gallery ${i}`} loading="lazy" className="w-full h-auto object-contain transition-transform duration-[2000ms] group-hover:scale-105" />
                                             <div className="absolute inset-0 bg-ink opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none" />
                                         </div>
@@ -1549,8 +2088,10 @@ export default function ArchivesPage() {
     const blackat2025Projects = projects.filter(p => [15].includes(p.id));
     const spikeLeeProjects = projects.filter(p => [10, 12].includes(p.id));
     const comeUpProjects = projects.filter(p => [19].includes(p.id));
-    const kingdomBusinessProjects = projects.filter(p => [29].includes(p.id));
-    const copywritingProjects = projects.filter(p => [20, 21, 22, 23, 24, 25, 26, 27, 28].includes(p.id));
+    const kingdomBusinessProjects = projects.filter(p => [31].includes(p.id));
+    const copywritingProjects = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+        .map(id => projects.find(p => p.id === id))
+        .filter((p): p is Project => p !== undefined);
 
     return (
         <div className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>

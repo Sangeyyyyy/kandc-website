@@ -786,6 +786,23 @@ export const GlobalLayout = ({ children }: { children: React.ReactNode }) => {
         }
     }, [location.pathname]);
 
+    // Handle Dynamic Page Titles
+    useEffect(() => {
+        const path = location.pathname;
+        const baseTitle = "Kelsey & Company";
+        
+        const titles: { [key: string]: string } = {
+            "/": baseTitle,
+            "/who-we-are": `Who We Are | ${baseTitle}`,
+            "/services": `Services | ${baseTitle}`,
+            "/our-work": `Our Work | ${baseTitle}`,
+            "/upcoming-events": `Upcoming Events | ${baseTitle}`,
+            "/services-test": `Test Page | ${baseTitle}`
+        };
+
+        document.title = titles[path] || baseTitle;
+    }, [location.pathname]);
+
     return (
         <ModalContext.Provider value={{ isModalOpen, openModal, closeModal }}>
             <div className="relative">

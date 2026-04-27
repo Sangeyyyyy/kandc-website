@@ -138,6 +138,7 @@ const SelectedWork = () => {
       title: 'Tron: Ares',
       category: 'Experiential Integrated Activations and Premieres',
       img: getAssetUrl('tron'),
+      video: getAssetUrl('Tron_video'),
       objectPosition: 'top center',
     },
     {

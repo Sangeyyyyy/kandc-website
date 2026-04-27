@@ -735,3 +735,62 @@
   0% { filter: brightness(0.8) contrast(1.1) saturate(1); }
   100% { filter: brightness(1) contrast(1.2) saturate(1.2); }
 }
+
+/* ── RADIO PLAYER ───────────────────────────────────────────────────────── */
+@keyframes waveBar {
+  0%   { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+/* Scrubber / progress input for the radio player */
+.radio-scrubber {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-scrubber::-webkit-slider-runnable-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.radio-scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 14px;
+  width: 14px;
+  background-color: var(--color-rose);
+  border-radius: 50%;
+  margin-top: -6px;
+  box-shadow: 0 0 12px rgba(238, 192, 191, 0.6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.radio-scrubber:hover::-webkit-slider-thumb {
+  transform: scale(1.25);
+  box-shadow: 0 0 20px rgba(238, 192, 191, 0.9);
+}
+
+.radio-scrubber::-moz-range-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.radio-scrubber::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  background-color: var(--color-rose);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(238, 192, 191, 0.6);
+  cursor: pointer;
+}

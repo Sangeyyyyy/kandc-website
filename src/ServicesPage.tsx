@@ -39,7 +39,7 @@ const SERVICES_DATA = [
             {
                 name: 'Tron: Ares',
                 type: 'production',
-                portrait: getAssetUrl('tron'),
+                portrait: getAssetUrl('tron_poster'),
                 year: '2025',
                 role: 'Integrated Marketing & Brand Activation',
                 eventDetail: {
@@ -48,7 +48,10 @@ const SERVICES_DATA = [
                     theme: 'INTEGRATED MARKETING STRATEGY',
                     description: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
                     capacity: 'Multi-Market Integration',
-                    heroImage: getAssetUrl('tron'),
+                    heroOrientation: 'portrait',
+                    heroImage: getAssetUrl('tron_poster'),
+                    videoSrc: getAssetUrl('Tron_video'),
+                    videoPoster: getAssetUrl('tron_poster'),
                     galleryImages: [
                         { src: getAssetUrl('Tron_1'), orientation: 'landscape' },
                         { src: getAssetUrl('Tron_2'), orientation: 'landscape' },
@@ -95,16 +98,16 @@ const SERVICES_DATA = [
                     videoSrc: getAssetUrl('avatar_video'),
                     galleryImages: [
                         { src: getAssetUrl('avatar_1'), orientation: 'portrait' },
-                        { src: getAssetUrl('avatar_2'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_3'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_4'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_5'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_6'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_2'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_3'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_4'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_5'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_6'), orientation: 'portrait' },
                         { src: getAssetUrl('avatar_7'), orientation: 'portrait' },
-                        { src: getAssetUrl('avatar_8'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_9'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_10'), orientation: 'landscape' },
-                        { src: getAssetUrl('avatar_11'), orientation: 'landscape' },
+                        { src: getAssetUrl('avatar_8'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_9'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_10'), orientation: 'portrait' },
+                        { src: getAssetUrl('avatar_11'), orientation: 'portrait' },
                         { src: getAssetUrl('avatar_12'), orientation: 'portrait' },
                     ]
                 }
@@ -167,24 +170,28 @@ const SERVICES_DATA = [
         description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
         image: getAssetUrl('sneakerball'),
         clients: [
-            { 
-                name: 'CANNES LIONS', 
-                type: 'event', 
+            {
+                name: 'CANNES LIONS',
+                type: 'event',
                 portrait: getAssetUrl('spike_lee_fireside_chat_poster'),
                 objectPosition: 'center 10%',
                 year: '2023',
                 role: 'Featured Programming',
                 subPartnerships: [
-                    { 
+                    {
                         name: 'Spike Lee Fireside Chat',
                         eventDetail: {
                             title: 'Spike Lee',
                             subtitle: 'Fireside Chat · Cannes Lions 2023',
                             theme: 'OWNERSHIP ON OUR OWN TERMS: Reclaiming Our Cultural Significance',
-                            description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. Our curated lineup included a captivating Palais presentation, an exclusive Keynote/fireside chat with Spike Lee, a press junket, & a lavish 5-course celebratory meal powered by the prestigious Jordan Brand.",
+                            description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. We executive produced and curated an exclusive fireside chat focusing on the power of storytelling and cultural impact.",
                             capacity: '80 Guests (18+)',
+                            heroOrientation: 'portrait',
+                            videoSrc: getAssetUrl('spike_lee_fireside_chat_video'),
+                            videoPoster: getAssetUrl('spike_lee_fireside_chat_poster'),
                             heroImage: getAssetUrl('spike_lee_fireside_chat_poster'),
                             galleryImages: [
+                                { src: getAssetUrl('spike_lee_fireside_chat_poster'), orientation: 'portrait' },
                                 { src: getAssetUrl('spike_lee_fireside_chat_1'), orientation: 'portrait' },
                                 { src: getAssetUrl('spike_lee_fireside_chat_2'), orientation: 'portrait' },
                                 { src: getAssetUrl('spike_lee_fireside_chat_3'), orientation: 'portrait' },
@@ -192,7 +199,27 @@ const SERVICES_DATA = [
                             ]
                         }
                     },
-                    { 
+                    {
+                        name: 'Spike Lee Dinner',
+                        eventDetail: {
+                            title: 'Spike Lee Dinner',
+                            subtitle: 'Powered by Jordan Brand',
+                            theme: 'LUXURY DINNER EXPERIENCE',
+                            description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. Our curated lineup included a captivating Palais presentation, an exclusive Keynote/fireside chat with Spike Lee, a press junket, & a lavish 5-course celebratory meal powered by the prestigious Jordan Brand.",
+                            capacity: 'Capacity | 50 guests',
+                            heroOrientation: 'portrait',
+                            videoSrc: getAssetUrl('spike_lee_dinner_video'),
+                            videoPoster: getAssetUrl('spike_lee_dinner_poster'),
+                            heroImage: getAssetUrl('spike_lee_dinner_poster'),
+                            galleryImages: [
+                                { src: getAssetUrl('spike_lee_dinner_poster'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_dinner_1'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_dinner'), orientation: 'portrait' },
+                                { src: getAssetUrl('spike_lee_dinner_2'), orientation: 'portrait' },
+                            ]
+                        }
+                    },
+                    {
                         name: 'Sneaker Ball',
                         eventDetail: {
                             title: 'Renaissance Noir',
@@ -208,25 +235,37 @@ const SERVICES_DATA = [
                             ]
                         }
                     },
+
                     { 
-                        name: 'Spike Lee Dinner',
+                        name: 'CEO/CMO Brunch',
                         eventDetail: {
-                            title: 'Spike Lee Dinner',
-                            subtitle: 'Powered by Jordan Brand',
-                            theme: 'LUXURY DINNER EXPERIENCE',
-                            description: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
-                            capacity: 'Capacity | 50 guests',
-                            heroImage: getAssetUrl('spike_lee_dinner_1'),
+                            title: 'CEO/CMO Brunch',
+                            subtitle: 'Poetic Accompaniment by J.Ivy',
+                            theme: 'EXECUTIVE NETWORKING',
+                            description: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
+                            capacity: 'Capacity | 50 People',
+                            heroOrientation: 'portrait',
+                            heroImage: getAssetUrl('CMO_brunch_poster'),
                             galleryImages: [
-                                { src: getAssetUrl('spike_lee_dinner'), orientation: 'landscape' },
-                                { src: getAssetUrl('spike_lee_dinner_1'), orientation: 'landscape' },
-                                { src: getAssetUrl('spike_lee_dinner_2'), orientation: 'landscape' },
-                                { src: getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1'), orientation: 'landscape' }
+                                { src: getAssetUrl('CEOCMO_BRUNCH'), orientation: 'portrait' }
                             ]
                         }
                     },
-                    { name: 'CEO/CMO Brunch' },
-                    { name: 'Logitech x Vice' }
+                    { 
+                        name: 'Logitech x Vice',
+                        eventDetail: {
+                            title: 'Logitech x Vice Luncheon',
+                            subtitle: 'Powered by Logitech and Vice',
+                            theme: 'STRATEGIC PARTNERSHIP LUNCHEON',
+                            description: 'A private, seated Luncheon and fireside chat for industry executives powered by Logitech and Vice.',
+                            capacity: 'Capacity | 50 People',
+                            heroOrientation: 'landscape',
+                            heroImage: getAssetUrl('logitech_x_vice_luncheon'),
+                            galleryImages: [
+                                { src: getAssetUrl('logitech_x_vice_luncheon'), orientation: 'landscape' }
+                            ]
+                        }
+                    }
                 ]
             },
             {
@@ -276,7 +315,7 @@ const SERVICES_DATA = [
                 role: 'Cultural Event Partnerships',
                 subPartnerships: [
                     { name: 'One Musicfest' },
-                    { 
+                    {
                         name: 'Atlanta Black Expo',
                         eventDetail: {
                             title: 'Atlanta Black Expo',
@@ -381,7 +420,7 @@ const SERVICES_DATA = [
                     description: "BET+ Is the Cookout summer collection — a play on nostalgic cultural titles that speak to the diaspora to amplify celebration, community, and summer streaming. The campaign generated one of the platform's highest trailer engagement periods of the season, yielding 150K streams and 17k new subscriptions.",
                     capacity: '150K Streams · 17K New Subs',
                     heroOrientation: 'landscape',
-                    videoSrc: getAssetUrl('BET_is_the_cookout_poster'),
+                    videoSrc: getAssetUrl('Bet_Is_The_Cookout'),
                     videoPoster: getAssetUrl('BET_1'),
                     galleryImages: [
                         { src: getAssetUrl('BET_1'), orientation: 'landscape' },
@@ -517,8 +556,8 @@ const ServicesPage = () => {
                 <div className="container mx-auto px-8 max-w-7xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-rose/10 border border-rose/10">
                         {SERVICES_DATA.map((service) => (
-                            <div 
-                                key={service.id} 
+                            <div
+                                key={service.id}
                                 className="relative aspect-[16/9] group overflow-hidden bg-ink cursor-pointer"
                                 onClick={() => toggleOverlay(service.id)}
                             >
@@ -564,25 +603,25 @@ const ServicesPage = () => {
             {activeService && (
                 <div className={`fixed inset-0 z-[100] bg-ink flex flex-col md:flex-row transition-all duration-[800ms] ease-expo ${overlayServiceId ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
                     <div className="w-full md:w-[60%] h-[40vh] md:h-full relative overflow-hidden bg-black">
-                        <img 
-                            src={activeService.image} 
+                        <img
+                            src={activeService.image}
                             alt={activeService.title}
                             className="w-full h-full object-cover opacity-60 animate-ken-burns transition-transform duration-[3000ms]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-ink/40"></div>
                         <div className="absolute top-10 left-10 z-10 hidden md:block">
-                             <button 
+                            <button
                                 onClick={() => setOverlayServiceId(null)}
                                 className="group flex items-center gap-4 text-cream text-[0.65rem] tracking-[0.4em] uppercase font-sans hover:text-rose transition-colors"
-                             >
+                            >
                                 <div className="w-10 h-10 flex items-center justify-center border border-cream/20 rounded-full group-hover:border-rose/40 transition-colors">
                                     <X size={16} />
                                 </div>
                                 <span>Return to Overview</span>
-                             </button>
+                            </button>
                         </div>
                         {/* Mobile Fixed Close Button */}
-                        <button 
+                        <button
                             onClick={() => setOverlayServiceId(null)}
                             className="md:hidden fixed top-6 right-6 z-[150] w-12 h-12 flex items-center justify-center bg-cream/80 backdrop-blur-md rounded-full shadow-lg border border-burgundy/10"
                         >
@@ -602,11 +641,11 @@ const ServicesPage = () => {
                                 <p className="text-xl md:text-3xl font-serif italic text-cream/80 leading-relaxed border-l border-rose/30 pl-8 ml-2">
                                     {activeService.description}
                                 </p>
-                                
+
                                 {activeService.id === '01' && (
                                     <div className="mt-12 p-8 border border-rose/10 bg-rose/[0.02]">
-                                        <p className="text-[0.6rem] tracking-[0.4em] uppercase font-sans text-rose/60 mb-4">Core Inclusion</p>
-                                        <p className="text-sm font-serif italic text-cream/40 leading-relaxed">
+                                        <p className="text-[0.75rem] tracking-[0.4em] uppercase font-sans text-rose/60 mb-4">Core Inclusion</p>
+                                        <p className="text-base font-serif italic text-cream/40 leading-relaxed">
                                             Our experiential model includes end-to-end staffing and management systems, ensuring elite representation and cultural fluency at every brand touchpoint.
                                         </p>
                                     </div>
@@ -617,109 +656,109 @@ const ServicesPage = () => {
                                 <h4 className="text-[0.6rem] tracking-[0.5em] uppercase font-sans text-rose/50 mb-12">Selected Work</h4>
                                 <div className="space-y-6">
                                     {activeService.clients?.map((client: any, idx) => (
-                                            <div key={idx} className="relative">
-                                                <div 
-                                                    className={`group/client relative flex items-center gap-6 p-4 rounded-sm border border-transparent hover:border-rose/10 hover:bg-rose/[0.02] transition-all duration-500 ${client.eventDetail ? 'cursor-pointer' : ''}`}
-                                                    onClick={() => client.eventDetail && setSelectedEventClient(client)}
-                                                >
-                                                    {/* Visual Representative */}
-                                                    <div className="relative w-24 h-24 shrink-0 overflow-hidden rounded-sm bg-ink/50 shadow-sm border border-rose/10">
-                                                        {client.portrait ? (
-                                                            <div className={`w-full h-full flex items-center justify-center ${client.objectFit === 'contain' ? 'bg-cream/5 p-4' : ''}`}>
-                                                                <img 
-                                                                    src={client.portrait} 
-                                                                    className={`w-full h-full ${client.objectFit === 'contain' ? 'object-contain' : 'object-cover'} grayscale brightness-90 group-hover/client:grayscale-0 group-hover/client:scale-110 transition-all duration-1000`} 
-                                                                    style={{ objectPosition: client.objectPosition || 'center' }}
-                                                                    alt={client.name} 
-                                                                />
-                                                            </div>
-                                                        ) : (
-                                                            <div className="w-full h-full flex items-center justify-center bg-rose/10 text-rose/40 font-serif text-3xl italic">
-                                                                {client.name.charAt(0)}
-                                                            </div>
-                                                        )}
-                                                        
-                                                        {client.eventDetail && (
-                                                            <div className="absolute inset-0 flex items-center justify-center bg-burgundy/40 opacity-0 group-hover/client:opacity-100 transition-opacity duration-500">
-                                                                <Plus size={20} className="text-cream" />
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Information */}
-                                                    <div className="flex-grow min-w-0">
-                                                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 md:mb-1.5 px-0.5 gap-1 md:gap-0">
-                                                            <h5 className="text-[0.85rem] md:text-[0.9rem] tracking-[0.25em] font-sans uppercase text-cream group-hover/client:text-rose transition-colors duration-500 truncate md:whitespace-normal">
-                                                                {client.name}
-                                                            </h5>
-                                                            {client.year && (
-                                                                <span className="text-[0.6rem] md:text-[0.65rem] font-sans text-rose/30 tracking-[0.3em] font-light shrink-0">{client.year}</span>
-                                                            )}
+                                        <div key={idx} className="relative">
+                                            <div
+                                                className={`group/client relative flex items-center gap-6 p-4 rounded-sm border border-transparent hover:border-rose/10 hover:bg-rose/[0.02] transition-all duration-500 ${client.eventDetail ? 'cursor-pointer' : ''}`}
+                                                onClick={() => client.eventDetail && setSelectedEventClient(client)}
+                                            >
+                                                {/* Visual Representative */}
+                                                <div className="relative w-24 h-24 shrink-0 overflow-hidden rounded-sm bg-ink/50 shadow-sm border border-rose/10">
+                                                    {client.portrait ? (
+                                                        <div className={`w-full h-full flex items-center justify-center ${client.objectFit === 'contain' ? 'bg-cream/5 p-4' : ''}`}>
+                                                            <img
+                                                                src={client.portrait}
+                                                                className={`w-full h-full ${client.objectFit === 'contain' ? 'object-contain' : 'object-cover'} grayscale brightness-90 group-hover/client:grayscale-0 group-hover/client:scale-110 transition-all duration-1000`}
+                                                                style={{ objectPosition: client.objectPosition || 'center' }}
+                                                                alt={client.name}
+                                                            />
                                                         </div>
-                                                        
-                                                        <div className="flex flex-wrap items-center gap-3 md:gap-8 mt-1 md:mt-0">
-                                                            {client.role && (
-                                                                <span className="text-[0.5rem] tracking-[0.2em] uppercase font-sans px-3 py-1.5 border border-rose/20 text-rose/60 rounded-[4px] bg-rose/[0.02] group-hover/client:border-rose/40 transition-colors">
-                                                                    {client.role}
-                                                                </span>
-                                                            )}
-                                                            {client.eventDetail && (
-                                                                <div className="flex items-center gap-3 group/cta">
-                                                                    <span className="text-[0.55rem] tracking-[0.4em] uppercase font-sans text-rose/30 group-hover/client:text-rose transition-all">
-                                                                        Explore Moment
-                                                                    </span>
-                                                                    <div className="relative flex items-center">
-                                                                        <span className="w-8 md:w-16 h-px bg-rose/10 group-hover/client:bg-rose group-hover/client:w-24 transition-all duration-1000"></span>
-                                                                    </div>
-                                                                </div>
-                                                            )}
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center bg-rose/10 text-rose/40 font-serif text-3xl italic">
+                                                            {client.name.charAt(0)}
                                                         </div>
-                                                    </div>
+                                                    )}
 
-
-                                                    {/* Decorative Indicator */}
                                                     {client.eventDetail && (
-                                                        <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover/client:opacity-100 transition-all duration-700 transform translate-x-4 group-hover:translate-x-0">
-                                                            <div className="w-12 h-[1px] bg-rose/30"></div>
+                                                        <div className="absolute inset-0 flex items-center justify-center bg-burgundy/40 opacity-0 group-hover/client:opacity-100 transition-opacity duration-500">
+                                                            <Plus size={20} className="text-cream" />
                                                         </div>
                                                     )}
                                                 </div>
 
-                                                {/* Sub-Partnerships */}
-                                                {client.subPartnerships && client.subPartnerships.length > 0 && (
-                                                    <div className="mt-2 ml-[7.5rem] pl-4 border-l border-rose/10 space-y-2">
-                                                        <p className="text-[0.5rem] tracking-[0.35em] uppercase font-sans text-rose/30 mb-3">{client.subLabel || 'Partnerships'}</p>
-                                                        {client.subPartnerships.map((partner: any, pIdx: number) => (
-                                                            <div 
-                                                                key={pIdx} 
-                                                                className={`flex items-center gap-3 group/sub ${partner.eventDetail ? 'cursor-pointer' : ''}`}
-                                                                onClick={(e) => {
-                                                                    if (partner.eventDetail) {
-                                                                        e.stopPropagation();
-                                                                        setSelectedEventClient({
-                                                                            name: partner.name,
-                                                                            year: client.year,
-                                                                            eventDetail: partner.eventDetail
-                                                                        });
-                                                                    }
-                                                                }}
-                                                            >
-                                                                <span className="w-3 h-px bg-rose/20 group-hover/sub:bg-rose/50 transition-colors duration-500 shrink-0"></span>
-                                                                <span className={`text-[0.65rem] tracking-[0.2em] uppercase font-sans transition-colors duration-500 ${partner.eventDetail ? 'text-cream/70 group-hover/sub:text-rose flex items-center gap-2' : 'text-cream/40 group-hover/sub:text-cream/70'}`}>
-                                                                    {partner.name}
+                                                {/* Information */}
+                                                <div className="flex-grow min-w-0">
+                                                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-2 md:mb-1.5 px-0.5 gap-1 md:gap-0">
+                                                        <h5 className="text-[0.85rem] md:text-[0.9rem] tracking-[0.25em] font-sans uppercase text-cream group-hover/client:text-rose transition-colors duration-500 truncate md:whitespace-normal">
+                                                            {client.name}
+                                                        </h5>
+                                                        {client.year && (
+                                                            <span className="text-[0.6rem] md:text-[0.65rem] font-sans text-rose/30 tracking-[0.3em] font-light shrink-0">{client.year}</span>
+                                                        )}
+                                                    </div>
+
+                                                    <div className="flex flex-wrap items-center gap-3 md:gap-8 mt-1 md:mt-0">
+                                                        {client.role && (
+                                                            <span className="text-[0.5rem] tracking-[0.2em] uppercase font-sans px-3 py-1.5 border border-rose/20 text-rose/60 rounded-[4px] bg-rose/[0.02] group-hover/client:border-rose/40 transition-colors">
+                                                                {client.role}
+                                                            </span>
+                                                        )}
+                                                        {client.eventDetail && (
+                                                            <div className="flex items-center gap-3 group/cta">
+                                                                <span className="text-[0.55rem] tracking-[0.4em] uppercase font-sans text-rose/30 group-hover/client:text-rose transition-all">
+                                                                    Explore Moment
                                                                 </span>
-                                                                {partner.eventDetail && (
-                                                                    <span className="text-[0.45rem] tracking-[0.2em] font-sans text-rose/40 uppercase px-2 py-0.5 border border-rose/20 rounded-[2px] ml-2 group-hover/sub:border-rose/50 opacity-0 group-hover/sub:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover/sub:translate-x-0">
-                                                                        View Details
-                                                                    </span>
-                                                                )}
+                                                                <div className="relative flex items-center">
+                                                                    <span className="w-8 md:w-16 h-px bg-rose/10 group-hover/client:bg-rose group-hover/client:w-24 transition-all duration-1000"></span>
+                                                                </div>
                                                             </div>
-                                                        ))}
+                                                        )}
+                                                    </div>
+                                                </div>
+
+
+                                                {/* Decorative Indicator */}
+                                                {client.eventDetail && (
+                                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover/client:opacity-100 transition-all duration-700 transform translate-x-4 group-hover:translate-x-0">
+                                                        <div className="w-12 h-[1px] bg-rose/30"></div>
                                                     </div>
                                                 )}
                                             </div>
+
+                                            {/* Sub-Partnerships */}
+                                            {client.subPartnerships && client.subPartnerships.length > 0 && (
+                                                <div className="mt-2 ml-[7.5rem] pl-4 border-l border-rose/10 space-y-2">
+                                                    <p className="text-[0.5rem] tracking-[0.35em] uppercase font-sans text-rose/30 mb-3">{client.subLabel || 'Partnerships'}</p>
+                                                    {client.subPartnerships.map((partner: any, pIdx: number) => (
+                                                        <div
+                                                            key={pIdx}
+                                                            className={`flex items-center gap-3 group/sub ${partner.eventDetail ? 'cursor-pointer' : ''}`}
+                                                            onClick={(e) => {
+                                                                if (partner.eventDetail) {
+                                                                    e.stopPropagation();
+                                                                    setSelectedEventClient({
+                                                                        name: partner.name,
+                                                                        year: client.year,
+                                                                        eventDetail: partner.eventDetail
+                                                                    });
+                                                                }
+                                                            }}
+                                                        >
+                                                            <span className="w-3 h-px bg-rose/20 group-hover/sub:bg-rose/50 transition-colors duration-500 shrink-0"></span>
+                                                            <span className={`text-[0.65rem] tracking-[0.2em] uppercase font-sans transition-colors duration-500 ${partner.eventDetail ? 'text-cream/70 group-hover/sub:text-rose flex items-center gap-2' : 'text-cream/40 group-hover/sub:text-cream/70'}`}>
+                                                                {partner.name}
+                                                            </span>
+                                                            {partner.eventDetail && (
+                                                                <span className="text-[0.45rem] tracking-[0.2em] font-sans text-rose/40 uppercase px-2 py-0.5 border border-rose/20 rounded-[2px] ml-2 group-hover/sub:border-rose/50 opacity-0 group-hover/sub:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover/sub:translate-x-0">
+                                                                    View Details
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
                                     ))}
-                                    
+
                                     {(!activeService.clients || activeService.clients.length === 0) && (
                                         <div className="py-20 text-center border border-dashed border-rose/20 rounded-sm">
                                             <p className="text-sm font-serif italic text-cream/30">Client work coming soon.</p>
@@ -730,7 +769,7 @@ const ServicesPage = () => {
 
                             <div ref={magneticRef} className="magnetic-button">
                                 <Reveal delay={600}>
-                                    <button 
+                                    <button
                                         onClick={() => {
                                             setOverlayServiceId(null);
                                             openModal();
@@ -750,16 +789,16 @@ const ServicesPage = () => {
             {selectedEventClient && (
                 <div className="fixed inset-0 z-[200] flex overflow-hidden">
                     {/* Backdrop */}
-                    <div 
-                        className="absolute inset-0 bg-ink/95 backdrop-blur-md" 
+                    <div
+                        className="absolute inset-0 bg-ink/95 backdrop-blur-md"
                         onClick={() => setSelectedEventClient(null)}
                     />
 
                     {/* Modal Container */}
                     <div className="relative w-full m-4 md:m-10 flex flex-col md:flex-row bg-ink overflow-hidden shadow-ember-intense animate-fade-in-up rounded-sm border border-rose/10">
-                        
+
                         {/* Close Button */}
-                        <button 
+                        <button
                             onClick={() => setSelectedEventClient(null)}
                             className="absolute top-6 right-6 z-50 w-12 h-12 flex items-center justify-center border border-cream/20 rounded-full hover:bg-rose/20 hover:border-rose/40 transition-all duration-500 text-cream"
                         >
@@ -767,15 +806,14 @@ const ServicesPage = () => {
                         </button>
 
                         {/* Panel 1: Video or Portrait */}
-                        <div className={`w-full h-[40vh] md:h-full relative overflow-hidden bg-black shrink-0 transition-all duration-700 ${
-                            selectedEventClient.eventDetail?.heroOrientation === 'portrait' ? 'md:w-[40%]' : 'md:w-[55%]'
-                        }`}>
+                        <div className={`w-full h-[40vh] md:h-full relative overflow-hidden bg-black shrink-0 transition-all duration-700 ${selectedEventClient.eventDetail?.heroOrientation === 'portrait' ? 'md:w-[40%]' : 'md:w-[55%]'
+                            }`}>
                             {selectedEventClient.eventDetail?.videoSrc ? (
                                 <>
                                     {/* Cinematic Blur Background */}
                                     <div className="absolute inset-0 bg-black/80 overflow-hidden pointer-events-none">
                                         <video
-                                            src={encodeURI(getAssetUrl(selectedEventClient.eventDetail.videoSrc))}
+                                            src={selectedEventClient.eventDetail.videoSrc}
                                             autoPlay
                                             muted
                                             loop
@@ -783,25 +821,25 @@ const ServicesPage = () => {
                                             className="w-full h-full object-cover scale-[1.3] blur-[40px] opacity-30 transition-all duration-[1500ms]"
                                         />
                                     </div>
-                                    
+
                                     {/* Main Video Layer */}
                                     <video
                                         ref={videoRef}
-                                        src={encodeURI(getAssetUrl(selectedEventClient.eventDetail.videoSrc))}
-                                        poster={encodeURI(getAssetUrl(selectedEventClient.eventDetail.videoPoster))}
+                                        src={selectedEventClient.eventDetail.videoSrc}
+                                        poster={selectedEventClient.eventDetail.videoPoster}
                                         autoPlay
                                         muted={isMuted}
                                         loop
                                         playsInline
                                         className="w-full h-full object-contain relative z-10 transition-all duration-700 shadow-2xl"
                                     />
-                                    
+
                                     <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-70 z-20 pointer-events-none" />
-                                    
+
                                     {/* Audio & Volume Controls */}
                                     <div className="absolute bottom-8 right-8 z-[60] flex items-center gap-4 group/vol">
                                         <div className="flex items-center gap-0 overflow-hidden bg-ink/40 backdrop-blur-xl border border-cream/10 rounded-full h-14 pr-2 hover:pr-6 transition-all duration-700 ease-expo group-hover/vol:border-cream/30">
-                                            <button 
+                                            <button
                                                 onClick={() => setIsMuted(!isMuted)}
                                                 className="w-14 h-14 flex items-center justify-center text-cream/70 hover:text-cream transition-all duration-500 shrink-0"
                                                 title={isMuted ? "Unmute" : "Mute"}
@@ -812,9 +850,9 @@ const ServicesPage = () => {
                                                     <Volume2 size={20} className="animate-pulse" />
                                                 )}
                                             </button>
-                                            
+
                                             <div className="flex items-center">
-                                                <input 
+                                                <input
                                                     type="range"
                                                     min="0"
                                                     max="1"
@@ -855,10 +893,9 @@ const ServicesPage = () => {
                         </div>
 
                         {/* Panel 2: Details + Gallery */}
-                        <div className={`w-full h-full overflow-y-auto scrollbar-none transition-all duration-700 ${
-                            selectedEventClient.eventDetail?.heroOrientation === 'portrait' ? 'md:w-[60%]' : 'md:w-[45%]'
-                        }`}>
-                            
+                        <div className={`w-full h-full overflow-y-auto scrollbar-none transition-all duration-700 ${selectedEventClient.eventDetail?.heroOrientation === 'portrait' ? 'md:w-[60%]' : 'md:w-[45%]'
+                            }`}>
+
                             {/* Details Section */}
                             <div className="p-10 md:p-16 space-y-10 border-b border-rose/5">
                                 <div>
@@ -876,12 +913,12 @@ const ServicesPage = () => {
                                 <div className="p-10 md:p-16 border-b border-cream/5">
                                     <span className="text-[0.55rem] tracking-[0.5em] uppercase font-sans text-rose/60 block mb-6">Print Deliverable</span>
                                     <div className="relative overflow-hidden rounded-sm group">
-                                        <img 
-                                            src={selectedEventClient.eventDetail.brochure} 
-                                            alt="Brochure" 
+                                        <img
+                                            src={selectedEventClient.eventDetail.brochure}
+                                            alt="Brochure"
                                             className="w-full object-cover group-hover:scale-105 transition-transform duration-[2000ms]"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"/>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     </div>
                                 </div>
                             )}
@@ -903,41 +940,40 @@ const ServicesPage = () => {
                                 </div>
                             )}
 
-                                    {selectedEventClient.eventDetail?.galleryImages?.length > 0 && (
-                                        <div className="p-10 md:p-16">
-                                            <span className="text-[0.55rem] tracking-[0.5em] uppercase font-sans text-rose/60 block mb-6">Production Gallery</span>
-                                            <div className="grid grid-cols-2 gap-4">
-                                                {selectedEventClient.eventDetail.galleryImages.map((item: any, i: number) => {
-                                                    const isString = typeof item === 'string';
-                                                    const imgSrc = isString ? item : item.src;
-                                                    const orientation = isString ? 'landscape' : item.orientation;
-                                                    
-                                                    return (
-                                                        <div 
-                                                            key={i} 
-                                                            className={`relative overflow-hidden group/gal bg-burgundy/5 ${
-                                                                orientation === 'landscape' ? 'col-span-2 aspect-[16/9]' : 'col-span-1 aspect-[3/4]'
-                                                            }`}
-                                                        >
-                                                            <img 
-                                                                src={imgSrc} 
-                                                                alt={`Gallery ${i + 1}`} 
-                                                                className="w-full h-full object-cover grayscale group-hover/gal:grayscale-0 group-hover/gal:scale-110 transition-all duration-[1500ms] opacity-70 group-hover/gal:opacity-100" 
-                                                            />
-                                                            <div className="absolute top-3 left-3 text-[0.5rem] tracking-widest text-cream/30 font-sans uppercase opacity-0 group-hover/gal:opacity-100 transition-opacity">
-                                                                {String(i + 1).padStart(2, '0')}
-                                                            </div>
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-                                        </div>
-                                    )}
+                            {selectedEventClient.eventDetail?.galleryImages?.length > 0 && (
+                                <div className="p-10 md:p-16">
+                                    <span className="text-[0.55rem] tracking-[0.5em] uppercase font-sans text-rose/60 block mb-6">Production Gallery</span>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {selectedEventClient.eventDetail.galleryImages.map((item: any, i: number) => {
+                                            const isString = typeof item === 'string';
+                                            const imgSrc = isString ? item : item.src;
+                                            const orientation = isString ? 'landscape' : item.orientation;
+
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className={`relative overflow-hidden group/gal bg-burgundy/5 ${orientation === 'landscape' ? 'col-span-2 aspect-[16/9]' : 'col-span-1 aspect-[3/4]'
+                                                        }`}
+                                                >
+                                                    <img
+                                                        src={imgSrc}
+                                                        alt={`Gallery ${i + 1}`}
+                                                        className="w-full h-full object-cover grayscale group-hover/gal:grayscale-0 group-hover/gal:scale-110 transition-all duration-[1500ms] opacity-70 group-hover/gal:opacity-100"
+                                                    />
+                                                    <div className="absolute top-3 left-3 text-[0.5rem] tracking-widest text-cream/30 font-sans uppercase opacity-0 group-hover/gal:opacity-100 transition-opacity">
+                                                        {String(i + 1).padStart(2, '0')}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* Footer */}
                             <div className="px-10 md:px-16 py-12 flex justify-between items-center border-t border-cream/5">
                                 <p className="text-[0.55rem] tracking-[0.5em] uppercase font-sans text-cream/20 hidden md:block">Kelsey & Company · Our Work</p>
-                                <button 
+                                <button
                                     onClick={() => { setSelectedEventClient(null); openModal(); }}
                                     className="group flex items-center gap-4 px-8 py-4 border border-rose/20 bg-rose/5 text-[0.6rem] tracking-[0.35em] uppercase font-sans text-rose/80 hover:bg-rose hover:text-ink hover:border-rose transition-all duration-500"
                                 >
