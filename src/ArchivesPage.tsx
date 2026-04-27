@@ -101,9 +101,9 @@ const projects: Project[] = [
             getAssetUrl('Sinners_logo')
         ],
         partnerLogos: [
-            { src: getAssetUrl('warner-bros-'), mode: 'monochrome', size: 'icon',   alt: 'Warner Bros' },
+            { src: getAssetUrl('warner-bros-'), mode: 'monochrome', size: 'icon', alt: 'Warner Bros' },
             { src: getAssetUrl('macro_logo'), mode: 'monochrome', size: 'square', alt: 'Macro' },
-            { src: getAssetUrl('nba_logo'), mode: 'monochrome', size: 'icon',   alt: 'NBA' }
+            { src: getAssetUrl('nba_logo'), mode: 'monochrome', size: 'icon', alt: 'NBA' }
         ],
         roadmap: [
             {
@@ -263,8 +263,8 @@ const projects: Project[] = [
         client: 'Fox Entertainment',
         year: '2025',
         role: 'Strategic Brand & Fashion Partnerships',
-        img: getAssetUrl('devil_wears_prada'),
-        teaserImg: getAssetUrl('devil_wears_prada'),
+        img: getAssetUrl('devil_wears_prada_poster'),
+        teaserImg: getAssetUrl('devil_wears_prada_poster'),
         teaser: 'A fashion-forward partnership strategy that made the world pay attention.',
         description: `For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.`,
         deliverables: ['Luxury Fashion Partnerships', 'Editorial Integration', 'Press Preview Production', 'Global Brand Strategy'],
@@ -273,7 +273,7 @@ const projects: Project[] = [
         themeLabel: 'LUXURY BRAND STRATEGY',
         themeDescription: 'For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.',
         scaleValue: 'Global Luxury Strategy',
-        gallery: [getAssetUrl('devil_wears_prada'), getAssetUrl('devil_wears_prada')],
+        gallery: [getAssetUrl('devil_wears_prada_poster')],
     },
     {
         id: 7,
@@ -294,13 +294,13 @@ const projects: Project[] = [
         themeDescription: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
         scaleValue: 'Streaming Content Reach',
         gallery: [
-            getAssetUrl('BET_1'), 
-            getAssetUrl('bet_is_the_cookout_poster'), 
-            getAssetUrl('BET_is_the_cookout_solo'), 
+            getAssetUrl('BET_1'),
+            getAssetUrl('bet_is_the_cookout_poster'),
+            getAssetUrl('BET_is_the_cookout_solo'),
             getAssetUrl('BET_is_the_cookout_background')
         ],
         partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide',   alt: 'BET+', scale: 1.3 }
+            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
         ],
     },
     {
@@ -335,12 +335,12 @@ const projects: Project[] = [
             getAssetUrl('gettyimages-2264115507-612x612')
         ],
         partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide',   alt: 'BET+', scale: 1.3 },
-            { src: getAssetUrl('paramount-plus-64'),        mode: 'monochrome', size: 'icon',   alt: 'Paramount' },
-            { src: getAssetUrl('SXSW_logo'),           mode: 'monochrome', size: 'wide',   alt: 'SXSW' },
-            { src: getAssetUrl('CES_logo'),            mode: 'monochrome', size: 'wide',   alt: 'CES', scale: 1.15 },
-            { src: getAssetUrl('jason_harvey_logo'), mode: 'monochrome', size: 'full',   alt: 'Jason Harvey', scale: 1.1 },
-            { src: getAssetUrl('Convergence_logo'),    mode: 'monochrome', size: 'full',   alt: 'Convergence' },
+            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 },
+            { src: getAssetUrl('paramount-plus-64'), mode: 'monochrome', size: 'icon', alt: 'Paramount' },
+            { src: getAssetUrl('SXSW_logo'), mode: 'monochrome', size: 'wide', alt: 'SXSW' },
+            { src: getAssetUrl('CES_logo'), mode: 'monochrome', size: 'wide', alt: 'CES', scale: 1.15 },
+            { src: getAssetUrl('jason_harvey_logo'), mode: 'monochrome', size: 'full', alt: 'Jason Harvey', scale: 1.1 },
+            { src: getAssetUrl('Convergence_logo'), mode: 'monochrome', size: 'full', alt: 'Convergence' },
         ],
         orientation: 'portrait',
     },
@@ -403,8 +403,8 @@ const projects: Project[] = [
             getAssetUrl('spike_lee_fireside_chat_4'),
         ],
         partnerLogos: [
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'),          mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
-            { src: getAssetUrl('-air-jordan'),                            mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
+            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
+            { src: getAssetUrl('-air-jordan'), mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
             { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
         ],
     },
@@ -437,7 +437,7 @@ const projects: Project[] = [
             getAssetUrl('creatives_at_sea_4')
         ],
         partnerLogos: [
-            { src: getAssetUrl('NAACP_logo'),           mode: 'monochrome', size: 'wide', alt: 'NAACP', scale: 1.1 },
+            { src: getAssetUrl('NAACP_logo'), mode: 'monochrome', size: 'wide', alt: 'NAACP', scale: 1.1 },
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes' },
         ],
         orientation: 'portrait',
@@ -471,7 +471,7 @@ const projects: Project[] = [
             getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1')
         ],
         partnerLogos: [
-            { src: getAssetUrl('-air-jordan'),                   mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
+            { src: getAssetUrl('-air-jordan'), mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
             { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
             { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
         ],
@@ -517,9 +517,9 @@ const projects: Project[] = [
         scaleValue: 'Capacity | 50 People',
         gallery: [getAssetUrl('logitech_x_vice_luncheon')],
         partnerLogos: [
-            { src: getAssetUrl('Logitech-Emblem'),      mode: 'monochrome', size: 'wide', alt: 'Logitech', scale: 1.2 },
+            { src: getAssetUrl('Logitech-Emblem'), mode: 'monochrome', size: 'wide', alt: 'Logitech', scale: 1.2 },
             { src: getAssetUrl('vice-logo-transparent'), mode: 'none', size: 'wide', alt: 'Vice', scale: 1.1 },
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'),          mode: 'monochrome', size: 'wide', alt: 'Blackat' },
+            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
         ],
     },
     {
@@ -575,7 +575,8 @@ const projects: Project[] = [
         video: getAssetUrl('onemusicfest_video'),
         gallery: [
             getAssetUrl('onemusicfest_poster'),
-            getAssetUrl('onemusicfest_image')
+            getAssetUrl('onemusicfest_image'),
+            getAssetUrl('onemusicfest')
         ],
         partnerLogos: [
             { src: getAssetUrl('ONE_Musicfest_Logo'), mode: 'monochrome', size: 'wide', alt: 'ONE Musicfest', scale: 1.2 },
@@ -601,7 +602,14 @@ const projects: Project[] = [
         themeDescription: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
         scaleValue: '20 Startups | 4M Subscribers',
         gallery: [
+            getAssetUrl('braze_1_first'),
             getAssetUrl('braze_poster'),
+            getAssetUrl('braze_1'),
+            getAssetUrl('braze_2'),
+            getAssetUrl('braze_3'),
+            getAssetUrl('braze_4'),
+            getAssetUrl('braze_5'),
+            getAssetUrl('braze_6'),
             getAssetUrl('braze_image_1'),
             getAssetUrl('braze_image_2'),
             getAssetUrl('braze_image_3'),
@@ -623,7 +631,7 @@ const projects: Project[] = [
         role: 'Lead Brand Strategist & Copywriter',
         img: getAssetUrl('average_joe_poster'),
         teaserImg: getAssetUrl('average_joe_poster'),
-        video: getAssetUrl('Average Joe Main Video'),
+        video: getAssetUrl('Average_Joe_Main_Video'),
         teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
         description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
         deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
@@ -634,15 +642,14 @@ const projects: Project[] = [
         scaleValue: 'Multi-Platform Campaign',
         gallery: [
             getAssetUrl('average_joe_poster'),
-            getAssetUrl('average joe 1 '),
-            getAssetUrl('average joe.png'),
-            getAssetUrl('average joe 3'),
-            getAssetUrl('average joe 4'),
-            getAssetUrl('Average Joe Main Video'),
-            getAssetUrl('average joe phone video')
+            getAssetUrl('average_joe_1'),
+            getAssetUrl('average_joe'),
+            getAssetUrl('average_joe_3'),
+            getAssetUrl('average_joe_4'),
+            getAssetUrl('average_joe_phone_video')
         ],
         partnerLogos: [
-             { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
+            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
         ],
         awards: [
             { group: 'CLIO Entertainment Awards', count: 1, tier: 'standard', note: 'Shortlist: Television | Series: Integrated Campaign' }
@@ -733,10 +740,10 @@ const projects: Project[] = [
         img: getAssetUrl('cards_against_concussion_poster'),
         teaserImg: getAssetUrl('cards_against_concussion_poster'),
         gallery: [
-            getAssetUrl('cards_against_concussions_1'),
-            getAssetUrl('cards_against_concussions_2'),
-            getAssetUrl('cards_against_concussions_3'),
-            getAssetUrl('cards_against_concussions_4')
+            getAssetUrl('cards_against_concussion_1'),
+            getAssetUrl('cards_against_concussion_2'),
+            getAssetUrl('cards_against_concussion_3'),
+            getAssetUrl('cards_against_concussion_4')
         ],
         description: 'Witty, dark, and awareness-driven copy for Cards Against Concussions. This campaign used the familiar aesthetic of party games to shed light on a serious issue—domestic violence—in a way that was impossible to ignore.',
         deliverables: ['Guerrilla Marketing Copy', 'Concept Development', 'Brand Voice Subversion'],
@@ -762,11 +769,13 @@ const projects: Project[] = [
         themeLabel: 'WARM & RELATABLE VOICE',
         themeDescription: 'The copywriting focused on small, shared moments—the quiet of a kitchen, the ritual of a breakfast—to position Philadelphia as a staple of comfort.',
         scaleValue: 'Digital Campaign',
-        video: getAssetUrl('philadelphia video'),
+        video: getAssetUrl('philadelphia_video'),
         gallery: [
-            getAssetUrl('philadelphia (1)'),
-            getAssetUrl('philadelphia (2)'),
-            getAssetUrl('philadelphia (3)'),
+            getAssetUrl('philadelphia_1'),
+            getAssetUrl('philadelphia_2'),
+            getAssetUrl('philadelphia_3'),
+            getAssetUrl('philadelphia_4'),
+            getAssetUrl('philadelphia_5'),
         ],
     },
     {
@@ -809,10 +818,10 @@ const projects: Project[] = [
         themeLabel: 'CULTURAL HOLIDAY POSITIONING',
         themeDescription: 'We developed a voice that felt both traditional and fresh, aligning the holiday campaign with contemporary cultural trends while maintaining an authentic, celebratory tone.',
         scaleValue: 'Digital Campaign',
-        video: getAssetUrl('shuffle slay video'),
+        video: getAssetUrl('shuffle_slay_video'),
         gallery: [
-            getAssetUrl('shuffle slay (1)'),
-            getAssetUrl('shuffle slay (2)'),
+            getAssetUrl('shuffle_slay_1'),
+            getAssetUrl('shuffle_slay_2'),
         ],
     },
     {
@@ -822,8 +831,8 @@ const projects: Project[] = [
         client: 'BP / Dairy Queen',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('radio_spot_poster'),
-        teaserImg: getAssetUrl('radio_spot_poster'),
+        img: getAssetUrl('radio_spots_poster'),
+        teaserImg: getAssetUrl('radio_spots_poster'),
         description: 'A collection of radio commercials written for BP Morgan Oil and Dairy Queen, crafted for FM broadcast. Each 18–31 second spot balances brand voice with listener engagement, demonstrating precision copywriting for audio-first formats.',
         deliverables: ['FM Radio Copywriting', 'Brand Voice Development', 'Audio Script Production', 'Multi-Client Campaign'],
         subtitle: 'BP Morgan Oil & Dairy Queen',
@@ -861,6 +870,7 @@ const projects: Project[] = [
         role: 'Copywriter',
         img: getAssetUrl('fathers_love_poster'),
         teaserImg: getAssetUrl('fathers_love_poster'),
+        video: 'https://youtu.be/bFfPwwxkv2U',
         description: 'A poignant and emotional storytelling project exploring the depth of a father\'s love. Our copywriting focused on raw, authentic narratives that resonate on a universal level.',
         deliverables: ['Narrative Copywriting', 'Digital Storytelling', 'Brand Messaging'],
         subtitle: 'K&C Narrative Series',
@@ -885,7 +895,14 @@ const projects: Project[] = [
         themeLabel: 'PLAYFUL BRAND VOICE',
         themeDescription: 'The copy focused on the "twist" and "sip" experience, using punchy language and vibrant calls to action to drive engagement among younger demographics.',
         scaleValue: 'Digital Ad Campaign',
-        video: getAssetUrl('minute maid video'),
+        video: getAssetUrl('minute_maid_video'),
+        gallery: [
+            getAssetUrl('minute_maid_1'),
+            getAssetUrl('minute_maid_2'),
+            getAssetUrl('minute_maid_3'),
+            getAssetUrl('minute_maid_4'),
+            getAssetUrl('minute_maid_5'),
+        ],
     },
     {
         id: 31,
@@ -896,7 +913,7 @@ const projects: Project[] = [
         role: 'Production',
         img: getAssetUrl('kingdom_business_poster'),
         teaserImg: getAssetUrl('kingdom_business_poster'),
-        video: getAssetUrl('Kingdom Business Video'),
+        video: getAssetUrl('Kingdom_Business_Video'),
         description: 'Internal programming and brand integration for the BET+ original series Kingdom Business.',
         deliverables: ['Internal Programming', 'Brand Integration', 'Film Production'],
         subtitle: 'BET+ Original Series',
@@ -1034,26 +1051,26 @@ const GoldDust = ({ active }: { active: boolean }) => {
                 {active && particles.map((_, i) => (
                     <motion.div
                         key={i}
-                        initial={{ 
-                            x: 0, 
-                            y: 0, 
-                            scale: 0, 
-                            opacity: 1 
+                        initial={{
+                            x: 0,
+                            y: 0,
+                            scale: 0,
+                            opacity: 1
                         }}
-                        animate={{ 
-                            x: (Math.random() - 0.5) * 300, 
-                            y: (Math.random() - 0.5) * 300, 
-                            scale: Math.random() * 1.5, 
+                        animate={{
+                            x: (Math.random() - 0.5) * 300,
+                            y: (Math.random() - 0.5) * 300,
+                            scale: Math.random() * 1.5,
                             opacity: 0,
                             rotate: Math.random() * 360
                         }}
                         exit={{ opacity: 0 }}
-                        transition={{ 
-                            duration: 0.8 + Math.random() * 0.4, 
-                            ease: "easeOut" 
+                        transition={{
+                            duration: 0.8 + Math.random() * 0.4,
+                            ease: "easeOut"
                         }}
                         className="absolute top-1/2 left-1/2 w-1.5 h-1.5 rounded-full bg-yellow-400 shadow-[0_0_10px_#fbbf24] mix-blend-screen"
-                        style={{ 
+                        style={{
                             filter: `blur(${Math.random() * 2}px)`
                         }}
                     />
@@ -1065,7 +1082,7 @@ const GoldDust = ({ active }: { active: boolean }) => {
 
 const AwardIcon = ({ type, className = "" }: { type: string; className?: string }) => {
     const t = type.toLowerCase();
-    
+
     // Gradient definitions are handled in index.css or inline
     const goldGradient = "url(#gold-gradient)";
 
@@ -1141,14 +1158,14 @@ const AwardIcon = ({ type, className = "" }: { type: string; className?: string 
 const FloatingAwardIcon = ({ type }: { type: string }) => {
     return (
         <motion.div
-            animate={{ 
+            animate={{
                 y: [0, -10, 0],
                 rotateZ: [-1, 1, -1]
             }}
-            transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+            transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
             }}
             className="relative z-30 drop-shadow-[0_20px_40px_rgba(253,185,49,0.2)]"
         >
@@ -1171,7 +1188,7 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
 
     return (
         <Reveal key={i} delay={i * 100}>
-            <div 
+            <div
                 className={`group border-l-2 p-10 backdrop-blur-sm rounded-r-lg flex flex-col justify-between min-h-[380px] relative overflow-hidden transition-all duration-700 ${tierStyles}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -1192,10 +1209,10 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
                                 {award.count === 1 ? 'Win' : 'Wins'}
                             </span>
                         </div>
-                        
+
                         {/* Suggestion: Floating 3D PNG Icon */}
-                        <FloatingAwardIcon 
-                            type={award.group} 
+                        <FloatingAwardIcon
+                            type={award.group}
                         />
                     </div>
 
@@ -1247,13 +1264,13 @@ const WaveformBars = ({ isPlaying }: { isPlaying: boolean }) => {
 
 const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void }) => {
     const { openModal } = useModal();
-    const [activeIdx, setActiveIdx]     = useState(0);
-    const [isPlaying, setIsPlaying]     = useState(false);
-    const [progress, setProgress]       = useState(0);
+    const [activeIdx, setActiveIdx] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
     const [currentTime, setCurrentTime] = useState('0:00');
-    const [duration, setDuration]       = useState('0:00');
-    const [volume, setVolume]           = useState(0.8);
-    const [isMuted, setIsMuted]         = useState(false);
+    const [duration, setDuration] = useState('0:00');
+    const [volume, setVolume] = useState(0.8);
+    const [isMuted, setIsMuted] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
     const spots = project.audioSpots!;
 
@@ -1272,7 +1289,7 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
         audio.load();
         setProgress(0);
         setCurrentTime('0:00');
-        if (isPlaying) audio.play().catch(() => {});
+        if (isPlaying) audio.play().catch(() => { });
     }, [activeIdx]);
 
     const togglePlay = () => {
@@ -1281,36 +1298,36 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
         if (isPlaying) {
             audio.pause();
         } else {
-            audio.play().catch(() => {});
+            audio.play().catch(() => { });
         }
     };
 
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
-        const onPlay    = () => setIsPlaying(true);
-        const onPause   = () => setIsPlaying(false);
-        const onEnded   = () => {
+        const onPlay = () => setIsPlaying(true);
+        const onPause = () => setIsPlaying(false);
+        const onEnded = () => {
             setIsPlaying(false);
             setProgress(0);
             if (activeIdx < spots.length - 1) setActiveIdx(i => i + 1);
         };
-        const onTime    = () => {
+        const onTime = () => {
             if (!audio.duration) return;
             setProgress((audio.currentTime / audio.duration) * 100);
             setCurrentTime(formatTime(audio.currentTime));
         };
-        const onLoaded  = () => setDuration(formatTime(audio.duration));
-        audio.addEventListener('play',           onPlay);
-        audio.addEventListener('pause',          onPause);
-        audio.addEventListener('ended',          onEnded);
-        audio.addEventListener('timeupdate',     onTime);
+        const onLoaded = () => setDuration(formatTime(audio.duration));
+        audio.addEventListener('play', onPlay);
+        audio.addEventListener('pause', onPause);
+        audio.addEventListener('ended', onEnded);
+        audio.addEventListener('timeupdate', onTime);
         audio.addEventListener('loadedmetadata', onLoaded);
         return () => {
-            audio.removeEventListener('play',           onPlay);
-            audio.removeEventListener('pause',          onPause);
-            audio.removeEventListener('ended',          onEnded);
-            audio.removeEventListener('timeupdate',     onTime);
+            audio.removeEventListener('play', onPlay);
+            audio.removeEventListener('pause', onPause);
+            audio.removeEventListener('ended', onEnded);
+            audio.removeEventListener('timeupdate', onTime);
             audio.removeEventListener('loadedmetadata', onLoaded);
         };
     }, [activeIdx, spots.length]);
@@ -1333,7 +1350,7 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
         setIsMuted(val === 0);
         if (audioRef.current) {
             audioRef.current.volume = val;
-            audioRef.current.muted  = val === 0;
+            audioRef.current.muted = val === 0;
         }
     };
 
@@ -1342,7 +1359,7 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
         if (!audio) return;
         if (isMuted) {
             const restored = volume === 0 ? 0.8 : volume;
-            audio.muted  = false;
+            audio.muted = false;
             audio.volume = restored;
             setVolume(restored);
             setIsMuted(false);
@@ -1398,11 +1415,10 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
                     {/* Play / Pause */}
                     <button
                         onClick={togglePlay}
-                        className={`relative z-10 w-20 h-20 rounded-full flex items-center justify-center border-2 transition-all duration-500 mb-8 group ${
-                            isPlaying
-                                ? 'border-rose bg-rose/10 shadow-[0_0_40px_rgba(220,38,38,0.3)]'
-                                : 'border-cream/20 bg-white/5 hover:border-rose/60 hover:bg-rose/10'
-                        }`}
+                        className={`relative z-10 w-20 h-20 rounded-full flex items-center justify-center border-2 transition-all duration-500 mb-8 group ${isPlaying
+                            ? 'border-rose bg-rose/10 shadow-[0_0_40px_rgba(220,38,38,0.3)]'
+                            : 'border-cream/20 bg-white/5 hover:border-rose/60 hover:bg-rose/10'
+                            }`}
                         aria-label={isPlaying ? 'Pause' : 'Play'}
                     >
                         {isPlaying ? (
@@ -1512,36 +1528,32 @@ const RadioHero = ({ project, onClose }: { project: Project; onClose: () => void
                             {spots.map((spot, i) => (
                                 <li key={i}>
                                     <button
-                                        onClick={() => { setActiveIdx(i); if (!isPlaying) setTimeout(() => audioRef.current?.play().catch(() => {}), 80); }}
-                                        className={`w-full text-left group flex items-center justify-between px-4 py-4 rounded-sm transition-all duration-300 ${
-                                            activeIdx === i
-                                                ? 'bg-rose/10 border border-rose/20'
-                                                : 'hover:bg-white/5 border border-transparent'
-                                        }`}
+                                        onClick={() => { setActiveIdx(i); if (!isPlaying) setTimeout(() => audioRef.current?.play().catch(() => { }), 80); }}
+                                        className={`w-full text-left group flex items-center justify-between px-4 py-4 rounded-sm transition-all duration-300 ${activeIdx === i
+                                            ? 'bg-rose/10 border border-rose/20'
+                                            : 'hover:bg-white/5 border border-transparent'
+                                            }`}
                                     >
                                         <div className="flex items-center gap-5 min-w-0">
                                             {/* Track number / playing indicator */}
-                                            <span className={`text-[0.65rem] font-mono w-5 text-center flex-shrink-0 ${
-                                                activeIdx === i ? 'text-rose' : 'text-cream/25 group-hover:text-cream/50'
-                                            }`}>
+                                            <span className={`text-[0.65rem] font-mono w-5 text-center flex-shrink-0 ${activeIdx === i ? 'text-rose' : 'text-cream/25 group-hover:text-cream/50'
+                                                }`}>
                                                 {activeIdx === i && isPlaying ? (
                                                     <span className="inline-flex gap-[2px] items-end h-3">
-                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.5s_ease_infinite_alternate]" style={{height:'6px'}} />
-                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.7s_ease_infinite_alternate]" style={{height:'10px', animationDelay:'0.1s'}} />
-                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.4s_ease_infinite_alternate]" style={{height:'7px', animationDelay:'0.2s'}} />
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.5s_ease_infinite_alternate]" style={{ height: '6px' }} />
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.7s_ease_infinite_alternate]" style={{ height: '10px', animationDelay: '0.1s' }} />
+                                                        <span className="w-[2px] bg-rose rounded-full animate-[waveBar_0.4s_ease_infinite_alternate]" style={{ height: '7px', animationDelay: '0.2s' }} />
                                                     </span>
                                                 ) : String(i + 1).padStart(2, '0')}
                                             </span>
                                             <div className="min-w-0">
-                                                <p className={`text-sm md:text-base truncate transition-colors ${
-                                                    activeIdx === i ? 'text-cream' : 'text-cream/60 group-hover:text-cream/90'
-                                                }`}>{spot.title}</p>
+                                                <p className={`text-sm md:text-base truncate transition-colors ${activeIdx === i ? 'text-cream' : 'text-cream/60 group-hover:text-cream/90'
+                                                    }`}>{spot.title}</p>
                                                 <p className="text-cream/25 text-[0.65rem] tracking-wider mt-0.5">{spot.credit}</p>
                                             </div>
                                         </div>
-                                        <span className={`text-xs font-mono flex-shrink-0 ml-4 ${
-                                            activeIdx === i ? 'text-rose' : 'text-cream/30'
-                                        }`}>{spot.duration}</span>
+                                        <span className={`text-xs font-mono flex-shrink-0 ml-4 ${activeIdx === i ? 'text-rose' : 'text-cream/30'
+                                            }`}>{spot.duration}</span>
                                     </button>
                                     {i < spots.length - 1 && <div className="h-px bg-white/5 mx-4" />}
                                 </li>
@@ -1605,8 +1617,8 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
     const isPortrait = project?.orientation === 'portrait';
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    const filteredGallery = project?.gallery?.filter(img => 
-        !img.toLowerCase().includes('solo') && 
+    const filteredGallery = project?.gallery?.filter(img =>
+        !img.toLowerCase().includes('solo') &&
         !img.toLowerCase().includes('logo') &&
         !img.toLowerCase().includes('background')
     ) || [];
@@ -1645,13 +1657,13 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
             videoRef.current.muted = newVol === 0;
         }
     };
-    
+
     useEffect(() => {
         if (isHeroInView) {
             setIsPipClosed(false);
         }
     }, [isHeroInView]);
-    
+
     useEffect(() => {
         if (project) {
             document.body.style.overflow = 'hidden';
@@ -1685,21 +1697,19 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
     return (
         <div className="fixed inset-0 z-[200] animate-slide-in-right pointer-events-none bg-ink">
             {(project.video || (filteredGallery.length > 0 && !project.video)) && (
-                <motion.div 
+                <motion.div
                     layout
                     initial={false}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className={`pointer-events-auto overflow-hidden transition-all duration-500 ${
-                        !isHeroInView && isPipClosed ? '!opacity-0 !pointer-events-none' : ''
-                    } ${
-                        isHeroInView 
+                    className={`pointer-events-auto overflow-hidden transition-all duration-500 ${!isHeroInView && isPipClosed ? '!opacity-0 !pointer-events-none' : ''
+                        } ${isHeroInView
                             ? isPortrait
                                 ? 'absolute top-0 left-0 w-full h-screen lg:top-1/2 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:-translate-y-1/2 lg:w-[32vw] lg:h-auto lg:aspect-[9/16] lg:rounded-2xl z-0 lg:shadow-2xl'
                                 : 'absolute top-0 left-0 w-full h-screen z-0'
                             : isPortrait
                                 ? 'absolute bottom-8 right-8 w-40 md:w-56 aspect-[9/16] z-[250] rounded-xl flex shadow-2xl border border-cream/10 shadow-ember group/pip'
                                 : 'absolute bottom-8 right-8 w-60 md:w-80 aspect-video z-[250] rounded-sm flex shadow-2xl border border-cream/10 shadow-ember group/pip'
-                    }`}
+                        }`}
                 >
                     {project.video ? (
                         (() => {
@@ -1714,7 +1724,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                     videoId = project.video.split('embed/')[1].split('?')[0];
                                 }
                                 const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1`;
-                                
+
                                 return (
                                     <iframe
                                         src={embedUrl}
@@ -1751,16 +1761,16 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                         </AnimatePresence>
                     )}
                     <div className={`absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent transition-opacity duration-700 pointer-events-none ${isHeroInView ? 'opacity-100' : 'opacity-0'}`} />
-                    <button 
-                        onClick={() => setIsPipClosed(true)} 
+                    <button
+                        onClick={() => setIsPipClosed(true)}
                         className={`absolute top-4 right-4 z-50 text-cream/70 hover:text-cream bg-black/40 hover:bg-black/80 rounded-full p-2 backdrop-blur-md transition-all duration-300 outline-none ${!isHeroInView ? 'opacity-0 group-hover/pip:opacity-100' : 'opacity-0 pointer-events-none'}`}
                         aria-label="Close Picture-in-Picture"
                     >
                         <X size={16} strokeWidth={1.5} />
                     </button>
                     {project.video && (
-                        <button 
-                            onClick={toggleMute} 
+                        <button
+                            onClick={toggleMute}
                             className={`absolute bottom-4 right-4 z-50 text-cream/70 hover:text-cream bg-black/40 hover:bg-black/80 rounded-full p-2 backdrop-blur-md transition-all duration-300 outline-none ${!isHeroInView ? 'opacity-0 group-hover/pip:opacity-100' : 'opacity-0 pointer-events-none'}`}
                         >
                             {volume === 0 ? <VolumeX size={16} strokeWidth={1.5} /> : <Volume2 size={16} strokeWidth={1.5} />}
@@ -1852,9 +1862,9 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                 const row2 = project.partnerLogos.filter((l: any) => l.size === 'full');
                                 const filterClass = (mode: string) => {
                                     if (mode === 'none') return '';
-                                    return mode === 'blend' ? 'invert mix-blend-screen' : 
-                                           mode === 'ces' ? 'brightness-[2] saturate-0 opacity-50' : 
-                                           'brightness-0 invert opacity-50';
+                                    return mode === 'blend' ? 'invert mix-blend-screen' :
+                                        mode === 'ces' ? 'brightness-[2] saturate-0 opacity-50' :
+                                            'brightness-0 invert opacity-50';
                                 };
 
                                 return (
@@ -1867,9 +1877,9 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                                     const mode = logo.mode || 'monochrome';
                                                     const size = logo.size || 'wide';
                                                     const scale = logo.scale || 1;
-                                                    const sizeClass = size === 'icon' ? 'h-14 md:h-16 w-auto' : 
-                                                                    size === 'square' ? 'h-12 md:h-14 w-auto max-w-[100px]' : 
-                                                                    'h-9 md:h-11 w-auto max-w-[180px] md:max-w-[240px]';
+                                                    const sizeClass = size === 'icon' ? 'h-14 md:h-16 w-auto' :
+                                                        size === 'square' ? 'h-12 md:h-14 w-auto max-w-[100px]' :
+                                                            'h-9 md:h-11 w-auto max-w-[180px] md:max-w-[240px]';
                                                     return (
                                                         <div key={i} style={{ transform: `scale(${scale})`, transformOrigin: 'left center' }}>
                                                             <img src={src} alt={logo.alt || 'Partner'} className={`object-contain ${sizeClass} ${filterClass(mode)}`} />
@@ -1899,7 +1909,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                         {/* Background Decoration */}
                         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
                         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-burgundy/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
-                        
+
                         <div className="max-w-7xl mx-auto relative z-10">
                             {/* Section Header */}
                             <Reveal>
@@ -2043,7 +2053,7 @@ export default function ArchivesPage() {
     const moviePremieres = [1, 2, 3, 4, 5, 6].map(id => projects.find(p => p.id === id)).filter((p): p is Project => p !== undefined);
     const executiveBrand = projects.filter(p => [8].includes(p.id));
     const digitalCampaigns = projects.filter(p => [7, 16, 17, 18].includes(p.id));
-    
+
     // Categorized Programming & Production
     const blackat2023Projects = projects.filter(p => [9, 11, 13, 14].includes(p.id));
     const blackat2025Projects = projects.filter(p => [15].includes(p.id));
@@ -2118,7 +2128,7 @@ export default function ArchivesPage() {
                     </div>
                 </section>
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
-                
+
                 {/* ── International Events Section ── */}
                 <section className="mb-48 md:mb-64">
                     <div className="mb-20 md:mb-32 max-w-4xl">
@@ -2158,7 +2168,7 @@ export default function ArchivesPage() {
                                     the BLACKAT
                                 </h3>
                             </Reveal>
-                            
+
                             <div className="space-y-32">
                                 {/* 2023 Programming */}
                                 <div>
@@ -2243,9 +2253,9 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
             <div className="aspect-[4/5] relative overflow-visible">
                 <div className="w-full h-full overflow-hidden relative rounded-sm bg-burgundy/5 border border-rose/5 transition-colors">
                     {project.img ? (
-                        <img 
-                            src={project.img} 
-                            alt={project.title} 
+                        <img
+                            src={project.img}
+                            alt={project.title}
                             className="w-full h-full transition-all duration-[1500ms] ease-out object-cover"
                         />
                     ) : project.video ? (
