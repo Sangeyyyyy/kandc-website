@@ -531,7 +531,7 @@ const projects: Project[] = [
         role: 'Global Director and Producer',
         img: getAssetUrl('thought_leadership_brunch_poster'),
         teaserImg: getAssetUrl('thought_leadership_brunch_poster'),
-        video: getAssetUrl('thought_leadership_brunch_video'),
+        video: getAssetUrl('Thought Leadership Brunch Video'),
         teaser: 'A premier summit celebrating global Black excellence.',
         description: 'As Global Director and Producer, I led the end-to-end execution of Black at Cannes, a premier summit celebrating global Black excellence. I managed an international team and global vendors to deliver high-level programming, ranging from executive-led panels to an exclusive gala for Nedbank. This world-class experience successfully connected top-tier industry leaders on a global stage. \n\nThought Leadership Brunch Cannes @ The Martinez',
         deliverables: ['High-level Programming', 'Executive-Led Panels', 'Exclusive Gala Execution', 'Global Vendor Management'],
@@ -623,7 +623,7 @@ const projects: Project[] = [
         role: 'Lead Brand Strategist & Copywriter',
         img: getAssetUrl('average_joe_poster'),
         teaserImg: getAssetUrl('average_joe_poster'),
-        video: getAssetUrl('average_joe_video'),
+        video: getAssetUrl('Average Joe Main Video'),
         teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
         description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
         deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
@@ -634,12 +634,12 @@ const projects: Project[] = [
         scaleValue: 'Multi-Platform Campaign',
         gallery: [
             getAssetUrl('average_joe_poster'),
-            getAssetUrl('average_joe_image_1'),
-            getAssetUrl('average_joe_image_2'),
-            getAssetUrl('average_joe_image_3'),
-            getAssetUrl('average_joe_image_4'),
-            getAssetUrl('average_joe_video'),
-            getAssetUrl('average_joe_video_phone')
+            getAssetUrl('average joe 1 '),
+            getAssetUrl('average joe.png'),
+            getAssetUrl('average joe 3'),
+            getAssetUrl('average joe 4'),
+            getAssetUrl('Average Joe Main Video'),
+            getAssetUrl('average joe phone video')
         ],
         partnerLogos: [
              { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
@@ -753,8 +753,8 @@ const projects: Project[] = [
         client: 'Kraft Philadelphia',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('philadelphia_poster'),
-        teaserImg: getAssetUrl('philadelphia_poster'),
+        img: getAssetUrl('philadelphia poster'),
+        teaserImg: getAssetUrl('philadelphia poster'),
         description: 'Whimsical and relatable copy for Kraft Philadelphia, focusing on the simple joys of a morning well-spent. We developed a voice that was warm, inviting, and playfully conversational.',
         deliverables: ['Social Media Copywriting', 'Digital Ad Copy', 'Brand Storytelling'],
         subtitle: 'Kraft Philadelphia Brand Work',
@@ -762,11 +762,11 @@ const projects: Project[] = [
         themeLabel: 'WARM & RELATABLE VOICE',
         themeDescription: 'The copywriting focused on small, shared moments—the quiet of a kitchen, the ritual of a breakfast—to position Philadelphia as a staple of comfort.',
         scaleValue: 'Digital Campaign',
-        video: getAssetUrl('philadelphia_video'),
+        video: getAssetUrl('philadelphia video'),
         gallery: [
-            getAssetUrl('philadelphia_1'),
-            getAssetUrl('philadelphia_2'),
-            getAssetUrl('philadelphia_3'),
+            getAssetUrl('philadelphia (1)'),
+            getAssetUrl('philadelphia (2)'),
+            getAssetUrl('philadelphia (3)'),
         ],
     },
     {
@@ -778,8 +778,8 @@ const projects: Project[] = [
         role: 'Copywriter',
         orientation: 'portrait',
         galleryLayout: 'poster',
-        img: getAssetUrl('popeyes_poster'),
-        teaserImg: getAssetUrl('popeyes_poster'),
+        img: getAssetUrl('popeyes poster'),
+        teaserImg: getAssetUrl('popeyes poster'),
         description: 'Sharp, bold, and culture-heavy copy for Popeyes, leaning into the brand\'s Louisiana roots and its status as a fast-food disruptor. We developed a voice that was confident, sassy, and unmistakably authentic.',
         deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Digital Brand Voice'],
         subtitle: 'Popeyes Cultural Strategy',
@@ -788,9 +788,9 @@ const projects: Project[] = [
         themeDescription: 'The copywriting for Popeyes was designed to be shared—using punchy, Twitter-ready language that ignited conversation and reinforced the brand\'s cultural dominance.',
         scaleValue: 'National Brand Campaign',
         gallery: [
-            getAssetUrl('popeyes_1'),
-            getAssetUrl('popeyes_2'),
-            getAssetUrl('popeyes_3'),
+            getAssetUrl('popeyes-01'),
+            getAssetUrl('popeyess+2-02'),
+            getAssetUrl('popeyes-03'),
         ],
     },
     {
@@ -800,8 +800,8 @@ const projects: Project[] = [
         client: 'Kelsey Nashe',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('holiday_slay_poster'),
-        teaserImg: getAssetUrl('holiday_slay_poster'),
+        img: getAssetUrl('shuffle slay poster'),
+        teaserImg: getAssetUrl('shuffle slay poster'),
         description: 'A festive and energetic campaign for Kelsey Nashe\'s Holiday Slay Shuffle. Our copywriting captured the spirit of the season with a modern, soulful twist.',
         deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Artist Brand Voice'],
         subtitle: 'Kelsey Nashe Holiday Campaign',
@@ -809,11 +809,10 @@ const projects: Project[] = [
         themeLabel: 'CULTURAL HOLIDAY POSITIONING',
         themeDescription: 'We developed a voice that felt both traditional and fresh, aligning the holiday campaign with contemporary cultural trends while maintaining an authentic, celebratory tone.',
         scaleValue: 'Digital Campaign',
-        video: getAssetUrl('holiday_slay_video'),
+        video: getAssetUrl('shuffle slay video'),
         gallery: [
-            getAssetUrl('holiday_slay_1'),
-            getAssetUrl('holiday_slay_2'),
-            getAssetUrl('holiday_slay_3'),
+            getAssetUrl('shuffle slay (1)'),
+            getAssetUrl('shuffle slay (2)'),
         ],
     },
     {
@@ -835,19 +834,19 @@ const projects: Project[] = [
         audioSpots: [
             {
                 title: 'BP Morgan Oil [Ice Cream]',
-                src: '/assets/bp x dq/Morgan+Oil+[Ice+Cream]+Jul28-Sep01.mp3',
+                src: '/assets/radio spots/Morgan+Oil+[Ice+Cream]+Jul28-Sep01.mp3',
                 duration: '0:18',
                 credit: 'Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Dairy Queen [Breakfast – Female]',
-                src: '/assets/bp x dq/Dairy+Queen+[Breakfast-Female]+Aug2015.mp3',
+                src: '/assets/radio spots/Dairy+Queen+[Breakfast-Female]+Aug2015.mp3',
                 duration: '0:31',
                 credit: 'Copywriter: Kelsey Matthews'
             },
             {
                 title: '07 Project 96 Radio Spot',
-                src: '/assets/bp x dq/07+Project+96+Radio+Spot.mp3',
+                src: '/assets/radio spots/07+Project+96+Radio+Spot.mp3',
                 duration: '0:31',
                 credit: 'Copywriter: Kelsey Matthews'
             }
@@ -877,8 +876,8 @@ const projects: Project[] = [
         client: 'Minute Maid',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('minute_maid_poster'),
-        teaserImg: getAssetUrl('minute_maid_poster'),
+        img: getAssetUrl('minute maid poster'),
+        teaserImg: getAssetUrl('minute maid poster'),
         description: 'Dynamic and playful copy for Minute Maid\'s Twist \'n Sip campaign. We developed a voice that was energetic, approachable, and perfectly aligned with the product\'s fun-loving brand identity.',
         deliverables: ['Product Copywriting', 'Social Media Messaging', 'Digital Ad Copy'],
         subtitle: 'Minute Maid Campaign',
@@ -886,7 +885,7 @@ const projects: Project[] = [
         themeLabel: 'PLAYFUL BRAND VOICE',
         themeDescription: 'The copy focused on the "twist" and "sip" experience, using punchy language and vibrant calls to action to drive engagement among younger demographics.',
         scaleValue: 'Digital Ad Campaign',
-        video: getAssetUrl('minute_maid_video'),
+        video: getAssetUrl('minute maid video'),
     },
     {
         id: 31,
@@ -897,7 +896,7 @@ const projects: Project[] = [
         role: 'Production',
         img: getAssetUrl('kingdom_business_poster'),
         teaserImg: getAssetUrl('kingdom_business_poster'),
-        video: getAssetUrl('kingdom_business_video'),
+        video: getAssetUrl('Kingdom Business Video'),
         description: 'Internal programming and brand integration for the BET+ original series Kingdom Business.',
         deliverables: ['Internal Programming', 'Brand Integration', 'Film Production'],
         subtitle: 'BET+ Original Series',

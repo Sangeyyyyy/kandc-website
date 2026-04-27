@@ -15,10 +15,13 @@ const VIDEO_ASSETS = [
   'instagram_video',
   'spike_lee_fireside_chat_video',
   'spike_lee_dinner_video',
-  'thought_leadership_brunch_video',
-  'average_joe_video',
+  'Thought Leadership Brunch Video',
+  'Average Joe Main Video',
   'the_come_up_brunch_video',
-  'kingdom_business_video'
+  'Kingdom Business Video',
+  'minute maid video',
+  'philadelphia video',
+  'shuffle slay video'
 ];
 
 // List of public IDs that should be treated as raw (e.g. PDFs)
