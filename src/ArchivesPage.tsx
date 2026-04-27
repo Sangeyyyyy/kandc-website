@@ -1168,7 +1168,7 @@ const AwardIcon = ({ type, className = "" }: { type: string; className?: string 
     );
 };
 
-const FloatingAwardIcon = ({ type, alt }: { type: string; alt: string }) => {
+const FloatingAwardIcon = ({ type }: { type: string }) => {
     return (
         <motion.div
             animate={{ 
@@ -1197,15 +1197,7 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
         standard: 'border-white/10 transition-colors hover:border-white/30 bg-white/5'
     }[award.tier || 'standard'];
 
-    const getAwardImg = (group: string) => {
-        const g = group.toLowerCase();
-        if (g.includes('academy')) return getAssetUrl('oscar');
-        if (g.includes('bafta')) return getAssetUrl('bafta');
-        if (g.includes('grammy')) return getAssetUrl('grammy');
-        if (g.includes('critics')) return getAssetUrl('bafta');
-        if (g.includes('globe')) return getAssetUrl('globe');
-        return getAssetUrl('oscar');
-    };
+
 
     return (
         <Reveal key={i} delay={i * 100}>
@@ -1234,7 +1226,6 @@ const AwardCard = ({ award, i }: { award: Award; i: number }) => {
                         {/* Suggestion: Floating 3D PNG Icon */}
                         <FloatingAwardIcon 
                             type={award.group} 
-                            alt={award.group} 
                         />
                     </div>
 
