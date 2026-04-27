@@ -228,8 +228,8 @@ const projects: Project[] = [
         client: 'Netflix',
         year: '2024',
         role: 'Live Experience Production',
-        img: getAssetUrl('hoppers_1'),
-        teaserImg: getAssetUrl('hoppers_1'),
+        img: getAssetUrl('hoppers_poster'),
+        teaserImg: getAssetUrl('hoppers_poster'),
         teaser: 'A live-to-screen event series that brought Netflix\'s biggest series to life.',
         description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
         deliverables: ['Live Event Series', 'Fan Engagement Strategy', 'Venue Production & Staffing', 'Social Media Amplification'],
@@ -240,7 +240,7 @@ const projects: Project[] = [
         scaleValue: 'Nationwide Activation',
         video: getAssetUrl('hoppers_video'),
         gallery: [
-            getAssetUrl('hoppers_1'),
+            getAssetUrl('hoppers_poster'),
             getAssetUrl('hoppers_2'),
             getAssetUrl('hoppers_3'),
             getAssetUrl('hoppers_4'),
@@ -282,9 +282,9 @@ const projects: Project[] = [
         client: 'Black Entertainment Television',
         year: '2024',
         role: 'Activation Strategy & Content Production',
-        img: getAssetUrl('BET_is_the_cookout'),
+        img: getAssetUrl('bet_is_the_cookout_poster'),
         video: getAssetUrl('Bet_Is_The_Cookout'),
-        teaserImg: getAssetUrl('BET_is_the_cookout'),
+        teaserImg: getAssetUrl('bet_is_the_cookout_poster'),
         teaser: 'Strategic content production and activation for the premier streaming service for Black culture.',
         description: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
         deliverables: ['Content Production', 'Activation Strategy', 'Culture-First Storytelling', 'Brand Integration'],
@@ -295,7 +295,7 @@ const projects: Project[] = [
         scaleValue: 'Streaming Content Reach',
         gallery: [
             getAssetUrl('BET_1'), 
-            getAssetUrl('BET_is_the_cookout'), 
+            getAssetUrl('bet_is_the_cookout_poster'), 
             getAssetUrl('BET_is_the_cookout_solo'), 
             getAssetUrl('BET_is_the_cookout_background')
         ],
@@ -730,8 +730,8 @@ const projects: Project[] = [
         role: 'Copywriter',
         orientation: 'portrait',
         galleryLayout: 'poster',
-        img: getAssetUrl('cards_against_concussions_poster'),
-        teaserImg: getAssetUrl('cards_against_concussions_poster'),
+        img: getAssetUrl('cards_against_concussion_poster'),
+        teaserImg: getAssetUrl('cards_against_concussion_poster'),
         gallery: [
             getAssetUrl('cards_against_concussions_1'),
             getAssetUrl('cards_against_concussions_2'),
@@ -753,8 +753,8 @@ const projects: Project[] = [
         client: 'Kraft Philadelphia',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('philadelphia poster'),
-        teaserImg: getAssetUrl('philadelphia poster'),
+        img: getAssetUrl('philadelphia_poster'),
+        teaserImg: getAssetUrl('philadelphia_poster'),
         description: 'Whimsical and relatable copy for Kraft Philadelphia, focusing on the simple joys of a morning well-spent. We developed a voice that was warm, inviting, and playfully conversational.',
         deliverables: ['Social Media Copywriting', 'Digital Ad Copy', 'Brand Storytelling'],
         subtitle: 'Kraft Philadelphia Brand Work',
@@ -778,8 +778,8 @@ const projects: Project[] = [
         role: 'Copywriter',
         orientation: 'portrait',
         galleryLayout: 'poster',
-        img: getAssetUrl('popeyes poster'),
-        teaserImg: getAssetUrl('popeyes poster'),
+        img: getAssetUrl('popeyes_poster'),
+        teaserImg: getAssetUrl('popeyes_poster'),
         description: 'Sharp, bold, and culture-heavy copy for Popeyes, leaning into the brand\'s Louisiana roots and its status as a fast-food disruptor. We developed a voice that was confident, sassy, and unmistakably authentic.',
         deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Digital Brand Voice'],
         subtitle: 'Popeyes Cultural Strategy',
@@ -800,8 +800,8 @@ const projects: Project[] = [
         client: 'Kelsey Nashe',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('shuffle slay poster'),
-        teaserImg: getAssetUrl('shuffle slay poster'),
+        img: getAssetUrl('shuffle_slay_poster'),
+        teaserImg: getAssetUrl('shuffle_slay_poster'),
         description: 'A festive and energetic campaign for Kelsey Nashe\'s Holiday Slay Shuffle. Our copywriting captured the spirit of the season with a modern, soulful twist.',
         deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Artist Brand Voice'],
         subtitle: 'Kelsey Nashe Holiday Campaign',
@@ -822,8 +822,8 @@ const projects: Project[] = [
         client: 'BP / Dairy Queen',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('radio_commercials_poster'),
-        teaserImg: getAssetUrl('radio_commercials_poster'),
+        img: getAssetUrl('radio_spot_poster'),
+        teaserImg: getAssetUrl('radio_spot_poster'),
         description: 'A collection of radio commercials written for BP Morgan Oil and Dairy Queen, crafted for FM broadcast. Each 18–31 second spot balances brand voice with listener engagement, demonstrating precision copywriting for audio-first formats.',
         deliverables: ['FM Radio Copywriting', 'Brand Voice Development', 'Audio Script Production', 'Multi-Client Campaign'],
         subtitle: 'BP Morgan Oil & Dairy Queen',
@@ -834,19 +834,19 @@ const projects: Project[] = [
         audioSpots: [
             {
                 title: 'BP Morgan Oil [Ice Cream]',
-                src: '/assets/radio spots/Morgan+Oil+[Ice+Cream]+Jul28-Sep01.mp3',
+                src: getAssetUrl('Morgan_Oil_Ice_Cream_Jul28-Sep01'),
                 duration: '0:18',
                 credit: 'Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Dairy Queen [Breakfast – Female]',
-                src: '/assets/radio spots/Dairy+Queen+[Breakfast-Female]+Aug2015.mp3',
+                src: getAssetUrl('Dairy_Queen_Breakfast-Female_Aug2015'),
                 duration: '0:31',
                 credit: 'Copywriter: Kelsey Matthews'
             },
             {
                 title: '07 Project 96 Radio Spot',
-                src: '/assets/radio spots/07+Project+96+Radio+Spot.mp3',
+                src: getAssetUrl('07_Project_96_Radio_Spot'),
                 duration: '0:31',
                 credit: 'Copywriter: Kelsey Matthews'
             }
@@ -876,8 +876,8 @@ const projects: Project[] = [
         client: 'Minute Maid',
         year: '2023',
         role: 'Copywriter',
-        img: getAssetUrl('minute maid poster'),
-        teaserImg: getAssetUrl('minute maid poster'),
+        img: getAssetUrl('minute_maid_poster'),
+        teaserImg: getAssetUrl('minute_maid_poster'),
         description: 'Dynamic and playful copy for Minute Maid\'s Twist \'n Sip campaign. We developed a voice that was energetic, approachable, and perfectly aligned with the product\'s fun-loving brand identity.',
         deliverables: ['Product Copywriting', 'Social Media Messaging', 'Digital Ad Copy'],
         subtitle: 'Minute Maid Campaign',
@@ -925,67 +925,67 @@ const projects: Project[] = [
         audioSpots: [
             {
                 title: 'Project 96 Radio Spot',
-                src: '/assets/radio%20commercials/07%20Project%2096%20Radio%20Spot.mp3',
+                src: getAssetUrl('07_Project_96_Radio_Spot'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Morgan Oil [Ice Cream 30]',
-                src: '/assets/radio%20commercials/Copy%20of%20Morgan%20Oil%20[Ice%20Cream%2030]%20Aug13-Sep01.mp3',
+                src: getAssetUrl('Copy_of_Morgan_Oil_Ice_Cream_30_Aug13-Sep01'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Gutters Installed',
-                src: '/assets/radio%20commercials/Gutters%20Installed%20[Oct17-Nov21].mp3',
+                src: getAssetUrl('Gutters_Installed_Oct17-Nov21'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Morgan Oil [Ice Cream]',
-                src: '/assets/radio%20commercials/Morgan%20Oil%20[Ice%20Cream]%20Jul28-Sep01.mp3',
+                src: getAssetUrl('Morgan_Oil_Ice_Cream_Jul28-Sep01'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'One Stop Shop Tax (60 sec)',
-                src: '/assets/radio%20commercials/One%20Stop%20Shop%20Tax%2060%20sec%20revised%20(Joc).mp3',
+                src: getAssetUrl('One_Stop_Shop_Tax_60_sec_revised_Joc'),
                 duration: '1:00',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Stitches Galore [Mother\'s Day]',
-                src: '/assets/radio%20commercials/Stitches%20Galore%20[Mom_s%20Day]%20Apr25-May07.mp3',
+                src: getAssetUrl('Stitches_Galore_Mom_s_Day_Apr25-May07'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Stitches Galore [Pre Christmas]',
-                src: '/assets/radio%20commercials/Stitches%20Galore%20[Pre%20Christmas]%20Nov01-30.mp3',
+                src: getAssetUrl('Stitches_Galore_Pre_Christmas_Nov01-30'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Stitches Galore [School]',
-                src: '/assets/radio%20commercials/Stitches%20Galore%20[School]%20Jul21-Aug15.mp3',
+                src: getAssetUrl('Stitches_Galore_School_Jul21-Aug15'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Stitches Galore & More [Summer]',
-                src: '/assets/radio%20commercials/Stitches%20Glaore%20%26%20More%20[Summer].mp3',
+                src: getAssetUrl('Stitches_Glaore_More_Summer'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Camp Blood',
-                src: '/assets/radio%20commercials/_Camp%20Blood%20[Oct04-Nov01].mp3',
+                src: getAssetUrl('_Camp_Blood_Oct04-Nov01'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             },
             {
                 title: 'Great Southern Agency',
-                src: '/assets/radio%20commercials/_Great%20Southern%20Agency%20[Nov03-Dec24].mp3',
+                src: getAssetUrl('_Great_Southern_Agency_Nov03-Dec24'),
                 duration: '0:30',
                 credit: 'Lead Copywriter: Kelsey Matthews'
             }

@@ -334,8 +334,8 @@ const ServicesCarousel = () => {
     { id: '02', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('sneakerball') },
     { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment and mutual growth.', image: getAssetUrl('creatives_at_sea') },
     { id: '04', title: 'Executive Brand Management', description: 'Senior-level strategic alliances and brand management for elite talent and executives.', image: getAssetUrl('jason_harvey_background') },
-    { id: '05', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('BET_is_the_cookout') },
-    { id: '06', title: 'Film Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('hoppers_4') }
+    { id: '05', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('bet_is_the_cookout_poster') },
+    { id: '06', title: 'Film Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('hoppers_poster') }
   ];
 
   return (

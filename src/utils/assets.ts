@@ -21,7 +21,19 @@ const VIDEO_ASSETS = [
   'Kingdom Business Video',
   'minute maid video',
   'philadelphia video',
-  'shuffle slay video'
+  'shuffle slay video',
+  '07_Project_96_Radio_Spot',
+  'Dairy_Queen_Breakfast-Female_Aug2015',
+  'Morgan_Oil_Ice_Cream_Jul28-Sep01',
+  '_Great_Southern_Agency_Nov03-Dec24',
+  '_Camp_Blood_Oct04-Nov01',
+  'Stitches_Glaore_More_Summer',
+  'Stitches_Galore_School_Jul21-Aug15',
+  'Stitches_Galore_Pre_Christmas_Nov01-30',
+  'One_Stop_Shop_Tax_60_sec_revised_Joc',
+  'Stitches_Galore_Mom_s_Day_Apr25-May07',
+  'Gutters_Installed_Oct17-Nov21',
+  'Copy_of_Morgan_Oil_Ice_Cream_30_Aug13-Sep01'
 ];
 
 // List of public IDs that should be treated as raw (e.g. PDFs)

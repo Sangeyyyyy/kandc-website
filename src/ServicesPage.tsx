@@ -115,7 +115,7 @@ const SERVICES_DATA = [
             {
                 name: 'Hoppers',
                 type: 'production',
-                portrait: getAssetUrl('hoppers_1'),
+                portrait: getAssetUrl('hoppers_poster'),
                 year: '2024',
                 role: 'Live Experience Production',
                 eventDetail: {
@@ -125,10 +125,10 @@ const SERVICES_DATA = [
                     description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
                     capacity: 'Nationwide Activation',
                     heroOrientation: 'portrait',
-                    heroImage: getAssetUrl('hoppers_1'),
+                    heroImage: getAssetUrl('hoppers_poster'),
                     videoSrc: getAssetUrl('hoppers_video'),
                     galleryImages: [
-                        { src: getAssetUrl('hoppers_1'), orientation: 'portrait' },
+                        { src: getAssetUrl('hoppers_poster'), orientation: 'portrait' },
                         { src: getAssetUrl('hoppers_2'), orientation: 'portrait' },
                         { src: getAssetUrl('hoppers_3'), orientation: 'portrait' },
                         { src: getAssetUrl('hoppers_4'), orientation: 'portrait' },
@@ -405,12 +405,12 @@ const SERVICES_DATA = [
         id: '05',
         title: 'Digital Marketing',
         description: 'Data-driven strategies that command attention in a crowded landscape. Presence that translates into measurable engagement and lasting loyalty.',
-        image: getAssetUrl('BET_is_the_cookout'),
+        image: getAssetUrl('bet_is_the_cookout_poster'),
         clients: [
             {
                 name: 'BET+ IS THE COOKOUT',
                 type: 'production',
-                portrait: getAssetUrl('BET_is_the_cookout'),
+                portrait: getAssetUrl('bet_is_the_cookout_poster'),
                 year: '2024',
                 role: 'Summer Stream Campaign',
                 eventDetail: {
@@ -424,7 +424,7 @@ const SERVICES_DATA = [
                     videoPoster: getAssetUrl('BET_1'),
                     galleryImages: [
                         { src: getAssetUrl('BET_1'), orientation: 'landscape' },
-                        { src: getAssetUrl('BET_is_the_cookout'), orientation: 'landscape' },
+                        { src: getAssetUrl('bet_is_the_cookout_poster'), orientation: 'landscape' },
                     ]
                 }
             }
@@ -434,7 +434,7 @@ const SERVICES_DATA = [
         id: '06',
         title: 'Film Production',
         description: 'High-end content designed for the cinematic brand narrative. We produce visual assets that resonate with sophistication and purpose.',
-        image: getAssetUrl('hoppers_4'),
+        image: getAssetUrl('hoppers_poster'),
         clients: [
             {
                 name: 'THE DRONE THAT SAVED CHRISTMAS',
