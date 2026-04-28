@@ -68,12 +68,12 @@ const ServicesPage = () => {
     const toggleOverlay = (id: string) => {
         const newId = overlayServiceId === id ? null : id;
         setOverlayServiceId(newId);
-        
+
         // Task 2.4 & 4.1: Update hash and title
         const slug = newId ? SERVICE_SLUGS[newId] : '';
         const service = SERVICES_DATA.find(s => s.id === newId);
         window.history.pushState({}, '', slug ? `#${slug}` : window.location.pathname);
-        
+
         if (service) {
             document.title = `${service.title} | Kelsey & Company`;
         } else {

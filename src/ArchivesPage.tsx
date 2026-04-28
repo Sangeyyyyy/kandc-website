@@ -1,18 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 import {
+    Reveal,
+    TopNav,
     useModal,
     useMagnetic,
     FooterCTA,
     UtilityFooter,
     ScrollProgressBar
 } from './SharedComponents';
-import { getAssetUrl } from './utils/assets';
 import { RoadmapSection } from './RoadmapSection';
 import { Volume2, VolumeX, X, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import './index.css';
 
-import { projects, type Project, type Award, type AudioSpot } from './data/projects';
+import { projects, type Project, type Award } from './data/projects';
 
 
 
@@ -683,6 +684,15 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
             };
         }
     }, [project, onClose]);
+
+    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+        const scrolled = e.currentTarget.scrollTop;
+        if (scrolled > window.innerHeight * 0.75) {
+            setIsHeroInView(false);
+        } else {
+            setIsHeroInView(true);
+        }
+    };
 
     useEffect(() => {
         if (project) {

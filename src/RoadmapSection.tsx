@@ -88,7 +88,7 @@ const Diamond: React.FC<{
         >
             {/* Task 2.2: Increased Hit Area wrapper */}
             <div className="flex flex-col items-center group relative cursor-pointer p-4 -m-4">
-                
+
                 {/* Centered Diamond and Glow Container */}
                 <div className="relative flex items-center justify-center" style={{ width: 40, height: 40 }}>
                     {/* Diamond shape */}
@@ -104,8 +104,8 @@ const Diamond: React.FC<{
                             backgroundColor: isActive
                                 ? 'rgb(238,192,191)'
                                 : isPast
-                                ? 'rgb(120, 96, 96)'
-                                : 'rgb(64, 64, 64)',
+                                    ? 'rgb(120, 96, 96)'
+                                    : 'rgb(64, 64, 64)',
                             transition: 'background-color 0.4s ease',
                             flexShrink: 0,
                             zIndex: 2,

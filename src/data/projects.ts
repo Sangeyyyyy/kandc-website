@@ -44,6 +44,7 @@ export type Project = {
     pressKitPdf?: string;
     galleryLayout?: 'masonry' | 'poster';
     audioSpots?: AudioSpot[];
+    objectPosition?: string;
 };
 
 export const projects: Project[] = [

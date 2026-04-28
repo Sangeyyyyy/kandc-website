@@ -13,7 +13,7 @@ import {
   ScrollIndicator,
   ScrollProgressBar
 } from './SharedComponents';
-import { motion, useScroll, useTransform, useSpring, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { SparkleParticles } from './SparkleParticles';
 import { DiamondEdgeSparkles } from './DiamondEdgeSparkles';
 import { getAssetUrl } from './utils/assets';
