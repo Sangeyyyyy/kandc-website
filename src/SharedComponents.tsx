@@ -406,6 +406,20 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
 
 // ─── CALENDLY MODAL ───────────────────────────────────────────────────────────
 export const CalendlyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+    const [step, setStep] = useState<'briefing' | 'calendly'>('briefing');
+    const [formData, setFormData] = useState({ projectType: '', company: '', timeline: '' });
+    const magneticClose = useMagnetic(20);
+
+    useEffect(() => {
+        if (isOpen) {
+            setStep('briefing'); // Reset on open
+        }
+    }, [isOpen]);
+
+    const handleNext = (e: React.FormEvent) => {
+        e.preventDefault();
+        setStep('calendly');
+    };
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -433,27 +447,99 @@ export const CalendlyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
             {/* Modal Container */}
             <div className="relative w-full max-w-5xl h-[80vh] bg-ink rounded-2xl overflow-hidden shadow-ember-intense border border-rose/10 flex flex-col animate-in fade-in zoom-in duration-500">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-rose/5">
+                <div className="flex items-center justify-between p-6 md:p-10 border-b border-rose/5 relative z-10 bg-ink">
                     <div>
-                        <h3 className="font-serif text-2xl text-cream tracking-tight">Book a Consultation</h3>
-                        <p className="text-[0.6rem] tracking-[0.2em] uppercase font-sans text-rose/40">Select a time that works for you</p>
+                        <h3 className="font-serif text-3xl md:text-4xl text-cream tracking-tight uppercase italic">
+                            {step === 'briefing' ? 'Project Briefing' : 'Secure Your Slot'}
+                        </h3>
+                        <p className="text-[0.6rem] tracking-[0.3em] uppercase font-sans text-rose/50 mt-2">
+                            {step === 'briefing' ? 'Step 01 / Context' : 'Step 02 / Scheduling'}
+                        </p>
                     </div>
-                    <button
-                        onClick={onClose}
-                        className="p-2 hover:bg-burgundy/5 rounded-full transition-colors text-burgundy/40 hover:text-burgundy"
-                    >
-                        <X size={24} />
-                    </button>
+                    <div ref={magneticClose}>
+                        <button
+                            onClick={onClose}
+                            className="p-3 hover:bg-rose/5 rounded-full transition-all duration-500 text-rose/30 hover:text-rose border border-transparent hover:border-rose/10"
+                        >
+                            <X size={28} strokeWidth={1} />
+                        </button>
+                    </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 w-full bg-cream">
-                    <iframe
-                        src="https://calendly.com/kelseyandcompanymedia/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-                        width="100%"
-                        height="100%"
-                        frameBorder="0"
-                    ></iframe>
+                <div className="flex-1 w-full overflow-y-auto">
+                    <AnimatePresence mode="wait">
+                        {step === 'briefing' ? (
+                            <motion.div
+                                key="briefing"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                className="p-8 md:p-16 max-w-2xl mx-auto"
+                            >
+                                <form onSubmit={handleNext} className="space-y-12">
+                                    <div className="space-y-6">
+                                        <p className="text-rose/60 text-xs tracking-widest uppercase">What are we building?</p>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {['Experiential', 'Digital Campaign', 'Brand Strategy', 'Other'].map(type => (
+                                                <button
+                                                    key={type}
+                                                    type="button"
+                                                    onClick={() => setFormData({ ...formData, projectType: type })}
+                                                    className={`px-6 py-4 text-left border transition-all duration-500 text-xs tracking-widest uppercase font-sans ${
+                                                        formData.projectType === type 
+                                                        ? 'bg-rose text-ink border-rose' 
+                                                        : 'border-rose/10 text-cream/40 hover:border-rose/30'
+                                                    }`}
+                                                >
+                                                    {type}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        <p className="text-rose/60 text-xs tracking-widest uppercase">Company or Entity</p>
+                                        <input 
+                                            type="text"
+                                            required
+                                            value={formData.company}
+                                            onChange={e => setFormData({ ...formData, company: e.target.value })}
+                                            placeholder="Who are you representing?"
+                                            className="w-full bg-transparent border-b border-rose/20 py-4 text-cream font-serif text-xl focus:border-rose outline-none transition-colors placeholder:text-cream/10"
+                                        />
+                                    </div>
+
+                                    <div className="pt-8">
+                                        <button 
+                                            type="submit"
+                                            disabled={!formData.projectType || !formData.company}
+                                            className="w-full md:w-auto px-12 py-6 bg-cream text-ink text-[0.7rem] tracking-[0.5em] uppercase font-sans hover:bg-rose transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+                                        >
+                                            Next: Schedule Time
+                                        </button>
+                                    </div>
+                                </form>
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="calendly"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                className="h-full bg-cream"
+                            >
+                                <iframe
+                                    src="https://calendly.com/kelseyandcompanymedia/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                                    width="100%"
+                                    height="100%"
+                                    frameBorder="0"
+                                ></iframe>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
@@ -461,34 +547,43 @@ export const CalendlyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: (
 };
 
 // ─── FOOTER CTA ───────────────────────────────────────────────────────────────
-export const FooterCTA = ({ onBookClick }: { onBookClick: () => void }) => (
-    <footer id="contact" className="py-24 md:py-40 text-center bg-ink relative overflow-hidden shadow-ember-intense border-t border-rose/5">
-        {/* Cinematic Gradient Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(96,33,58,0.25)_0%,_transparent_70%)] pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose/20 to-transparent" />
-        <Reveal className="container mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
-            <h2 className="text-4xl md:text-8xl mb-6 md:mb-8 font-serif tracking-[0.1em] text-cream uppercase">
-                Kelsey <span className="font-light italic text-rose/60">&</span> Company
-            </h2>
-            <p className="font-serif italic text-rose/60 text-xl md:text-2xl mb-12">Where Culture Meets Commerce.</p>
-            <p className="caps-detail !text-rose/60 mb-16 mx-auto">Building Bridges · Driving Impact</p>
-            <div className="flex flex-col items-center gap-8">
-                <button
-                    onClick={onBookClick}
-                    className="bg-cream text-burgundy border-none py-5 px-12 font-sans font-semibold tracking-widest uppercase hover:bg-rose hover:text-burgundy transition-colors text-sm"
-                >
-                  Book Consultation
-                </button>
-                <Link
-                    to="/our-work"
-                    className="inline-block border border-rose/30 px-10 py-5 text-[0.6rem] tracking-[0.4em] uppercase font-sans text-rose hover:bg-rose hover:text-burgundy transition-all duration-500 rounded-sm mt-8"
-                >
-                    View Our Work
-                </Link>
-            </div>
-        </Reveal>
-    </footer>
-);
+export const FooterCTA = ({ onBookClick }: { onBookClick: () => void }) => {
+    const magneticBook = useMagnetic(30);
+    const magneticWork = useMagnetic(30);
+
+    return (
+        <footer id="contact" className="py-24 md:py-40 text-center bg-ink relative overflow-hidden shadow-ember-intense border-t border-rose/5">
+            {/* Cinematic Gradient Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(96,33,58,0.25)_0%,_transparent_70%)] pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose/20 to-transparent" />
+            <Reveal className="container mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
+                <h2 className="text-4xl md:text-8xl mb-6 md:mb-8 font-serif tracking-[0.1em] text-cream uppercase">
+                    Kelsey <span className="font-light italic text-rose/60">&</span> Company
+                </h2>
+                <p className="font-serif italic text-rose/60 text-xl md:text-2xl mb-12">Where Culture Meets Commerce.</p>
+                <p className="caps-detail !text-rose/60 mb-16 mx-auto">Building Bridges · Driving Impact</p>
+                <div className="flex flex-col items-center gap-8">
+                    <div ref={magneticBook} className="magnetic-button">
+                        <button
+                            onClick={onBookClick}
+                            className="bg-cream text-burgundy border-none py-5 px-12 font-sans font-semibold tracking-widest uppercase hover:bg-rose hover:text-burgundy transition-colors text-sm"
+                        >
+                            Book Consultation
+                        </button>
+                    </div>
+                    <div ref={magneticWork} className="magnetic-button">
+                        <Link
+                            to="/our-work"
+                            className="inline-block border border-rose/30 px-10 py-5 text-[0.6rem] tracking-[0.4em] uppercase font-sans text-rose hover:bg-rose hover:text-burgundy transition-all duration-500 rounded-sm"
+                        >
+                            View Our Work
+                        </Link>
+                    </div>
+                </div>
+            </Reveal>
+        </footer>
+    );
+};
 
 // ─── UTILITY FOOTER ───────────────────────────────────────────────────────────
 

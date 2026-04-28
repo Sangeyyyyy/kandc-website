@@ -20,7 +20,10 @@ import { getAssetUrl } from './utils/assets';
 import './index.css';
 
 
-// ─── HERO ─────────────────────────────────────────────────────────────────────
+import { projects } from './data/projects';
+import { SERVICES_DATA } from './data/services';
+import { PARTNERS, ALL_LOGOS } from './data/partners';
+
 const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
   const containerRef = useRef<HTMLElement>(null);
   const magneticRef = useMagnetic(30);
@@ -148,37 +151,20 @@ const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
     </section>
   );
 };
-// ─── SELECTED WORK ────────────────────────────────────────────────────────────
+
 const SelectedWork = () => {
-  const projects = [
-      {
-        num: '01',
-        title: 'Sinners',
-        category: 'Experiential Integrated Activations and Premieres',
-        img: getAssetUrl('sinners_poster'),
-        objectPosition: 'top center',
-      },
-    {
-      num: '02',
-        title: 'Tron: Ares',
-        category: 'Experiential Integrated Activations and Premieres',
-        img: getAssetUrl('tron_poster'),
-        video: getAssetUrl('Tron_video'),
-      objectPosition: 'top center',
-    },
-    {
-      num: '03',
-      title: 'Zootopia 2',
-      category: 'Experiential Integrated Activations and Premieres',
-      img: getAssetUrl('zootopia'),
-      objectPosition: 'top center',
-    },
-  ];
+  // Use a subset of projects for the homepage
+  const featuredProjects = projects.slice(0, 3).map((p, i) => ({
+    num: String(i + 1).padStart(2, '0'),
+    title: p.title,
+    category: p.category,
+    img: p.img,
+    objectPosition: p.objectPosition || 'top center',
+  }));
 
   return (
     <section id="work" className="w-full bg-ink relative">
       <SectionBlender position="top" intensity="h-48" />
-      {/* Heading row */}
       <div className="py-24 px-8 md:px-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <Reveal>
           <h2 className="text-[4rem] lg:text-[7rem] font-serif leading-none tracking-tighter text-cream uppercase">
@@ -187,20 +173,17 @@ const SelectedWork = () => {
         </Reveal>
       </div>
 
-      {/* Poster Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-cream/10">
-        {projects.map((project, i) => (
+        {featuredProjects.map((project, i) => (
           <div
             key={i}
             className="relative overflow-hidden cursor-pointer group border-r border-cream/10 last:border-r-0 lg:last:border-r"
             style={{ aspectRatio: '2/3' }}
           >
-            {/* Number badge */}
             <span className="absolute top-5 right-5 z-20 font-sans text-[0.55rem] tracking-[0.35em] text-white/40 select-none">
               {project.num}
             </span>
 
-            {/* Image */}
             <img
               src={project.img}
               alt={project.title}
@@ -208,11 +191,9 @@ const SelectedWork = () => {
               style={{ objectPosition: project.objectPosition }}
             />
 
-            {/* Gradient overlay — always present, deepens on hover */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-opacity duration-700" />
             <div className="absolute inset-0 bg-burgundy/0 group-hover:bg-burgundy/40 transition-colors duration-700" />
 
-            {/* Label */}
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
               <p className="font-sans text-[0.5rem] tracking-[0.4em] uppercase text-rose mb-2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
                 {project.category}
@@ -224,7 +205,6 @@ const SelectedWork = () => {
           </div>
         ))}
 
-        {/* Option B: Integrated View All Card */}
         <Link
           to="/our-work"
           className="relative overflow-hidden cursor-pointer group bg-ink flex flex-col justify-center p-8 md:p-12 border-r border-cream/10 last:border-r-0 shadow-ember hover:shadow-ember-intense transition-shadow duration-700"
@@ -241,54 +221,45 @@ const SelectedWork = () => {
             </h3>
             
             <div className="flex items-center gap-4 text-cream/40 group-hover:text-cream transition-colors duration-500">
-              <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans">15 Productions</span>
+              <span className="text-[0.6rem] tracking-[0.3em] uppercase font-sans">{projects.length} Productions</span>
               <div className="h-px w-8 bg-current transform origin-left scale-x-100 group-hover:scale-x-150 transition-transform duration-500" />
               <span className="text-xl">⟶</span>
             </div>
           </div>
 
-          {/* Decorative Background Element */}
           <div className="absolute -bottom-10 -right-10 text-[15rem] font-serif italic text-cream/[0.03] pointer-events-none select-none group-hover:text-cream/[0.05] transition-colors duration-700">
             &
           </div>
         </Link>
       </div>
 
-      {/* Bottom tagline */}
       <div className="py-12 px-8 md:px-16 border-t border-cream/10">
         <Reveal>
-          <p className="text-cream/35 font-serif italic text-lg">15 productions. One collective.</p>
+          <p className="text-cream/35 font-serif italic text-lg">{projects.length} productions. One collective.</p>
         </Reveal>
       </div>
     </section>
   );
 };
 
-// ─── ABOUT / FOUNDER ──────────────────────────────────────────────────────────
 const AboutFounder = () => (
   <section id="who-we-are" className="relative min-h-screen bg-[#0c0508] overflow-hidden flex items-center justify-center border-y border-rose/5">
     <SectionBlender position="top" intensity="h-32" />
     <SectionBlender position="bottom" intensity="h-32" />
     
-    {/* Giant Background Monogram */}
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
       <p className="font-serif text-[40vw] leading-none text-cream/[0.025] tracking-tighter watermark-drift" style={{ fontStyle: 'italic', whiteSpace: 'nowrap' }}>KM</p>
     </div>
 
-    {/* Ambient Rose Glow */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-rose/[0.04] rounded-full blur-[120px] pointer-events-none"></div>
 
-    {/* Center Content */}
     <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 px-8 lg:px-0 max-w-6xl w-full mx-auto py-20 lg:py-24">
-
-      {/* Floating Portrait */}
       <Reveal className="flex-shrink-0 z-10">
         <div className="float-slow relative">
           <div className="w-[240px] md:w-[280px] lg:w-[340px] aspect-[3/4] rounded-sm overflow-hidden border-2 border-rose/20 shadow-ember-intense relative">
             <img src={getAssetUrl('founder')} alt="Kelsey Matthews" className="w-full h-full object-cover object-top brightness-90 contrast-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           </div>
-          {/* Orbit ring */}
           <div className="absolute inset-[-20px] rounded-sm border border-rose/10 pointer-events-none" style={{ borderStyle: 'dashed' }}></div>
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-ink border border-rose/20 px-6 py-2 whitespace-nowrap">
             <p className="text-[0.58rem] uppercase tracking-[0.35em] text-rose/70">Kelsey Matthews</p>
@@ -296,7 +267,6 @@ const AboutFounder = () => (
         </div>
       </Reveal>
 
-      {/* Text Block */}
       <div className="flex-1 text-center lg:text-left z-10">
         <Reveal delay={200}>
           <p className="text-rose/50 text-[0.62rem] tracking-[0.5em] uppercase mb-8">The Founder</p>
@@ -327,7 +297,6 @@ const AboutFounder = () => (
   </section>
 );
 
-// ─── SERVICES CAROUSEL ────────────────────────────────────────────────────────
 const ServicesCarousel = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -344,37 +313,18 @@ const ServicesCarousel = () => {
     offset: ["start start", "end end"]
   });
 
-  // Mobile cards are proportionally wider (88vw vs 45vw), so the strip
-  // needs a smaller % shift to reach the last card without overshooting.
-  // Mobile cards are proportionally wider (88vw vs 45vw), so the strip
-  // needs a smaller % shift to reach the last card without overshooting.
   const x = useTransform(
     scrollYProgress,
     [0, 1],
     ["0%", isMobile ? "-70%" : "-74%"]
   );
 
-  const servicesData = [
-    { id: '01', title: 'Experiential Integrated Activations and Premieres', description: 'Immersive brand moments and seamless experiences that live at the intersection of culture and community.', image: getAssetUrl('sinners_1') },
-    { id: '02', title: 'Event Producing and Programming', description: 'End-to-end management from logistical blueprints to the final guest experience.', image: getAssetUrl('sneakerball') },
-    { id: '03', title: 'Brand Partnerships', description: 'Strategic alliances built on cultural alignment and mutual growth.', image: getAssetUrl('creatives_at_sea') },
-    { id: '04', title: 'Executive Brand Management', description: 'Senior-level strategic alliances and brand management for elite talent and executives.', image: getAssetUrl('jason_harvey_background') },
-    { id: '05', title: 'Digital Marketing', description: 'Data-driven strategies that command attention in a crowded landscape.', image: getAssetUrl('bet_is_the_cookout_poster') },
-    { id: '06', title: 'Film Production', description: 'High-end content designed for the cinematic brand narrative.', image: getAssetUrl('hoppers_poster') }
-  ];
-
   return (
     <section id="services" ref={targetRef} className="h-[400vh] bg-ink relative">
       <SectionBlender position="top" intensity="h-48" />
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-        
-        {/* Background ambient noise */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(96,33,58,0.1)_0%,_transparent_70%)] pointer-events-none" />
-
-        {/* No outer padding — title card itself carries px-8 on mobile so it fills the full viewport */}
         <motion.div style={{ x }} className="flex gap-6 md:gap-12 md:px-32 w-max">
-          
-          {/* Title Card — w-screen on mobile so it's perfectly centered in the viewport */}
           <div className="w-screen md:w-[40vw] shrink-0 h-[65vh] flex flex-col justify-center px-8 md:px-0 md:pr-12">
             <Reveal>
               <p className="text-rose/50 text-[0.6rem] md:text-xs tracking-[0.3em] uppercase mb-6 md:mb-8 flex items-center gap-4">
@@ -390,104 +340,33 @@ const ServicesCarousel = () => {
             </Reveal>
           </div>
 
-          {/* Service Cards — 88vw on mobile gives an immersive feel with a slight peek of the next card */}
-          {servicesData.map((s) => (
+          {SERVICES_DATA.map((s) => (
             <div key={s.id} className="w-[88vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-[70vh] relative group overflow-hidden border border-cream/10">
               <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-60 group-hover:opacity-80" />
-              
               <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent transition-opacity duration-700" />
-              
               <div className="absolute inset-0 p-6 md:p-16 flex flex-col justify-end">
                 <div className="flex items-center gap-4 md:gap-6 mb-4 md:mb-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
                    <span className="text-4xl md:text-6xl font-serif text-rose/40 italic leading-none">{s.id}</span>
                    <div className="h-px bg-rose/30 flex-grow" />
                 </div>
-                
                 <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 tracking-tight leading-[1.1] transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
                   {s.title}
                 </h3>
-                
                 <p className="text-cream/60 font-sans text-sm md:text-base max-w-md transform translate-y-0 md:translate-y-4 opacity-100 md:opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150">
                   {s.description}
                 </p>
               </div>
             </div>
           ))}
-          
-          {/* Trailing spacer so the last card doesn't get clipped on mobile */}
           <div className="w-[6vw] md:hidden shrink-0" />
         </motion.div>
       </div>
-
       <div className="absolute bottom-0 w-full z-50">
         <SectionBlender position="bottom" intensity="h-48" />
       </div>
     </section>
   );
 };
-
-// ─── PARTNERSHIPS SHOWCASE ────────────────────────────────────────────────────
-type Partner = {
-  name: string;
-  category: string;
-  description: string;
-  image: string;
-  logoFile: string;
-  role: string;
-};
-
-const PARTNERS: Partner[] = [
-  {
-    name: 'Warner Bros.',
-    category: 'Major Client',
-    description: 'Kelsey & Company partnered with Warner Bros. to produce the premiere activation for Sinners — a full-scale, immersive launch experience that blurred the line between film and lived reality, curating every touchpoint from spatial architecture to talent coordination.',
-    image: getAssetUrl('sinners_1'),
-    logoFile: 'warner-bros-.svg',
-    role: 'Activation Strategy & Creative Production',
-  },
-  {
-    name: 'Jordan Brand',
-    category: 'Major Client',
-    description: 'K&C produced an exclusive Spike Lee-powered Jordan Brand dinner at Cannes Lions — a luxurious 5-course experience for 50 top creatives, culminating in a private Jordan drop, signing, and personalized merch. Culture and commerce at their highest intersection.',
-    image: getAssetUrl('assets/spike lee dinner/spike lee dinner 1.png'),
-    logoFile: '-air-jordan.svg',
-    role: 'Luxury Event Production & Brand Activation',
-  },
-  {
-    name: 'ONE Musicfest',
-    category: 'Major Client',
-    description: 'A flagship partnership with ONE Musicfest, one of the largest hip-hop and R&B music festivals in the country. K&C brought strategic brand architecture and experiential production to amplify the festival\'s cultural footprint across key demographics.',
-    image: getAssetUrl('sneakerball'),
-    logoFile: 'ONE_Musicfest_Logo.png',
-    role: 'Strategic Brand Architecture & Event Production',
-  },
-  {
-    name: 'News UK',
-    category: 'Major Client',
-    description: 'Kelsey & Company aligned with News UK to extend their cultural reach through a series of high-impact brand activations and media partnerships. Our work bridged the gap between legacy media and modern cultural conversation.',
-    image: getAssetUrl('thought_leadership_brunch_1'),
-    logoFile: 'News_UK_logo.svg',
-    role: 'Brand Activation & Media Partnership',
-  },
-  {
-    name: 'Paramount',
-    category: 'Major Client',
-    description: 'From screenings to immersive fan activations, K&C brought Paramount\'s storytelling off the screen and into lived cultural moments. Strategic production and talent curation at the intersection of entertainment and experience.',
-    image: getAssetUrl('creatives_at_sea'),
-    logoFile: 'paramount-plus-64.png',
-    role: 'Experiential Production & Talent Curation',
-  },
-];
-
-const ALL_LOGOS = [
-  { name: 'Warner Bros.', fileName: 'warner-bros-.svg' },
-  { name: 'Jordan Brand', fileName: '-air-jordan.svg' },
-  { name: 'ONE Musicfest', fileName: 'ONE_Musicfest_Logo.png' },
-  { name: 'News UK', fileName: 'News_UK_logo.svg' },
-  { name: 'Paramount', fileName: 'paramount-plus-64.png' },
-  { name: 'Dove', fileName: 'dove-logo-svg-vector.svg' },
-  { name: 'Disney', fileName: 'icons8-disney-50.png' },
-];
 
 const TrustedBrands = () => {
   const [current, setCurrent] = useState(0);
@@ -692,6 +571,10 @@ const TrustedBrands = () => {
 function App() {
   const [loaded, setLoaded] = useState(false);
   const { openModal } = useModal();
+
+  useEffect(() => {
+    document.title = "Kelsey & Company | Cultural Brand Architects";
+  }, []);
 
   return (
     <>

@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import {
-    Reveal,
-    TopNav,
     useModal,
+    useMagnetic,
     FooterCTA,
     UtilityFooter,
     ScrollProgressBar
@@ -10,1006 +9,11 @@ import {
 import { getAssetUrl } from './utils/assets';
 import { RoadmapSection } from './RoadmapSection';
 import { Volume2, VolumeX, X, Sparkles } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import './index.css';
 
-// ─── TYPES ──────────────────────────────────────────────────────────────────
-export type Award = {
-    group: string;
-    count: number;
-    nominations?: number;
-    note?: string;
-    tier?: 'gold' | 'silver' | 'bronze' | 'standard';
-};
+import { projects, type Project, type Award, type AudioSpot } from './data/projects';
 
-export type AudioSpot = {
-    title: string;
-    src: string;
-    duration: string;
-    credit: string;
-};
-
-export type Project = {
-    id: number;
-    title: string;
-    category: string;
-    client: string;
-    year: string;
-    role: string;
-    img: string;
-    video?: string;
-    teaserImg?: string;
-    teaser?: string;
-    description: string;
-    deliverables: string[];
-    subtitle: string;
-    highlight: string;
-    themeLabel: string;
-    themeDescription: string;
-    scaleValue: string;
-    awards?: Award[];
-    gallery?: string[];
-    partnerLogos?: any[];
-    roadmap?: any[];
-    orientation?: string;
-    highlightLabel?: string;
-    theme?: string;
-    bookPdf?: string;
-    pressKitPdf?: string;
-    galleryLayout?: 'masonry' | 'poster';
-    audioSpots?: AudioSpot[];
-};
-
-// ─── PROJECT DATA ─────────────────────────────────────────────────────────────
-const projects: Project[] = [
-    {
-        id: 2,
-        title: 'Sinners',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: 'Warner Bros. Pictures',
-        year: '2024',
-        role: 'Live Activation Creative Producer | HBCU & Film Community Amplification',
-        img: getAssetUrl('sinners_poster'),
-        video: getAssetUrl('Sinners_video'),
-        teaserImg: getAssetUrl('sinners_poster'),
-        teaser: 'A cinematic premiere event that redefined the red carpet experience.',
-        description: `Kelsey & Company partnered with Warner Bros. and MACRO to produce the premiere activation for Sinners—a full-scale, immersive launch experience that blurred the line between film and lived reality. We led the HBCU & Film Community Amplification strategy, including the "HBCU Classic" partnership during All-Star Weekend, the Morehouse Student Poster Contest, and 4 high-impact virtual fireside chats featuring filmmakers Ryan Coogler and Michael B. Jordan.`,
-        deliverables: ['HBCU Community Amplification', 'Virtual Fireside Chat Series', 'Morehouse Student Poster Contest', 'Core Market Strategy (ATL, NC, FL, TN, AL)', 'Red Carpet Production', 'Live Brand Activation'],
-        subtitle: 'Warner Bros. Pictures Production',
-        highlight: 'Premiere Launch',
-        themeLabel: 'CREATIVE PRODUCTION & AMPLIFICATION',
-        themeDescription: 'Kelsey & Company spearheaded the end-to-end production and marketing for branded events in partnership with MACRO, NBA and Warner Bros. Pictures. Our team directed on-site execution, red carpet, and audience engagement while coordinating all outreach to bridge the gap between blockbuster film and cultural community.',
-        scaleValue: 'Global Premiere & Multi-Market Tour',
-        awards: [
-            { group: 'Academy Awards (Oscars)', count: 4, nominations: 16, tier: 'gold', note: 'Winner: Best Actor, Best Original Screenplay, Best Cinematography, Best Original Score' },
-            { group: 'Critics Choice Awards', count: 4, tier: 'silver', note: 'Winner: Best Picture, Best Young Actor' },
-            { group: 'BAFTA Film Awards', count: 3, tier: 'silver', note: 'Winner: Best Director, Best Film, Best Screenplay' },
-            { group: 'Golden Globe Awards', count: 2, nominations: 7, tier: 'bronze' },
-            { group: 'Grammy Awards', count: 2, tier: 'bronze', note: 'Best Compilation Soundtrack & Best Score' },
-            { group: 'Industry Recognition', count: 1, tier: 'standard', note: 'Winner: ACE Eddie Awards - Best Edited Feature Film' }
-        ],
-        gallery: [
-            getAssetUrl('sinners_5'),
-            getAssetUrl('sinners_1'),
-            getAssetUrl('sinners_2'),
-            getAssetUrl('sinners_3'),
-            getAssetUrl('sinners_4'),
-            getAssetUrl('sinners_5'),
-            getAssetUrl('sinners_6'),
-            getAssetUrl('sinners_brochure'),
-            getAssetUrl('sinners_poster'),
-            getAssetUrl('Sinners_background'),
-            getAssetUrl('Sinners_logo')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('warner-bros-'), mode: 'monochrome', size: 'icon', alt: 'Warner Bros' },
-            { src: getAssetUrl('macro_logo'), mode: 'monochrome', size: 'square', alt: 'Macro' },
-            { src: getAssetUrl('nba_logo'), mode: 'monochrome', size: 'icon', alt: 'NBA' }
-        ],
-        roadmap: [
-            {
-                phase: 'Pre-Production',
-                step: '01',
-                title: 'Community Amplification',
-                description: 'Launching a virtual fireside chat series with Ryan Coogler and Michael B. Jordan. Organizing the Morehouse Student Poster Contest to engage the next generation of creatives.',
-                tag: 'Strategy',
-                media: getAssetUrl('sinners_brochure'),
-                mediaPosition: '40% center',
-            },
-            {
-                phase: 'Coordination',
-                step: '02',
-                title: 'HBCU Classic Partnership',
-                description: 'Coordinating with Warner Bros, MACRO, and the NBA during the HBCU Classic at All-Star Weekend. Serving as the local market representative for Morehouse and Tuskegee screenings.',
-                tag: 'Operations',
-                media: getAssetUrl('sinners_4'),
-                mediaPosition: '40% center',
-            },
-            {
-                phase: 'On-Site Production',
-                step: '03',
-                title: 'Premiere & Execution',
-                description: 'Directing on-site red carpet production, managing asset delivery, and overseeing audience engagement for advanced screenings.',
-                tag: 'Execution',
-                media: getAssetUrl('sinners_5'),
-                mediaPosition: '40% center',
-            },
-        ],
-    },
-    {
-        id: 3,
-        title: 'Tron: Ares',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: 'Walt Disney Studios',
-        year: '2025',
-        role: 'Integrated Marketing & Brand Activation',
-        img: getAssetUrl('tron_poster'),
-        teaserImg: getAssetUrl('tron_poster'),
-        teaser: 'A neon-drenched, world-building marketing campaign built for the digital age.',
-        description: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
-        deliverables: ['Pop-Up Experience Design', 'Influencer & Talent Relations', 'Digital Content Strategy', 'Launch Event Production'],
-        subtitle: 'Walt Disney Studios Campaign',
-        highlight: 'Digital Identity',
-        themeLabel: 'INTEGRATED MARKETING STRATEGY',
-        themeDescription: 'For the long-awaited Tron: Ares, K&C was brought on to lead the integrated activation strategy. We designed an immersive digital-physical campaign spanning pop-up experiences, social amplification, and influencer integration that captured the film\'s futuristic energy.',
-        scaleValue: 'Multi-Market Integration',
-        video: getAssetUrl('Tron_video'),
-        gallery: [
-            getAssetUrl('Tron_1'),
-            getAssetUrl('Tron_2'),
-            getAssetUrl('Tron_3'),
-            getAssetUrl('Tron_4'),
-            getAssetUrl('Tron_5'),
-            getAssetUrl('Tron_6'),
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('icons8-disney-50'), mode: 'monochrome', size: 'icon', alt: 'Disney' }
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 4,
-        title: 'Zootopia 2',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: 'Walt Disney Animation',
-        year: '2023',
-        role: 'Brand Partnership Management',
-        img: getAssetUrl('zootopia'),
-        teaserImg: getAssetUrl('zootopia'),
-        teaser: 'Strategic partnerships that extended the world of Zootopia into everyday culture.',
-        description: `K&C curated and managed a suite of co-branded partnerships for the Zootopia franchise, connecting the animated world with premium lifestyle brands. Our curation drove unprecedented cultural penetration and brand affinity across key demographics.`,
-        deliverables: ['Brand Partner Curation', 'Co-Branded Campaign Strategy', 'Deal Negotiation & Execution', 'Cultural Alignment Oversight'],
-        subtitle: 'Disney Animation Franchise',
-        highlight: 'Co-Branded Fusion',
-        themeLabel: 'PARTNERSHIP MANAGEMENT',
-        themeDescription: 'K&C curated and managed a suite of co-branded partnerships for the Zootopia franchise, connecting the animated world with premium lifestyle brands. Our curation drove unprecedented cultural penetration and brand affinity across key demographics.',
-        scaleValue: '360° Partner Integration',
-        gallery: [getAssetUrl('zootopia'), getAssetUrl('zootopia')],
-        video: getAssetUrl('Zootopia_video'),
-        orientation: 'portrait',
-    },
-    {
-        id: 5,
-        title: 'Avatar',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: '20th Century Studios',
-        year: '2023',
-        role: 'Experiential Production Lead',
-        img: getAssetUrl('avatar'),
-        teaserImg: getAssetUrl('avatar'),
-        teaser: 'An otherworldly launch experience that transported audiences to Pandora.',
-        description: `For Avatar: The Way of Water, Kelsey & Company designed and produced an immersive theatrical world-preview event. Guests were transported through the film's oceanic environments via multi-sensory staging, setting a new benchmark for blockbuster experiential marketing.`,
-        deliverables: ['Immersive Environment Design', 'Multi-Sensory Event Production', 'Talent & Talent Management', 'Press Activation Strategy'],
-        subtitle: '20th Century Studios Experience',
-        highlight: 'Pandora Immersion',
-        themeLabel: 'EXPERIENTIAL PRODUCTION',
-        themeDescription: 'For Avatar: The Way of Water, Kelsey & Company designed and produced an immersive theatrical world-preview event. Guests were transported through the film\'s oceanic environments via multi-sensory staging, setting a new benchmark for blockbuster experiential marketing.',
-        scaleValue: 'Multi-Sensory World Building',
-        video: getAssetUrl('avatar_video'),
-        gallery: [
-            getAssetUrl('avatar_1'),
-            getAssetUrl('avatar_2'),
-            getAssetUrl('avatar_3'),
-            getAssetUrl('avatar_4'),
-            getAssetUrl('avatar_5'),
-            getAssetUrl('avatar_6'),
-            getAssetUrl('avatar_7'),
-            getAssetUrl('avatar_8'),
-            getAssetUrl('avatar_9'),
-            getAssetUrl('avatar_10'),
-            getAssetUrl('avatar_11'),
-            getAssetUrl('avatar_12'),
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 6,
-        title: 'Hoppers',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: 'Netflix',
-        year: '2024',
-        role: 'Live Experience Production',
-        img: getAssetUrl('hoppers_poster'),
-        teaserImg: getAssetUrl('hoppers_poster'),
-        teaser: 'A live-to-screen event series that brought Netflix\'s biggest series to life.',
-        description: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
-        deliverables: ['Live Event Series', 'Fan Engagement Strategy', 'Venue Production & Staffing', 'Social Media Amplification'],
-        subtitle: 'Netflix Event Series',
-        highlight: 'Live Narrative',
-        themeLabel: 'LIVE EXPERIENCE STRATEGY',
-        themeDescription: 'Kelsey & Company produced the live experience strategy for Netflix\'s Hoppers series, converting episodic storytelling into a set of curated live events. From intimate screenings to large-scale activations, each event deepened fan engagement and drove cultural conversation.',
-        scaleValue: 'Nationwide Activation',
-        video: getAssetUrl('hoppers_video'),
-        gallery: [
-            getAssetUrl('hoppers_poster'),
-            getAssetUrl('hoppers_2'),
-            getAssetUrl('hoppers_3'),
-            getAssetUrl('hoppers_4'),
-            getAssetUrl('hoppers_5'),
-            getAssetUrl('hoppers_6'),
-            getAssetUrl('hoppers_7'),
-            getAssetUrl('hoppers_8'),
-            getAssetUrl('hoppers_9'),
-            getAssetUrl('hoppers_10'),
-            getAssetUrl('hoppers_11'),
-            getAssetUrl('hoppers_12'),
-            getAssetUrl('hoppers_13'),
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 1,
-        title: 'The Devil Wears Prada 2',
-        category: 'Experiential Integrated Activations and Premieres',
-        client: 'Fox Entertainment',
-        year: '2025',
-        role: 'Strategic Brand & Fashion Partnerships',
-        img: getAssetUrl('devil_wears_prada_poster'),
-        teaserImg: getAssetUrl('devil_wears_prada_poster'),
-        teaser: 'A fashion-forward partnership strategy that made the world pay attention.',
-        description: `For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.`,
-        deliverables: ['Luxury Fashion Partnerships', 'Editorial Integration', 'Press Preview Production', 'Global Brand Strategy'],
-        subtitle: 'Fox Entertainment Strategic Tie-ins',
-        highlight: 'Fashion Forward',
-        themeLabel: 'LUXURY BRAND STRATEGY',
-        themeDescription: 'For the highly anticipated sequel, K&C architected the fashion and luxury brand partnership strategy. We brokered relationships with top-tier fashion houses, coordinated editorial integrations, and produced a press preview event that set the tone for the entire campaign.',
-        scaleValue: 'Global Luxury Strategy',
-        gallery: [getAssetUrl('devil_wears_prada_poster')],
-    },
-    {
-        id: 7,
-        title: 'BET+ Is the Cookout',
-        category: 'Digital Marketing',
-        client: 'Black Entertainment Television',
-        year: '2024',
-        role: 'Activation Strategy & Content Production',
-        img: getAssetUrl('bet_is_the_cookout_poster'),
-        video: getAssetUrl('Bet_Is_The_Cookout'),
-        teaserImg: getAssetUrl('bet_is_the_cookout_poster'),
-        teaser: 'Strategic content production and activation for the premier streaming service for Black culture.',
-        description: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
-        deliverables: ['Content Production', 'Activation Strategy', 'Culture-First Storytelling', 'Brand Integration'],
-        subtitle: 'BET+ Content Strategy',
-        highlight: 'Culture First',
-        themeLabel: 'CONTENT PRODUCTION',
-        themeDescription: 'Kelsey & Company collaborated with BET+ to develop and execute a comprehensive activation strategy. We focused on high-impact content production and cultural storytelling that resonated deeply with the platform\'s audience, strengthening its position as a cultural leader.',
-        scaleValue: 'Streaming Content Reach',
-        gallery: [
-            getAssetUrl('BET_1'),
-            getAssetUrl('bet_is_the_cookout_poster'),
-            getAssetUrl('BET_is_the_cookout_solo'),
-            getAssetUrl('BET_is_the_cookout_background')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
-        ],
-    },
-    {
-        id: 8,
-        title: 'Jason Harvey',
-        category: 'Executive Brand Management',
-        client: 'Blue Blood',
-        year: '2023',
-        role: 'Brand Partnership & Creative Direction',
-        img: getAssetUrl('jason_harvey_poster'),
-        video: getAssetUrl('jason_harvey_video'),
-        teaserImg: getAssetUrl('jason_harvey_poster'),
-        teaser: 'Elevating creative direction and strategic partnerships for Jason Harvey\'s Blue Blood.',
-        description: 'We provided creative direction and managed strategic brand partnerships for Jason Harvey and his Blue Blood initiative. Our work bridged the gap between high fashion and cultural impact, creating meaningful connections with premium brands.',
-        deliverables: ['Creative Direction', 'Brand Partnership Management', 'Strategic Positioning', 'Talent Curation'],
-        subtitle: 'EVP, Head of Paramount\'s BET+',
-        highlight: '4 Stages',
-        themeLabel: 'SENIOR DIRECTOR LEVEL - BRAND MANAGEMENT',
-        themeDescription: 'Kelsey & Company supports Jason Harvey as his primary brand manager. Our engagement functions at a senior director level across strategy, planning, and execution — including complex brand high-stakes bookings, coordination, and overarching multi-platform development.',
-        scaleValue: 'Proven Engaging Speaker',
-        gallery: [
-            getAssetUrl('jason_harvey_background'),
-            getAssetUrl('jason_harvey_solo'),
-            getAssetUrl('jason_harvey_2'),
-            getAssetUrl('jason_harvey_1'),
-            getAssetUrl('jason_harvey_2'),
-            getAssetUrl('Copy_of_Jason_H_Speaks_Adweek_house'),
-            getAssetUrl('ChinaPanelnuggets1'),
-            getAssetUrl('IMG_0343'),
-            getAssetUrl('IMG_2125'),
-            getAssetUrl('IMG_2543'),
-            getAssetUrl('gettyimages-2264115507-612x612')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 },
-            { src: getAssetUrl('paramount-plus-64'), mode: 'monochrome', size: 'icon', alt: 'Paramount' },
-            { src: getAssetUrl('SXSW_logo'), mode: 'monochrome', size: 'wide', alt: 'SXSW' },
-            { src: getAssetUrl('CES_logo'), mode: 'monochrome', size: 'wide', alt: 'CES', scale: 1.15 },
-            { src: getAssetUrl('jason_harvey_logo'), mode: 'monochrome', size: 'full', alt: 'Jason Harvey', scale: 1.1 },
-            { src: getAssetUrl('Convergence_logo'), mode: 'monochrome', size: 'full', alt: 'Convergence' },
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 9,
-        title: 'Renaissance Noir: Sneaker Ball',
-        category: 'Event Producing and Programming',
-        client: 'Sneaker Ball Gala',
-        year: '2023',
-        role: 'Event Production & Strategy',
-        img: getAssetUrl('sneaker_ball_poster'),
-        teaserImg: getAssetUrl('sneaker_ball_poster'),
-        teaser: 'Where luxury meets street culture in an annual celebratory gala.',
-        description: 'K&C led the production and strategic planning for the Sneaker Ball, a unique event that celebrates the intersection of luxury fashion and sneaker culture. We managed everything from venue transformation to guest experience and cultural programming.',
-        deliverables: ['Event Production', 'Spatial Design', 'Guest Experience Strategy', 'Talent Programming'],
-        subtitle: 'Sneaker Ball Gala Strategy',
-        highlight: 'Street Luxury',
-        themeLabel: 'EVENT PRODUCTION',
-        themeDescription: 'K&C led the production and strategic planning for the Sneaker Ball, a unique event that celebrates the intersection of luxury fashion and sneaker culture. We managed everything from venue transformation to guest experience and cultural programming.',
-        scaleValue: 'Premium Gala Experience',
-        gallery: [
-            getAssetUrl('sneaker_ball_solo'),
-            getAssetUrl('sneaker_ball_background'),
-            getAssetUrl('sneakerball'),
-            getAssetUrl('sneakerball_1'),
-            getAssetUrl('sneaker_ball_2'),
-            getAssetUrl('sneaker_ball_3')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
-        ],
-    },
-    {
-        id: 10,
-        title: 'Spike Lee',
-        category: 'Event Producing and Programming',
-        client: 'Creative Conversations',
-        year: '2023',
-        role: 'Executive Production & Curation',
-        img: getAssetUrl('spike_lee_fireside_chat_poster'),
-        teaserImg: getAssetUrl('spike_lee_fireside_chat_poster'),
-        video: getAssetUrl('SPIKE_LEE_FIRESIDE_CHAT'),
-        orientation: 'portrait',
-        teaser: 'An intimate, high-impact conversation with a legendary filmmaker.',
-        description: 'We executive produced and curated an exclusive fireside chat with Spike Lee. This high-profile event focused on the power of storytelling and cultural impact, providing an intimate platform for one of cinema\'s most influential voices.',
-        deliverables: ['Executive Production', 'Talent Curation', 'Set Design & Staging', 'Press Coordination'],
-        subtitle: 'Spike Lee Fireside Chat',
-        highlight: 'Cultural Voice',
-        themeLabel: 'EXECUTIVE PRODUCTION',
-        themeDescription: 'We executive produced and curated an exclusive fireside chat with Spike Lee. This high-profile event focused on the power of storytelling and cultural impact, providing an intimate platform for one of cinema\'s most influential voices.',
-        scaleValue: 'Direct Talent Management',
-        gallery: [
-            getAssetUrl('spike_lee_fireside_chat_poster'),
-            getAssetUrl('spike_lee_fireside_chat_background'),
-            getAssetUrl('spike_lee_fireside_chat_solo'),
-            getAssetUrl('spike_lee_fireside_logo'),
-            getAssetUrl('spike_lee_fireside_chat_1'),
-            getAssetUrl('spike_lee_fireside_chat_2'),
-            getAssetUrl('spike_lee_fireside_chat_3'),
-            getAssetUrl('spike_lee_fireside_chat_4'),
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
-            { src: getAssetUrl('-air-jordan'), mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
-            { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
-        ],
-    },
-    {
-        id: 11,
-        title: 'Creatives at Sea',
-        category: 'Event Producing and Programming',
-        client: 'Juneteenth Celebration',
-        year: '2023',
-        role: 'Event Production & Curation',
-        img: getAssetUrl('creatives_at_sea_poster'),
-        teaserImg: getAssetUrl('creatives_at_sea_poster'),
-        teaser: 'A Juneteenth celebration promoting diversity in media on the water.',
-        description: 'A Juneteenth celebration promoting diversity in media, featuring an insightful panel w/ NAACP president, CBS & Roc Nation executives. The exclusive event offered networking on the water, lite bites, signature cocktails, and an unforgettable mix of conversation and music.',
-        deliverables: ['Insightful Panel Coordination', 'Networking Event Production', 'Signature Cocktail Curation', 'Live Music & Conversation'],
-        subtitle: 'Diversity in Media Panel',
-        highlight: 'Juneteenth',
-        themeLabel: 'JUNETEENTH CELEBRATION',
-        themeDescription: 'A Juneteenth celebration promoting diversity in media, featuring an insightful panel w/ NAACP president, CBS & Roc Nation executives. The exclusive event offered networking on the water, lite bites, signature cocktails, and an unforgettable mix of conversation and music.',
-        scaleValue: 'Capacity | 120 people',
-        video: getAssetUrl('creatives_at_sea_video'),
-        gallery: [
-            getAssetUrl('creatives_at_sea_poster'),
-            getAssetUrl('creatives_at_sea_background'),
-            getAssetUrl('creatives_at_sea_solo'),
-            getAssetUrl('creatives_at_sea_logo'),
-            getAssetUrl('creatives_at_sea_1'),
-            getAssetUrl('creatives_at_sea_2'),
-            getAssetUrl('creatives_at_sea_3'),
-            getAssetUrl('creatives_at_sea_4')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('NAACP_logo'), mode: 'monochrome', size: 'wide', alt: 'NAACP', scale: 1.1 },
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes' },
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 12,
-        title: 'Spike Lee Dinner',
-        category: 'Event Producing and Programming',
-        client: 'Cannes Lions 2023',
-        year: '2023',
-        role: 'Event Production & Strategy',
-        img: getAssetUrl('spike_lee_dinner_poster'),
-        teaserImg: getAssetUrl('spike_lee_dinner_poster'),
-        video: getAssetUrl('SPIKE_LEE_DINNER'),
-        orientation: 'portrait',
-        teaser: 'A luxurious 5-course meal powered by Jordan Brand for 50 top creatives.',
-        description: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
-        deliverables: ['5-Course Luxurious Meal', 'Creative Cause Presentations', 'Exclusive Jordan Drop', 'Personalized Merch & Signing'],
-        subtitle: 'Powered by Jordan Brand',
-        highlight: 'Jordan Brand',
-        themeLabel: 'LUXURY DINNER EXPERIENCE',
-        themeDescription: '50 top creatives and executives enjoyed a luxurious 5-course meal, with each guest presenting their creative cause. The night concluded with an exclusive Spike Lee-branded Jordan drop, signing, and personalized merch for all attendees.',
-        scaleValue: 'Capacity | 50 guests',
-        gallery: [
-            getAssetUrl('spike_lee_dinner_poster'),
-            getAssetUrl('spike_lee_dinner_background'),
-            getAssetUrl('spike_lee_dinner_solo'),
-            getAssetUrl('spike_lee_dinner_1'),
-            getAssetUrl('spike_lee_dinner'),
-            getAssetUrl('spike_lee_dinner_2'),
-            getAssetUrl('34017AB7-4935-4D27-AE74-F4C010F74EE1')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('-air-jordan'), mode: 'monochrome', size: 'icon', alt: 'Jordan', scale: 1.2 },
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat Cannes', scale: 1.2 },
-            { src: getAssetUrl('cannes_lions_logo'), mode: 'monochrome', size: 'wide', alt: 'Cannes Lions', scale: 1.2 },
-        ],
-    },
-    {
-        id: 13,
-        title: 'CEO/CMO Brunch',
-        category: 'Event Producing and Programming',
-        client: 'Industry Executives',
-        year: '2023',
-        role: 'Event Production & Programming',
-        img: getAssetUrl('CMO_brunch_poster'),
-        teaserImg: getAssetUrl('CEOCMO_BRUNCH'),
-        teaser: 'An intimate gathering with the industries most creative executives.',
-        description: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
-        deliverables: ['Intimate Programming', 'Brunch Catering Coordination', 'Artist Performance Management', 'Executive Networking'],
-        subtitle: 'Poetic Accompaniment by J.Ivy',
-        highlight: 'Intimate Gathering',
-        themeLabel: 'EXECUTIVE NETWORKING',
-        themeDescription: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
-        scaleValue: 'Capacity | 50 People',
-        gallery: [getAssetUrl('CEOCMO_BRUNCH')],
-        partnerLogos: [
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
-        ],
-    },
-    {
-        id: 14,
-        title: 'Logitech x Vice Luncheon',
-        category: 'Event Producing and Programming',
-        client: 'Logitech & Vice',
-        year: '2023',
-        role: 'Event Production & Management',
-        img: getAssetUrl('logitech_x_vice_luncheon'),
-        teaserImg: getAssetUrl('logitech_x_vice_luncheon'),
-        teaser: 'A private, seated Luncheon and fireside chat for industry executives.',
-        description: 'A private, seated Luncheon and fireside chat for industry executives powered by Logitech and Vice.',
-        deliverables: ['Private Seated Luncheon', 'Fireside Chat Management', 'Partner Integration', 'Executive Guest Management'],
-        subtitle: 'Powered by Logitech and Vice',
-        highlight: 'Seated Luncheon',
-        themeLabel: 'STRATEGIC PARTNERSHIP LUNCHEON',
-        themeDescription: 'A private, seated Luncheon and fireside chat for industry executives powered by Logitech and Vice.',
-        scaleValue: 'Capacity | 50 People',
-        gallery: [getAssetUrl('logitech_x_vice_luncheon')],
-        partnerLogos: [
-            { src: getAssetUrl('Logitech-Emblem'), mode: 'monochrome', size: 'wide', alt: 'Logitech', scale: 1.2 },
-            { src: getAssetUrl('vice-logo-transparent'), mode: 'none', size: 'wide', alt: 'Vice', scale: 1.1 },
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
-        ],
-    },
-    {
-        id: 15,
-        title: 'Thought Leadership Brunch',
-        category: 'Event Producing and Programming',
-        client: 'Black at Cannes',
-        year: '2025',
-        role: 'Global Director and Producer',
-        img: getAssetUrl('thought_leadership_brunch_poster'),
-        teaserImg: getAssetUrl('thought_leadership_brunch_poster'),
-        video: getAssetUrl('Thought_Leadership_Brunch_Video'),
-        teaser: 'A premier summit celebrating global Black excellence.',
-        description: 'As Global Director and Producer, I led the end-to-end execution of Black at Cannes, a premier summit celebrating global Black excellence. I managed an international team and global vendors to deliver high-level programming, ranging from executive-led panels to an exclusive gala for Nedbank. This world-class experience successfully connected top-tier industry leaders on a global stage. \n\nThought Leadership Brunch Cannes @ The Martinez',
-        deliverables: ['High-level Programming', 'Executive-Led Panels', 'Exclusive Gala Execution', 'Global Vendor Management'],
-        subtitle: 'Cannes @ The Martinez',
-        highlight: 'Black at Cannes',
-        themeLabel: 'GLOBAL BLACK EXCELLENCE',
-        themeDescription: 'As Global Director and Producer, I led the end-to-end execution of Black at Cannes, a premier summit celebrating global Black excellence. I managed an international team and global vendors to deliver high-level programming, ranging from executive-led panels to an exclusive gala for Nedbank. This world-class experience successfully connected top-tier industry leaders on a global stage.',
-        scaleValue: 'Thought Leadership Brunch',
-        gallery: [
-            getAssetUrl('thought_leadership_brunch_poster'),
-            getAssetUrl('thought_leadership_brunch'),
-            getAssetUrl('thought_leadership_brunch_1'),
-            getAssetUrl('thought_leadership_brunch_2'),
-            getAssetUrl('thought_leadership_brunch_3'),
-            getAssetUrl('thought_leadership_brunch_4'),
-            getAssetUrl('thought_leadership_brunch_poster_1'),
-            getAssetUrl('thought_leadership_brunch_poster_2')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BLKAT_FinalLogoColor_2'), mode: 'monochrome', size: 'wide', alt: 'Blackat' },
-        ],
-        orientation: 'portrait',
-    },
-    {
-        id: 16,
-        title: 'ONE Musicfest x Eventnoire',
-        category: 'Digital Campaigns',
-        client: 'Eventnoire / ONE Musicfest',
-        year: '2025',
-        role: 'Partnership Broker & Digital Strategy Lead',
-        img: getAssetUrl('onemusicfest_poster'),
-        teaserImg: getAssetUrl('onemusicfest_poster'),
-        teaser: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire, leveraging over 1.2M subscribers for targeted audience acquisition.',
-        description: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility. The collaboration leveraged Eventnoire\'s ecosystem of over 1.2M culturally engaged subscribers through targeted email campaigns, SMS, banner ads, and national/regional newsletters. Additionally, we used first-party data strategies to drive new audience acquisition for ONE Musicfest—expanding their marketing funnel with qualified, affinity-aligned leads across key markets.',
-        deliverables: ['Presale Ticketing Strategy', 'Audience Engagement', 'In-Festival Brand Integrations', 'First-Party Data Acquisition', 'Email & SMS Campaigns'],
-        subtitle: 'High-impact partnership across digital and live channels.',
-        highlight: 'Partnership',
-        themeLabel: 'STRATEGIC AUDIENCE ACQUISITION',
-        themeDescription: 'Secured a high-impact partnership with ONE Musicfest on behalf of client Eventnoire. Led efforts around presale ticketing, audience engagement, and in-festival brand integrations to deepen consumer connection and drive platform visibility.',
-        scaleValue: '1.2M+ Engaged Subscribers',
-        video: getAssetUrl('onemusicfest_video'),
-        gallery: [
-            getAssetUrl('onemusicfest_poster'),
-            getAssetUrl('onemusicfest_image'),
-            getAssetUrl('onemusicfest')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('ONE_Musicfest_Logo'), mode: 'monochrome', size: 'wide', alt: 'ONE Musicfest', scale: 1.2 },
-            { src: getAssetUrl('eventnoire_logo'), mode: 'monochrome', size: 'wide', alt: 'Eventnoire', scale: 1.2 }
-        ],
-    },
-    {
-        id: 17,
-        title: 'BET+ x Braze',
-        category: 'Digital Campaigns',
-        client: 'BET+ & Braze',
-        year: '2024 - 2025',
-        role: 'Partnership Facilitator & Brand Programming',
-        orientation: 'portrait',
-        img: getAssetUrl('braze_poster'),
-        teaserImg: getAssetUrl('braze_poster'),
-        teaser: 'A product grant program working to break down barriers for underrepresented startup founders.',
-        description: 'We partnered with Braze to launch the "Tech for an Equitable Future" initiative alongside BET+. This product grant program is dedicated to breaking down barriers for underrepresented startup founders. Providing 20 startups across the US, EMEA, and APAC with 12 months of free Braze access, a dedicated Customer Success Manager, and a private digital community. In return, BET+ provided 1:1 mentorship, hosted a Branding Masterclass, and gave founders access to their 4M+ subscriber base for unprecedented visibility.',
-        deliverables: ['Partnership Facilitator', 'Internal Comms', 'Programming', 'Brand Messaging'],
-        subtitle: 'Tech for an Equitable Future',
-        highlight: 'PR & Brand Programming',
-        themeLabel: 'STRATEGIC BRAND PROGRAMMING',
-        themeDescription: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
-        scaleValue: '20 Startups | 4M Subscribers',
-        gallery: [
-            getAssetUrl('braze_1_first'),
-            getAssetUrl('braze_poster'),
-            getAssetUrl('braze_1'),
-            getAssetUrl('braze_2'),
-            getAssetUrl('braze_3'),
-            getAssetUrl('braze_4'),
-            getAssetUrl('braze_5'),
-            getAssetUrl('braze_6'),
-            getAssetUrl('braze_image_1'),
-            getAssetUrl('braze_image_2'),
-            getAssetUrl('braze_image_3'),
-            getAssetUrl('braze_image_4'),
-            getAssetUrl('braze_image_5'),
-            getAssetUrl('braze_image_6'),
-            getAssetUrl('braze_image_7')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
-        ],
-    },
-    {
-        id: 18,
-        title: 'Average Joe',
-        category: 'Digital Campaigns',
-        client: 'BET+',
-        year: '2023',
-        role: 'Lead Brand Strategist & Copywriter',
-        img: getAssetUrl('average_joe_poster'),
-        teaserImg: getAssetUrl('average_joe_poster'),
-        video: getAssetUrl('Average_Joe_Main_Video'),
-        teaser: 'A Clio Award-winning integrated campaign combining CRM, interactive games, and sports integration.',
-        description: 'At Paramount I contributed to a Clio Award-winning campaign for Average Joe, combining brand messaging, lifecycle marketing, CRM, Snapchat filters, an awards show, and a Pittsburgh Steelers integration to engage audiences and deliver measurable results. Using metrics and focus group insights, I\'ve built strategies that connect the BET+ brand with its audiences in unforgettable ways.',
-        deliverables: ['Lifecycle Marketing', 'CRM Strategy', 'Gamified AR Lenses', 'Interactive Gaming', 'Social Ad Rollout', 'Sports Integration'],
-        subtitle: 'BET+ Original Series',
-        highlight: 'Clio Integrated Campaign',
-        themeLabel: 'DIGITAL INNOVATION & LIFECYCLE',
-        themeDescription: 'Using metrics and focus group insights, I built strategies that connected the BET+ brand with its audiences in unforgettable ways—rolling out immersive interactive games, gamified AR lenses, and a bespoke Pittsburgh Steelers broadcast integration.',
-        scaleValue: 'Multi-Platform Campaign',
-        gallery: [
-            getAssetUrl('average_joe_poster'),
-            getAssetUrl('average_joe_1'),
-            getAssetUrl('average_joe'),
-            getAssetUrl('average_joe_3'),
-            getAssetUrl('average_joe_4'),
-            getAssetUrl('average_joe_phone_video')
-        ],
-        partnerLogos: [
-            { src: getAssetUrl('BET_logo'), mode: 'monochrome', size: 'wide', alt: 'BET+', scale: 1.3 }
-        ],
-        awards: [
-            { group: 'CLIO Entertainment Awards', count: 1, tier: 'standard', note: 'Shortlist: Television | Series: Integrated Campaign' }
-        ]
-    },
-    {
-        id: 19,
-        title: 'The Come Up Brunch',
-        category: 'Event Producing and Programming',
-        client: 'The Come Up / The One Club for Creativity',
-        year: '2024',
-        role: 'Co-Founder, Programming Director & Creative Strategist',
-        img: getAssetUrl('the_come_up_brunch_poster'),
-        teaserImg: getAssetUrl('the_come_up_brunch_poster'),
-        video: getAssetUrl('the_come_up_brunch_video'),
-        teaser: 'A networking experience providing marginalized groups a pathway to a seat at the table.',
-        description: 'The Come Up Brunch is natively a networking event series designed to give marginalized groups a pathway to a seat at the table, spark conversation, build relationships, and gain resources. The event is an industry-wide call to all mid-level advertisers and above to join important conversations accompanied by a soulful brunch and lively music. All disciplines including creative, strategy, account, media, entertainment, etc., were welcome to attend.',
-        deliverables: ['Strategic Partnerships', 'Panel Programming', 'Creative Strategy', 'Vendor & Volunteer Management'],
-        subtitle: 'Networking Experience & Panel Series',
-        highlight: '11,175+ Connections',
-        themeLabel: 'COMMUNITY & CULTURAL EMPOWERMENT',
-        themeDescription: 'It\'s no secret that you can find Black people at brunch. Food is a way our BIPOC community comes together to share culture. We transformed a cultural staple into an actionable pathway connecting diverse professionals with career coaching, job opportunities with Black HR reps, and thousands of networking connections.',
-        scaleValue: '150+ Attendees | 11,175+ Interactions',
-        gallery: [],
-        orientation: 'portrait',
-    },
-    {
-        id: 23,
-        title: 'Sprite',
-        category: 'Copywriting',
-        client: 'Sprite',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('sprite_poster'),
-        teaserImg: getAssetUrl('sprite_poster'),
-        description: 'Bold, culture-driven copy for Sprite, focusing on the brand\'s long-standing connection to hip-hop and basketball culture. We developed messaging that felt authentic, sharp, and unmistakably Sprite.',
-        deliverables: ['Brand Messaging', 'Cultural Strategy', 'Digital Copywriting'],
-        subtitle: 'Sprite Brand Copy',
-        highlight: 'Stay Fresh',
-        themeLabel: 'CULTURAL AUTHENTICITY',
-        themeDescription: 'The copywriting for Sprite was designed to resonate with an audience that values authenticity and cultural relevance above all else.',
-        scaleValue: 'Global Brand Voice',
-    },
-    {
-        id: 30,
-        title: 'Kids Foot Locker',
-        category: 'Copywriting',
-        client: 'Foot Locker',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('kids_foot_locker_poster'),
-        teaserImg: getAssetUrl('kids_foot_locker_poster'),
-        description: 'Fun and engaging copy for Kids Foot Locker, designed to appeal to both parents and children. We balanced playfulness with brand authority to create a voice that was both cool and trustworthy.',
-        deliverables: ['Campaign Copywriting', 'Social Media Messaging', 'Email Strategy'],
-        subtitle: 'Kids Foot Locker Campaign',
-        highlight: 'Fresh for School',
-        themeLabel: 'MULTI-GENERATIONAL APPEAL',
-        themeDescription: 'We crafted messaging that spoke to kids\' desire for style while highlighting the quality and selection that parents appreciate.',
-        scaleValue: 'Retail Campaign',
-    },
-    {
-        id: 24,
-        title: 'Instagram Shop',
-        category: 'Copywriting',
-        client: 'Instagram',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('instagram_poster'),
-        teaserImg: getAssetUrl('instagram_poster'),
-        video: getAssetUrl('instagram_video'),
-        description: 'Sleek, punchy copy for Instagram Shop, optimized for quick consumption and high conversion. We developed a voice that was inspiring, modern, and perfectly suited for the platform\'s visual-first environment.',
-        deliverables: ['Digital Copywriting', 'UGC Strategy', 'Platform Brand Voice'],
-        subtitle: 'Instagram E-Commerce',
-        highlight: 'Shop the Look',
-        themeLabel: 'DIGITAL-FIRST MESSAGING',
-        themeDescription: 'The copy for Instagram Shop was designed to disappear—creating a seamless path from discovery to purchase without ever breaking the user\'s flow.',
-        scaleValue: 'Global Platform Integration',
-    },
-    {
-        id: 25,
-        title: 'Cards Against Concussions',
-        category: 'Copywriting',
-        client: 'PADV',
-        year: '2023',
-        role: 'Copywriter',
-        orientation: 'portrait',
-        galleryLayout: 'poster',
-        img: getAssetUrl('cards_against_concussion_poster'),
-        teaserImg: getAssetUrl('cards_against_concussion_poster'),
-        gallery: [
-            getAssetUrl('cards_against_concussion_1'),
-            getAssetUrl('cards_against_concussion_2'),
-            getAssetUrl('cards_against_concussion_3'),
-            getAssetUrl('cards_against_concussion_4')
-        ],
-        description: 'Witty, dark, and awareness-driven copy for Cards Against Concussions. This campaign used the familiar aesthetic of party games to shed light on a serious issue—domestic violence—in a way that was impossible to ignore.',
-        deliverables: ['Guerrilla Marketing Copy', 'Concept Development', 'Brand Voice Subversion'],
-        subtitle: 'PADV Awareness Campaign',
-        highlight: 'Disruptive Awareness',
-        themeLabel: 'CULTURAL SUBVERSION',
-        themeDescription: 'By mimicking a popular cultural artifact, we were able to deliver a heavy message to an audience that might otherwise have looked away.',
-        scaleValue: 'National Awareness Campaign',
-    },
-    {
-        id: 26,
-        title: 'Philadelphia',
-        category: 'Copywriting',
-        client: 'Kraft Philadelphia',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('philadelphia_poster'),
-        teaserImg: getAssetUrl('philadelphia_poster'),
-        description: 'Whimsical and relatable copy for Kraft Philadelphia, focusing on the simple joys of a morning well-spent. We developed a voice that was warm, inviting, and playfully conversational.',
-        deliverables: ['Social Media Copywriting', 'Digital Ad Copy', 'Brand Storytelling'],
-        subtitle: 'Kraft Philadelphia Brand Work',
-        highlight: 'Spread the Love',
-        themeLabel: 'WARM & RELATABLE VOICE',
-        themeDescription: 'The copywriting focused on small, shared moments—the quiet of a kitchen, the ritual of a breakfast—to position Philadelphia as a staple of comfort.',
-        scaleValue: 'Digital Campaign',
-        video: getAssetUrl('philadelphia_video'),
-        gallery: [
-            getAssetUrl('philadelphia_1'),
-            getAssetUrl('philadelphia_2'),
-            getAssetUrl('philadelphia_3'),
-            getAssetUrl('philadelphia_4'),
-            getAssetUrl('philadelphia_5'),
-        ],
-    },
-    {
-        id: 27,
-        title: 'Popeyes',
-        category: 'Copywriting',
-        client: 'Popeyes',
-        year: '2023',
-        role: 'Copywriter',
-        orientation: 'portrait',
-        galleryLayout: 'poster',
-        img: getAssetUrl('popeyes_poster'),
-        teaserImg: getAssetUrl('popeyes_poster'),
-        description: 'Sharp, bold, and culture-heavy copy for Popeyes, leaning into the brand\'s Louisiana roots and its status as a fast-food disruptor. We developed a voice that was confident, sassy, and unmistakably authentic.',
-        deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Digital Brand Voice'],
-        subtitle: 'Popeyes Cultural Strategy',
-        highlight: 'Love That Chicken',
-        themeLabel: 'DISRUPTIVE BRAND VOICE',
-        themeDescription: 'The copywriting for Popeyes was designed to be shared—using punchy, Twitter-ready language that ignited conversation and reinforced the brand\'s cultural dominance.',
-        scaleValue: 'National Brand Campaign',
-        gallery: [
-            getAssetUrl('popeyes-01'),
-            getAssetUrl('popeyess+2-02'),
-            getAssetUrl('popeyes-03'),
-        ],
-    },
-    {
-        id: 22,
-        title: 'Holiday Slay Shuffle',
-        category: 'Copywriting',
-        client: 'Kelsey Nashe',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('shuffle_slay_poster'),
-        teaserImg: getAssetUrl('shuffle_slay_poster'),
-        description: 'A festive and energetic campaign for Kelsey Nashe\'s Holiday Slay Shuffle. Our copywriting captured the spirit of the season with a modern, soulful twist.',
-        deliverables: ['Campaign Copywriting', 'Social Media Strategy', 'Artist Brand Voice'],
-        subtitle: 'Kelsey Nashe Holiday Campaign',
-        highlight: 'Festive Slay',
-        themeLabel: 'CULTURAL HOLIDAY POSITIONING',
-        themeDescription: 'We developed a voice that felt both traditional and fresh, aligning the holiday campaign with contemporary cultural trends while maintaining an authentic, celebratory tone.',
-        scaleValue: 'Digital Campaign',
-        video: getAssetUrl('shuffle_slay_video'),
-        gallery: [
-            getAssetUrl('shuffle_slay_1'),
-            getAssetUrl('shuffle_slay_2'),
-        ],
-    },
-    {
-        id: 21,
-        title: 'Radio Spots for FM Radio',
-        category: 'Copywriting',
-        client: 'BP / Dairy Queen',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('radio_spots_poster'),
-        teaserImg: getAssetUrl('radio_spots_poster'),
-        description: 'A collection of radio commercials written for BP Morgan Oil and Dairy Queen, crafted for FM broadcast. Each 18–31 second spot balances brand voice with listener engagement, demonstrating precision copywriting for audio-first formats.',
-        deliverables: ['FM Radio Copywriting', 'Brand Voice Development', 'Audio Script Production', 'Multi-Client Campaign'],
-        subtitle: 'BP Morgan Oil & Dairy Queen',
-        highlight: '3 Broadcast Spots',
-        themeLabel: 'AUDIO-FIRST COPYWRITING',
-        themeDescription: 'Radio demands economy of language—every word must earn its place. These spots were written to cut through the noise of FM airwaves, delivering brand messages that are memorable, clear, and emotionally resonant within seconds.',
-        scaleValue: 'FM Radio Broadcast',
-        audioSpots: [
-            {
-                title: 'BP Morgan Oil [Ice Cream]',
-                src: getAssetUrl('Morgan_Oil_Ice_Cream_Jul28-Sep01'),
-                duration: '0:18',
-                credit: 'Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Dairy Queen [Breakfast – Female]',
-                src: getAssetUrl('Dairy_Queen_Breakfast-Female_Aug2015'),
-                duration: '0:31',
-                credit: 'Copywriter: Kelsey Matthews'
-            },
-            {
-                title: '07 Project 96 Radio Spot',
-                src: getAssetUrl('07_Project_96_Radio_Spot'),
-                duration: '0:31',
-                credit: 'Copywriter: Kelsey Matthews'
-            }
-        ],
-    },
-    {
-        id: 28,
-        title: "A Father's Love",
-        category: 'Copywriting',
-        client: 'K&C',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('fathers_love_poster'),
-        teaserImg: getAssetUrl('fathers_love_poster'),
-        video: 'https://youtu.be/bFfPwwxkv2U',
-        description: 'A poignant and emotional storytelling project exploring the depth of a father\'s love. Our copywriting focused on raw, authentic narratives that resonate on a universal level.',
-        deliverables: ['Narrative Copywriting', 'Digital Storytelling', 'Brand Messaging'],
-        subtitle: 'K&C Narrative Series',
-        highlight: 'Emotional Impact',
-        themeLabel: 'AUTHENTIC STORYTELLING',
-        themeDescription: 'We crafted a narrative that prioritizes emotional truth and vulnerability, creating a lasting connection with the audience through powerful, understated prose.',
-        scaleValue: 'Digital Series',
-    },
-    {
-        id: 29,
-        title: "Minute Maid Twist 'n Sip",
-        category: 'Copywriting',
-        client: 'Minute Maid',
-        year: '2023',
-        role: 'Copywriter',
-        img: getAssetUrl('minute_maid_poster'),
-        teaserImg: getAssetUrl('minute_maid_poster'),
-        description: 'Dynamic and playful copy for Minute Maid\'s Twist \'n Sip campaign. We developed a voice that was energetic, approachable, and perfectly aligned with the product\'s fun-loving brand identity.',
-        deliverables: ['Product Copywriting', 'Social Media Messaging', 'Digital Ad Copy'],
-        subtitle: 'Minute Maid Campaign',
-        highlight: 'Twist \'n Sip',
-        themeLabel: 'PLAYFUL BRAND VOICE',
-        themeDescription: 'The copy focused on the "twist" and "sip" experience, using punchy language and vibrant calls to action to drive engagement among younger demographics.',
-        scaleValue: 'Digital Ad Campaign',
-        video: getAssetUrl('minute_maid_video'),
-        gallery: [
-            getAssetUrl('minute_maid_1'),
-            getAssetUrl('minute_maid_2'),
-            getAssetUrl('minute_maid_3'),
-            getAssetUrl('minute_maid_4'),
-            getAssetUrl('minute_maid_5'),
-        ],
-    },
-    {
-        id: 31,
-        title: 'Kingdom Business',
-        category: 'Event Producing and Programming',
-        client: 'BET+',
-        year: '2024',
-        role: 'Production',
-        img: getAssetUrl('kingdom_business_poster'),
-        teaserImg: getAssetUrl('kingdom_business_poster'),
-        video: getAssetUrl('Kingdom_Business_Video'),
-        description: 'Internal programming and brand integration for the BET+ original series Kingdom Business.',
-        deliverables: ['Internal Programming', 'Brand Integration', 'Film Production'],
-        subtitle: 'BET+ Original Series',
-        highlight: 'Programming & Production',
-        themeLabel: 'PROGRAMMING & PRODUCTION',
-        themeDescription: 'We led the internal programming and strategic brand integration for Kingdom Business, ensuring the series resonated with its core audience while maintaining BET+\'s premium brand standards.',
-        scaleValue: 'Original Series',
-        orientation: 'portrait',
-    },
-    {
-        id: 20,
-        title: 'Radio Commercials',
-        category: 'Copywriting',
-        client: 'K&C Portfolio',
-        year: '2024',
-        role: 'Lead Copywriter',
-        img: getAssetUrl('radio_commercials_poster'),
-        teaserImg: getAssetUrl('radio_commercials_poster'),
-        description: 'A curated selection of high-impact radio commercials designed for national and regional broadcast. These spots showcase specialized copywriting that captures brand essence and drives consumer action through audio storytelling.',
-        deliverables: ['Radio Scripting', 'Brand Voice Alignment', 'Commercial Production', 'Targeted Messaging'],
-        subtitle: 'Broadcast Audio Campaigns',
-        highlight: 'National Radio Spots',
-        themeLabel: 'AUDIO STORYTELLING & IMPACT',
-        themeDescription: 'Crafting commercials for radio requires a unique blend of rhythm, clarity, and emotional resonance. Our approach focuses on creating "theatre of the mind" experiences that connect brands with listeners in the most personal and direct medium available.',
-        scaleValue: 'Multi-Market Broadcast',
-        audioSpots: [
-            {
-                title: 'Project 96 Radio Spot',
-                src: getAssetUrl('07_Project_96_Radio_Spot'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Morgan Oil [Ice Cream 30]',
-                src: getAssetUrl('Copy_of_Morgan_Oil_Ice_Cream_30_Aug13-Sep01'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Gutters Installed',
-                src: getAssetUrl('Gutters_Installed_Oct17-Nov21'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Morgan Oil [Ice Cream]',
-                src: getAssetUrl('Morgan_Oil_Ice_Cream_Jul28-Sep01'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'One Stop Shop Tax (60 sec)',
-                src: getAssetUrl('One_Stop_Shop_Tax_60_sec_revised_Joc'),
-                duration: '1:00',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Stitches Galore [Mother\'s Day]',
-                src: getAssetUrl('Stitches_Galore_Mom_s_Day_Apr25-May07'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Stitches Galore [Pre Christmas]',
-                src: getAssetUrl('Stitches_Galore_Pre_Christmas_Nov01-30'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Stitches Galore [School]',
-                src: getAssetUrl('Stitches_Galore_School_Jul21-Aug15'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Stitches Galore & More [Summer]',
-                src: getAssetUrl('Stitches_Glaore_More_Summer'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Camp Blood',
-                src: getAssetUrl('_Camp_Blood_Oct04-Nov01'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            },
-            {
-                title: 'Great Southern Agency',
-                src: getAssetUrl('_Great_Southern_Agency_Nov03-Dec24'),
-                duration: '0:30',
-                credit: 'Lead Copywriter: Kelsey Matthews'
-            }
-        ],
-    },
-];
 
 
 const StatCounter = ({ to, duration = 1.5 }: { to: number; duration?: number }) => {
@@ -1616,6 +620,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
     const videoRef = useRef<HTMLVideoElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const isPortrait = project?.orientation === 'portrait';
+    const magneticClose = useMagnetic(25);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const filteredGallery = project?.gallery?.filter(img =>
@@ -1679,14 +684,13 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
         }
     }, [project, onClose]);
 
-    const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-        const scrolled = e.currentTarget.scrollTop;
-        if (scrolled > window.innerHeight * 0.75) {
-            setIsHeroInView(false);
+    useEffect(() => {
+        if (project) {
+            document.title = `${project.title} | Our Work | Kelsey & Company`;
         } else {
-            setIsHeroInView(true);
+            document.title = "Our Work | Kelsey & Company";
         }
-    };
+    }, [project]);
 
     if (!project) return null;
 
@@ -1808,7 +812,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                         </Reveal>
                         <Reveal delay={400} mode="mask">
                             <p className="text-cream/60 font-serif italic text-lg md:text-2xl max-w-2xl border-l-2 border-burgundy/40 pl-6 ml-1">
-                                {project.subtitle}
+                                {project.subtitle || "Exploring the cultural intersection of brand and experience."}
                             </p>
                         </Reveal>
                     </div>
@@ -1821,10 +825,10 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                 <div>
                                     <p className="text-rose/50 text-[0.55rem] tracking-[0.4em] uppercase mb-4">The Narrative</p>
                                     <h4 className="text-cream text-[0.7rem] tracking-[0.2em] uppercase font-sans mb-10 border-b border-white/5 pb-6">
-                                        {project.themeLabel}
+                                        {project.themeLabel || "Executive Narrative"}
                                     </h4>
                                     <p className="text-cream/70 font-serif italic text-2xl md:text-4xl leading-relaxed">
-                                        {project.themeDescription}
+                                        {project.themeDescription || "A strategic production centered on cultural relevance and brand longevity."}
                                     </p>
                                 </div>
                             </Reveal>
@@ -1839,7 +843,7 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                     </div>
                                     <div>
                                         <p className="text-rose/50 text-[0.65rem] tracking-[0.4em] uppercase mb-4">Release Year</p>
-                                        <span className="text-cream text-2xl font-serif italic">{project.year}</span>
+                                        <span className="text-cream text-2xl font-serif italic">{project.year || "2025"}</span>
                                     </div>
                                 </div>
                             </Reveal>
@@ -2045,9 +1049,14 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                 </div>
             )}
 
-            <button onClick={onClose} className="absolute top-8 right-8 md:top-12 md:right-12 w-12 h-12 flex items-center justify-center bg-cream/5 border border-cream/10 rounded-full text-cream/40 hover:bg-cream hover:text-ink transition-all duration-500 pointer-events-auto group">
-                <span className="text-xl group-hover:rotate-90 transition-transform duration-500">✕</span>
-            </button>
+            <div ref={magneticClose} className="absolute top-8 right-8 md:top-12 md:right-12 z-[400] pointer-events-auto">
+                <button 
+                    onClick={onClose} 
+                    className="w-12 h-12 flex items-center justify-center bg-cream/5 border border-cream/10 rounded-full text-cream/40 hover:bg-cream hover:text-ink transition-all duration-500 group"
+                >
+                    <span className="text-xl group-hover:rotate-90 transition-transform duration-500">✕</span>
+                </button>
+            </div>
         </div>
     );
 };
@@ -2061,6 +1070,14 @@ export default function ArchivesPage() {
         window.scrollTo(0, 0);
         setLoaded(true);
     }, []);
+
+    useEffect(() => {
+        if (selectedProject) {
+            document.title = `${selectedProject.title} | Our Work | Kelsey & Company`;
+        } else {
+            document.title = "Our Work | Kelsey & Company";
+        }
+    }, [selectedProject]);
 
     const moviePremieres = [1, 2, 3, 4, 5, 6].map(id => projects.find(p => p.id === id)).filter((p): p is Project => p !== undefined);
     const executiveBrand = projects.filter(p => [8].includes(p.id));
@@ -2259,8 +1276,15 @@ export default function ArchivesPage() {
 }
 
 const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { amount: 0.1 });
+
     return (
-        <div className={`group cursor-pointer relative hover:z-50 ${index % 2 === 1 ? 'md:mt-24' : ''}`} onClick={onClick}>
+        <div 
+            ref={cardRef}
+            className={`group cursor-pointer relative hover:z-50 ${index % 2 === 1 ? 'md:mt-24' : ''}`} 
+            onClick={onClick}
+        >
 
             {/* ── Card Image (clean, no labels) ── */}
             <div className="aspect-[4/5] relative overflow-visible">
@@ -2273,7 +1297,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
                         />
                     ) : project.video ? (
                         <video
-                            src={project.video}
+                            src={isInView ? project.video : undefined}
                             autoPlay
                             loop
                             muted
