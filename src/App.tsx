@@ -61,6 +61,16 @@ const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
   // CTA Above the fold opacity - Task 1.2
   const ctaAboveFoldOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
 
+  // ── CONCEPT 02: Variable font-weight — morphs thin→bold as portal opens ──
+  const rawFontWeight = useTransform(smoothProgress, [0.2, 0.75], [300, 700]);
+  const fontWeight    = useSpring(rawFontWeight, { stiffness: 60, damping: 20 });
+
+  // ── CONCEPT 01: Video opacity + desaturation tied to scroll ──────────────
+  const videoOpacity  = useTransform(smoothProgress, [0.08, 0.28], [0, 0.72]);
+  const videoSat      = useTransform(smoothProgress, [0.1, 0.62], [0, 85]);
+  const videoFilter   = useTransform(videoSat, (s) => `saturate(${s}%) brightness(0.68) contrast(1.12)`);
+  const fontVarSettings = useTransform(fontWeight, (w) => `"wght" ${Math.round(w)}`);
+
   useEffect(() => {
     // Force scroll to top on mount so the user never starts mid-page
     window.scrollTo(0, 0);
@@ -89,25 +99,57 @@ const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
         className="absolute inset-0 z-20 pointer-events-auto overflow-hidden"
         style={{ clipPath: portalClipPath }}
       >
-        {/* Inner Solid Background */}
+        {/* Base ink fallback (always visible beneath video) */}
         <div className="absolute inset-0 bg-ink" />
 
-        {/* Cinematic Rim Glow for Portal edges — achieved via a layered gradient */}
-        <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(238,192,191,0.2)] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-90" />
-        
+        {/* ── CONCEPT 01: Ambient video — desaturated on open, gains colour mid-scroll ── */}
+        <motion.video
+          autoPlay muted loop playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: videoOpacity, filter: videoFilter }}
+        >
+          <source
+            src="https://res.cloudinary.com/dnocvgvnc/video/upload/f_auto,q_auto/Bet_Is_The_Cookout.mp4"
+            type="video/mp4"
+          />
+        </motion.video>
+
+        {/* Cinematic vignette — darkens edges so text stays legible */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_38%,rgba(12,5,8,0.88)_100%)] pointer-events-none z-[2]" />
+        {/* Top/bottom ink pulls */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-transparent to-ink/80 pointer-events-none z-[2]" />
+        {/* Film grain — subtle cinematic texture */}
+        <div className="hero-grain" />
+        {/* Rim glow */}
+        <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(238,192,191,0.2)] pointer-events-none z-[3]" />
+
         {/* Diamond Portal Sparkles! */}
         <SparkleParticles opacity={portalSparkleOpacity} />
         
         {/* Inside Portal Typography & CTA */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 md:gap-10">
-          <motion.h2 
-             style={{ opacity: portalTextOpacity, scale: portalTextScale }}
-             className="text-[7.5vw] md:text-[3.5vw] text-center font-serif text-cream uppercase tracking-tight italic drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] max-w-5xl px-6 md:px-12 leading-[1.1]">
-             Is your brand ready to redefine the standard?
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 md:gap-8 z-[5]">
+
+          {/* ── CONCEPT 02: Variable-weight headline — weight morphs 300→700 on scroll ── */}
+          <motion.h2
+            style={{
+              opacity: portalTextOpacity,
+              scale: portalTextScale,
+              fontVariationSettings: fontVarSettings,
+            }}
+            className="text-[7.5vw] md:text-[3.5vw] text-center font-serif text-cream uppercase tracking-tight italic drop-shadow-[0_10px_40px_rgba(0,0,0,0.85)] max-w-5xl px-6 md:px-12 leading-[1.1]"
+          >
+            Is your brand ready to redefine the standard?
           </motion.h2>
 
-          <motion.div 
+          {/* Kinetic sub-label — fades in after the headline is visible */}
+          <motion.p
+            style={{ opacity: useTransform(smoothProgress, [0.42, 0.65], [0, 1]) }}
+            className="text-[0.58rem] md:text-[0.62rem] tracking-[0.55em] uppercase font-sans text-rose/50 text-center"
+          >
+            Where Culture Meets Commerce
+          </motion.p>
+
+          <motion.div
             style={{ opacity: portalTextOpacity, scale: portalTextScale }}
             className="pointer-events-auto"
           >
