@@ -10,9 +10,10 @@ import {
   WhyKelseyCompany,
   SectionBlender,
   useModal,
-  ScrollIndicator
+  ScrollIndicator,
+  ScrollProgressBar
 } from './SharedComponents';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { SparkleParticles } from './SparkleParticles';
 import { DiamondEdgeSparkles } from './DiamondEdgeSparkles';
 import { getAssetUrl } from './utils/assets';
@@ -35,21 +36,27 @@ const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
     restDelta: 0.001
   });
 
-  const portalClipPath = useTransform(
-    smoothProgress,
-    [0.1, 0.8],
-    [
-      "polygon(50% calc(50% - 0vw), calc(50% + 0vw) 50%, 50% calc(50% + 0vw), calc(50% - 0vw) 50%)",
-      "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
-    ]
-  );
+  const prefersReduced = useReducedMotion();
+  
+  const portalClipPath = prefersReduced 
+    ? "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
+    : useTransform(
+        smoothProgress,
+        [0.1, 0.8],
+        [
+          "polygon(50% calc(50% - 0vw), calc(50% + 0vw) 50%, 50% calc(50% + 0vw), calc(50% - 0vw) 50%)",
+          "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
+        ]
+      );
 
-
-  const portalTextOpacity = useTransform(smoothProgress, [0.3, 0.6], [0, 1]);
-  const portalTextScale = useTransform(smoothProgress, [0.3, 0.6], [0.8, 1]);
+  const portalTextOpacity = prefersReduced ? 1 : useTransform(smoothProgress, [0.3, 0.6], [0, 1]);
+  const portalTextScale = prefersReduced ? 1 : useTransform(smoothProgress, [0.3, 0.6], [0.8, 1]);
   
   // Make sparkles appear as soon as the portal starts expanding
-  const portalSparkleOpacity = useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
+  const portalSparkleOpacity = prefersReduced ? 1 : useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
+
+  // CTA Above the fold opacity - Task 1.2
+  const ctaAboveFoldOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
 
   useEffect(() => {
     // Force scroll to top on mount so the user never starts mid-page
@@ -113,6 +120,24 @@ const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
             </div>
           </motion.div>
         </div>
+
+        {/* Task 1.2: CTA Above the fold indicator */}
+        <motion.div
+          style={{ opacity: ctaAboveFoldOpacity }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.2, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40 pointer-events-none"
+        >
+          <span className="text-[0.55rem] tracking-[0.4em] uppercase text-rose/60 font-medium">Scroll to Explore</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-rose/40"
+          >
+            ↓
+          </motion.div>
+        </motion.div>
       </motion.div>
 
       {/* ── NEW: DIAMOND EXTERIOR SPARKLE EDGE (Z-25) ── */}
@@ -378,11 +403,11 @@ const ServicesCarousel = () => {
                    <div className="h-px bg-rose/30 flex-grow" />
                 </div>
                 
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 tracking-tight leading-[1.1] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
+                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 tracking-tight leading-[1.1] transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
                   {s.title}
                 </h3>
                 
-                <p className="text-cream/60 font-sans text-sm md:text-base max-w-md transform translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150">
+                <p className="text-cream/60 font-sans text-sm md:text-base max-w-md transform translate-y-0 md:translate-y-4 opacity-100 md:opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150">
                   {s.description}
                 </p>
               </div>
@@ -467,6 +492,15 @@ const ALL_LOGOS = [
 const TrustedBrands = () => {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  // Task 2.3: Auto-advance
+  useEffect(() => {
+    if (animating || isHovered) return;
+    const interval = setInterval(() => go('next'), 5000);
+    return () => clearInterval(interval);
+  }, [animating, current, isHovered]);
 
   const go = (dir: 'next' | 'prev') => {
     if (animating) return;
@@ -481,10 +515,30 @@ const TrustedBrands = () => {
     }, 500);
   };
 
+  // Task 2.3: Swipe support
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 50) {
+      go(delta > 0 ? 'next' : 'prev');
+    }
+    touchStartX.current = null;
+  };
+
   const partner = PARTNERS[current];
 
   return (
-    <section id="partnerships" className="bg-ink overflow-hidden relative">
+    <section 
+      id="partnerships" 
+      className="bg-ink overflow-hidden relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       <SectionBlender position="bottom" intensity="h-48" />
       {/* Subtle noise texture */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(96,33,58,0.15)_0%,_transparent_60%)] pointer-events-none" />
@@ -574,10 +628,12 @@ const TrustedBrands = () => {
             {PARTNERS.map((_, i) => (
               <button
                 key={i}
-                onClick={() => { if (!animating) { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 500); } }}
-                className={`transition-all duration-500 h-px ${i === current ? 'w-8 md:w-10 bg-rose' : 'w-3 md:w-4 bg-cream/20 hover:bg-cream/40'}`}
+                onClick={() => { if (!animating && i !== current) { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 500); } }}
+                className="group p-3 -m-3"
                 aria-label={`Go to partner ${i + 1}`}
-              />
+              >
+                <div className={`transition-all duration-500 h-px ${i === current ? 'w-8 md:w-10 bg-rose' : 'w-3 md:w-4 bg-cream/20 group-hover:bg-cream/40'}`} />
+              </button>
             ))}
           </div>
         </div>
@@ -639,6 +695,7 @@ function App() {
 
   return (
     <>
+      <ScrollProgressBar />
       {!loaded && <LoadingScreen onDone={() => setLoaded(true)} />}
       <div
         className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Plus, Volume2, VolumeX } from 'lucide-react';
-import { Reveal, TopNav, useModal, useMagnetic, FooterCTA, UtilityFooter, SectionBlender } from './SharedComponents';
+import { Reveal, TopNav, useModal, useMagnetic, FooterCTA, UtilityFooter, SectionBlender, ScrollProgressBar } from './SharedComponents';
 import { getAssetUrl } from './utils/assets';
 
 const SERVICES_DATA = [
@@ -482,6 +482,15 @@ const SERVICES_DATA = [
     }
 ];
 
+const SERVICE_SLUGS: Record<string, string> = {
+    '01': 'experiential-activations',
+    '02': 'event-producing',
+    '03': 'brand-partnerships',
+    '04': 'executive-brand-management',
+    '05': 'digital-marketing',
+    '06': 'film-production',
+};
+
 const ServicesPage = () => {
     const { openModal } = useModal();
     const magneticRef = useMagnetic(30);
@@ -495,6 +504,13 @@ const ServicesPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoaded(true);
+
+        // Task 2.4: Deep-linking support
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+            const match = Object.entries(SERVICE_SLUGS).find(([, slug]) => slug === hash);
+            if (match) setOverlayServiceId(match[0]);
+        }
     }, []);
 
     useEffect(() => {
@@ -513,8 +529,12 @@ const ServicesPage = () => {
         if (overlayServiceId || selectedEventClient) {
             const handleEsc = (e: KeyboardEvent) => {
                 if (e.key === 'Escape') {
-                    setOverlayServiceId(null);
-                    setSelectedEventClient(null);
+                    if (selectedEventClient) {
+                        setSelectedEventClient(null);
+                    } else if (overlayServiceId) {
+                        setOverlayServiceId(null);
+                        window.history.pushState({}, '', window.location.pathname);
+                    }
                 }
             };
             window.addEventListener('keydown', handleEsc);
@@ -523,13 +543,19 @@ const ServicesPage = () => {
     }, [overlayServiceId, selectedEventClient]);
 
     const toggleOverlay = (id: string) => {
-        setOverlayServiceId(prev => prev === id ? null : id);
+        const newId = overlayServiceId === id ? null : id;
+        setOverlayServiceId(newId);
+        
+        // Task 2.4: Update hash
+        const slug = newId ? SERVICE_SLUGS[newId] : '';
+        window.history.pushState({}, '', slug ? `#${slug}` : window.location.pathname);
     };
 
     const activeService = SERVICES_DATA.find(s => s.id === overlayServiceId);
 
     return (
         <div className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+            <ScrollProgressBar />
             <TopNav active={loaded} forceDark={false} />
 
             {/* ─── MINIMAL HERO SECTION ─── */}
@@ -570,24 +596,24 @@ const ServicesPage = () => {
 
                                 <div className="absolute inset-x-8 bottom-8 z-10 group-hover:opacity-100 opacity-100 transition-all duration-700">
                                     <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                                        <span className="text-rose font-sans text-[0.6rem] tracking-[0.3em] uppercase mb-4 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        <span className="text-rose font-sans text-[0.6rem] tracking-[0.3em] uppercase mb-4 block opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                             {service.id} / 06
                                         </span>
-                                        <h3 className="text-2xl md:text-3xl font-serif text-cream uppercase mb-4 tracking-tighter leading-none group-hover:text-cream transition-colors duration-500 opacity-0 group-hover:opacity-100">
+                                        <h3 className="text-2xl md:text-3xl font-serif text-cream uppercase mb-4 tracking-tighter leading-none group-hover:text-cream transition-colors duration-500 opacity-100 md:opacity-0 group-hover:opacity-100">
                                             {service.title.split(' ').map((word, i) => (
                                                 <span key={i} className="inline-block mr-2">{word}</span>
                                             ))}
                                         </h3>
                                         <div className="overflow-hidden">
-                                            <p className="text-rose/80 text-sm md:text-base font-serif italic leading-relaxed line-clamp-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 translate-y-full group-hover:translate-y-0">
+                                            <p className="text-rose/80 text-sm md:text-base font-serif italic leading-relaxed line-clamp-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 translate-y-0 md:translate-y-full group-hover:translate-y-0">
                                                 {service.description}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
-                                <div className="absolute inset-x-8 bottom-8 group-hover:opacity-0 transition-all duration-500 ease-in-out">
+                                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
+                                <div className="absolute inset-x-8 bottom-8 opacity-0 md:opacity-100 group-hover:opacity-0 transition-all duration-500 ease-in-out">
                                     <span className="text-rose/80 font-sans text-[0.6rem] tracking-[0.3em] uppercase block mb-3">{service.id}</span>
                                     <h3 className="text-xl md:text-2xl font-serif text-cream uppercase tracking-tighter leading-[1.1] max-w-[80%] drop-shadow-md">{service.title}</h3>
                                 </div>

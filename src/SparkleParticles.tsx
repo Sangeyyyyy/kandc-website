@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export const SparkleParticles = React.memo(({ opacity }: { opacity?: any }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const prefersReduced = useReducedMotion();
 
     useEffect(() => {
+        if (prefersReduced) return;
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d', { alpha: true });

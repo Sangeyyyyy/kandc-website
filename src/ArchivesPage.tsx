@@ -4,7 +4,8 @@ import {
     TopNav,
     useModal,
     FooterCTA,
-    UtilityFooter
+    UtilityFooter,
+    ScrollProgressBar
 } from './SharedComponents';
 import { getAssetUrl } from './utils/assets';
 import { RoadmapSection } from './RoadmapSection';
@@ -1975,13 +1976,13 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                     <RoadmapSection steps={project.roadmap} scrollRef={scrollRef} />
                 )}
 
-                {filteredGallery.length > 0 && (
-                    <section className="py-32 md:py-48 px-8 md:px-24 bg-[#0a0507]">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="mb-24 flex items-end justify-between border-b border-white/5 pb-8">
-                                <p className="text-rose/50 text-[0.65rem] tracking-[0.4em] uppercase">Production Gallery</p>
-                                <span className="text-cream/20 font-serif italic">{filteredGallery.length} Selected Assets</span>
-                            </div>
+                <section className="py-32 md:py-48 px-8 md:px-24 bg-[#0a0507]">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="mb-24 flex items-end justify-between border-b border-white/5 pb-8">
+                            <p className="text-rose/50 text-[0.65rem] tracking-[0.4em] uppercase">Production Gallery</p>
+                            <span className="text-cream/20 font-serif italic">{filteredGallery.length} Selected Assets</span>
+                        </div>
+                        {filteredGallery.length > 0 ? (
                             <div className={project.galleryLayout === 'poster' ? "flex flex-col gap-0 max-w-4xl mx-auto" : "columns-1 md:columns-2 lg:columns-2 gap-8 space-y-8"}>
                                 {filteredGallery.map((img, i) => (
                                     <Reveal key={i} delay={i * 50}>
@@ -1992,9 +1993,20 @@ const DetailPanel = ({ project, onClose }: { project: Project | null; onClose: (
                                     </Reveal>
                                 ))}
                             </div>
-                        </div>
-                    </section>
-                )}
+                        ) : (
+                            <Reveal>
+                                <div className="py-32 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center text-center rounded-sm">
+                                    <div className="w-12 h-12 rounded-full border border-rose/20 flex items-center justify-center mb-8">
+                                        <span className="text-rose/40 text-xs">◆</span>
+                                    </div>
+                                    <p className="text-rose/40 text-[0.6rem] tracking-[0.5em] uppercase mb-4">Under Curation</p>
+                                    <h4 className="text-2xl md:text-3xl font-serif text-cream/30 italic">Archive Assets Coming Soon</h4>
+                                    <p className="text-cream/10 text-xs mt-6 tracking-widest uppercase">The Playbook is being digitized</p>
+                                </div>
+                            </Reveal>
+                        )}
+                    </div>
+                </section>
 
                 <section className="py-32 md:py-64 bg-ink flex items-center justify-center">
                     <div className="text-center space-y-12">
@@ -2066,6 +2078,7 @@ export default function ArchivesPage() {
 
     return (
         <div className={`bg-ink text-cream min-h-screen selection:bg-rose selection:text-ink transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+            <ScrollProgressBar />
             <TopNav active={loaded} forceDark={false} />
             <div className="noise-overlay opacity-[0.03]"></div>
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -2278,9 +2291,9 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
                 <div className="absolute inset-0 z-20 pointer-events-none bg-burgundy/20 transition-opacity duration-500 group-hover:opacity-0" />
             </div>
 
-            {/* ── Hover Metadata Strip (below card, hidden until hover) ── */}
+            {/* ── Hover Metadata Strip (below card, hidden until hover on desktop) ── */}
             <div className="overflow-hidden">
-                <div className="translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out pt-4">
+                <div className="translate-y-0 md:translate-y-3 opacity-70 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out pt-4">
                     <div className="w-0 group-hover:w-full h-px bg-rose/15 transition-all duration-700 ease-out mb-3" />
                     <div className="flex items-center justify-between gap-4">
                         <span className="text-[0.65rem] tracking-[0.4em] uppercase font-sans text-cream/30 shrink-0">

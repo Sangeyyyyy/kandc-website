@@ -161,10 +161,26 @@ export const PageTransition = ({ children }: { children: React.ReactNode }) => {
 // ─── LOADING SCREEN ───────────────────────────────────────────────────────────
 export const LoadingScreen = ({ onDone }: { onDone: () => void }) => {
     const [fading, setFading] = useState(false);
+    
     useEffect(() => {
-        const t1 = setTimeout(() => setFading(true), 2600);
-        const t2 = setTimeout(onDone, 3400);
-        return () => { clearTimeout(t1); clearTimeout(t2); };
+        const isReturning = sessionStorage.getItem('kc_loaded');
+        
+        if (isReturning) {
+            // Very fast transition for returning users
+            const t1 = setTimeout(() => setFading(true), 100);
+            const t2 = setTimeout(() => {
+                onDone();
+            }, 600);
+            return () => { clearTimeout(t1); clearTimeout(t2); };
+        } else {
+            // Standard but slightly faster animation for first-time visitors
+            const t1 = setTimeout(() => setFading(true), 1800);
+            const t2 = setTimeout(() => {
+                sessionStorage.setItem('kc_loaded', '1');
+                onDone();
+            }, 2600);
+            return () => { clearTimeout(t1); clearTimeout(t2); };
+        }
     }, [onDone]);
 
     return (
@@ -543,7 +559,7 @@ export const TiltCard = ({ children, className = '' }: { children: React.ReactNo
 export const UtilityFooter = () => (
     <footer className="bg-ink py-20 border-t border-rose/5">
         <div className="container mx-auto px-8 max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
                 {/* Brand Column */}
                 <Reveal delay={0}>
                     <div className="space-y-6">
@@ -588,26 +604,6 @@ export const UtilityFooter = () => (
                     </div>
                 </Reveal>
 
-                {/* Social Column */}
-                <Reveal delay={300}>
-                    <div className="space-y-8">
-                        <p className="caps-detail !text-rose/60 !mb-0">Follow</p>
-                        <div className="flex flex-col gap-4">
-                                    {/* Temporarily hiding broken social links until real ones are provided */}
-                                    {/* {['LinkedIn', 'Instagram'].map((social) => (
-                                        <a
-                                            key={social}
-                                            href="#"
-                                            className="group flex items-center gap-3 text-[0.65rem] tracking-[0.3em] uppercase font-sans text-cream/50 hover:text-rose transition-colors duration-500"
-                                        >
-                                            {social}
-                                            <span className="w-8 h-px bg-rose/20 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 shadow-[0_0_8px_rgba(238,192,191,0.5)]"></span>
-                                        </a>
-                                    ))} */}
-                                    <p className="text-[0.65rem] tracking-[0.3em] uppercase font-sans text-cream/30">Profiles coming soon</p>
-                        </div>
-                    </div>
-                </Reveal>
             </div>
 
             {/* Bottom Legal Bar */}
@@ -634,6 +630,22 @@ export const ScrollIndicator = ({ text = "drag to explore", className = "" }: { 
         <span className="w-8 md:w-12 h-px bg-rose/30" />
     </div>
 );
+
+export const ScrollProgressBar = () => {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    return (
+        <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-rose z-[999] origin-left"
+            style={{ scaleX }}
+        />
+    );
+};
 
 export const WhyKelseyCompany = () => {
     const trackRef = useRef<HTMLDivElement>(null);

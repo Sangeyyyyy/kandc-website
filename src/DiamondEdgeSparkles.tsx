@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import { MotionValue } from 'framer-motion';
+import { MotionValue, useReducedMotion } from 'framer-motion';
 
 export const DiamondEdgeSparkles = React.memo(({ progress }: { progress: MotionValue<number> }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const prefersReduced = useReducedMotion();
 
     useEffect(() => {
+        if (prefersReduced) return;
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d', { alpha: true });

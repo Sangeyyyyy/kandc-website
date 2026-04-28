@@ -108,6 +108,12 @@
     cursor: none !important;
   }
 
+  @media (pointer: coarse) {
+    body, body * {
+      cursor: auto !important;
+    }
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -402,6 +408,22 @@
     50% { opacity: 0.8; transform: scale(1.02); }
   }
   .animate-pulse-slow { animation: pulseSlow 4s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-slow,
+    .watermark-drift,
+    .animate-pulse-slow,
+    .animate-ken-burns,
+    .animate-marquee,
+    .animate-marquee-slow,
+    .animate-marquee-reverse,
+    .animate-reveal,
+    .animate-scale-in,
+    .animate-slow-pulse {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
 
   /* Premium Volume Slider Custom Styling */
   .volume-slider {

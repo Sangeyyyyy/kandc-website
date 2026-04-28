@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useCallback, useEffect } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 export type RoadmapStep = {
@@ -63,7 +63,9 @@ const Diamond: React.FC<{
     isActive: boolean;
     isPast: boolean;
     onHover: (i: number) => void;
-}> = ({ step, index, total, isActive, isPast, onHover }) => {
+    onClick: (i: number) => void;
+    prefersReduced?: boolean;
+}> = ({ step, index, total, isActive, isPast, onHover, onClick, prefersReduced }) => {
     // Horizontal % position along the line
     const leftPct = total === 1 ? 50 : (index / (total - 1)) * 100;
 
@@ -72,9 +74,20 @@ const Diamond: React.FC<{
             className="absolute flex flex-col items-center"
             style={{ left: `${leftPct}%`, top: '50%', transform: 'translate(-50%, -50%)' }}
             onMouseEnter={() => onHover(index)}
+            onClick={() => onClick(index)}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onClick(index);
+                }
+            }}
+            tabIndex={0}
+            role="button"
+            aria-label={`Step ${index + 1}: ${step.phase} - ${step.title}`}
+            aria-pressed={isActive}
         >
-            {/* Hover area */}
-            <div className="flex flex-col items-center group relative cursor-default">
+            {/* Task 2.2: Increased Hit Area wrapper */}
+            <div className="flex flex-col items-center group relative cursor-pointer p-4 -m-4">
                 
                 {/* Centered Diamond and Glow Container */}
                 <div className="relative flex items-center justify-center" style={{ width: 40, height: 40 }}>
@@ -83,7 +96,7 @@ const Diamond: React.FC<{
                         animate={{
                             scale: isActive ? 1.8 : isPast ? 1.15 : 1,
                         }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                        transition={prefersReduced ? { duration: 0 } : { duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         style={{
                             width: 12,
                             height: 12,
@@ -107,7 +120,7 @@ const Diamond: React.FC<{
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.5 }}
-                                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                transition={prefersReduced ? { duration: 0 } : { duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                                 style={{
                                     width: 40,
                                     height: 40,
@@ -160,12 +173,30 @@ const Diamond: React.FC<{
 // ─── ROADMAP SECTION ─────────────────────────────────────────────────────────
 export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ steps }) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const prefersReduced = useReducedMotion();
 
     const activeStep = steps[activeIndex];
 
     const handleHover = useCallback((i: number) => {
         setActiveIndex(i);
     }, []);
+
+    const handleClick = useCallback((i: number) => {
+        setActiveIndex(i);
+    }, []);
+
+    // Task 2.2: Keyboard Navigation
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowRight') {
+                setActiveIndex(prev => Math.min(prev + 1, steps.length - 1));
+            } else if (e.key === 'ArrowLeft') {
+                setActiveIndex(prev => Math.max(prev - 1, 0));
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [steps.length]);
 
     if (!steps || steps.length === 0) return null;
 
@@ -228,7 +259,7 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ steps }) => {
                         <motion.div
                             className="absolute"
                             animate={{ width: `${progressPct}%` }}
-                            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                            transition={prefersReduced ? { duration: 0 } : { duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
                             style={{
                                 left: 0,
                                 top: '50%',
@@ -248,8 +279,29 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ steps }) => {
                                 isActive={activeIndex === i}
                                 isPast={i <= activeIndex}
                                 onHover={handleHover}
+                                onClick={handleClick}
+                                prefersReduced={prefersReduced}
                             />
                         ))}
+                    </div>
+
+                    {/* Task 2.2: Step Description Panel */}
+                    <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-2xl px-8 pointer-events-none">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={`${activeStep.step}-${activeStep.phase}-desc`}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={prefersReduced ? { duration: 0 } : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-center"
+                            >
+                                <span className="roadmap-tag mb-4 inline-block">{activeStep.tag}</span>
+                                <p className="text-cream/60 font-serif italic text-lg md:text-xl leading-relaxed">
+                                    {activeStep.description}
+                                </p>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
                     {/* Space below track for the labels */}
