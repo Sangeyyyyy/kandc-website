@@ -14,8 +14,7 @@ import {
   ScrollProgressBar
 } from './SharedComponents';
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
-import { SparkleParticles } from './SparkleParticles';
-import { DiamondEdgeSparkles } from './DiamondEdgeSparkles';
+import CinematicHero from './CinematicHero';
 import { getAssetUrl } from './utils/assets';
 import './index.css';
 
@@ -24,175 +23,7 @@ import { projects } from './data/projects';
 import { SERVICES_DATA } from './data/services';
 import { PARTNERS, ALL_LOGOS } from './data/partners';
 
-const ImpactHero = ({ onBookClick }: { onBookClick: () => void }) => {
-  const containerRef = useRef<HTMLElement>(null);
-  const magneticRef = useMagnetic(30);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  const prefersReduced = useReducedMotion();
-  
-  const portalClipPath = prefersReduced 
-    ? "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
-    : useTransform(
-        smoothProgress,
-        [0.1, 0.8],
-        [
-          "polygon(50% calc(50% - 0vw), calc(50% + 0vw) 50%, 50% calc(50% + 0vw), calc(50% - 0vw) 50%)",
-          "polygon(50% calc(50% - 150vw), calc(50% + 150vw) 50%, 50% calc(50% + 150vw), calc(50% - 150vw) 50%)"
-        ]
-      );
-
-  const portalTextOpacity = prefersReduced ? 1 : useTransform(smoothProgress, [0.3, 0.6], [0, 1]);
-  const portalTextScale = prefersReduced ? 1 : useTransform(smoothProgress, [0.3, 0.6], [0.8, 1]);
-  
-  // Make sparkles appear as soon as the portal starts expanding
-  const portalSparkleOpacity = prefersReduced ? 1 : useTransform(smoothProgress, [0.1, 0.4], [0, 1]);
-
-  // CTA Above the fold opacity - Task 1.2
-  const ctaAboveFoldOpacity = useTransform(smoothProgress, [0, 0.05], [1, 0]);
-
-  // ── CONCEPT 02: Variable font-weight — morphs thin→bold as portal opens ──
-  const rawFontWeight = useTransform(smoothProgress, [0.2, 0.75], [300, 700]);
-  const fontWeight    = useSpring(rawFontWeight, { stiffness: 60, damping: 20 });
-
-  // ── CONCEPT 01: Video opacity + desaturation tied to scroll ──────────────
-  const videoOpacity  = useTransform(smoothProgress, [0.08, 0.28], [0, 0.72]);
-  const videoSat      = useTransform(smoothProgress, [0.1, 0.62], [0, 85]);
-  const videoFilter   = useTransform(videoSat, (s) => `saturate(${s}%) brightness(0.68) contrast(1.12)`);
-  const fontVarSettings = useTransform(fontWeight, (w) => `"wght" ${Math.round(w)}`);
-
-  useEffect(() => {
-    // Force scroll to top on mount so the user never starts mid-page
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <section ref={containerRef} className="h-[250vh] relative w-full bg-ink">
-      <div className="sticky top-0 w-full h-screen overflow-hidden bg-ink">
-
-
-      {/* ── TOP NAV ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-0 w-full z-50 mix-blend-difference"
-      >
-        <TopNav active={true} />
-      </motion.div>
-
-
-
-
-      {/* ── NEW: PORTAL LAYER (Z-20) ── */}
-      <motion.div 
-        className="absolute inset-0 z-20 pointer-events-auto overflow-hidden"
-        style={{ clipPath: portalClipPath }}
-      >
-        {/* Base ink fallback (always visible beneath video) */}
-        <div className="absolute inset-0 bg-ink" />
-
-        {/* ── CONCEPT 01: Ambient video — desaturated on open, gains colour mid-scroll ── */}
-        <motion.video
-          autoPlay muted loop playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: videoOpacity, filter: videoFilter }}
-        >
-          <source
-            src="https://res.cloudinary.com/dnocvgvnc/video/upload/f_auto,q_auto/Bet_Is_The_Cookout.mp4"
-            type="video/mp4"
-          />
-        </motion.video>
-
-        {/* Cinematic vignette — darkens edges so text stays legible */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_38%,rgba(12,5,8,0.88)_100%)] pointer-events-none z-[2]" />
-        {/* Top/bottom ink pulls */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-transparent to-ink/80 pointer-events-none z-[2]" />
-        {/* Film grain — subtle cinematic texture */}
-        <div className="hero-grain" />
-        {/* Rim glow */}
-        <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(238,192,191,0.2)] pointer-events-none z-[3]" />
-
-        {/* Diamond Portal Sparkles! */}
-        <SparkleParticles opacity={portalSparkleOpacity} />
-        
-        {/* Inside Portal Typography & CTA */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 md:gap-8 z-[5]">
-
-          {/* ── CONCEPT 02: Variable-weight headline — weight morphs 300→700 on scroll ── */}
-          <motion.h2
-            style={{
-              opacity: portalTextOpacity,
-              scale: portalTextScale,
-              fontVariationSettings: fontVarSettings,
-            }}
-            className="text-[7.5vw] md:text-[3.5vw] text-center font-serif text-cream uppercase tracking-tight italic drop-shadow-[0_10px_40px_rgba(0,0,0,0.85)] max-w-5xl px-6 md:px-12 leading-[1.1]"
-          >
-            Is your brand ready to redefine the standard?
-          </motion.h2>
-
-          {/* Kinetic sub-label — fades in after the headline is visible */}
-          <motion.p
-            style={{ opacity: useTransform(smoothProgress, [0.42, 0.65], [0, 1]) }}
-            className="text-[0.58rem] md:text-[0.62rem] tracking-[0.55em] uppercase font-sans text-rose/50 text-center"
-          >
-            Where Culture Meets Commerce
-          </motion.p>
-
-          <motion.div
-            style={{ opacity: portalTextOpacity, scale: portalTextScale }}
-            className="pointer-events-auto"
-          >
-            <div ref={magneticRef} className="magnetic-button">
-              <motion.button
-                layoutId="book-consultation"
-                onClick={onBookClick}
-                className="flex items-center gap-3 border border-rose/40 text-rose/80 text-[0.65rem] tracking-[0.3em] uppercase font-sans px-10 py-4 hover:bg-rose/10 hover:border-rose/70 transition-all duration-500 bg-ink/40 backdrop-blur-sm"
-              >
-                <span className="text-rose/40 font-semibold">◆</span>
-                Book Consultation
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Task 1.2: CTA Above the fold indicator */}
-        <motion.div
-          style={{ opacity: ctaAboveFoldOpacity }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40 pointer-events-none"
-        >
-          <span className="text-[0.55rem] tracking-[0.4em] uppercase text-rose/60 font-medium">Scroll to Explore</span>
-          <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-rose/40"
-          >
-            ↓
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* ── NEW: DIAMOND EXTERIOR SPARKLE EDGE (Z-25) ── */}
-      <DiamondEdgeSparkles progress={smoothProgress} />
-
-      <SectionBlender position="bottom" intensity="h-[40vh]" />
-      </div>
-    </section>
-  );
-};
 
 const SelectedWork = () => {
   // Use a subset of projects for the homepage
@@ -627,7 +458,7 @@ function App() {
           }`}
       >
         <TopNav active={loaded} />
-        <ImpactHero onBookClick={openModal} />
+        <CinematicHero onBookClick={openModal} />
         <AboutFounder />
         <WhyKelseyCompany />
         <ServicesCarousel />
