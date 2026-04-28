@@ -6,14 +6,13 @@ import {
   TopNav,
   FooterCTA,
   UtilityFooter,
-  useMagnetic,
   WhyKelseyCompany,
   SectionBlender,
   useModal,
   ScrollIndicator,
   ScrollProgressBar
 } from './SharedComponents';
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import CinematicHero from './CinematicHero';
 import { getAssetUrl } from './utils/assets';
 import './index.css';
