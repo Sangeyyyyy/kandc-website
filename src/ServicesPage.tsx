@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { X, Plus, Volume2, VolumeX } from 'lucide-react';
 import { Reveal, TopNav, useModal, useMagnetic, FooterCTA, UtilityFooter, SectionBlender, ScrollProgressBar } from './SharedComponents';
-import { getAssetUrl } from './utils/assets';
-
-import { SERVICES_DATA, type Service, type Client, type EventDetail } from './data/services';
+import { SERVICES_DATA } from './data/services';
 
 const SERVICE_SLUGS: Record<string, string> = {
     '01': 'experiential-activations',

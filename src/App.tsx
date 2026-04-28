@@ -16,7 +16,6 @@ import {
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { SparkleParticles } from './SparkleParticles';
 import { DiamondEdgeSparkles } from './DiamondEdgeSparkles';
-import { getAssetUrl } from './utils/assets';
 import './index.css';
 
 

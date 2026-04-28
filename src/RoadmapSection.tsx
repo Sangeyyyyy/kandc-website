@@ -280,7 +280,7 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({ steps }) => {
                                 isPast={i <= activeIndex}
                                 onHover={handleHover}
                                 onClick={handleClick}
-                                prefersReduced={prefersReduced}
+                                prefersReduced={!!prefersReduced}
                             />
                         ))}
                     </div>
