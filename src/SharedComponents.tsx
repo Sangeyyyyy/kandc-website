@@ -4,6 +4,7 @@ import { motion, useSpring, useMotionValue, useTransform, AnimatePresence, useSc
 import { X, Menu } from 'lucide-react';
 import React, { createContext, useContext } from 'react';
 import { CustomCursor } from './CustomCursor';
+import { getAssetUrl } from './utils/assets';
 
 // ─── CONTEXT: MODAL STATE ────────────────────────────────────────────────────
 interface ModalContextType {
@@ -769,25 +770,25 @@ export const WhyKelseyCompany = () => {
             num: '01',
             label: 'Relationships Come First',
             sub: 'With clients, partners, and communities. We build on a foundation of mutual respect and long-term vision.',
-            img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1200'
+            img: getAssetUrl('spike_lee_fireside_chat_1')
         },
         {
             num: '02',
             label: 'Strategy & Creativity',
             sub: 'Impact requires both vision and precision. We bridge the gap between bold ideas and measurable results.',
-            img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200'
+            img: getAssetUrl('onemusicfest_image')
         },
         {
             num: '03',
             label: 'Culture Drives Connection',
             sub: 'We build bridges to what matters most by staying at the heart of the cultural conversation.',
-            img: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=1200'
+            img: getAssetUrl('sneakerball_1')
         },
         {
             num: '04',
             label: 'Consistency Builds Trust',
             sub: 'Every touchpoint is an opportunity for excellence. We maintain a standard that speaks for itself.',
-            img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1200'
+            img: getAssetUrl('thought_leadership_brunch_1')
         }
     ];
 

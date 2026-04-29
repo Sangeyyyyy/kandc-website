@@ -45,7 +45,7 @@ const WhoWeArePage = () => {
 
                     <div className="relative overflow-hidden group h-[50vh] md:h-full w-full">
                         <img
-                            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+                            src={getAssetUrl('sinners_4')}
                             alt="K&C"
                             className="w-full h-full object-cover brightness-75 grayscale-[0.1] transition-transform duration-[12s] ease-out group-hover:scale-[1.04]"
                         />
