@@ -48,7 +48,7 @@ export default function CinematicHero({ onBookClick }: CinematicHeroProps) {
           className="text-center px-6"
         >
           <p className="text-rose/50 text-[0.65rem] tracking-[0.5em] uppercase mb-6 font-sans mix-blend-difference">
-            Cultural Brand Architects
+            A Creative Collective
           </p>
           <h2 className="text-[10vw] md:text-[6vw] font-serif text-cream leading-[0.9] tracking-tighter uppercase drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)] mix-blend-difference">
             Shaping <span className="italic font-light text-rose/80">Brands.</span>
