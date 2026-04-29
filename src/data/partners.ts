@@ -27,7 +27,7 @@ export const PARTNERS: Partner[] = [
         name: 'Jordan Brand',
         category: 'Major Client',
         description: 'K&C produced an exclusive Spike Lee-powered Jordan Brand dinner at Cannes Lions — a luxurious 5-course experience for 50 top creatives, culminating in a private Jordan drop, signing, and personalized merch. Culture and commerce at their highest intersection.',
-        image: getAssetUrl('assets/spike lee dinner/spike lee dinner 1.png'),
+        image: getAssetUrl('spike_lee_fireside_chat_2'),
         logoFile: '-air-jordan.svg',
         role: 'Luxury Event Production & Brand Activation',
     },
@@ -35,7 +35,7 @@ export const PARTNERS: Partner[] = [
         name: 'ONE Musicfest',
         category: 'Major Client',
         description: 'A flagship partnership with ONE Musicfest, one of the largest hip-hop and R&B music festivals in the country. K&C brought strategic brand architecture and experiential production to amplify the festival\'s cultural footprint across key demographics.',
-        image: getAssetUrl('sneakerball'),
+        image: getAssetUrl('onemusicfest_poster'),
         logoFile: 'ONE_Musicfest_Logo.png',
         role: 'Strategic Brand Architecture & Event Production',
     },
@@ -54,6 +54,14 @@ export const PARTNERS: Partner[] = [
         image: getAssetUrl('creatives_at_sea'),
         logoFile: 'paramount-plus-64.png',
         role: 'Experiential Production & Talent Curation',
+    },
+    {
+        name: 'Disney',
+        category: 'Major Client',
+        description: 'Kelsey & Company provides strategic brand partnership management and experiential production for Walt Disney Studios, bridging the gap between animated worlds and premium lifestyle brands through curated global activations.',
+        image: getAssetUrl('hoppers_9'),
+        logoFile: 'icons8-disney-50.png',
+        role: 'Experiential Production & Brand Partnerships',
     },
 ];
 
