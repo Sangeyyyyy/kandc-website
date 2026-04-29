@@ -776,7 +776,7 @@ export const WhyKelseyCompany = () => {
             num: '02',
             label: 'Strategy & Creativity',
             sub: 'Impact requires both vision and precision. We bridge the gap between bold ideas and measurable results.',
-            img: getAssetUrl('onemusicfest_image')
+            img: getAssetUrl('braze_1')
         },
         {
             num: '03',
