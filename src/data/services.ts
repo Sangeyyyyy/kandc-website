@@ -382,13 +382,6 @@ export const SERVICES_DATA: Service[] = [
                 ],
             },
             {
-                name: 'BRAZE X BET+',
-                type: 'partnership',
-                portrait: null,
-                year: '2025',
-                role: 'Tech for an Equitable Future',
-            },
-            {
                 name: 'CONVERGE X BET+',
                 type: 'partnership',
                 portrait: getAssetUrl('BET_is_the_cookout'),
@@ -401,7 +394,7 @@ export const SERVICES_DATA: Service[] = [
         id: '04',
         title: 'Executive Brand Management',
         description: 'Senior-level strategic alliances and brand management for elite talent and executives. We curate high-stakes partnerships that elevate authority and drive mutual growth at the highest levels of industry.',
-        image: getAssetUrl('jason_harvey_background'),
+        image: getAssetUrl('chinapanelnuggets1'),
         clients: [
             {
                 name: 'JASON HARVEY',
@@ -446,6 +439,7 @@ export const SERVICES_DATA: Service[] = [
         title: 'Digital Marketing',
         description: 'Data-driven strategies that command attention in a crowded landscape. Presence that translates into measurable engagement and lasting loyalty.',
         image: getAssetUrl('bet_is_the_cookout_poster'),
+        objectPosition: 'center 15%',
         clients: [
             {
                 name: 'BET+ IS THE COOKOUT',
@@ -467,6 +461,80 @@ export const SERVICES_DATA: Service[] = [
                         { src: getAssetUrl('bet_is_the_cookout_poster'), orientation: 'landscape' },
                     ]
                 }
+            },
+            {
+                name: 'BRAZE X BET+',
+                type: 'partnership',
+                portrait: getAssetUrl('braze_poster'),
+                year: '2024-25',
+                role: 'Partnership Facilitator & Brand Programming',
+                eventDetail: {
+                    title: 'BET+ x Braze',
+                    subtitle: 'Tech for an Equitable Future',
+                    theme: 'STRATEGIC BRAND PROGRAMMING',
+                    description: 'In a world where Black-founded startups receive less than 0.5% of U.S. venture capital funding, and women-founded startups receive just 2.2%, this partnership mattered. We developed the strategic framework to connect Braze\'s customer engagement platform with BET+\'s cultural reach, launching at Cannes Lions 2024 and integrating into major conferences like FORGE and AFROTECH.',
+                    capacity: '20 Startups | 4M Subscribers',
+                    heroOrientation: 'portrait',
+                    heroImage: getAssetUrl('braze_poster'),
+                    galleryImages: [
+                        { src: getAssetUrl('braze_1_first'), orientation: 'portrait' },
+                        { src: getAssetUrl('braze_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('braze_1'), orientation: 'landscape' },
+                        { src: getAssetUrl('braze_2'), orientation: 'landscape' },
+                        { src: getAssetUrl('braze_3'), orientation: 'landscape' },
+                        { src: getAssetUrl('braze_4'), orientation: 'landscape' },
+                        { src: getAssetUrl('braze_5'), orientation: 'landscape' },
+                        { src: getAssetUrl('braze_6'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'AVERAGE JOE',
+                type: 'production',
+                portrait: getAssetUrl('average_joe_poster'),
+                year: '2023',
+                role: 'Lead Brand Strategist & Copywriter',
+                eventDetail: {
+                    title: 'Average Joe',
+                    subtitle: 'BET+ Original Series',
+                    theme: 'DIGITAL INNOVATION & LIFECYCLE',
+                    description: 'Using metrics and focus group insights, I built strategies that connected the BET+ brand with its audiences in unforgettable ways—rolling out immersive interactive games, gamified AR lenses, and a bespoke Pittsburgh Steelers broadcast integration.',
+                    capacity: 'Clio Award Integrated Campaign',
+                    heroOrientation: 'landscape',
+                    videoSrc: getAssetUrl('Average_Joe_Main_Video'),
+                    videoPoster: getAssetUrl('average_joe_poster'),
+                    galleryImages: [
+                        { src: getAssetUrl('average_joe_poster'), orientation: 'landscape' },
+                        { src: getAssetUrl('average_joe_1'), orientation: 'landscape' },
+                        { src: getAssetUrl('average_joe'), orientation: 'landscape' },
+                        { src: getAssetUrl('average_joe_3'), orientation: 'portrait' },
+                        { src: getAssetUrl('average_joe_4'), orientation: 'portrait' },
+                    ]
+                }
+            },
+            {
+                name: 'COPYWRITING PORTFOLIO',
+                type: 'production',
+                portrait: getAssetUrl('radio_spots_poster'),
+                year: '2023-24',
+                role: 'Brand Voice & Cultural Strategy',
+                eventDetail: {
+                    title: 'Copywriting',
+                    subtitle: 'The Playbook of Cultural Brand Voice',
+                    theme: 'THEATRE OF THE MIND',
+                    description: 'A curated selection of high-impact brand copywriting and audio storytelling. From cultural authenticity for Sprite to disruptive awareness for Cards Against Concussions, we craft voices that resonate with sophistication and purpose across every medium.',
+                    capacity: 'Multi-Platform Reach',
+                    heroOrientation: 'portrait',
+                    heroImage: getAssetUrl('radio_spots_poster'),
+                    galleryImages: [
+                        { src: getAssetUrl('sprite_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('popeyes_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('instagram_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('cards_against_concussion_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('kids_foot_locker_poster'), orientation: 'portrait' },
+                        { src: getAssetUrl('philadelphia_poster'), orientation: 'portrait' },
+                    ]
+                }
             }
         ]
     },
@@ -474,7 +542,7 @@ export const SERVICES_DATA: Service[] = [
         id: '06',
         title: 'Film Production',
         description: 'High-end content designed for the cinematic brand narrative. We produce visual assets that resonate with sophistication and purpose.',
-        image: getAssetUrl('hoppers_poster'),
+        image: getAssetUrl('fathers_love_poster'),
         clients: [
             {
                 name: 'THE DRONE THAT SAVED CHRISTMAS',
@@ -507,7 +575,8 @@ export const SERVICES_DATA: Service[] = [
             {
                 name: "A FATHER'S LOVE",
                 type: 'production',
-                portrait: null,
+                portrait: getAssetUrl('fathers_love_poster'),
+                objectFit: 'contain',
                 year: '2025',
                 role: 'Short Film',
             },
