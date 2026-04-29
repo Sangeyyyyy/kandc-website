@@ -40,7 +40,7 @@ export const SERVICES_DATA: Service[] = [
         id: '01',
         title: 'Experiential Integrated Activations and Premieres',
         description: 'We create immersive brand moments and seamless experiences that live at the intersection of culture and community. High-impact storytelling, cinematic premieres, and elite staffing management engineered for consistency across all touchpoints.',
-        image: getAssetUrl('sinners_1'),
+        image: getAssetUrl('sinners_4'),
         clients: [
             {
                 name: 'Sinners',
@@ -200,26 +200,26 @@ export const SERVICES_DATA: Service[] = [
         id: '02',
         title: 'Event Producing and Programming',
         description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
-        image: getAssetUrl('sneakerball'),
+        image: getAssetUrl('sneaker_ball_2'),
         clients: [
             {
                 name: 'CANNES LIONS',
                 type: 'event',
-                portrait: getAssetUrl('spike_lee_fireside_chat_poster'),
-                objectPosition: 'center 10%',
+                portrait: getAssetUrl('cannes_lions_logo'),
+                objectFit: 'contain',
                 year: '2023',
                 role: 'Featured Programming',
                 subPartnerships: [
                     {
                         name: 'Spike Lee Fireside Chat',
                         eventDetail: {
-                            title: 'Spike Lee',
+                            title: 'Spike Lee Fireside Chat',
                             subtitle: 'Fireside Chat · Cannes Lions 2023',
                             theme: 'OWNERSHIP ON OUR OWN TERMS: Reclaiming Our Cultural Significance',
                             description: "Spike Lee's triumph at the 2023 Cannes Lions as Creator of the Year set the stage for an extraordinary celebration. We executive produced and curated an exclusive fireside chat focusing on the power of storytelling and cultural impact.",
                             capacity: '80 Guests (18+)',
                             heroOrientation: 'portrait',
-                            videoSrc: getAssetUrl('spike_lee_fireside_chat_video'),
+                            videoSrc: getAssetUrl('SPIKE_LEE_FIRESIDE_CHAT'),
                             videoPoster: getAssetUrl('spike_lee_fireside_chat_poster'),
                             heroImage: getAssetUrl('spike_lee_fireside_chat_poster'),
                             galleryImages: [
@@ -259,11 +259,14 @@ export const SERVICES_DATA: Service[] = [
                             theme: 'WHERE STYLE MEETS SUBSTANCE',
                             description: 'An upscale affair where guests showcased their flyest kicks. Against the backdrop of an orchestra, attendees enjoyed light bites, a champagne toast, and a captivating performance by Grammy Award-winning poet J. Ivy. The night concluded with international DJ beats as guests danced away in style.',
                             capacity: 'Capacity | 200 people',
-                            heroImage: getAssetUrl('sneakerball'),
+                            heroImage: getAssetUrl('sneaker_ball_poster'),
+                            heroOrientation: 'portrait',
                             galleryImages: [
                                 { src: getAssetUrl('sneakerball'), orientation: 'landscape' },
+                                { src: getAssetUrl('sneaker_ball_1'), orientation: 'landscape' },
                                 { src: getAssetUrl('sneaker_ball_2'), orientation: 'landscape' },
                                 { src: getAssetUrl('sneaker_ball_3'), orientation: 'landscape' },
+                                { src: getAssetUrl('sneaker_ball_4'), orientation: 'landscape' }
                             ]
                         }
                     },
@@ -277,6 +280,7 @@ export const SERVICES_DATA: Service[] = [
                             description: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
                             capacity: 'Capacity | 50 People',
                             heroOrientation: 'portrait',
+                            objectFit: 'contain',
                             heroImage: getAssetUrl('CMO_brunch_poster'),
                             galleryImages: [
                                 { src: getAssetUrl('CEOCMO_BRUNCH'), orientation: 'portrait' }
@@ -310,7 +314,7 @@ export const SERVICES_DATA: Service[] = [
             {
                 name: 'CREATIVES AT SEA',
                 type: 'event',
-                portrait: getAssetUrl('creatives_at_sea'),
+                portrait: getAssetUrl('creatives_at_sea_poster'),
                 year: '2024',
                 role: 'Juneteenth Celebration',
                 eventDetail: {

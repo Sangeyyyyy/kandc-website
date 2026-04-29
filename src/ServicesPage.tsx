@@ -435,7 +435,12 @@ const ServicesPage = () => {
                                 </>
                             ) : (
                                 <>
-                                    <img src={selectedEventClient.eventDetail?.heroImage || selectedEventClient.portrait} alt={selectedEventClient.name} className="w-full h-full object-cover" />
+                                    <img 
+                                        src={selectedEventClient.eventDetail?.heroImage || selectedEventClient.portrait} 
+                                        alt={selectedEventClient.name} 
+                                        className={`w-full h-full ${selectedEventClient.eventDetail?.objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                                        style={{ objectPosition: selectedEventClient.eventDetail?.objectPosition || 'center' }}
+                                    />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
                                     <div className="absolute bottom-6 left-10 z-10">
                                         <p className="text-[0.55rem] tracking-[0.5em] uppercase font-sans text-rose/70 mb-3">Event Producing · {selectedEventClient.year}</p>

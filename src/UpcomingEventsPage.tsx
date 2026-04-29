@@ -33,7 +33,7 @@ const ALL_EVENTS = [
         location: 'Miami, FL — Art Basel',
         type: 'Immersive Experience',
         description: 'A multi-sensory brand activation popup during Miami Art Week. Redefining how physical spaces convey digital narratives.',
-        image: getAssetUrl('sinners_1'),
+        image: getAssetUrl('sinners_4'),
     }
 ];
 
