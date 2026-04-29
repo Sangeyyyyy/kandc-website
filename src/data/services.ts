@@ -8,6 +8,8 @@ export interface EventDetail {
     capacity: string;
     heroOrientation?: 'landscape' | 'portrait';
     heroImage?: string;
+    objectFit?: 'cover' | 'contain';
+    objectPosition?: string;
     videoSrc?: string;
     videoPoster?: string;
     brochure?: string;
@@ -273,7 +275,6 @@ export const SERVICES_DATA: Service[] = [
 
                     { 
                         name: 'CEO/CMO Brunch',
-                        objectFit: 'contain',
                         eventDetail: {
                             title: 'CEO/CMO Brunch',
                             subtitle: 'Poetic Accompaniment by J.Ivy',
@@ -281,6 +282,7 @@ export const SERVICES_DATA: Service[] = [
                             description: 'A small intimate gathering with some of the industries most creative executives. With brunch served hot, and the poetic accompaniment of Grammy award winner J.Ivy.',
                             capacity: 'Capacity | 50 People',
                             heroOrientation: 'portrait',
+                            objectFit: 'contain',
                             heroImage: getAssetUrl('CMO_brunch_poster'),
                             galleryImages: [
                                 { src: getAssetUrl('CEOCMO_BRUNCH'), orientation: 'portrait' }
