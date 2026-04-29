@@ -119,6 +119,7 @@ const ServicesPage = () => {
                                     src={service.image}
                                     alt={service.title}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-all duration-[1500ms] ease-out"
+                                    style={{ objectPosition: service.objectPosition || 'center' }}
                                 />
                                 <div className="absolute inset-0 bg-ink/20 group-hover:bg-burgundy/60 transition-colors duration-700"></div>
 
@@ -161,6 +162,7 @@ const ServicesPage = () => {
                             src={activeService.image}
                             alt={activeService.title}
                             className="w-full h-full object-cover opacity-60 animate-ken-burns transition-transform duration-[3000ms]"
+                            style={{ objectPosition: activeService.objectPosition || 'center' }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-ink/40"></div>
                         <div className="absolute top-10 left-10 z-10 hidden md:block">

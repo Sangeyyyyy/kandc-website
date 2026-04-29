@@ -34,6 +34,7 @@ export interface Service {
     title: string;
     description: string;
     image: string;
+    objectPosition?: string;
     clients: Client[];
 }
 
@@ -203,6 +204,7 @@ export const SERVICES_DATA: Service[] = [
         title: 'Event Producing and Programming',
         description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
         image: getAssetUrl('sneaker_ball_2'),
+        objectPosition: 'center 20%',
         clients: [
             {
                 name: 'CANNES LIONS',
