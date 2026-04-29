@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { TorusKnot, MeshTransmissionMaterial, Float, Environment, Lightformer } from '@react-three/drei';
+import { MeshTransmissionMaterial, Float, Environment, Lightformer } from '@react-three/drei';
 import * as THREE from 'three';
 
 export default function Hero3D() {
@@ -10,9 +10,10 @@ export default function Hero3D() {
   // Gentle rotation and mouse follow on the Y and X axes
   useFrame(({ pointer }) => {
     if (mesh.current) {
-      // Base continuous rotation
-      mesh.current.rotation.y += 0.003;
+      // Base continuous rotation (slower, more majestic for a monolith)
+      mesh.current.rotation.y += 0.002;
       mesh.current.rotation.x += 0.001;
+      mesh.current.rotation.z += 0.0005;
       
       // Mouse follow effect mapped to the viewport
       const targetX = (pointer.x * viewport.width) / 10;
@@ -42,34 +43,33 @@ export default function Hero3D() {
         </group>
       </Environment>
 
-      {/* Floating Abstract Crystal/Lens */}
+      {/* The Architect's Prism: A floating faceted monolith */}
       <Float
         speed={1.5} // Animation speed
-        rotationIntensity={0.5} // XYZ rotation intensity
-        floatIntensity={0.8} // Up/down float intensity
-        floatingRange={[-0.2, 0.2]} // Range of y-axis float
+        rotationIntensity={0.2} // XYZ rotation intensity (subtle)
+        floatIntensity={0.5} // Up/down float intensity
+        floatingRange={[-0.15, 0.15]} // Range of y-axis float
       >
-        <TorusKnot ref={mesh} args={[2.5, 0.8, 256, 64]} position={[0, 0, 0]}>
+        <mesh ref={mesh} position={[0, 0, 0]} rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+          <octahedronGeometry args={[2.8, 0]} /> {/* Sharp, faceted, diamond-like shape */}
           <MeshTransmissionMaterial 
             backside={true}
             samples={16} // High sample count for premium render
             resolution={1024} // High resolution for refraction clarity
             transmission={1} // CRITICAL: Acts like glass
-            roughness={0.15} // Slightly frosted
-            thickness={2} // Gives depth to the refraction
-            ior={1.5} // Index of Refraction for standard glass
-            chromaticAberration={0.05} // Subtle color splitting
+            roughness={0.05} // Very low roughness for sharp, polished facets
+            thickness={2.5} // Gives depth to the refraction
+            ior={1.3} // Index of Refraction tweaked for sharp diamond/glass splitting
+            chromaticAberration={0.1} // Increased for a luxurious light-splitting prism effect
             anisotropy={0.3}
-            distortion={0.2} // Organic liquid feel
-            distortionScale={0.3}
-            temporalDistortion={0.1} // Evolves over time
+            distortion={0} // Removed organic distortion to keep facets flat and sharp
             clearcoat={1}
-            clearcoatRoughness={0.1}
+            clearcoatRoughness={0.05}
             color="#ffffff"
             attenuationDistance={3}
             attenuationColor="#eec0bf" // Rose internal reflection
           />
-        </TorusKnot>
+        </mesh>
       </Float>
     </>
   );
