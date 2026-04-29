@@ -362,8 +362,10 @@ const TrustedBrands = () => {
               <img
                 src={p.image}
                 alt={p.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full"
                 style={{
+                  objectFit: p.objectFit || 'cover',
+                  objectPosition: p.objectPosition || 'center',
                   transform: i === current ? 'scale(1.03)' : 'scale(1)',
                   transition: 'transform 8s ease-out',
                 }}

@@ -7,6 +7,8 @@ export interface Partner {
     image: string;
     logoFile: string;
     role: string;
+    objectFit?: 'cover' | 'contain';
+    objectPosition?: string;
 }
 
 export interface BrandLogo {
@@ -30,6 +32,7 @@ export const PARTNERS: Partner[] = [
         image: getAssetUrl('spike_lee_fireside_chat_2'),
         logoFile: '-air-jordan.svg',
         role: 'Luxury Event Production & Brand Activation',
+        objectFit: 'contain',
     },
     {
         name: 'ONE Musicfest',
@@ -38,6 +41,7 @@ export const PARTNERS: Partner[] = [
         image: getAssetUrl('onemusicfest_poster'),
         logoFile: 'ONE_Musicfest_Logo.png',
         role: 'Strategic Brand Architecture & Event Production',
+        objectFit: 'contain',
     },
     {
         name: 'News UK',
@@ -62,6 +66,7 @@ export const PARTNERS: Partner[] = [
         image: getAssetUrl('hoppers_9'),
         logoFile: 'icons8-disney-50.png',
         role: 'Experiential Production & Brand Partnerships',
+        objectFit: 'contain',
     },
 ];
 
