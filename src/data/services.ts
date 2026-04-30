@@ -547,14 +547,14 @@ export const SERVICES_DATA: Service[] = [
             {
                 name: 'THE DRONE THAT SAVED CHRISTMAS',
                 type: 'production',
-                portrait: null,
+                portrait: getAssetUrl('the_drone_that_saved_christmas_poster'),
                 year: '2024',
                 role: 'Amazon Prime',
             },
             {
                 name: 'SOLICITED VENDORS',
                 type: 'production',
-                portrait: null,
+                portrait: getAssetUrl('solicited_vendors_poster'),
                 year: 'Ongoing',
                 role: 'Global Network Management',
                 subLabel: 'Scope of Excellence',
@@ -568,7 +568,7 @@ export const SERVICES_DATA: Service[] = [
             {
                 name: 'TALE ON AN AMERICAN SUNSET',
                 type: 'production',
-                portrait: null,
+                portrait: getAssetUrl('tale_on_american_sunset_poster'),
                 year: '2025',
                 role: 'Short Film · Awards',
             },
@@ -583,7 +583,7 @@ export const SERVICES_DATA: Service[] = [
             {
                 name: 'EDEN',
                 type: 'production',
-                portrait: null,
+                portrait: getAssetUrl('eden_poster'),
                 year: '2025',
                 role: 'Music Video',
             }
