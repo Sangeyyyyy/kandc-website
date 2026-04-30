@@ -161,12 +161,12 @@ export const RadioHero = ({ project, onClose }: { project: Project; onClose: () 
                         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-burgundy/20 blur-[60px] transition-all duration-700 ${isPlaying ? 'opacity-100' : 'opacity-20'}`} />
                     </div>
 
-                    {/* Logos */}
-                    <div className="relative z-10 flex items-center justify-center gap-6 mb-10">
+                    {/* Poster/Logo */}
+                    <div className="relative z-10 flex items-center justify-center mb-10">
                         <img
                             src={project.img}
-                            alt="BP x Dairy Queen"
-                            className="h-28 md:h-36 w-auto object-contain brightness-0 invert opacity-80"
+                            alt={project.title}
+                            className="h-48 md:h-64 w-auto object-contain rounded-lg shadow-2xl border border-white/5"
                         />
                     </div>
 
