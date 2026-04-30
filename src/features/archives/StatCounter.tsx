@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const StatCounter = ({ to, duration = 1.5 }: { to: number; duration?: number }) => {
     const [count, setCount] = useState(0);

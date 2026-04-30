@@ -13,7 +13,8 @@ export { TiltCard } from './components/ui/TiltCard';
 export { TopNav } from './components/layout/TopNav';
 export { FooterCTA } from './components/layout/FooterCTA';
 export { UtilityFooter } from './components/layout/UtilityFooter';
-export { GlobalLayout, FloatingCTA } from './components/layout/GlobalLayout';
+export { GlobalLayout } from './components/layout/GlobalLayout';
+export { FloatingCTA } from './components/layout/FloatingCTA';
 
 export { CalendlyModal } from './components/modals/CalendlyModal';
 export { WhyKelseyCompany } from './components/sections/WhyKelseyCompany';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { type Award } from '../../data/projects';
 import { Reveal } from '../../SharedComponents';
 import { StatCounter } from './StatCounter';

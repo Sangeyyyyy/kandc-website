@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useScroll } from 'framer-motion';
 import { ModalProvider } from '../../context/ModalContext';
@@ -6,14 +6,10 @@ import { CustomCursor } from '../../CustomCursor';
 import { FloatingCTA } from './FloatingCTA';
 import { CalendlyModal } from '../modals/CalendlyModal';
 
-export const GlobalLayout = ({ children }: { children: React.ReactNode }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+export const GlobalLayout = ({ children }: { children: ReactNode }) => {
     const { scrollY } = useScroll();
     const [showFloating, setShowFloating] = useState(false);
     const location = useLocation();
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
 
     useEffect(() => {
         return scrollY.onChange((latest) => {

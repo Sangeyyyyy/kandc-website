@@ -7,13 +7,13 @@ import {
     UtilityFooter,
     ScrollProgressBar
 } from './SharedComponents';
-import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 
 import { projects, type Project } from './data/projects';
 const DetailPanel = lazy(() => import('./features/archives/DetailPanel').then(m => ({ default: m.DetailPanel })));
 import { ProjectCard } from './features/archives/ProjectCard';
 import { ProjectSection } from './features/archives/ProjectSection';
+export { FloatingCTA } from './components/layout/FloatingCTA';
 
 export default function ArchivesPage() {
     const { openModal } = useModal();

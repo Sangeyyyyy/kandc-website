@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useMagnetic } from '../../hooks/useMagnetic';
 import { Reveal } from '../ui/Reveal';
