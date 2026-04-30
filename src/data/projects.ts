@@ -15,6 +15,24 @@ export type AudioSpot = {
     credit: string;
 };
 
+export type PartnerLogo = {
+    src: string;
+    mode: 'monochrome' | 'none' | string;
+    size: 'icon' | 'square' | 'wide' | 'full' | string;
+    alt: string;
+    scale?: number;
+};
+
+export type RoadmapStep = {
+    phase: string;
+    step: string;
+    title: string;
+    description: string;
+    tag: string;
+    media: string;
+    mediaPosition?: string;
+};
+
 export type Project = {
     id: number;
     title: string;
@@ -35,8 +53,8 @@ export type Project = {
     scaleValue: string;
     awards?: Award[];
     gallery?: string[];
-    partnerLogos?: any[];
-    roadmap?: any[];
+    partnerLogos?: PartnerLogo[];
+    roadmap?: RoadmapStep[];
     orientation?: string;
     highlightLabel?: string;
     theme?: string;
