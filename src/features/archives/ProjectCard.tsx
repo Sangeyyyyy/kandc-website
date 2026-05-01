@@ -9,7 +9,7 @@ export const ProjectCard = ({ project, index, onClick }: { project: Project; ind
     return (
         <div 
             ref={cardRef}
-            className={`group cursor-pointer relative hover:z-50 ${index % 2 === 1 ? 'md:mt-24' : ''}`} 
+            className="group cursor-pointer relative hover:z-50" 
             onClick={onClick}
         >
 
