@@ -59,7 +59,7 @@ export default function ArchivesPage() {
     const spikeLeeProjects = projects.filter(p => [10, 12].includes(p.id));
     const comeUpProjects = projects.filter(p => [19].includes(p.id));
     const kingdomBusinessProjects = projects.filter(p => [31].includes(p.id));
-    const copywritingProjects = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    const copywritingProjects = [20, 21, 24, 25, 26, 27, 28, 29, 30]
         .map(id => projects.find(p => p.id === id))
         .filter((p): p is Project => p !== undefined);
 
