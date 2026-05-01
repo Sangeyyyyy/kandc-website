@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { type Project } from '../../data/projects';
 
-export const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) => {
+export const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => void }) => {
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.1 });
 
