@@ -11,7 +11,7 @@ export const ProjectSection = ({ title, description, items, onProjectClick, cols
         <div className={`grid grid-cols-1 md:grid-cols-2 ${cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-x-12 gap-y-32`}>
             {items.map((project, i) => (
                 <Reveal key={project.id} delay={(i % cols) * 60}>
-                    <ProjectCard project={project} index={i} onClick={() => onProjectClick(project)} />
+                    <ProjectCard project={project} onClick={() => onProjectClick(project)} />
                 </Reveal>
             ))}
         </div>
