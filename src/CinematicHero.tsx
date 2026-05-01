@@ -1,7 +1,5 @@
-import { Suspense, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Hero3D from './Hero3D';
 import { TopNav, useMagnetic, SectionBlender } from './SharedComponents';
 
 interface CinematicHeroProps {
@@ -17,16 +15,19 @@ export default function CinematicHero({ onBookClick }: CinematicHeroProps) {
 
   return (
     <section className="h-screen w-full relative overflow-hidden bg-ink">
-      {/* 3D WebGL Canvas Layer (z-0) */}
-      <div className="absolute inset-0 z-0 pointer-events-auto">
-        <Canvas 
-          camera={{ position: [0, 0, 10], fov: 45 }}
-          gl={{ antialias: true, alpha: false }}
+      {/* Video Background Layer (z-0) */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-60"
         >
-          <Suspense fallback={null}>
-            <Hero3D />
-          </Suspense>
-        </Canvas>
+          <source src="https://res.cloudinary.com/dnocvgvnc/video/upload/v1777654541/hero_video.mp4" type="video/mp4" />
+        </video>
+        {/* Subtle overlay to ensure text contrast and maintain brand color feel */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink" />
       </div>
 
       {/* Top Navigation Layer (z-50) */}

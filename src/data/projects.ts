@@ -63,11 +63,13 @@ export type Project = {
     galleryLayout?: 'masonry' | 'poster';
     audioSpots?: AudioSpot[];
     objectPosition?: string;
+    slug: string;
 };
 
 export const projects: Project[] = [
     {
         id: 2,
+        slug: 'sinners',
         title: 'Sinners',
         category: 'Experiential Integrated Activations and Premieres',
         client: 'Warner Bros. Pictures',
@@ -142,6 +144,7 @@ export const projects: Project[] = [
     },
     {
         id: 3,
+        slug: 'tron-ares',
         title: 'Tron: Ares',
         category: 'Experiential Integrated Activations and Premieres',
         client: 'Walt Disney Studios',
@@ -173,6 +176,7 @@ export const projects: Project[] = [
     },
     {
         id: 4,
+        slug: 'zootopia-2',
         title: 'Zootopia 2',
         category: 'Experiential Integrated Activations and Premieres',
         client: 'Walt Disney Animation',
@@ -194,6 +198,7 @@ export const projects: Project[] = [
     },
     {
         id: 5,
+        slug: 'avatar',
         title: 'Avatar',
         category: 'Experiential Integrated Activations and Premieres',
         client: '20th Century Studios',
@@ -228,6 +233,7 @@ export const projects: Project[] = [
     },
     {
         id: 6,
+        slug: 'hoppers',
         title: 'Hoppers',
         category: 'Experiential Integrated Activations and Premieres',
         client: 'Netflix',
@@ -263,6 +269,7 @@ export const projects: Project[] = [
     },
     {
         id: 1,
+        slug: 'devil-wears-prada-2',
         title: 'The Devil Wears Prada 2',
         category: 'Experiential Integrated Activations and Premieres',
         client: 'Fox Entertainment',
@@ -282,6 +289,7 @@ export const projects: Project[] = [
     },
     {
         id: 7,
+        slug: 'bet-is-the-cookout',
         title: 'BET+ Is the Cookout',
         category: 'Digital Marketing',
         client: 'Black Entertainment Television',
@@ -310,6 +318,7 @@ export const projects: Project[] = [
     },
     {
         id: 8,
+        slug: 'jason-harvey',
         title: 'Jason Harvey',
         category: 'Executive Brand Management',
         client: 'Blue Blood',
@@ -351,6 +360,7 @@ export const projects: Project[] = [
     },
     {
         id: 9,
+        slug: 'sneaker-ball',
         title: 'Renaissance Noir: Sneaker Ball',
         category: 'Event Producing and Programming',
         client: 'Sneaker Ball Gala',
@@ -380,6 +390,7 @@ export const projects: Project[] = [
     },
     {
         id: 10,
+        slug: 'spike-lee',
         title: 'Spike Lee',
         category: 'Event Producing and Programming',
         client: 'Creative Conversations',
@@ -415,6 +426,7 @@ export const projects: Project[] = [
     },
     {
         id: 11,
+        slug: 'creatives-at-sea',
         title: 'Creatives at Sea',
         category: 'Event Producing and Programming',
         client: 'Juneteenth Celebration',
@@ -449,6 +461,7 @@ export const projects: Project[] = [
     },
     {
         id: 12,
+        slug: 'spike-lee-dinner',
         title: 'Spike Lee Dinner',
         category: 'Event Producing and Programming',
         client: 'Cannes Lions 2023',
@@ -483,6 +496,7 @@ export const projects: Project[] = [
     },
     {
         id: 13,
+        slug: 'ceo-cmo-brunch',
         title: 'CEO/CMO Brunch',
         category: 'Event Producing and Programming',
         client: 'Industry Executives',
@@ -505,6 +519,7 @@ export const projects: Project[] = [
     },
     {
         id: 14,
+        slug: 'logitech-vice-luncheon',
         title: 'Logitech x Vice Luncheon',
         category: 'Event Producing and Programming',
         client: 'Logitech & Vice',
@@ -529,6 +544,7 @@ export const projects: Project[] = [
     },
     {
         id: 15,
+        slug: 'thought-leadership-brunch',
         title: 'Thought Leadership Brunch',
         category: 'Event Producing and Programming',
         client: 'Black at Cannes',
@@ -562,6 +578,7 @@ export const projects: Project[] = [
     },
     {
         id: 16,
+        slug: 'onemusicfest-eventnoire',
         title: 'ONE Musicfest x Eventnoire',
         category: 'Digital Campaigns',
         client: 'Eventnoire / ONE Musicfest',
@@ -590,6 +607,7 @@ export const projects: Project[] = [
     },
     {
         id: 17,
+        slug: 'bet-plus-braze',
         title: 'BET+ x Braze',
         category: 'Digital Campaigns',
         client: 'BET+ & Braze',
@@ -629,6 +647,7 @@ export const projects: Project[] = [
     },
     {
         id: 18,
+        slug: 'average-joe',
         title: 'Average Joe',
         category: 'Digital Campaigns',
         client: 'BET+',
@@ -662,6 +681,7 @@ export const projects: Project[] = [
     },
     {
         id: 19,
+        slug: 'the-come-up-brunch',
         title: 'The Come Up Brunch',
         category: 'Event Producing and Programming',
         client: 'The Come Up / The One Club for Creativity',
@@ -683,6 +703,7 @@ export const projects: Project[] = [
     },
     {
         id: 23,
+        slug: 'sprite',
         title: 'Sprite',
         category: 'Copywriting',
         client: 'Sprite',
@@ -700,6 +721,7 @@ export const projects: Project[] = [
     },
     {
         id: 30,
+        slug: 'kids-foot-locker',
         title: 'Kids Foot Locker',
         category: 'Copywriting',
         client: 'Foot Locker',
@@ -717,6 +739,7 @@ export const projects: Project[] = [
     },
     {
         id: 24,
+        slug: 'instagram-shop',
         title: 'Instagram Shop',
         category: 'Copywriting',
         client: 'Instagram',
@@ -735,6 +758,7 @@ export const projects: Project[] = [
     },
     {
         id: 25,
+        slug: 'cards-against-concussions',
         title: 'Cards Against Concussions',
         category: 'Copywriting',
         client: 'PADV',
@@ -760,6 +784,7 @@ export const projects: Project[] = [
     },
     {
         id: 26,
+        slug: 'philadelphia',
         title: 'Philadelphia',
         category: 'Copywriting',
         client: 'Kraft Philadelphia',
@@ -785,6 +810,7 @@ export const projects: Project[] = [
     },
     {
         id: 27,
+        slug: 'popeyes',
         title: 'Popeyes',
         category: 'Copywriting',
         client: 'Popeyes',
@@ -809,6 +835,7 @@ export const projects: Project[] = [
     },
     {
         id: 22,
+        slug: 'holiday-slay-shuffle',
         title: 'Holiday Slay Shuffle',
         category: 'Copywriting',
         client: 'Kelsey Nashe',
@@ -831,6 +858,7 @@ export const projects: Project[] = [
     },
     {
         id: 21,
+        slug: 'radio-spots',
         title: 'Radio Spots for FM Radio',
         category: 'Copywriting',
         client: 'BP / Dairy Queen',
@@ -868,6 +896,7 @@ export const projects: Project[] = [
     },
     {
         id: 28,
+        slug: 'fathers-love',
         title: "A Father's Love",
         category: 'Copywriting',
         client: 'K&C',
@@ -886,6 +915,7 @@ export const projects: Project[] = [
     },
     {
         id: 29,
+        slug: 'minute-maid-twist-n-sip',
         title: "Minute Maid Twist 'n Sip",
         category: 'Copywriting',
         client: 'Minute Maid',
@@ -911,6 +941,7 @@ export const projects: Project[] = [
     },
     {
         id: 31,
+        slug: 'kingdom-business',
         title: 'Kingdom Business',
         category: 'Event Producing and Programming',
         client: 'BET+',
@@ -930,6 +961,7 @@ export const projects: Project[] = [
     },
     {
         id: 20,
+        slug: 'radio-commercials',
         title: 'Radio Commercials',
         category: 'Copywriting',
         client: 'K&C Portfolio',

@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
     Reveal,
     TopNav,
@@ -16,6 +17,7 @@ import { ProjectSection } from './features/archives/ProjectSection';
 export { FloatingCTA } from './components/layout/FloatingCTA';
 
 export default function ArchivesPage() {
+    const location = useLocation();
     const { openModal } = useModal();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [loaded, setLoaded] = useState(false);
@@ -24,6 +26,20 @@ export default function ArchivesPage() {
         window.scrollTo(0, 0);
         setLoaded(true);
     }, []);
+
+    // Handle Deep-linking via Hash
+    useEffect(() => {
+        const hash = location.hash.replace('#', '');
+        if (hash) {
+            const project = projects.find(p => p.slug === hash);
+            if (project) {
+                // Small delay to ensure smooth transition
+                setTimeout(() => setSelectedProject(project), 100);
+            }
+        } else {
+            setSelectedProject(null);
+        }
+    }, [location.hash]);
 
     useEffect(() => {
         if (selectedProject) {

@@ -31,6 +31,7 @@ export interface Client {
 
 export interface Service {
     id: string;
+    slug: string;
     title: string;
     description: string;
     image: string;
@@ -41,6 +42,7 @@ export interface Service {
 export const SERVICES_DATA: Service[] = [
     {
         id: '01',
+        slug: 'experiential-activations',
         title: 'Experiential Integrated Activations and Premieres',
         description: 'We create immersive brand moments and seamless experiences that live at the intersection of culture and community. High-impact storytelling, cinematic premieres, and elite staffing management engineered for consistency across all touchpoints.',
         image: getAssetUrl('sinners_4'),
@@ -201,6 +203,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         id: '02',
+        slug: 'event-producing',
         title: 'Event Producing and Programming',
         description: 'End-to-end management from logistical blueprints to the final guest experience. Flawless execution and strategic programming where every detail is intentional.',
         image: getAssetUrl('sneaker_ball_2'),
@@ -342,6 +345,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         id: '03',
+        slug: 'brand-partnerships',
         title: 'Brand Partnerships',
         description: 'Strategic alliances built on cultural alignment and mutual growth. We curate partners that enhance your brand’s authority and reach.',
         image: getAssetUrl('creatives_at_sea'),
@@ -392,6 +396,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         id: '04',
+        slug: 'executive-brand-management',
         title: 'Executive Brand Management',
         description: 'Senior-level strategic alliances and brand management for elite talent and executives. We curate high-stakes partnerships that elevate authority and drive mutual growth at the highest levels of industry.',
         image: getAssetUrl('chinapanelnuggets1'),
@@ -436,6 +441,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         id: '05',
+        slug: 'digital-marketing',
         title: 'Digital Marketing',
         description: 'Data-driven strategies that command attention in a crowded landscape. Presence that translates into measurable engagement and lasting loyalty.',
         image: getAssetUrl('bet_is_the_cookout_poster'),
@@ -540,6 +546,7 @@ export const SERVICES_DATA: Service[] = [
     },
     {
         id: '06',
+        slug: 'film-production',
         title: 'Film Production',
         description: 'High-end content designed for the cinematic brand narrative. We produce visual assets that resonate with sophistication and purpose.',
         image: getAssetUrl('fathers_love_poster'),

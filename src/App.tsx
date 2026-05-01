@@ -31,6 +31,7 @@ const SelectedWork = () => {
     title: p.title,
     category: p.category,
     img: p.img,
+    slug: p.slug,
     objectPosition: p.objectPosition || 'top center',
   }));
 
@@ -47,9 +48,10 @@ const SelectedWork = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-cream/10">
         {featuredProjects.map((project, i) => (
-          <div
+          <Link
             key={i}
-            className="relative overflow-hidden cursor-pointer group border-r border-cream/10 last:border-r-0 lg:last:border-r"
+            to={`/our-work#${project.slug}`}
+            className="relative overflow-hidden cursor-pointer group border-r border-cream/10 last:border-r-0 lg:last:border-r block"
             style={{ aspectRatio: '2/3' }}
           >
             <span className="absolute top-5 right-5 z-20 font-sans text-[0.55rem] tracking-[0.35em] text-white/40 select-none">
@@ -74,7 +76,7 @@ const SelectedWork = () => {
                 {project.title}
               </h3>
             </div>
-          </div>
+          </Link>
         ))}
 
         <Link
@@ -213,7 +215,11 @@ const ServicesCarousel = () => {
           </div>
 
           {SERVICES_DATA.map((s) => (
-            <div key={s.id} className="w-[88vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-[70vh] relative group overflow-hidden border border-cream/10">
+            <Link 
+              key={s.id} 
+              to={`/services#${s.slug}`}
+              className="w-[88vw] md:w-[60vw] lg:w-[45vw] shrink-0 h-[70vh] relative group overflow-hidden border border-cream/10 block"
+            >
               <img src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105 opacity-60 group-hover:opacity-80" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent transition-opacity duration-700" />
               <div className="absolute inset-0 p-6 md:p-16 flex flex-col justify-end">
@@ -228,7 +234,7 @@ const ServicesCarousel = () => {
                   {s.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
           <div className="w-[6vw] md:hidden shrink-0" />
         </motion.div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X, Plus, Volume2, VolumeX } from 'lucide-react';
 import { Reveal, TopNav, useModal, useMagnetic, FooterCTA, UtilityFooter, SectionBlender, ScrollProgressBar } from './SharedComponents';
 import { SERVICES_DATA } from './data/services';
@@ -13,6 +14,7 @@ const SERVICE_SLUGS: Record<string, string> = {
 };
 
 const ServicesPage = () => {
+    const location = useLocation();
     const { openModal } = useModal();
     const magneticRef = useMagnetic(30);
     const [overlayServiceId, setOverlayServiceId] = useState<string | null>(null);
@@ -25,14 +27,21 @@ const ServicesPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoaded(true);
+    }, []);
 
-        // Task 2.4: Deep-linking support
-        const hash = window.location.hash.replace('#', '');
+    // Handle Deep-linking via Hash
+    useEffect(() => {
+        const hash = location.hash.replace('#', '');
         if (hash) {
             const match = Object.entries(SERVICE_SLUGS).find(([, slug]) => slug === hash);
-            if (match) setOverlayServiceId(match[0]);
+            if (match) {
+                // Small delay to ensure transitions are smooth if coming from another page
+                setTimeout(() => setOverlayServiceId(match[0]), 100);
+            }
+        } else {
+            setOverlayServiceId(null);
         }
-    }, []);
+    }, [location.hash]);
 
     useEffect(() => {
         if (selectedEventClient) {
