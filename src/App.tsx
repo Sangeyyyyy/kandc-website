@@ -156,6 +156,7 @@ const AboutFounder = () => (
           <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-10">
             <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">Webby Winner</span>
             <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">Clio Shortlist</span>
+            <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">Miami Ad School '21</span>
             <span className="border border-rose/20 px-5 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-rose/60">UWG Alumni</span>
           </div>
 

@@ -164,13 +164,39 @@ const WhoWeArePage = () => {
                                 </Reveal>
                             </div>
 
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+                                <Reveal delay={500}>
+                                    <div>
+                                        <span className="text-[9px] tracking-[0.4em] uppercase text-rose/50 font-medium block mb-4">Pursuits</span>
+                                        <p className="text-[15px] leading-relaxed text-cream/60 font-light">
+                                            Intermediate Flutist | Meatloaf Maven | Globe Trotter
+                                        </p>
+                                    </div>
+                                </Reveal>
+                                <Reveal delay={600}>
+                                    <div>
+                                        <span className="text-[9px] tracking-[0.4em] uppercase text-rose/50 font-medium block mb-4">Education</span>
+                                        <div className="space-y-4">
+                                            <div>
+                                                <p className="text-[14px] text-cream/80 font-medium leading-tight">Miami Ad School</p>
+                                                <p className="text-[12px] text-cream/40 uppercase tracking-wider mt-1">Advertising & Copywriting '21</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-[14px] text-cream/80 font-medium leading-tight">University of West Georgia</p>
+                                                <p className="text-[12px] text-cream/40 uppercase tracking-wider mt-1">Mass Communications '13</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Reveal>
+                            </div>
+
                             <div className="space-y-5 max-w-2xl text-cream/60">
-                                <Reveal delay={200}>
+                                <Reveal delay={700}>
                                     <p className="text-[16px] leading-[1.9]">
                                         Kelsey Matthews founded K&C on the belief that the world's most ambitious brands deserved an agency that operated at their level — not an agency that would simply take their brief and execute it.
                                     </p>
                                 </Reveal>
-                                <Reveal delay={400}>
+                                <Reveal delay={800}>
                                     <p className="text-[16px] leading-[1.9]">
                                         She built a collective instead. A network of senior specialists — strategists, directors, producers, designers — each selected for their relevance to a specific brand, a specific moment, a specific opportunity.
                                     </p>

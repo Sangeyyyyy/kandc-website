@@ -20,7 +20,7 @@ export const PARTNERS: Partner[] = [
     {
         name: 'Warner Bros.',
         category: 'Major Client',
-        description: 'Kelsey & Company partnered with Warner Bros. to produce the premiere activation for Sinners — a full-scale, immersive launch experience that blurred the line between film and lived reality, curating every touchpoint from spatial architecture to talent coordination.',
+        description: 'Led end-to-end production and marketing for Sinners branded events in partnership with MACRO, NBA and Warner. Overseeing creative, asset delivery, vendor sourcing, and production team management for immersive launch experiences.',
         image: getAssetUrl('sinners_4'),
         logoFile: 'warner-bros-.svg',
         role: 'Activation Strategy & Creative Production',
