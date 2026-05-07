@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { type Project } from '../../data/projects';
 
-export const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => void }) => {
+export const ProjectCard = ({ project, onClick, forceLight = false }: { project: Project; onClick: () => void; forceLight?: boolean }) => {
     const cardRef = useRef(null);
     const isInView = useInView(cardRef, { amount: 0.1 });
 
@@ -15,7 +15,7 @@ export const ProjectCard = ({ project, onClick }: { project: Project; onClick: (
 
             {/* ── Card Image (clean, no labels) ── */}
             <div className="aspect-[4/5] relative overflow-visible">
-                <div className="w-full h-full overflow-hidden relative rounded-sm bg-burgundy/5 border border-rose/5 transition-colors">
+                <div className={`w-full h-full overflow-hidden relative rounded-sm ${forceLight ? 'bg-burgundy/5 border-burgundy/10' : 'bg-burgundy/5 border-rose/5'} transition-colors`}>
                     {project.img ? (
                         <img
                             src={project.img}
@@ -33,8 +33,8 @@ export const ProjectCard = ({ project, onClick }: { project: Project; onClick: (
                             className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                         />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
-                            <span className="text-[0.45rem] tracking-[0.4em] uppercase text-cream/10">Coming Soon</span>
+                        <div className="w-full h-full flex items-center justify-center bg-burgundy/[0.02]">
+                            <span className={`text-[0.45rem] tracking-[0.4em] uppercase ${forceLight ? 'text-burgundy/20' : 'text-cream/10'}`}>Coming Soon</span>
                         </div>
                     )}
                 </div>
@@ -46,15 +46,15 @@ export const ProjectCard = ({ project, onClick }: { project: Project; onClick: (
             {/* ── Hover Metadata Strip (below card, hidden until hover on desktop) ── */}
             <div className="overflow-hidden">
                 <div className="translate-y-0 md:translate-y-3 opacity-70 md:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out pt-4">
-                    <div className="w-0 group-hover:w-full h-px bg-rose/15 transition-all duration-700 ease-out mb-3" />
+                    <div className={`w-0 group-hover:w-full h-px ${forceLight ? 'bg-burgundy/15' : 'bg-rose/15'} transition-all duration-700 ease-out mb-3`} />
                     <div className="flex items-center justify-between gap-4">
-                        <span className="text-[0.65rem] tracking-[0.4em] uppercase font-sans text-cream/30 shrink-0">
+                        <span className={`text-[0.65rem] tracking-[0.4em] uppercase font-sans shrink-0 ${forceLight ? 'text-ink/30' : 'text-cream/30'}`}>
                             {String(project.id).padStart(2, '0')}
                         </span>
-                        <h5 className="text-[0.9rem] md:text-[1rem] tracking-[0.2em] uppercase font-sans text-cream/70 flex-1">
+                        <h5 className={`text-[0.9rem] md:text-[1rem] tracking-[0.2em] uppercase font-sans flex-1 ${forceLight ? 'text-ink/70' : 'text-cream/70'}`}>
                             {project.title}
                         </h5>
-                        <span className="text-rose/80 text-lg shrink-0">→</span>
+                        <span className={`${forceLight ? 'text-burgundy/80' : 'text-rose/80'} text-lg shrink-0`}>→</span>
                     </div>
                 </div>
             </div>

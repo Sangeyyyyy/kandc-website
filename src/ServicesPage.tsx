@@ -113,50 +113,50 @@ const ServicesPage = () => {
                 </div>
             </section>
 
-            {/* ─── SERVICES GRID ─── */}
-            <section className="bg-ink pb-32 relative">
+            {/* ─── SERVICES GRID (LIGHT) ─── */}
+            <section className="bg-cream pb-32 relative">
                 <SectionBlender position="bottom" intensity="h-32" />
                 <div className="container mx-auto px-8 max-w-7xl">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-rose/10 border border-rose/10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-burgundy/10 border border-burgundy/10">
                         {SERVICES_DATA.map((service) => (
                             <div
                                 key={service.id}
-                                className="relative aspect-[16/9] group overflow-hidden bg-ink cursor-pointer"
+                                className="relative aspect-[16/9] group overflow-hidden bg-cream cursor-pointer"
                                 onClick={() => toggleOverlay(service.id)}
                             >
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-[1500ms] ease-out"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-[1500ms] ease-out brightness-[0.85] group-hover:brightness-100"
                                     style={{ objectPosition: service.objectPosition || 'center' }}
                                 />
-                                <div className="absolute inset-0 bg-ink/20 group-hover:bg-burgundy/60 transition-colors duration-700"></div>
+                                <div className="absolute inset-0 bg-cream/20 group-hover:bg-burgundy/60 transition-colors duration-700"></div>
 
                                 <div className="absolute inset-x-8 bottom-8 z-10 group-hover:opacity-100 opacity-100 transition-all duration-700">
                                     <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                                        <span className="text-rose font-sans text-[0.6rem] tracking-[0.3em] uppercase mb-4 block opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                        <span className={`font-sans text-[0.6rem] tracking-[0.3em] uppercase mb-4 block opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 ${overlayServiceId ? 'text-rose' : 'text-burgundy group-hover:text-rose'}`}>
                                             {service.id} / 06
                                         </span>
-                                        <h3 className="text-2xl md:text-3xl font-serif text-cream uppercase mb-4 tracking-tighter leading-none group-hover:text-cream transition-colors duration-500 opacity-100 md:opacity-0 group-hover:opacity-100">
+                                        <h3 className="text-2xl md:text-3xl font-serif text-ink uppercase mb-4 tracking-tighter leading-none group-hover:text-cream transition-colors duration-500 opacity-100 md:opacity-0 group-hover:opacity-100">
                                             {service.title.split(' ').map((word, i) => (
                                                 <span key={i} className="inline-block mr-2">{word}</span>
                                             ))}
                                         </h3>
                                         <div className="overflow-hidden">
-                                            <p className="text-rose/80 text-sm md:text-base font-serif italic leading-relaxed line-clamp-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 translate-y-0 md:translate-y-full group-hover:translate-y-0">
+                                            <p className="text-burgundy text-sm md:text-base font-serif italic leading-relaxed line-clamp-2 opacity-100 md:opacity-0 group-hover:opacity-100 group-hover:text-rose/80 transition-all duration-700 delay-200 translate-y-0 md:translate-y-full group-hover:translate-y-0">
                                                 {service.description || "Comprehensive brand strategy and production services."}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-cream/80 via-transparent to-transparent opacity-0 md:opacity-100 group-hover:opacity-0 transition-opacity duration-500"></div>
                                 <div className="absolute inset-x-8 bottom-8 opacity-0 md:opacity-100 group-hover:opacity-0 transition-all duration-500 ease-in-out">
-                                    <span className="text-rose/80 font-sans text-[0.6rem] tracking-[0.3em] uppercase block mb-3">{service.id}</span>
-                                    <h3 className="text-xl md:text-2xl font-serif text-cream uppercase tracking-tighter leading-[1.1] max-w-[80%] drop-shadow-md">{service.title}</h3>
+                                    <span className="text-burgundy/80 font-sans text-[0.6rem] tracking-[0.3em] uppercase block mb-3">{service.id}</span>
+                                    <h3 className="text-xl md:text-2xl font-serif text-ink uppercase tracking-tighter leading-[1.1] max-w-[80%] drop-shadow-sm">{service.title}</h3>
                                 </div>
 
-                                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-rose/10 group-hover:border-rose/30 transition-colors duration-500"></div>
+                                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-burgundy/10 group-hover:border-rose/30 transition-colors duration-500"></div>
                             </div>
                         ))}
                     </div>

@@ -83,46 +83,48 @@ export default function ArchivesPage() {
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
                 <ProjectSection title="Executive Brand Management" description="Strategic brand positioning and high-stakes coordination for industry visionaries and cultural leaders." items={executiveBrand} onProjectClick={setSelectedProject} cols={4} />
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-48 md:mb-64" />
-                {/* ── Digital Campaigns Section ── */}
-                <section className="mb-48 md:mb-64">
-                    <div className="mb-20 md:mb-32 max-w-4xl">
-                        <Reveal mode="mask">
-                            <h2 className="text-4xl md:text-7xl font-serif text-cream uppercase mb-8 leading-[0.9]">
-                                Digital <i>Campaigns</i>
-                            </h2>
-                        </Reveal>
-                        <Reveal delay={200}>
-                            <p className="text-lg md:text-2xl text-cream/40 font-serif italic border-l-2 border-rose/30 pl-8 ml-1 leading-relaxed">
-                                Strategic digital marketing and culture-first storytelling for streaming platforms and digital identity.
-                            </p>
-                        </Reveal>
-                    </div>
-
-                    <div className="space-y-48 md:space-y-64">
-                        {/* Primary Campaigns */}
-                        <div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
-                                {digitalCampaigns.map((p, i) => (
-                                    <Reveal key={p.id} delay={(i % 4) * 60}>
-                                        <ProjectCard project={p} onClick={() => setSelectedProject(p)} />
-                                    </Reveal>
-                                ))}
-                            </div>
+                {/* ── SECTION 3: DIGITAL CAMPAIGNS (LIGHT) ── */}
+                <section className="bg-cream -mx-8 px-8 py-48 md:py-64 mb-48 md:mb-64">
+                    <div className="container mx-auto max-w-7xl">
+                        <div className="mb-20 md:mb-32 max-w-4xl">
+                            <Reveal mode="mask">
+                                <h2 className="text-4xl md:text-7xl font-serif text-ink uppercase mb-8 leading-[0.9]">
+                                    Digital <i>Campaigns</i>
+                                </h2>
+                            </Reveal>
+                            <Reveal delay={200}>
+                                <p className="text-lg md:text-2xl text-ink/60 font-serif italic border-l-2 border-burgundy/30 pl-8 ml-1 leading-relaxed">
+                                    Strategic digital marketing and culture-first storytelling for streaming platforms and digital identity.
+                                </p>
+                            </Reveal>
                         </div>
 
-                        {/* Copywriting Subsection */}
-                        <div>
-                            <Reveal>
-                                <h3 className="text-xl md:text-2xl text-rose/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-white/5 pb-4">
-                                    COPYWRITING
-                                </h3>
-                            </Reveal>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
-                                {copywritingProjects.map((p, i) => (
-                                    <Reveal key={p.id} delay={(i % 4) * 60}>
-                                        <ProjectCard project={p} onClick={() => setSelectedProject(p)} />
-                                    </Reveal>
-                                ))}
+                        <div className="space-y-48 md:space-y-64">
+                            {/* Primary Campaigns */}
+                            <div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+                                    {digitalCampaigns.map((p, i) => (
+                                        <Reveal key={p.id} delay={(i % 4) * 60}>
+                                            <ProjectCard project={p} onClick={() => setSelectedProject(p)} forceLight={true} />
+                                        </Reveal>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Copywriting Subsection */}
+                            <div>
+                                <Reveal>
+                                    <h3 className="text-xl md:text-2xl text-burgundy/50 uppercase tracking-[0.4em] font-sans mb-12 border-b border-burgundy/5 pb-4">
+                                        COPYWRITING
+                                    </h3>
+                                </Reveal>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+                                    {copywritingProjects.map((p, i) => (
+                                        <Reveal key={p.id} delay={(i % 4) * 60}>
+                                            <ProjectCard project={p} onClick={() => setSelectedProject(p)} forceLight={true} />
+                                        </Reveal>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>

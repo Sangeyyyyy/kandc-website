@@ -48,9 +48,6 @@ export default function CinematicHero({ onBookClick }: CinematicHeroProps) {
           transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-center px-6"
         >
-          <p className="text-rose/50 text-[0.65rem] tracking-[0.5em] uppercase mb-6 font-sans mix-blend-difference">
-            A Creative Collective
-          </p>
           <h2 className="text-[10vw] md:text-[6vw] font-serif text-cream leading-[0.9] tracking-tighter uppercase drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)] mix-blend-difference">
             Shaping <span className="italic font-light text-rose/80">Brands.</span>
             <br />Telling Stories.
@@ -126,7 +123,6 @@ export default function CinematicHero({ onBookClick }: CinematicHeroProps) {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40 pointer-events-none mix-blend-difference"
       >
-        <span className="text-[0.55rem] tracking-[0.4em] uppercase text-rose/80 font-medium">Explore</span>
         <motion.div 
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -138,7 +134,7 @@ export default function CinematicHero({ onBookClick }: CinematicHeroProps) {
 
       {/* Transition to next section */}
       <div className="absolute bottom-0 w-full z-30">
-        <SectionBlender position="bottom" intensity="h-[20vh]" />
+        
       </div>
     </section>
   );

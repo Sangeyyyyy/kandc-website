@@ -177,6 +177,35 @@
   .nav-link-dark:hover::before { transform: scaleX(1); }
   .nav-link-dark.active { @apply text-cream; }
   .nav-link-dark.active::before { transform: scaleX(1); @apply bg-burgundy; }
+  
+  /* Ink surface nav link (scrolled light pill over light section) */
+  .nav-link-ink {
+    @apply relative text-ink no-underline text-[0.7rem] tracking-[0.25em] uppercase font-serif font-semibold;
+    padding: 5px 12px;
+    border-radius: 100px;
+    overflow: hidden;
+    transition: color 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    margin: -5px -12px;
+  }
+
+  .nav-link-ink::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-burgundy);
+    border-radius: 100px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 0;
+  }
+
+  .nav-link-ink:hover { @apply text-cream; }
+  .nav-link-ink:hover::before { transform: scaleX(1); }
+  .nav-link-ink.active { @apply text-ink; }
+  .nav-link-ink.active::before { transform: scaleX(1); background: rgba(96, 33, 58, 0.1); }
+  .nav-link-ink.active:hover { @apply text-cream; }
+  .nav-link-ink.active:hover::before { @apply bg-burgundy; }
 
   /* Text sits above the ::before fill */
   .nav-label-inner {

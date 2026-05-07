@@ -9,14 +9,30 @@ const NavLabel = ({ label }: { label: string }) => (
 
 export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDark?: boolean }) => {
     const [scrolled, setScrolled] = useState(false);
+    const [isLightSection, setIsLightSection] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 80);
+        const onScroll = () => {
+            const scrollPos = window.scrollY;
+            setScrolled(scrollPos > 80);
+
+            // Detect if the nav is over a light section
+            const navHeight = 80;
+            const elementUnderNav = document.elementFromPoint(window.innerWidth / 2, navHeight / 2);
+            if (elementUnderNav) {
+                const section = elementUnderNav.closest('section, div');
+                if (section) {
+                    const isLight = section.classList.contains('bg-cream') || section.classList.contains('bg-white');
+                    setIsLightSection(isLight);
+                }
+            }
+        };
         window.addEventListener('scroll', onScroll);
+        onScroll(); // Initial check
         return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    }, [location.pathname]);
 
     // Prevent body scroll when mobile menu is open
     useEffect(() => {
@@ -43,14 +59,14 @@ export const TopNav = ({ active, forceDark = false }: { active: boolean, forceDa
     const isDark = scrolled || forceDark;
 
     const scrolledClasses = isDark
-        ? 'top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-[1100px] py-4 px-6 md:px-10 rounded-[100px] bg-white/10 backdrop-blur-2xl border border-white/20 shadow-ember'
+        ? `top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-[1100px] py-4 px-6 md:px-10 rounded-[100px] backdrop-blur-2xl border shadow-ember ${isLightSection ? 'bg-ink/5 border-ink/10' : 'bg-white/10 border-white/20'}`
         : 'top-0 left-0 w-full py-6 md:py-10 px-6 md:px-10 bg-transparent';
 
-    const wordmarkClass = isDark ? 'text-cream hover:text-rose' : 'text-cream hover:text-rose';
+    const wordmarkClass = isLightSection ? 'text-ink hover:text-burgundy' : 'text-cream hover:text-rose';
     
     const getNavLinkClass = (href: string) => {
         const isActive = location.pathname === href;
-        const baseClass = isDark ? 'nav-link-dark' : 'nav-link';
+        const baseClass = isLightSection ? 'nav-link-ink' : (isDark ? 'nav-link-dark' : 'nav-link');
         return `${baseClass} ${isActive ? 'active' : ''}`;
     };
 

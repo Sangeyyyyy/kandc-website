@@ -18,3 +18,4 @@ export { FloatingCTA } from './components/layout/FloatingCTA';
 
 export { CalendlyModal } from './components/modals/CalendlyModal';
 export { WhyKelseyCompany } from './components/sections/WhyKelseyCompany';
+export { ServicesExpertise } from './components/sections/ServicesExpertise';
